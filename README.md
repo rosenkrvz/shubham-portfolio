@@ -1,7 +1,7 @@
 # Shubham Sharma — Machine Learning & Full-Stack Developer Portfolio
 
 [![GitHub Repository](https://img.shields.io/badge/GitHub-rosenkrvz%2Fshubham--portfolio-blue?logo=github)](https://github.com/rosenkrvz/shubham-portfolio)
-[![Vercel Deployment](https://img.shields.io/badge/Deployment-Vercel-black?logo=vercel)](https://vercel.com)
+[![Vercel Deployment](https://img.shields.io/badge/Deployment-Vercel-black?logo=vercel)](https://portfolio-eight-delta-c5m41m049y.vercel.app)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
 A high-performance personal portfolio website engineered with **Vite**, modern **Vanilla CSS** (glassmorphism & curated dark palette), **Vanilla JavaScript**, and **Vercel Serverless Edge API functions**.
