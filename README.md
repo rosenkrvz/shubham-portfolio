@@ -1,98 +1,75 @@
-# krvz.dev — Machine Learning & Full-Stack Systems Architecture
+# krvz.dev — Shubham Sharma
 
-[![GitHub Repository](https://img.shields.io/badge/GitHub-rosenkrvz%2Fshubham--portfolio-red?logo=github)](https://github.com/rosenkrvz/shubham-portfolio)
-[![Production Site](https://img.shields.io/badge/Live-krvz.dev-ff1a26?logo=vercel)](https://portfolio-eight-delta-c5m41m049y.vercel.app)
+[![Production](https://img.shields.io/badge/Live-krvz.dev-d0202b?logo=vercel)](https://portfolio-eight-delta-c5m41m049y.vercel.app)
+[![GitHub](https://img.shields.io/badge/GitHub-rosenkrvz%2Fshubham--portfolio-black?logo=github)](https://github.com/rosenkrvz/shubham-portfolio)
 [![License: MIT](https://img.shields.io/badge/License-MIT-gray.svg)](https://opensource.org/licenses/MIT)
 
-Official systems portfolio of **Shubham Sharma** (`rosenkrvz`).
-Built with **Vite**, **Vanilla CSS** (Sith Darth Vader Red & Black design system with precision hairline borders and ambient grid textures), **Satoshi & JetBrains Mono typography**, and **client-side URL tab routing** with **Vercel Serverless Edge API functions**.
+The official engineering archive and personal publication of **Shubham Sharma** (`rosenkrvz`).
+Pursuing a B.S. in Applied AI & Data Science at the **Indian Institute of Technology Jodhpur (IIT Jodhpur)**.
+
+Designed as an **Editorial Publication + Engineering Archive + Interactive Digital Notebook**, completely free of generic AI tropes, terminal gimmicks, or fake military language.
 
 ---
 
-## 🧭 Tab Architecture & URL Routing
+## 🏛️ Design Architecture & Principles
 
-The application implements dedicated tab routing that synchronizes directly with the browser URL window:
-
-| Tab | URL Path | Description |
-| :--- | :--- | :--- |
-| **01 // HOME** | `/home` (or `/`) | Primary HUD, mission overview, tactical code snippet, and live telemetry. |
-| **02 // ABOUT** | `/about` | Technical engineering dossier, Python ecosystem, ML systems, and doctrine. |
-| **03 // PROJECTS** | `/projects` | Categorized project matrix (Machine Learning, Python Core, Web & DevOps). |
-| **04 // CONTACT** | `/contact` | Direct communication dossier (`marksrv047@gmail.com`), GitHub, and message dispatch. |
-
-All routes are rewritten to `/index.html` via `vercel.json` and resolved dynamically by the client router with native browser history support.
-
----
-
-## 🏗️ Continuous Delivery Architecture
-
-```
-+-------------------------------------------------------------+
-|                     LOCAL DEVELOPMENT                       |
-|               (C:\Users\rosenkrvz\Downloads\portfolio)      |
-+-------------------------------------------------------------+
-                              |
-                              | git commit & push
-                              v
-+-------------------------------------------------------------+
-|                     GITHUB REPOSITORY                       |
-|        (https://github.com/rosenkrvz/shubham-portfolio)     |
-|                       Branch: main                          |
-+-------------------------------------------------------------+
-                              |
-                              | Automated Webhook Trigger
-                              v
-+-------------------------------------------------------------+
-|                      VERCEL EDGE CI/CD                      |
-|                  Build: npm run build (Vite)                |
-|                  Output: dist/ & api/                       |
-+-------------------------------------------------------------+
-                              |
-                              | Global Edge CDN Distribution
-                              v
-+-------------------------------------------------------------+
-|                     PRODUCTION WEBSITE                      |
-|       (https://portfolio-eight-delta-c5m41m049y.vercel.app  |
-|                       or krvz.dev)                          |
-+-------------------------------------------------------------+
-```
+- **3-Tier Typography System**:
+  - **Display**: `Syne` (bold geometric) & `Instrument Serif` (editorial italic contrast) for headlines.
+  - **Body / Interface**: `Plus Jakarta Sans` for clean, neutral reading.
+  - **Technical / Metadata**: `JetBrains Mono` for code snippets, dates, and coordinates.
+- **Editorial Palette**: Deep void charcoal (`#09090b`), rich obsidian surfaces (`#111115`), warm ivory text (`#f4f4f0`), and restrained deep crimson red (`#d0202b`) accents.
+- **Signature Spatial Case Study Drawer**: Clicking any featured project slides in an editorial case study reading drawer detailing:
+  - *The Problem*
+  - *The Approach & Methodology*
+  - *Architecture & Implementation*
+  - *Technical Learnings & Tradeoffs*
+- **The Work Index**: Interactive repository index table with live case study triggers.
+- **Contextual Custom Cursor**: Desktop-only lerp tracking cursor providing contextual state cues (`READ`, `OPEN ↗`, `CLOSE ×`).
+- **Authentic Background**: Honest representations of academic coursework, machine learning pipelines, and software repositories without manufactured metrics.
 
 ---
 
-## 🚀 Local Development Commands
+## 🚀 Quick Start & Local Commands
 
 ```bash
-# Install dependencies
+# 1. Install dependencies
 npm install
 
-# Start Vite dev server with hot reload at http://localhost:5173
+# 2. Start Vite dev server with instant HMR (http://localhost:5173)
 npm run dev
 
-# Run linting check
+# 3. Verify code formatting & syntax
 npm run lint
 
-# Build production bundle into dist/
+# 4. Build production bundle (into dist/)
 npm run build
 
-# Preview production build locally at http://localhost:4173
+# 5. Preview production build locally (http://localhost:4173)
 npm run preview
 ```
 
 ---
 
-## 🔄 The Standard Developer Workflow
+## 🔄 The Continuous Delivery Pipeline
 
-1. **Open local project**: `cd "C:\Users\rosenkrvz\Downloads\portfolio"`
-2. **Make modifications** to `index.html`, `src/styles/main.css`, or `src/scripts/main.js`.
-3. **Test locally**: `npm run dev` or `npm run build`.
-4. **Commit changes**: `git commit -m "feat: enhance contact channels"`
-5. **Push to GitHub**: `git push origin main`
-6. **Automatic deployment**: Vercel automatically builds and deploys to production.
+```
+LOCAL DEVELOPMENT (C:\Users\rosenkrvz\Downloads\portfolio)
+        ↓
+TEST LOCALLY (npm run dev / npm run build)
+        ↓
+GIT COMMIT & PUSH (git push origin main)
+        ↓
+GITHUB (rosenkrvz/shubham-portfolio)
+        ↓
+AUTOMATED VERCEL EDGE CI/CD
+        ↓
+PRODUCTION (https://portfolio-eight-delta-c5m41m049y.vercel.app or krvz.dev)
+```
 
 ---
 
-## 📬 Contact & Direct Channels
+## 📬 Contact & Inquiries
 
-- **Primary Email**: [marksrv047@gmail.com](mailto:marksrv047@gmail.com)
+- **Email**: [marksrv047@gmail.com](mailto:marksrv047@gmail.com)
 - **GitHub**: [@rosenkrvz](https://github.com/rosenkrvz)
-- **Domain**: `krvz.dev` / [https://portfolio-eight-delta-c5m41m049y.vercel.app](https://portfolio-eight-delta-c5m41m049y.vercel.app)
+- **Live Deployment**: [https://portfolio-eight-delta-c5m41m049y.vercel.app](https://portfolio-eight-delta-c5m41m049y.vercel.app)
