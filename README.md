@@ -1,16 +1,30 @@
-# Shubham Sharma — Machine Learning & Full-Stack Developer Portfolio
+# krvz.dev — Machine Learning & Full-Stack Systems Architecture
 
-[![GitHub Repository](https://img.shields.io/badge/GitHub-rosenkrvz%2Fshubham--portfolio-blue?logo=github)](https://github.com/rosenkrvz/shubham-portfolio)
-[![Vercel Deployment](https://img.shields.io/badge/Deployment-Vercel-black?logo=vercel)](https://portfolio-eight-delta-c5m41m049y.vercel.app)
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
+[![GitHub Repository](https://img.shields.io/badge/GitHub-rosenkrvz%2Fshubham--portfolio-red?logo=github)](https://github.com/rosenkrvz/shubham-portfolio)
+[![Production Site](https://img.shields.io/badge/Live-krvz.dev-ff1a26?logo=vercel)](https://portfolio-eight-delta-c5m41m049y.vercel.app)
+[![License: MIT](https://img.shields.io/badge/License-MIT-gray.svg)](https://opensource.org/licenses/MIT)
 
-A high-performance personal portfolio website engineered with **Vite**, modern **Vanilla CSS** (glassmorphism & curated dark palette), **Vanilla JavaScript**, and **Vercel Serverless Edge API functions**.
+Official systems portfolio of **Shubham Sharma** (`rosenkrvz`).
+Built with **Vite**, **Vanilla CSS** (Sith Darth Vader Red & Black design system with precision hairline borders and ambient grid textures), **Satoshi & JetBrains Mono typography**, and **client-side URL tab routing** with **Vercel Serverless Edge API functions**.
 
 ---
 
-## 🏗️ Architecture & Continuous Delivery Pipeline
+## 🧭 Tab Architecture & URL Routing
 
-The portfolio is structured for seamless local development on your PC, integrated directly with GitHub for version control and Vercel for continuous deployment:
+The application implements dedicated tab routing that synchronizes directly with the browser URL window:
+
+| Tab | URL Path | Description |
+| :--- | :--- | :--- |
+| **01 // HOME** | `/home` (or `/`) | Primary HUD, mission overview, tactical code snippet, and live telemetry. |
+| **02 // ABOUT** | `/about` | Technical engineering dossier, Python ecosystem, ML systems, and doctrine. |
+| **03 // PROJECTS** | `/projects` | Categorized project matrix (Machine Learning, Python Core, Web & DevOps). |
+| **04 // CONTACT** | `/contact` | Direct communication dossier (`marksrv047@gmail.com`), GitHub, and message dispatch. |
+
+All routes are rewritten to `/index.html` via `vercel.json` and resolved dynamically by the client router with native browser history support.
+
+---
+
+## 🏗️ Continuous Delivery Architecture
 
 ```
 +-------------------------------------------------------------+
@@ -38,142 +52,47 @@ The portfolio is structured for seamless local development on your PC, integrate
                               v
 +-------------------------------------------------------------+
 |                     PRODUCTION WEBSITE                      |
-|               (https://shubham-portfolio.vercel.app         |
-|                       or YOUR_DOMAIN)                       |
+|       (https://portfolio-eight-delta-c5m41m049y.vercel.app  |
+|                       or krvz.dev)                          |
 +-------------------------------------------------------------+
 ```
 
 ---
 
-## 🚀 Quick Start & Local Development Commands
+## 🚀 Local Development Commands
 
-### 1. Prerequisites
-- **Node.js** (v18.0 or higher recommended, current: `v24.18.0`)
-- **npm** (current: `11.16.0`)
-- **Git**
-
-### 2. Installation
-Open your terminal in the project directory:
 ```bash
-cd "C:\Users\rosenkrvz\Downloads\portfolio"
+# Install dependencies
 npm install
-```
 
-### 3. Available Scripts
-| Command | Description |
-| :--- | :--- |
-| `npm run dev` | Starts the local Vite development server with instant HMR at `http://localhost:5173`. |
-| `npm run build` | Compiles and bundles production assets into the `dist/` directory. |
-| `npm run preview` | Locally previews the production build before committing or deploying. |
-| `npm run lint` | Runs syntax and code formatting checks. |
+# Start Vite dev server with hot reload at http://localhost:5173
+npm run dev
+
+# Run linting check
+npm run lint
+
+# Build production bundle into dist/
+npm run build
+
+# Preview production build locally at http://localhost:4173
+npm run preview
+```
 
 ---
 
 ## 🔄 The Standard Developer Workflow
 
-To update your website, always follow this standard flow:
-
-1. **Open the local portfolio folder**:
-   ```bash
-   cd "C:\Users\rosenkrvz\Downloads\portfolio"
-   ```
-2. **Make your changes**:
-   Edit `index.html`, `src/styles/main.css`, or `src/scripts/main.js`.
-3. **Run the site locally**:
-   ```bash
-   npm run dev
-   ```
-4. **Test changes**:
-   View `http://localhost:5173` in your browser to verify layouts, responsiveness, and interactions.
-5. **Validate production build**:
-   ```bash
-   npm run build
-   ```
-6. **Commit changes**:
-   ```bash
-   git add .
-   git commit -m "feat: enhance project showcase and update bio"
-   ```
-7. **Push to GitHub**:
-   ```bash
-   git push origin main
-   ```
-8. **Automated Vercel Deployment**:
-   Vercel automatically detects the new commit on the `main` branch, triggers a fresh build, and deploys it live to production within seconds.
+1. **Open local project**: `cd "C:\Users\rosenkrvz\Downloads\portfolio"`
+2. **Make modifications** to `index.html`, `src/styles/main.css`, or `src/scripts/main.js`.
+3. **Test locally**: `npm run dev` or `npm run build`.
+4. **Commit changes**: `git commit -m "feat: enhance contact channels"`
+5. **Push to GitHub**: `git push origin main`
+6. **Automatic deployment**: Vercel automatically builds and deploys to production.
 
 ---
 
-## 🌿 Branching Strategy
+## 📬 Contact & Direct Channels
 
-- **`main`**: The primary production branch. Any commit pushed to `main` triggers a production deployment on Vercel.
-- **Feature Branches** (Optional for experiments):
-  ```bash
-  git checkout -b feature/new-ml-model
-  # Make changes
-  git commit -m "Add new ML model visualization"
-  git push origin feature/new-ml-model
-  ```
-  Vercel will generate an isolated **Preview Deployment** URL for testing prior to merging into `main`.
-
----
-
-## 🔐 Environment Variables
-
-A template file `.env.example` is provided:
-
-```env
-# Example Environment Variables (Do NOT commit secrets to Git)
-GITHUB_USERNAME=rosenkrvz
-GITHUB_TOKEN=
-GITHUB_WEBHOOK_SECRET=
-YOUR_DOMAIN=
-```
-
-### Security Rules:
-- **Never commit `.env` or `.env.local`** to source control.
-- All secrets, API keys, or private tokens are ignored via `.gitignore`.
-- In Vercel, configure environment variables via **Project Settings → Environment Variables** on the Vercel dashboard.
-
----
-
-## 🌐 Custom Domain Setup
-
-When you are ready to link a custom domain:
-
-1. In the Vercel Dashboard, navigate to **Project Settings → Domains**.
-2. Add your custom domain (represented as `YOUR_DOMAIN` in templates).
-3. Configure your DNS provider with the records provided by Vercel:
-   - **A Record**: `76.76.21.21`
-   - **CNAME**: `cname.vercel-dns.com`
-4. Vercel automatically provisions an SSL/TLS certificate.
-
----
-
-## 📂 Project Structure
-
-```
-portfolio/
-├── .env.example             # Template for environment variables
-├── .gitignore               # Ignored files, dependencies, build caches
-├── api/                     # Vercel Serverless Edge API Routes
-│   ├── contact.js           # Serverless contact form submission endpoint
-│   └── status.js            # Serverless health check endpoint
-├── index.html               # Main SEO-optimized markup & structure
-├── package.json             # NPM package scripts and dependencies
-├── README.md                # Project documentation & workflow guide
-├── src/
-│   ├── scripts/
-│   │   └── main.js          # Dynamic UI interactions, filters, counters
-│   └── styles/
-│       └── main.css         # Design system, glassmorphism, responsive styles
-├── vercel.json              # Vercel deployment and build configuration
-└── vite.config.js           # Vite dev server and bundler configuration
-```
-
----
-
-## 👤 Author
-
-**Shubham Sharma**
-- GitHub: [@rosenkrvz](https://github.com/rosenkrvz)
-- Email: [marksrv047@gmail.com](mailto:marksrv047@gmail.com)
+- **Primary Email**: [marksrv047@gmail.com](mailto:marksrv047@gmail.com)
+- **GitHub**: [@rosenkrvz](https://github.com/rosenkrvz)
+- **Domain**: `krvz.dev` / [https://portfolio-eight-delta-c5m41m049y.vercel.app](https://portfolio-eight-delta-c5m41m049y.vercel.app)

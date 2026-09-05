@@ -3,61 +3,76 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Shubham Sharma | Machine Learning Engineer & Python Developer</title>
-  <meta name="description" content="Official portfolio of Shubham Sharma. Specializing in Python, Machine Learning, Data Science, NumPy, Pandas, and Full-Stack Web Development." />
-  <meta name="keywords" content="Shubham Sharma, Python, Machine Learning, Data Science, AI, Portfolio, Developer, NumPy, Pandas, Vercel, GitHub" />
-  <meta name="author" content="Shubham Sharma" />
+  <title>krvz.dev — Shubham Sharma | ML Engineer & Python Developer</title>
+  <meta name="description" content="krvz.dev — High-precision Machine Learning, Data Science, and Systems Architecture by Shubham Sharma. Powered by Python, Scikit-Learn, and automated CI/CD." />
+  <meta name="author" content="Shubham Sharma (rosenkrvz)" />
+  <meta name="theme-color" content="#050507" />
 
-  <!-- Open Graph / Social Sharing -->
+  <!-- Open Graph -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Shubham Sharma | ML Engineer & Python Developer" />
-  <meta property="og:description" content="Discover machine learning solutions, predictive models, and modern web applications built by Shubham Sharma." />
-  <meta property="og:url" content="https://github.com/rosenkrvz/shubham-portfolio" />
+  <meta property="og:title" content="krvz.dev — Machine Learning & Systems Architecture" />
+  <meta property="og:description" content="Explore machine learning models, predictive pipelines, and automated cloud systems by Shubham Sharma." />
+  <meta property="og:url" content="https://portfolio-eight-delta-c5m41m049y.vercel.app" />
 
-  <!-- Google Fonts -->
+  <!-- Editorial Typography: Satoshi (Fontshare) + Plus Jakarta Sans + JetBrains Mono -->
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,600,700,800,900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 
   <!-- Stylesheet -->
   <link rel="stylesheet" href="./src/styles/main.css" />
 </head>
 <body>
-  <!-- Ambient background lighting -->
-  <div class="ambient-glow" aria-hidden="true">
-    <div class="glow-orb-1"></div>
-    <div class="glow-orb-2"></div>
-    <div class="glow-orb-3"></div>
-  </div>
+  <!-- Top Crimson Laser Line -->
+  <div class="top-laser-beam" aria-hidden="true"></div>
 
-  <!-- Navigation Header -->
-  <header class="site-header" id="site-header">
-    <div class="container nav-content">
-      <a href="#hero" class="brand-logo" id="brand-link" aria-label="Shubham Sharma Home">
-        <span class="brand-badge">S</span>
-        <span>Shubham<span class="gradient-text">.dev</span></span>
+  <!-- Main Navigation Header -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <!-- Brand Logo -->
+      <a href="/home" class="brand-anchor" data-route="/home" aria-label="krvz.dev Home">
+        <div class="brand-sigil">K</div>
+        <div class="brand-text">krvz<span class="brand-tld">.dev</span></div>
       </a>
 
+      <!-- Separate Tab Links with Distinct URL Paths -->
       <nav aria-label="Main Navigation">
-        <ul class="nav-links" id="nav-links-menu">
-          <li><a href="#hero" class="nav-link active" id="nav-home">Home</a></li>
-          <li><a href="#about" class="nav-link" id="nav-about">About</a></li>
-          <li><a href="#skills" class="nav-link" id="nav-skills">Skills</a></li>
-          <li><a href="#projects" class="nav-link" id="nav-projects">Projects</a></li>
-          <li><a href="#workflow" class="nav-link" id="nav-workflow">Workflow</a></li>
-          <li><a href="#contact" class="nav-link" id="nav-contact">Contact</a></li>
+        <ul class="nav-tabs" id="nav-tabs-list">
+          <li>
+            <a href="/home" class="nav-tab-link active" data-route="/home" id="tab-link-home">
+              <span class="tab-index">01/</span>HOME
+            </a>
+          </li>
+          <li>
+            <a href="/about" class="nav-tab-link" data-route="/about" id="tab-link-about">
+              <span class="tab-index">02/</span>ABOUT
+            </a>
+          </li>
+          <li>
+            <a href="/projects" class="nav-tab-link" data-route="/projects" id="tab-link-projects">
+              <span class="tab-index">03/</span>PROJECTS
+            </a>
+          </li>
+          <li>
+            <a href="/contact" class="nav-tab-link" data-route="/contact" id="tab-link-contact">
+              <span class="tab-index">04/</span>CONTACT
+            </a>
+          </li>
         </ul>
       </nav>
 
-      <div class="nav-actions">
-        <a href="https://github.com/rosenkrvz" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm" id="btn-nav-github">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+      <!-- External Links & Mobile Toggle -->
+      <div class="nav-action-links">
+        <a href="https://github.com/rosenkrvz" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm" id="btn-gh-external">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
             <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
           </svg>
-          GitHub
+          GITHUB
         </a>
-        <button class="mobile-toggle" id="mobile-nav-toggle" aria-label="Toggle Menu" aria-expanded="false">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <button class="mobile-nav-btn" id="mobile-toggle-btn" aria-label="Toggle Navigation">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <line x1="3" y1="12" x2="21" y2="12"></line>
             <line x1="3" y1="6" x2="21" y2="6"></line>
             <line x1="3" y1="18" x2="21" y2="18"></line>
@@ -67,309 +82,291 @@
     </div>
   </header>
 
+  <!-- MAIN TAB ROUTER CONTAINER -->
   <main>
-    <!-- Hero Section -->
-    <section class="hero-section" id="hero">
-      <div class="container hero-grid">
-        <div class="hero-content">
-          <div class="hero-badge" id="hero-badge">
-            <span class="pulse-dot"></span>
-            <span>Available for ML & AI Engineering Roles</span>
-          </div>
-
-          <h1 class="hero-title">
-            Architecting <span class="gradient-text">Intelligent Data</span> & Modern Applications.
-          </h1>
-
-          <p class="hero-subtitle">
-            Hello, I am <strong style="color: #fff;">Shubham Sharma</strong>. A Machine Learning specialist and Python developer passionate about transforming raw data into high-accuracy predictive intelligence and scalable full-stack products.
-          </p>
-
-          <div class="hero-buttons">
-            <a href="#projects" class="btn btn-primary" id="btn-explore-projects">
-              Explore Projects
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
-                <path d="M5 12h14M12 5l7 7-7 7"/>
-              </svg>
-            </a>
-            <a href="#contact" class="btn btn-secondary" id="btn-get-in-touch">
-              Get in Touch
-            </a>
-          </div>
-
-          <div class="hero-socials">
-            <a href="https://github.com/rosenkrvz" target="_blank" rel="noopener noreferrer" class="social-link" id="social-github" title="GitHub Profile">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
-              </svg>
-            </a>
-            <a href="mailto:marksrv047@gmail.com" class="social-link" id="social-email" title="Send Email">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                <polyline points="22,6 12,13 2,6"/>
-              </svg>
-            </a>
-          </div>
-        </div>
-
-        <div class="hero-visual">
-          <div class="hero-card" id="hero-code-card">
-            <div class="terminal-header">
-              <div class="terminal-dots">
-                <span class="dot dot-red"></span>
-                <span class="dot dot-yellow"></span>
-                <span class="dot dot-green"></span>
-              </div>
-              <span class="terminal-title">model_pipeline.py</span>
+    <!-- ==========================================
+         TAB 01: HOME VIEW (/home)
+         ========================================== -->
+    <section class="tab-view active-tab" data-tab-name="home" id="view-home">
+      <div class="container">
+        <div class="hero-layout">
+          <div class="hero-text-block">
+            <div class="red-pulse-indicator">
+              <span class="red-dot"></span>
+              <span>TACTICAL STATUS: ONLINE • MACHINE LEARNING & AI</span>
             </div>
-            <pre class="terminal-code"><code><span class="code-comment"># Automated ML Classification Pipeline</span>
-<span class="code-keyword">import</span> numpy <span class="code-keyword">as</span> np
-<span class="code-keyword">import</span> pandas <span class="code-keyword">as</span> pd
-<span class="code-keyword">from</span> sklearn.ensemble <span class="code-keyword">import</span> RandomForestClassifier
 
-<span class="code-keyword">class</span> <span class="code-fn">ModelEngine</span>:
-    <span class="code-keyword">def</span> <span class="code-fn">__init__</span>(self):
-        self.clf = <span class="code-fn">RandomForestClassifier</span>(
-            n_estimators=<span class="code-prop">150</span>,
-            criterion=<span class="code-str">'gini'</span>,
-            random_state=<span class="code-prop">42</span>
+            <h1 class="hero-tagline">
+              Precision ML &amp; <span class="red-gradient-text">Autonomous Data</span> Architecture.
+            </h1>
+
+            <p class="hero-description">
+              I am <strong style="color: #fff;">Shubham Sharma</strong> (<span class="mono-tag" style="color: var(--red-sith);">rosenkrvz</span>). Engineering high-accuracy predictive models, robust Python computational engines, and resilient full-stack systems. Built with zero bloat and uncompromising discipline.
+            </p>
+
+            <div class="hero-cta-group">
+              <a href="/projects" class="btn btn-primary" data-route="/projects" id="btn-hero-projects">
+                EXPLORE PROJECTS →
+              </a>
+              <a href="/contact" class="btn btn-secondary" data-route="/contact" id="btn-hero-contact">
+                DIRECT CONTACT
+              </a>
+            </div>
+
+            <div style="display: flex; align-items: center; gap: 1.5rem;">
+              <span class="mono-tag" style="color: var(--text-muted);">SPEC:</span>
+              <span class="mono-tag" style="color: var(--text-secondary);">PYTHON 3.12</span>
+              <span class="mono-tag" style="color: var(--text-muted);">•</span>
+              <span class="mono-tag" style="color: var(--text-secondary);">SCIKIT-LEARN</span>
+              <span class="mono-tag" style="color: var(--text-muted);">•</span>
+              <span class="mono-tag" style="color: var(--text-secondary);">VERCEL EDGE CI/CD</span>
+            </div>
+          </div>
+
+          <div class="hero-terminal-block">
+            <div class="hud-terminal-card">
+              <div class="hud-header">
+                <div style="display: flex; gap: 6px;">
+                  <span style="width: 8px; height: 8px; border-radius: 50%; background: #ff1a26; box-shadow: 0 0 6px #ff1a26;"></span>
+                  <span style="width: 8px; height: 8px; border-radius: 50%; background: #333;"></span>
+                  <span style="width: 8px; height: 8px; border-radius: 50%; background: #333;"></span>
+                </div>
+                <span class="hud-meta-code">sith_engine.py</span>
+              </div>
+              <pre class="hud-code-snippet"><code><span class="cmt-gray"># Sith ML Inference Pipeline</span>
+<span class="kw-red">import</span> numpy <span class="kw-red">as</span> np
+<span class="kw-red">import</span> pandas <span class="kw-red">as</span> pd
+<span class="kw-red">from</span> sklearn.ensemble <span class="kw-red">import</span> RandomForestClassifier
+
+<span class="kw-red">class</span> <span class="fn-cyan">VaderInferenceEngine</span>:
+    <span class="kw-red">def</span> <span class="fn-cyan">__init__</span>(self, n_trees=<span class="val-emerald">200</span>):
+        self.model = <span class="fn-cyan">RandomForestClassifier</span>(
+            n_estimators=n_trees,
+            criterion=<span class="str-amber">'gini'</span>,
+            random_state=<span class="val-emerald">42</span>
         )
 
-    <span class="code-keyword">def</span> <span class="code-fn">evaluate</span>(self, X_train, y_train):
-        self.clf.<span class="code-fn">fit</span>(X_train, y_train)
-        accuracy = self.clf.<span class="code-fn">score</span>(X_train, y_train)
-        <span class="code-keyword">return</span> f<span class="code-str">"Accuracy: {accuracy:.2%}"</span></code></pre>
+    <span class="kw-red">def</span> <span class="fn-cyan">execute_inference</span>(self, telemetry):
+        predictions = self.model.<span class="fn-cyan">predict</span>(telemetry)
+        <span class="kw-red">return</span> {<span class="str-amber">"status"</span>: <span class="str-amber">"optimal"</span>, <span class="str-amber">"output"</span>: predictions}</code></pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- Telemetry Metrics Banner -->
+        <div class="telemetry-strip">
+          <div class="telemetry-cell">
+            <span class="telemetry-val telemetry-count" data-target="25" data-suffix="+">25+</span>
+            <span class="telemetry-label">Predictive Models</span>
+          </div>
+          <div class="telemetry-cell">
+            <span class="telemetry-val telemetry-count" data-target="150" data-suffix="+">150+</span>
+            <span class="telemetry-label">Git Commits Synced</span>
+          </div>
+          <div class="telemetry-cell">
+            <span class="telemetry-val telemetry-count" data-target="98" data-suffix="%">98%</span>
+            <span class="telemetry-label">Recall Benchmark</span>
+          </div>
+          <div class="telemetry-cell">
+            <span class="telemetry-val telemetry-count" data-target="100" data-suffix="%">100%</span>
+            <span class="telemetry-label">Edge Automated CI/CD</span>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Stats Banner -->
-    <section class="stats-strip" aria-label="Key Metrics">
-      <div class="container stats-grid">
-        <div class="stat-item">
-          <span class="stat-number" data-target="25" data-suffix="+">25+</span>
-          <span class="stat-label">ML & Analytics Models</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-number" data-target="150" data-suffix="+">150+</span>
-          <span class="stat-label">Git Commits Pushed</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-number" data-target="98" data-suffix="%">98%</span>
-          <span class="stat-label">Prediction Accuracy Target</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-number" data-target="100" data-suffix="%">100%</span>
-          <span class="stat-label">Automated CI/CD Delivery</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- About Section -->
-    <section class="section" id="about">
+    <!-- ==========================================
+         TAB 02: ABOUT VIEW (/about)
+         ========================================== -->
+    <section class="tab-view" data-tab-name="about" id="view-about">
       <div class="container">
-        <div class="section-header">
-          <span class="section-tag">About Me</span>
-          <h2 class="section-title">Bridging Machine Learning & Practical Software Engineering</h2>
-          <p class="section-desc">
-            With a deep foundation in Python data structures, algorithm design, statistical modeling, and full-stack integration, I develop systems that turn complex patterns into tangible value.
+        <div class="section-headline">
+          <span class="section-tag-prefix">SYSTEM DOSSIER // 02</span>
+          <h2 class="section-main-title">Engineering Core &amp; Architectural Focus</h2>
+          <p class="section-subtext">
+            Operating at the convergence of data science, algorithmic problem solving, and modern distributed deployment.
           </p>
         </div>
 
-        <div class="skills-grid">
-          <div class="skill-card">
-            <div class="skill-icon-wrapper">🐍</div>
-            <h3 class="skill-title">Python Core & Data</h3>
-            <p class="skill-text">Expertise in Python 3, asynchronous computing, NumPy vectorized computations, and Pandas data pipeline optimization.</p>
-            <div class="skill-tags">
-              <span class="skill-pill">Python 3</span>
-              <span class="skill-pill">NumPy</span>
-              <span class="skill-pill">Pandas</span>
-              <span class="skill-pill">Matplotlib</span>
+        <div class="tactical-grid">
+          <div class="tactical-card">
+            <div class="card-num-marker">01 // CORE COMPUTATION</div>
+            <h3 class="card-title">Python Data Ecosystem</h3>
+            <p class="card-desc">
+              Vectorized computations and linear algebra routines leveraging NumPy. Large-scale data ingestion, cleaning, feature transformation, and categorical encoding using Pandas.
+            </p>
+            <div class="tech-pills-wrap">
+              <span class="tech-chip">Python 3.12</span>
+              <span class="tech-chip">NumPy</span>
+              <span class="tech-chip">Pandas</span>
+              <span class="tech-chip">Matplotlib</span>
             </div>
           </div>
 
-          <div class="skill-card">
-            <div class="skill-icon-wrapper">🤖</div>
-            <h3 class="skill-title">Machine Learning & AI</h3>
-            <p class="skill-text">Classification, regression, clustering, feature engineering, cross-validation, hyperparameter tuning, and model export.</p>
-            <div class="skill-tags">
-              <span class="skill-pill">Scikit-Learn</span>
-              <span class="skill-pill">Supervised ML</span>
-              <span class="skill-pill">Feature Extraction</span>
-              <span class="skill-pill">Analytics</span>
+          <div class="tactical-card">
+            <div class="card-num-marker">02 // INTELLIGENCE</div>
+            <h3 class="card-title">Machine Learning Systems</h3>
+            <p class="card-desc">
+              Supervised and unsupervised model training, hyperparameter grid search, ensemble techniques (Random Forests, Gradient Boosting), and classification metrics optimization.
+            </p>
+            <div class="tech-pills-wrap">
+              <span class="tech-chip">Scikit-Learn</span>
+              <span class="tech-chip">Random Forest</span>
+              <span class="tech-chip">Ensemble ML</span>
+              <span class="tech-chip">Metrics Scoring</span>
             </div>
           </div>
 
-          <div class="skill-card">
-            <div class="skill-icon-wrapper">⚡</div>
-            <h3 class="skill-title">Modern Web Engineering</h3>
-            <p class="skill-text">Responsive web design, modern Vanilla CSS design systems, Vite bundler, REST APIs, and client-side performance.</p>
-            <div class="skill-tags">
-              <span class="skill-pill">HTML5</span>
-              <span class="skill-pill">Modern CSS</span>
-              <span class="skill-pill">JavaScript (ES6+)</span>
-              <span class="skill-pill">Vite</span>
+          <div class="tactical-card">
+            <div class="card-num-marker">03 // INTERFACES</div>
+            <h3 class="card-title">High-Performance Web</h3>
+            <p class="card-desc">
+              Lean, ultra-fast client applications built with Vite, semantic HTML5, zero-bloat modern CSS systems, and resilient asynchronous JavaScript logic.
+            </p>
+            <div class="tech-pills-wrap">
+              <span class="tech-chip">Vite 6</span>
+              <span class="tech-chip">Modern CSS</span>
+              <span class="tech-chip">ES Modules</span>
+              <span class="tech-chip">SPA Routing</span>
             </div>
           </div>
 
-          <div class="skill-card">
-            <div class="skill-icon-wrapper">🚀</div>
-            <h3 class="skill-title">DevOps & Cloud Deployment</h3>
-            <p class="skill-text">Git version control, continuous integration, GitHub automated delivery, and Vercel serverless edge deployment.</p>
-            <div class="skill-tags">
-              <span class="skill-pill">Git</span>
-              <span class="skill-pill">GitHub</span>
-              <span class="skill-pill">Vercel CI/CD</span>
-              <span class="skill-pill">Serverless APIs</span>
+          <div class="tactical-card">
+            <div class="card-num-marker">04 // INFRASTRUCTURE</div>
+            <h3 class="card-title">GitOps &amp; Continuous Delivery</h3>
+            <p class="card-desc">
+              Structured version control with Git, automated GitHub remote synchronization, and zero-downtime edge distribution on Vercel networks.
+            </p>
+            <div class="tech-pills-wrap">
+              <span class="tech-chip">Git</span>
+              <span class="tech-chip">GitHub</span>
+              <span class="tech-chip">Vercel Edge</span>
+              <span class="tech-chip">Serverless APIs</span>
             </div>
           </div>
+        </div>
+
+        <div style="margin-top: 3.5rem; padding: 2rem; background: var(--bg-card); border: 1px solid var(--border-hairline); border-radius: var(--radius-xs);">
+          <span class="mono-tag" style="color: var(--red-sith);">OPERATIONAL PROTOCOL</span>
+          <h3 style="font-size: 1.35rem; margin: 0.5rem 0 1rem;">The Sith Development Doctrine</h3>
+          <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.7; max-width: 800px;">
+            No generic presets. No unnecessary abstraction layers. Every line of code is structured for measurable performance, deterministic output, and rapid execution. Changes are written and validated locally, versioned on Git, synced to GitHub, and pushed globally via automated pipelines.
+          </p>
         </div>
       </div>
     </section>
 
-    <!-- Skills Details Section -->
-    <section class="section" id="skills" style="background: rgba(15, 23, 42, 0.3);">
+    <!-- ==========================================
+         TAB 03: PROJECTS VIEW (/projects)
+         ========================================== -->
+    <section class="tab-view" data-tab-name="projects" id="view-projects">
       <div class="container">
-        <div class="section-header">
-          <span class="section-tag">Technical Competencies</span>
-          <h2 class="section-title">Proficiencies & Toolchain</h2>
-          <p class="section-desc">Tools, frameworks, and technologies leveraged across production pipelines.</p>
+        <div class="section-headline">
+          <span class="section-tag-prefix">SYSTEM INDEX // 03</span>
+          <h2 class="section-main-title">Selected Projects &amp; Repositories</h2>
+          <p class="section-subtext">
+            Filter through active machine learning engines, full-stack systems, and open-source tooling.
+          </p>
         </div>
 
-        <div class="workflow-box" style="margin-top: 0;">
-          <div class="workflow-steps">
-            <div class="workflow-step">
-              <div class="step-num">1</div>
-              <h3 class="step-title">Data Ingestion</h3>
-              <p class="step-desc">Handling heterogeneous CSV, JSON, and SQL datasets with Pandas, handling missing data, and outlier filtering.</p>
-            </div>
-            <div class="workflow-step">
-              <div class="step-num">2</div>
-              <h3 class="step-title">Model Exploration</h3>
-              <p class="step-desc">Correlation matrices with Matplotlib & Seaborn, collinearity elimination, and standardizing inputs with StandardScaler.</p>
-            </div>
-            <div class="workflow-step">
-              <div class="step-num">3</div>
-              <h3 class="step-title">Training & Evaluation</h3>
-              <p class="step-desc">Fitting Random Forests, Logistic Regression, and Ensemble methods; scoring ROC-AUC, F1-Score, and Precision.</p>
-            </div>
-            <div class="workflow-step">
-              <div class="step-num">4</div>
-              <h3 class="step-title">Cloud Deployment</h3>
-              <p class="step-desc">Exposing inferencing APIs, deploying automated web frontends via GitHub push triggers to Vercel edge networks.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section class="section" id="projects">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-tag">Featured Work</span>
-          <h2 class="section-title">Recent Projects & Systems</h2>
-          <p class="section-desc">Selected projects spanning predictive analytics, full-stack systems, and Python tooling.</p>
+        <!-- Filter Controls -->
+        <div class="filter-bar">
+          <button class="filter-tab-btn active" data-filter="all">ALL SYSTEMS</button>
+          <button class="filter-tab-btn" data-filter="ml">MACHINE LEARNING</button>
+          <button class="filter-tab-btn" data-filter="python">PYTHON CORE</button>
+          <button class="filter-tab-btn" data-filter="web">WEB &amp; DEVOPS</button>
         </div>
 
-        <div class="project-filters" id="project-filters">
-          <button class="filter-btn active" data-filter="all" id="filter-all">All Projects</button>
-          <button class="filter-btn" data-filter="ml" id="filter-ml">Machine Learning</button>
-          <button class="filter-btn" data-filter="python" id="filter-python">Python Core</button>
-          <button class="filter-btn" data-filter="web" id="filter-web">Web & DevOps</button>
-        </div>
-
-        <div class="projects-grid" id="projects-container">
+        <!-- Project Cards Matrix -->
+        <div class="project-matrix">
           <!-- Project 1 -->
-          <article class="project-card" data-category="ml python" id="project-loan-approval">
-            <div class="project-header-visual">
-              <span class="project-badge-tag">Machine Learning</span>
-              <div class="project-icon-art">📊</div>
+          <article class="matrix-project-card" data-category="ml python">
+            <div class="project-header-panel">
+              <span class="project-class-badge">CLASSIFICATION ENGINE</span>
+              <span class="project-id-label">SYS_01</span>
             </div>
-            <div class="project-body">
-              <h3 class="project-title">Loan Approval Predictor</h3>
-              <p class="project-desc">
-                Predictive risk assessment system analyzing applicant credit histories, debt-to-income ratios, and loan parameters to automate loan approval decisions with high recall.
+            <div class="project-content-panel">
+              <h3 class="project-heading">Loan Approval Predictor</h3>
+              <p class="project-synopsis">
+                Autonomous credit evaluation model trained on historical applicant datasets. Performs automated feature scaling, collinearity analysis, and high-recall default risk assessment.
               </p>
-              <div class="project-tech">
-                <span class="skill-pill">Python</span>
-                <span class="skill-pill">Pandas</span>
-                <span class="skill-pill">Scikit-Learn</span>
-                <span class="skill-pill">Random Forest</span>
+              <div class="tech-pills-wrap" style="margin-bottom: 1.5rem;">
+                <span class="tech-chip">Python</span>
+                <span class="tech-chip">Pandas</span>
+                <span class="tech-chip">Scikit-Learn</span>
+                <span class="tech-chip">Random Forest</span>
               </div>
-              <div class="project-footer">
-                <a href="https://github.com/rosenkrvz" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm" id="btn-loan-code">Source Code</a>
+              <div class="project-action-row">
+                <a href="https://github.com/rosenkrvz" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">VIEW SOURCE →</a>
               </div>
             </div>
           </article>
 
           <!-- Project 2 -->
-          <article class="project-card" data-category="web python" id="project-nirogshaala">
-            <div class="project-header-visual">
-              <span class="project-badge-tag">Full-Stack Application</span>
-              <div class="project-icon-art">🌿</div>
+          <article class="matrix-project-card" data-category="web python">
+            <div class="project-header-panel">
+              <span class="project-class-badge">FULL-STACK SYSTEM</span>
+              <span class="project-id-label">SYS_02</span>
             </div>
-            <div class="project-body">
-              <h3 class="project-title">Nirogshaala Health System</h3>
-              <p class="project-desc">
-                Comprehensive health inventory and stock management platform supporting product catalogs, batch tracking, invoicing, and real-time inventory adjustments.
+            <div class="project-content-panel">
+              <h3 class="project-heading">Nirogshaala Health System</h3>
+              <p class="project-synopsis">
+                Comprehensive health inventory and botanical catalog platform featuring real-time batch allocation, invoicing generation, and multi-layered inventory reconciliation.
               </p>
-              <div class="project-tech">
-                <span class="skill-pill">Python</span>
-                <span class="skill-pill">Modern Web</span>
-                <span class="skill-pill">REST APIs</span>
-                <span class="skill-pill">Database</span>
+              <div class="tech-pills-wrap" style="margin-bottom: 1.5rem;">
+                <span class="tech-chip">Modern Web</span>
+                <span class="tech-chip">Python APIs</span>
+                <span class="tech-chip">Database</span>
+                <span class="tech-chip">Inventory Engine</span>
               </div>
-              <div class="project-footer">
-                <a href="https://github.com/rosenkrvz" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm" id="btn-nirogshaala-code">Source Code</a>
+              <div class="project-action-row">
+                <a href="https://github.com/rosenkrvz" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">VIEW SYSTEM →</a>
               </div>
             </div>
           </article>
 
           <!-- Project 3 -->
-          <article class="project-card" data-category="python" id="project-idle-projects">
-            <div class="project-header-visual">
-              <span class="project-badge-tag">Python Suite</span>
-              <div class="project-icon-art">⚡</div>
+          <article class="matrix-project-card" data-category="python">
+            <div class="project-header-panel">
+              <span class="project-class-badge">PYTHON SUITE</span>
+              <span class="project-id-label">SYS_03</span>
             </div>
-            <div class="project-body">
-              <h3 class="project-title">Python Core Algorithms Suite</h3>
-              <p class="project-desc">
-                Curated collection of algorithms, data structure implementations, computational utilities, and algorithmic exercises published on GitHub.
+            <div class="project-content-panel">
+              <h3 class="project-heading">IDLE-Projects- Suite</h3>
+              <p class="project-synopsis">
+                Curated collection of Python algorithms, data structures, numeric computation utilities, and automation scripts maintained on GitHub.
               </p>
-              <div class="project-tech">
-                <span class="skill-pill">Python 3</span>
-                <span class="skill-pill">Algorithms</span>
-                <span class="skill-pill">Data Structures</span>
-                <span class="skill-pill">Unit Testing</span>
+              <div class="tech-pills-wrap" style="margin-bottom: 1.5rem;">
+                <span class="tech-chip">Python 3</span>
+                <span class="tech-chip">Algorithms</span>
+                <span class="tech-chip">Data Structures</span>
+                <span class="tech-chip">Testing</span>
               </div>
-              <div class="project-footer">
-                <a href="https://github.com/rosenkrvz/IDLE-Projects-" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm" id="btn-idle-code">GitHub Repo</a>
+              <div class="project-action-row">
+                <a href="https://github.com/rosenkrvz/IDLE-Projects-" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">GITHUB REPO →</a>
               </div>
             </div>
           </article>
 
           <!-- Project 4 -->
-          <article class="project-card" data-category="web" id="project-portfolio">
-            <div class="project-header-visual">
-              <span class="project-badge-tag">Web & DevOps</span>
-              <div class="project-icon-art">🚀</div>
+          <article class="matrix-project-card" data-category="web">
+            <div class="project-header-panel">
+              <span class="project-class-badge">CONTINUOUS DELIVERY</span>
+              <span class="project-id-label">SYS_04</span>
             </div>
-            <div class="project-body">
-              <h3 class="project-title">Production CI/CD Portfolio</h3>
-              <p class="project-desc">
-                High-performance portfolio website engineered with Vite, glassmorphic Vanilla CSS design system, Vercel serverless functions, and automated GitHub continuous deployment.
+            <div class="project-content-panel">
+              <h3 class="project-heading">krvz.dev Portfolio Architecture</h3>
+              <p class="project-synopsis">
+                The current production platform. Built with Vite, Darth Vader Sith Black &amp; Red styling, client-side URL tab router, and Vercel serverless edge endpoints.
               </p>
-              <div class="project-tech">
-                <span class="skill-pill">Vite</span>
-                <span class="skill-pill">CSS3 Glassmorphism</span>
-                <span class="skill-pill">Vercel API</span>
-                <span class="skill-pill">GitHub CI/CD</span>
+              <div class="tech-pills-wrap" style="margin-bottom: 1.5rem;">
+                <span class="tech-chip">Vite</span>
+                <span class="tech-chip">Sith CSS</span>
+                <span class="tech-chip">SPA Router</span>
+                <span class="tech-chip">Vercel CI/CD</span>
               </div>
-              <div class="project-footer">
-                <a href="https://github.com/rosenkrvz/shubham-portfolio" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm" id="btn-portfolio-code">GitHub Repo</a>
+              <div class="project-action-row">
+                <a href="https://github.com/rosenkrvz/shubham-portfolio" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">GITHUB REPO →</a>
               </div>
             </div>
           </article>
@@ -377,148 +374,134 @@
       </div>
     </section>
 
-    <!-- Workflow Section -->
-    <section class="section" id="workflow" style="background: rgba(15, 23, 42, 0.4);">
+    <!-- ==========================================
+         TAB 04: CONTACT VIEW (/contact)
+         ========================================== -->
+    <section class="tab-view" data-tab-name="contact" id="view-contact">
       <div class="container">
-        <div class="section-header">
-          <span class="section-tag">Continuous Delivery</span>
-          <h2 class="section-title">Local Development to Production Pipeline</h2>
-          <p class="section-desc">The standardized, automated git workflow powering this application.</p>
+        <div class="section-headline">
+          <span class="section-tag-prefix">DIRECT COMMS // 04</span>
+          <h2 class="section-main-title">Contact &amp; Engagement Channels</h2>
+          <p class="section-subtext">
+            Direct communication dossier. Connect for machine learning contracts, engineering roles, or collaborative development.
+          </p>
         </div>
 
-        <div class="workflow-box">
-          <div class="workflow-steps">
-            <div class="workflow-step">
-              <div class="step-num">1</div>
-              <h3 class="step-title">Local PC Development</h3>
-              <p class="step-desc">Code and verify changes locally in <code>Downloads/portfolio</code> with instant Vite HMR via <code>npm run dev</code>.</p>
-            </div>
-            <div class="workflow-step">
-              <div class="step-num">2</div>
-              <h3 class="step-title">Git Version Control</h3>
-              <p class="step-desc">Test build locally with <code>npm run build</code>, stage and commit changes cleanly on the <code>main</code> branch.</p>
-            </div>
-            <div class="workflow-step">
-              <div class="step-num">3</div>
-              <h3 class="step-title">GitHub Sync</h3>
-              <p class="step-desc">Push to <code>rosenkrvz/shubham-portfolio</code>. Source code remains strictly versioned and accessible.</p>
-            </div>
-            <div class="workflow-step">
-              <div class="step-num">4</div>
-              <h3 class="step-title">Vercel Auto-Deployment</h3>
-              <p class="step-desc">Vercel automatically detects the push, executes the build bundle, and delivers it to global edge CDN.</p>
-            </div>
-          </div>
-
-          <div class="api-bar">
-            <div class="api-status-tag">
-              <span>Serverless Edge Health:</span>
-              <span id="api-status-output"><span class="pulse-dot"></span> Ready to check</span>
-            </div>
-            <button class="btn btn-secondary btn-sm" id="btn-check-api-status">
-              Ping /api/status
-            </button>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="section" id="contact">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-tag">Let's Connect</span>
-          <h2 class="section-title">Get in Touch</h2>
-          <p class="section-desc">Have an opportunity, collaboration, or data challenge? Drop me a message.</p>
-        </div>
-
-        <div class="contact-grid">
-          <div class="contact-info">
-            <div class="contact-card">
-              <div class="contact-icon">📧</div>
+        <div class="contact-dossier-grid">
+          <!-- Left: Direct Details Dossier -->
+          <div class="direct-channels-card">
+            <div class="channel-entry">
+              <div class="channel-glyph">✉</div>
               <div>
-                <h4 class="contact-card-title">Email</h4>
-                <a href="mailto:marksrv047@gmail.com" class="contact-card-val" id="contact-email-link">marksrv047@gmail.com</a>
+                <div class="channel-title">Direct Primary Email</div>
+                <div style="display: flex; align-items: center;">
+                  <a href="mailto:marksrv047@gmail.com" class="channel-val" id="primary-email-anchor">marksrv047@gmail.com</a>
+                  <button class="copy-pill-btn" data-copy="marksrv047@gmail.com" title="Copy to clipboard">COPY</button>
+                </div>
               </div>
             </div>
 
-            <div class="contact-card">
-              <div class="contact-icon">🐙</div>
+            <div class="channel-entry">
+              <div class="channel-glyph">🐙</div>
               <div>
-                <h4 class="contact-card-title">GitHub</h4>
-                <a href="https://github.com/rosenkrvz" target="_blank" rel="noopener noreferrer" class="contact-card-val" id="contact-github-link">github.com/rosenkrvz</a>
+                <div class="channel-title">GitHub Profile</div>
+                <a href="https://github.com/rosenkrvz" target="_blank" rel="noopener noreferrer" class="channel-val">github.com/rosenkrvz</a>
               </div>
             </div>
 
-            <div class="contact-card">
-              <div class="contact-icon">📍</div>
+            <div class="channel-entry">
+              <div class="channel-glyph">⚡</div>
               <div>
-                <h4 class="contact-card-title">Location</h4>
-                <span class="contact-card-val">India (Available Worldwide)</span>
+                <div class="channel-title">Operational Domain</div>
+                <div class="channel-val">krvz.dev / YOUR_DOMAIN</div>
               </div>
             </div>
 
-            <div class="contact-card">
-              <div class="contact-icon">🌐</div>
+            <div class="channel-entry">
+              <div class="channel-glyph">📍</div>
               <div>
-                <h4 class="contact-card-title">Custom Domain</h4>
-                <span class="contact-card-val">Configurable via <code>YOUR_DOMAIN</code></span>
+                <div class="channel-title">Location &amp; Availability</div>
+                <div class="channel-val" style="color: var(--text-secondary);">India (IST) • Open for Worldwide Remote Engagements</div>
+              </div>
+            </div>
+
+            <div class="channel-entry">
+              <div class="channel-glyph">●</div>
+              <div>
+                <div class="channel-title">Status Matrix</div>
+                <div class="red-pulse-indicator" style="margin-top: 0.35rem;">
+                  <span class="red-dot"></span>
+                  <span>ACTIVE // ACCEPTING ML &amp; ENGINEERING INQUIRIES</span>
+                </div>
               </div>
             </div>
           </div>
 
-          <div class="contact-form-card">
-            <form id="portfolio-contact-form">
-              <div class="form-group">
-                <label for="input-name" class="form-label">Your Name</label>
-                <input type="text" id="input-name" class="form-control" placeholder="e.g. Alex Smith" required />
+          <!-- Right: Interactive Transmission Form -->
+          <div class="dispatch-form-card">
+            <span class="mono-tag" style="color: var(--red-sith); display: block; margin-bottom: 1rem;">// DISPATCH TRANSMISSION</span>
+            <form id="contact-dispatch-form">
+              <div class="field-block">
+                <label for="field-name" class="field-label">Sender Identification (Name)</label>
+                <input type="text" id="field-name" class="field-input" placeholder="e.g. Director Vance" required />
               </div>
 
-              <div class="form-group">
-                <label for="input-email" class="form-label">Your Email</label>
-                <input type="email" id="input-email" class="form-control" placeholder="alex@example.com" required />
+              <div class="field-block">
+                <label for="field-email" class="field-label">Return Frequency (Email)</label>
+                <input type="email" id="field-email" class="field-input" placeholder="vance@organization.com" required />
               </div>
 
-              <div class="form-group">
-                <label for="input-subject" class="form-label">Subject</label>
-                <input type="text" id="input-subject" class="form-control" placeholder="Machine Learning Collaboration" required />
+              <div class="field-block">
+                <label for="field-subject" class="field-label">Mission Subject</label>
+                <input type="text" id="field-subject" class="field-input" placeholder="ML Predictive Pipeline Contract" required />
               </div>
 
-              <div class="form-group">
-                <label for="input-message" class="form-label">Message</label>
-                <textarea id="input-message" class="form-control" placeholder="Write your message here..." required></textarea>
+              <div class="field-block">
+                <label for="field-message" class="field-label">Payload Message</label>
+                <textarea id="field-message" class="field-input" placeholder="Enter transmission details..." required></textarea>
               </div>
 
-              <button type="submit" class="btn btn-primary" id="btn-submit-contact" style="width: 100%;">
-                Send Message
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <line x1="22" y1="2" x2="11" y2="13"></line>
-                  <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-                </svg>
+              <button type="submit" class="btn btn-primary" id="btn-dispatch-submit" style="width: 100%;">
+                TRANSMIT MESSAGE →
               </button>
 
-              <div id="contact-feedback" class="form-feedback" role="alert"></div>
+              <div id="dispatch-feedback" class="feedback-banner" role="alert"></div>
             </form>
           </div>
+        </div>
+
+        <!-- Edge Diagnostics Ping Bar -->
+        <div class="diagnostics-deck">
+          <div>
+            <span class="mono-tag" style="color: var(--text-muted);">EDGE TELEMETRY:</span>
+            <span id="diagnostics-status-msg" class="diagnostics-text" style="margin-left: 0.75rem;">
+              <span class="red-dot"></span> Sith Edge Nodes Standing By
+            </span>
+          </div>
+          <button class="btn btn-secondary btn-sm" id="btn-ping-diagnostics">
+            PING /api/status
+          </button>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- Footer -->
+  <!-- Site Footer -->
   <footer class="site-footer">
-    <div class="container footer-content">
+    <div class="container footer-inner">
       <div>
-        <p>© 2026 <strong>Shubham Sharma</strong>. Built with modern web standards and automated CI/CD.</p>
+        <span>KRVZ.DEV // <strong>SHUBHAM SHARMA</strong>. ALL SYSTEMS OPERATIONAL.</span>
       </div>
       <div style="display: flex; gap: 1.5rem;">
-        <a href="#hero" style="color: var(--text-muted); text-decoration: none;">Back to Top ↑</a>
-        <a href="https://github.com/rosenkrvz/shubham-portfolio" target="_blank" rel="noopener noreferrer" style="color: var(--text-muted); text-decoration: none;">Repository</a>
+        <a href="/home" data-route="/home" style="color: var(--text-muted); text-decoration: none;">HOME</a>
+        <a href="/about" data-route="/about" style="color: var(--text-muted); text-decoration: none;">ABOUT</a>
+        <a href="/projects" data-route="/projects" style="color: var(--text-muted); text-decoration: none;">PROJECTS</a>
+        <a href="/contact" data-route="/contact" style="color: var(--text-muted); text-decoration: none;">CONTACT</a>
       </div>
     </div>
   </footer>
 
-  <!-- Main JavaScript Logic -->
+  <!-- Application Logic -->
   <script type="module" src="./src/scripts/main.js"></script>
 </body>
 </html>
