@@ -105,42 +105,42 @@ export default function ContactPage({ onShowToast }) {
 
   return (
     <PageTransition>
-      <div className="min-h-screen py-16 sm:py-24 bg-[#080808] text-[#F2F2F2]">
-        <div className="max-w-5xl mx-auto px-6 space-y-16">
+      <div className="min-h-screen py-24 md:py-32 bg-[#09090B] text-[#FAFAFA]">
+        <div className="max-w-6xl mx-auto px-6 sm:px-8 space-y-16">
 
-          {/* Section 18 Statement: Clean, Large & Editorial */}
-          <div className="space-y-6 border-b border-[rgba(255,255,255,0.06)] pb-12">
-            <div className="inline-flex items-center gap-2.5 px-3 py-1 rounded-[4px] bg-[#0D0D0D] border border-[rgba(255,255,255,0.06)] text-[11px] font-mono text-[#A0A0A0]">
+          {/* Editorial Section Statement */}
+          <div className="space-y-6 border-b border-[#27272A]/50 pb-12">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-[4px] bg-[#121215] border border-[rgba(255,255,255,0.08)] text-[11px] font-mono text-[#A1A1AA]">
               <StatusIndicator status="online" size="sm" />
-              <span>CHANNEL // DIRECT TELEMETRY INBOX</span>
+              <span className="tracking-wider uppercase">Direct Telemetry &amp; Inquiries</span>
             </div>
 
-            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold font-display uppercase tracking-tight text-[#F2F2F2] leading-[0.95]">
+            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-medium font-display uppercase tracking-tight text-[#FAFAFA] leading-[0.95]">
               Let's build <br />
               <span className="font-serif-editorial italic font-normal text-4xl sm:text-6xl lg:text-7xl lowercase text-[#C7D2FE] mr-3">
                 something
               </span>
-              Interesting.
+              Resilient.
             </h1>
 
-            <p className="text-base sm:text-lg text-[#A0A0A0] max-w-2xl font-light leading-relaxed">
-              Available for software engineering roles, machine learning research internships, and systems architecture consultations. Direct channels are audited daily.
+            <p className="text-base sm:text-lg text-[#A1A1AA] max-w-[65ch] font-light leading-relaxed">
+              Available for software engineering roles, machine learning research internships, and systems architecture consultations. Direct communication channels are audited daily.
             </p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
 
-            {/* Left Column: Direct Hardware Nodes & Coordinates */}
+            {/* Left Column: Direct Nodes & Verified Coordinates */}
             <div className="lg:col-span-5 space-y-6">
 
               {/* Direct Mail Node */}
-              <div className="p-6 bg-[#141414] border border-[rgba(255,255,255,0.08)] rounded-[6px] shadow-[inset_0_1px_1px_rgba(255,255,255,0.06),0_4px_16px_rgba(0,0,0,0.5)] space-y-4">
-                <div className="flex items-center justify-between text-xs font-mono text-[#666666] uppercase tracking-wider">
-                  <span>DIRECT EMAIL</span>
+              <div className="p-6 sm:p-8 bg-[#121215] border border-[rgba(255,255,255,0.08)] rounded-[4px] space-y-4">
+                <div className="flex items-center justify-between text-xs font-mono text-[#71717A] uppercase tracking-wider">
+                  <span>Direct Communication</span>
                   <StatusIndicator status="active" size="sm" />
                 </div>
                 
-                <div className="text-sm sm:text-base font-mono font-medium text-[#F2F2F2] select-all break-all">
+                <div className="text-sm sm:text-base font-mono font-medium text-[#FAFAFA] select-all break-all">
                   {profile.email}
                 </div>
 
@@ -150,15 +150,15 @@ export default function ContactPage({ onShowToast }) {
                   onClick={handleCopyEmail}
                   className="w-full flex items-center justify-center gap-2"
                 >
-                  {copied ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5 text-[#A0A0A0]" />}
+                  {copied ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5 text-[#A1A1AA]" />}
                   <span>{copied ? 'Copied to Clipboard' : 'Copy Email Address'}</span>
                 </TactileButton>
               </div>
 
               {/* Verified Identities */}
-              <div className="p-6 bg-[#141414] border border-[rgba(255,255,255,0.08)] rounded-[6px] shadow-[inset_0_1px_1px_rgba(255,255,255,0.06),0_4px_16px_rgba(0,0,0,0.5)] space-y-4">
-                <div className="text-xs uppercase tracking-wider text-[#666666] font-mono">
-                  VERIFIED IDENTITIES
+              <div className="p-6 sm:p-8 bg-[#121215] border border-[rgba(255,255,255,0.08)] rounded-[4px] space-y-4">
+                <div className="text-xs uppercase tracking-wider text-[#71717A] font-mono">
+                  Verified Channels
                 </div>
                 
                 <div className="space-y-2.5 font-mono text-xs">
@@ -166,43 +166,43 @@ export default function ContactPage({ onShowToast }) {
                     href={profile.links.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-between p-3 rounded-[4px] bg-[#0A0A0A] border border-[rgba(255,255,255,0.06)] hover:border-[#E10600]/40 text-[#A0A0A0] hover:text-[#F2F2F2] transition-colors shadow-[inset_0_1px_3px_rgba(0,0,0,0.6)]"
+                    className="flex items-center justify-between p-3.5 rounded-[4px] bg-[#09090B] border border-[rgba(255,255,255,0.06)] hover:border-[#FAFAFA]/20 text-[#A1A1AA] hover:text-[#FAFAFA] transition-colors"
                   >
                     <div className="flex items-center gap-2.5">
                       <GithubIcon className="w-4 h-4" />
                       <span>github.com/rosenkrvz</span>
                     </div>
-                    <ArrowRight className="w-3.5 h-3.5" />
+                    <ArrowRight className="w-3.5 h-3.5 text-[#71717A]" />
                   </a>
 
                   <a
                     href={profile.links.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-between p-3 rounded-[4px] bg-[#0A0A0A] border border-[rgba(255,255,255,0.06)] hover:border-[#E10600]/40 text-[#A0A0A0] hover:text-[#F2F2F2] transition-colors shadow-[inset_0_1px_3px_rgba(0,0,0,0.6)]"
+                    className="flex items-center justify-between p-3.5 rounded-[4px] bg-[#09090B] border border-[rgba(255,255,255,0.06)] hover:border-[#FAFAFA]/20 text-[#A1A1AA] hover:text-[#FAFAFA] transition-colors"
                   >
                     <div className="flex items-center gap-2.5">
                       <LinkedinIcon className="w-4 h-4" />
                       <span>linkedin.com/in/rosenkrvz</span>
                     </div>
-                    <ArrowRight className="w-3.5 h-3.5" />
+                    <ArrowRight className="w-3.5 h-3.5 text-[#71717A]" />
                   </a>
                 </div>
               </div>
 
-              {/* SLA & Cryptographic Integrity Notice */}
-              <div className="p-4 bg-[#0D0D0D] border border-[rgba(255,255,255,0.04)] rounded-[5px] flex items-center gap-3 text-xs font-mono text-[#666666]">
-                <Clock className="w-4 h-4 text-[#A0A0A0] shrink-0" />
+              {/* SLA Notice */}
+              <div className="p-4 bg-[#121215] border border-[rgba(255,255,255,0.06)] rounded-[4px] flex items-center gap-3 text-xs font-mono text-[#71717A]">
+                <Clock className="w-4 h-4 text-[#A1A1AA] shrink-0" />
                 <span>RESPONSE SLA: WITHIN 24 BUSINESS HOURS</span>
               </div>
 
             </div>
 
-            {/* Right Column: Physical Recessed Transmission Panel */}
+            {/* Right Column: Transmission Form Panel */}
             <div className="lg:col-span-7">
               <form
                 onSubmit={handleSubmit}
-                className="p-6 sm:p-8 bg-[#141414] border border-[rgba(255,255,255,0.08)] rounded-[6px] shadow-[inset_0_1px_1px_rgba(255,255,255,0.06),0_6px_24px_rgba(0,0,0,0.6)] space-y-5"
+                className="p-6 sm:p-8 bg-[#121215] border border-[rgba(255,255,255,0.08)] rounded-[4px] space-y-6"
               >
 
                 {/* Honeypot Bot Trap */}
@@ -241,14 +241,14 @@ export default function ContactPage({ onShowToast }) {
                   />
 
                   <div className="space-y-1.5 font-mono">
-                    <label className="text-xs uppercase tracking-wider text-[#A0A0A0] block" htmlFor="contact-topic">
+                    <label className="text-xs uppercase tracking-wider text-[#A1A1AA] block" htmlFor="contact-topic">
                       Engagement Topic
                     </label>
                     <select
                       id="contact-topic"
                       value={formData.topic}
                       onChange={(e) => setFormData({ ...formData, topic: e.target.value })}
-                      className="w-full px-4 py-3 rounded-[4px] bg-[#0A0A0A] border border-[rgba(255,255,255,0.06)] hover:border-[rgba(255,255,255,0.1)] focus:border-[#E10600]/60 text-xs sm:text-sm font-mono text-[#F2F2F2] focus:outline-none shadow-[inset_0_2px_6px_rgba(0,0,0,0.85)]"
+                      className="w-full px-4 py-3 rounded-[4px] bg-[#09090B] border border-[rgba(255,255,255,0.08)] hover:border-[rgba(255,255,255,0.16)] focus:border-[#FAFAFA]/40 text-xs sm:text-sm font-mono text-[#FAFAFA] focus:outline-none transition-colors"
                     >
                       <option value="Engineering Role / Internship">Engineering Role / Internship</option>
                       <option value="Research & Applied AI Collaboration">Research &amp; Applied AI Collaboration</option>
@@ -276,15 +276,15 @@ export default function ContactPage({ onShowToast }) {
                   size="lg"
                   disabled={isSubmitting}
                   led="active"
-                  className="w-full mt-2"
+                  className="w-full"
                 >
                   <Send className={`w-3.5 h-3.5 ${isSubmitting ? 'animate-pulse' : ''}`} />
                   <span>{isSubmitting ? 'TRANSMITTING...' : 'SEND TRANSMISSION'}</span>
                 </TactileButton>
 
-                <div className="text-[11px] font-mono text-[#666666] text-center flex items-center justify-center gap-1.5 pt-2">
+                <div className="text-[11px] font-mono text-[#71717A] text-center flex items-center justify-center gap-1.5 pt-2">
                   <ShieldCheck size={13} className="text-emerald-400" />
-                  <span>SECURE INBOX // ANTI-EXPLOITATION RATE LIMITED</span>
+                  <span>SECURE CHANNEL // ANTI-SPAM ENFORCED</span>
                 </div>
               </form>
             </div>

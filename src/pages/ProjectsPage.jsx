@@ -62,30 +62,30 @@ export default function ProjectsPage({ onOpenProject }) {
 
   return (
     <PageTransition>
-      <div className="min-h-screen py-14 sm:py-20 lg:py-24 bg-[#08080A] text-[#F4F4F0]">
-        <div className="max-w-7xl mx-auto px-6 space-y-12 sm:space-y-16">
+      <div className="min-h-screen py-24 md:py-32 bg-[#09090B] text-[#FAFAFA]">
+        <div className="max-w-6xl mx-auto px-6 sm:px-8 space-y-16 sm:space-y-20">
           
           {/* Editorial Header */}
-          <div className="space-y-4 border-b border-[#1C1C22] pb-10">
-            <div className="inline-flex items-center gap-2 text-xs text-[#818CF8] font-mono uppercase tracking-widest">
-              <span className="w-2 h-2 rounded-full bg-[#E10600] ring-2 ring-[#E10600]/30 animate-pulse" />
+          <div className="space-y-4 border-b border-[#27272A]/50 pb-12">
+            <div className="inline-flex items-center gap-2 text-xs font-mono text-[#71717A] uppercase tracking-widest">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#E10600]" />
               <span>PROJECT ARCHIVE // INDEX</span>
             </div>
 
-            <h1 className="text-5xl sm:text-7xl lg:text-8xl font-bold font-display uppercase tracking-tight text-[#F4F4F0]">
+            <h1 className="text-5xl sm:text-7xl lg:text-8xl font-medium font-display tracking-tight text-[#FAFAFA]">
               WORK
             </h1>
 
-            <p className="text-lg sm:text-2xl text-[#9E9EA8] max-w-2xl font-light leading-relaxed">
+            <p className="text-xl sm:text-2xl text-[#A1A1AA] max-w-2xl font-normal leading-relaxed">
               Selected projects, experiments and systems I've built.
             </p>
           </div>
 
           {/* Filter & View Switcher Bar */}
-          <div className="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-6 border-b border-[#1C1C22] pb-8">
+          <div className="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-6 border-b border-[#27272A]/50 pb-8">
             
-            {/* Technical Category Buttons — Recessed Tactile Segment */}
-            <div className="p-1 rounded-[6px] bg-[#0A0A0A] border border-[rgba(255,255,255,0.06)] shadow-[inset_0_2px_5px_rgba(0,0,0,0.85)] flex flex-wrap items-center gap-1">
+            {/* Category Filter */}
+            <div className="p-1 rounded-[6px] bg-[#121215] border border-[rgba(255,255,255,0.06)] flex flex-wrap items-center gap-1">
               {categories.map((cat) => {
                 const isSelected = selectedCategory === cat.id;
                 return (
@@ -94,27 +94,21 @@ export default function ProjectsPage({ onOpenProject }) {
                     onClick={() => setSelectedCategory(cat.id)}
                     className={`px-3 py-1.5 rounded-[4px] text-xs font-mono transition-all duration-150 cursor-pointer flex items-center gap-1.5 select-none ${
                       isSelected
-                        ? 'bg-[#18181C] text-[#F2F2F2] font-semibold border border-[rgba(255,255,255,0.1)] shadow-[inset_0_1px_1px_rgba(255,255,255,0.12),inset_0_-1px_2px_rgba(0,0,0,0.7),0_2px_6px_rgba(0,0,0,0.5)]'
-                        : 'text-[#888888] hover:text-[#F2F2F2] hover:bg-[#121214]'
+                        ? 'bg-[#18181B] text-[#FAFAFA] font-medium border border-[rgba(255,255,255,0.1)]'
+                        : 'text-[#71717A] hover:text-[#FAFAFA] hover:bg-[#141418]'
                     }`}
                   >
-                    <span 
-                      className={`w-1.5 h-1.5 rounded-full transition-all ${
-                        isSelected 
-                          ? 'bg-[#FFFFFF] shadow-[0_0_6px_2px_rgba(225,6,0,0.95)]' 
-                          : 'bg-[#2A0808]'
-                      }`} 
-                    />
+                    {isSelected && (
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#E10600]" />
+                    )}
                     <span>{cat.label}</span>
                   </button>
                 );
               })}
             </div>
 
-            {/* Right Controls: Segmented Industrial Switch & Recessed Search */}
+            {/* Right Controls: Segmented Switch & Minimal Search */}
             <div className="flex flex-wrap items-center gap-4">
-              
-              {/* Segmented Industrial Switch */}
               <div className="flex items-center gap-2">
                 <SegmentedIndustrialSwitch
                   checked={isCaseStudiesView}
@@ -125,32 +119,31 @@ export default function ProjectsPage({ onOpenProject }) {
                 />
               </div>
 
-              {/* Recessed Hardware Search Box */}
+              {/* Minimal Search Box */}
               <div className="relative min-w-[220px] flex-1 sm:flex-initial">
-                <Search className="w-3.5 h-3.5 text-[#666666] absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+                <Search className="w-3.5 h-3.5 text-[#71717A] absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
                 <input
                   type="text"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder="Filter by keyword..."
-                  className="w-full pl-9 pr-3.5 py-2 rounded-[5px] bg-[#0A0A0A] border border-[rgba(255,255,255,0.06)] shadow-[inset_0_2px_5px_rgba(0,0,0,0.85)] text-xs font-mono text-[#F2F2F2] placeholder-[#555555] focus:outline-none focus:border-[#E10600]/60 transition-colors"
+                  className="w-full pl-9 pr-3.5 py-2 rounded-[4px] bg-[#121215] border border-[rgba(255,255,255,0.08)] text-xs font-mono text-[#FAFAFA] placeholder-[#52525B] focus:outline-none focus:border-[#FAFAFA]/40 transition-colors"
                 />
               </div>
-
             </div>
 
           </div>
 
           {/* Empty State */}
           {filteredProjects.length === 0 && (
-            <div className="text-center py-20 px-4 bg-[#111114] border border-[#1C1C22] rounded-sm space-y-3 font-mono">
-              <h3 className="text-sm font-semibold text-[#F4F4F2]">No matching systems found</h3>
-              <p className="text-xs text-[#656570] max-w-sm mx-auto">
+            <div className="text-center py-20 px-4 bg-[#121215] border border-[#27272A]/50 rounded-[4px] space-y-3 font-mono">
+              <h3 className="text-sm font-semibold text-[#FAFAFA]">No matching systems found</h3>
+              <p className="text-xs text-[#71717A] max-w-sm mx-auto">
                 No projects matched "{searchQuery}". Try selecting "ALL" or resetting your search query.
               </p>
               <button
                 onClick={() => { setSelectedCategory('ALL'); setSearchQuery(''); }}
-                className="px-4 py-2 bg-[#F4F4F0] text-[#08080A] text-xs font-semibold rounded-sm cursor-pointer"
+                className="px-4 py-2 bg-[#FAFAFA] text-[#09090B] text-xs font-semibold rounded-[4px] cursor-pointer"
               >
                 Reset Filters
               </button>
@@ -159,7 +152,7 @@ export default function ProjectsPage({ onOpenProject }) {
 
           {/* VIEW MODE 1: Detailed Deep-Dive Case Studies */}
           {isCaseStudiesView ? (
-            <div className="space-y-12">
+            <div className="space-y-16">
               <ProjectSentinelCase project={pSentinel} onOpenModal={onOpenProject} />
               <ProjectDitherCase project={pDither} onOpenModal={onOpenProject} />
               <ProjectOrchestratorCase project={pOrchestrator} onOpenModal={onOpenProject} />
@@ -167,7 +160,7 @@ export default function ProjectsPage({ onOpenProject }) {
             </div>
           ) : (
             /* VIEW MODE 2: Editorial Alternating Archive */
-            <div className="space-y-16 sm:space-y-24">
+            <div className="space-y-24 md:space-y-32">
               {filteredProjects.map((proj, index) => {
                 const projectNum = `0${index + 1}`.slice(-2);
                 const isEven = index % 2 === 0;
@@ -175,39 +168,39 @@ export default function ProjectsPage({ onOpenProject }) {
 
                 // Alternate composition styles:
                 if (isBanner) {
-                  // COMPOSITION 01: Huge visual banner + oversized number + thesis
+                  // COMPOSITION 01: Huge visual banner + thesis + metrics
                   return (
                     <article
                       key={proj.id}
-                      className="border-b border-[#1C1C22] pb-16 space-y-8 group"
+                      className="border-b border-[#27272A]/50 pb-20 md:pb-28 space-y-8 group"
                     >
-                      <div className="flex items-baseline justify-between border-b border-[#1C1C22] pb-3 text-xs font-mono text-[#656570]">
-                        <span className="text-[#818CF8] font-bold">{projectNum} // FEATURED SYSTEM</span>
+                      <div className="flex items-baseline justify-between border-b border-[#27272A]/50 pb-3 text-xs font-mono text-[#71717A]">
+                        <span className="text-[#FAFAFA] font-medium">{projectNum} // FEATURED SYSTEM</span>
                         <span>{proj.timeline} &bull; {proj.category}</span>
                       </div>
 
-                      {/* Huge Project Visual */}
+                      {/* Project Visual */}
                       <div
                         onClick={() => onOpenProject(proj)}
-                        className="relative w-full aspect-[21/9] sm:aspect-[2.4/1] bg-[#111114] border border-[#1F1F28] overflow-hidden cursor-pointer group rounded-sm"
+                        className="relative w-full aspect-[21/9] sm:aspect-[2.4/1] bg-[#121215] border border-[rgba(255,255,255,0.08)] overflow-hidden cursor-pointer group rounded-[4px]"
                       >
                         <img
                           src={proj.image}
                           alt={proj.title}
-                          className="w-full h-full object-cover grayscale contrast-125 opacity-85 group-hover:opacity-100 group-hover:scale-102 transition-all duration-700"
+                          className="w-full h-full object-cover grayscale contrast-115 opacity-90 group-hover:opacity-100 group-hover:scale-[1.01] transition-all duration-700 ease-out"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-[#08080A] via-transparent to-transparent opacity-80" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#09090B] via-transparent to-transparent opacity-85" />
                         <div className="absolute bottom-6 left-6 right-6 flex flex-wrap items-end justify-between gap-4">
                           <div>
-                            <div className="text-xs font-mono text-[#818CF8] uppercase tracking-wider mb-1">
+                            <div className="text-xs font-mono text-[#A1A1AA] uppercase tracking-wider mb-1">
                               {proj.category}
                             </div>
-                            <h2 className="text-3xl sm:text-5xl font-bold font-display uppercase tracking-tight text-[#F4F4F0] group-hover:text-white transition-colors">
+                            <h2 className="text-3xl sm:text-5xl font-medium font-display uppercase tracking-tight text-[#FAFAFA] group-hover:text-white transition-colors">
                               {proj.title}
                             </h2>
                           </div>
 
-                          <div className="px-4 py-2 bg-[#08080A]/90 border border-[#272730] backdrop-blur text-xs font-mono text-white flex items-center gap-2">
+                          <div className="px-4 py-2 bg-[#121215]/90 border border-[rgba(255,255,255,0.12)] backdrop-blur text-xs font-mono text-white flex items-center gap-2 rounded-[4px]">
                             <span>Inspect Case Study</span>
                             <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
                           </div>
@@ -215,21 +208,21 @@ export default function ProjectsPage({ onOpenProject }) {
                       </div>
 
                       <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
-                        <div className="md:col-span-8 space-y-3">
-                          <p className="text-lg sm:text-xl text-[#F4F4F2] font-light leading-relaxed">
+                        <div className="md:col-span-8 space-y-4">
+                          <p className="text-xl sm:text-2xl text-[#FAFAFA] font-light leading-relaxed max-w-[65ch]">
                             {proj.subtitle}
                           </p>
-                          <p className="text-sm text-[#9E9EA8] font-light leading-relaxed">
+                          <p className="text-base text-[#A1A1AA] font-normal leading-relaxed max-w-[65ch]">
                             {proj.summary}
                           </p>
                         </div>
 
-                        <div className="md:col-span-4 border-l border-[#1C1C22] pl-6 space-y-3 font-mono text-xs">
-                          <div className="text-[#656570] uppercase">VERIFIED METRICS</div>
+                        <div className="md:col-span-4 border-l border-[#27272A]/50 pl-6 space-y-3 font-mono text-xs">
+                          <div className="text-[#71717A] uppercase tracking-wider">VERIFIED METRICS</div>
                           {proj.metrics.map((m) => (
-                            <div key={m.label} className="flex items-baseline justify-between">
-                              <span className="text-[#9E9EA8]">{m.label}</span>
-                              <span className="text-[#F4F4F2] font-semibold">{m.value}</span>
+                            <div key={m.label} className="flex items-baseline justify-between border-b border-[#27272A]/30 pb-2">
+                              <span className="text-[#A1A1AA]">{m.label}</span>
+                              <span className="text-[#FAFAFA] font-medium">{m.value}</span>
                             </div>
                           ))}
                         </div>
@@ -243,31 +236,31 @@ export default function ProjectsPage({ onOpenProject }) {
                   return (
                     <article
                       key={proj.id}
-                      className="border-b border-[#1C1C22] pb-16 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center group"
+                      className="border-b border-[#27272A]/50 pb-20 md:pb-28 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center group"
                     >
                       <div className="lg:col-span-6 space-y-6">
-                        <div className="flex items-center gap-3 text-xs font-mono text-[#656570]">
-                          <span className="text-[#818CF8] font-bold">{projectNum}</span>
+                        <div className="flex items-center gap-3 text-xs font-mono text-[#71717A]">
+                          <span className="text-[#FAFAFA] font-medium">{projectNum}</span>
                           <span>//</span>
-                          <span className="text-[#9E9EA8]">{proj.category}</span>
+                          <span className="text-[#A1A1AA]">{proj.category}</span>
                           <span>&bull;</span>
                           <span>{proj.timeline}</span>
                         </div>
 
                         <h2 
                           onClick={() => onOpenProject(proj)}
-                          className="text-2xl sm:text-4xl font-bold font-display uppercase tracking-tight text-[#F4F4F0] group-hover:text-white cursor-pointer transition-colors"
+                          className="text-2xl sm:text-4xl font-medium font-display uppercase tracking-tight text-[#FAFAFA] group-hover:text-white cursor-pointer transition-colors"
                         >
                           {proj.title}
                         </h2>
 
-                        <p className="text-base text-[#9E9EA8] font-light leading-relaxed">
+                        <p className="text-base text-[#A1A1AA] font-normal leading-relaxed max-w-[60ch]">
                           {proj.summary}
                         </p>
 
                         <div className="flex flex-wrap gap-1.5 font-mono text-xs">
                           {proj.tags.map((t) => (
-                            <span key={t} className="px-2 py-0.5 bg-[#111114] border border-[#1C1C24] text-[#818CF8] rounded-sm">
+                            <span key={t} className="px-2 py-0.5 bg-[#121215] border border-[rgba(255,255,255,0.06)] text-[#A1A1AA] rounded-[3px]">
                               {t}
                             </span>
                           ))}
@@ -276,7 +269,7 @@ export default function ProjectsPage({ onOpenProject }) {
                         <div className="flex items-center gap-4 pt-2">
                           <button
                             onClick={() => onOpenProject(proj)}
-                            className="px-5 py-2.5 bg-[#14141A] hover:bg-[#1E1E28] border border-[#272734] text-xs font-mono uppercase tracking-wider text-[#F4F4F2] rounded-sm flex items-center gap-2 cursor-pointer transition-colors"
+                            className="px-4 py-2.5 bg-[#121215] hover:bg-[#18181B] border border-[rgba(255,255,255,0.08)] text-xs font-mono uppercase tracking-wider text-[#FAFAFA] rounded-[4px] flex items-center gap-2 cursor-pointer transition-colors"
                           >
                             <span>Read Case Study</span>
                             <ArrowRight size={14} />
@@ -286,7 +279,7 @@ export default function ProjectsPage({ onOpenProject }) {
                               href={proj.githubUrl}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="p-2.5 bg-[#111114] hover:bg-[#1C1C24] border border-[#272730] text-[#9E9EA8] hover:text-white rounded-sm transition-colors"
+                              className="p-2.5 bg-[#121215] hover:bg-[#18181B] border border-[rgba(255,255,255,0.08)] text-[#A1A1AA] hover:text-white rounded-[4px] transition-colors"
                               title="GitHub Repository"
                             >
                               <GithubIcon size={16} />
@@ -297,14 +290,14 @@ export default function ProjectsPage({ onOpenProject }) {
 
                       <div 
                         onClick={() => onOpenProject(proj)}
-                        className="lg:col-span-6 aspect-[16/10] bg-[#111114] border border-[#1F1F28] overflow-hidden rounded-sm cursor-pointer group/img relative"
+                        className="lg:col-span-6 aspect-[16/10] bg-[#121215] border border-[rgba(255,255,255,0.08)] overflow-hidden rounded-[4px] cursor-pointer group/img relative"
                       >
                         <img
                           src={proj.image}
                           alt={proj.title}
-                          className="w-full h-full object-cover grayscale contrast-125 group-hover/img:scale-105 transition-transform duration-700"
+                          className="w-full h-full object-cover grayscale contrast-115 group-hover/img:scale-[1.02] transition-transform duration-700 ease-out"
                         />
-                        <div className="absolute top-3 right-3 px-2 py-0.5 bg-[#08080A]/85 border border-[#272730] rounded text-[10px] font-mono text-emerald-400">
+                        <div className="absolute top-3 right-3 px-2 py-0.5 bg-[#09090B]/85 border border-[rgba(255,255,255,0.08)] rounded-[3px] text-[10px] font-mono text-emerald-400">
                           {proj.status}
                         </div>
                       </div>
@@ -316,45 +309,45 @@ export default function ProjectsPage({ onOpenProject }) {
                 return (
                   <article
                     key={proj.id}
-                    className="border-b border-[#1C1C22] pb-16 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center group"
+                    className="border-b border-[#27272A]/50 pb-20 md:pb-28 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center group"
                   >
                     <div 
                       onClick={() => onOpenProject(proj)}
-                      className="lg:col-span-6 order-2 lg:order-1 aspect-[16/10] bg-[#111114] border border-[#1F1F28] overflow-hidden rounded-sm cursor-pointer group/img relative"
+                      className="lg:col-span-6 order-2 lg:order-1 aspect-[16/10] bg-[#121215] border border-[rgba(255,255,255,0.08)] overflow-hidden rounded-[4px] cursor-pointer group/img relative"
                     >
                       <img
                         src={proj.image}
                         alt={proj.title}
-                        className="w-full h-full object-cover grayscale contrast-125 group-hover/img:scale-105 transition-transform duration-700"
+                        className="w-full h-full object-cover grayscale contrast-115 group-hover/img:scale-[1.02] transition-transform duration-700 ease-out"
                       />
-                      <div className="absolute top-3 left-3 px-2 py-0.5 bg-[#08080A]/85 border border-[#272730] rounded text-[10px] font-mono text-[#818CF8]">
+                      <div className="absolute top-3 left-3 px-2 py-0.5 bg-[#09090B]/85 border border-[rgba(255,255,255,0.08)] rounded-[3px] text-[10px] font-mono text-[#A1A1AA]">
                         {proj.status}
                       </div>
                     </div>
 
                     <div className="lg:col-span-6 order-1 lg:order-2 space-y-6">
-                      <div className="flex items-center gap-3 text-xs font-mono text-[#656570]">
-                        <span className="text-[#818CF8] font-bold">{projectNum}</span>
+                      <div className="flex items-center gap-3 text-xs font-mono text-[#71717A]">
+                        <span className="text-[#FAFAFA] font-medium">{projectNum}</span>
                         <span>//</span>
-                        <span className="text-[#9E9EA8]">{proj.category}</span>
+                        <span className="text-[#A1A1AA]">{proj.category}</span>
                         <span>&bull;</span>
                         <span>{proj.timeline}</span>
                       </div>
 
                       <h2 
                         onClick={() => onOpenProject(proj)}
-                        className="text-2xl sm:text-4xl font-bold font-display uppercase tracking-tight text-[#F4F4F0] group-hover:text-white cursor-pointer transition-colors"
+                        className="text-2xl sm:text-4xl font-medium font-display uppercase tracking-tight text-[#FAFAFA] group-hover:text-white cursor-pointer transition-colors"
                       >
                         {proj.title}
                       </h2>
 
-                      <p className="text-base text-[#9E9EA8] font-light leading-relaxed">
+                      <p className="text-base text-[#A1A1AA] font-normal leading-relaxed max-w-[60ch]">
                         {proj.summary}
                       </p>
 
                       <div className="flex flex-wrap gap-1.5 font-mono text-xs">
                         {proj.tags.map((t) => (
-                          <span key={t} className="px-2 py-0.5 bg-[#111114] border border-[#1C1C24] text-[#818CF8] rounded-sm">
+                          <span key={t} className="px-2 py-0.5 bg-[#121215] border border-[rgba(255,255,255,0.06)] text-[#A1A1AA] rounded-[3px]">
                             {t}
                           </span>
                         ))}
@@ -363,7 +356,7 @@ export default function ProjectsPage({ onOpenProject }) {
                       <div className="flex items-center gap-4 pt-2">
                         <button
                           onClick={() => onOpenProject(proj)}
-                          className="px-5 py-2.5 bg-[#14141A] hover:bg-[#1E1E28] border border-[#272734] text-xs font-mono uppercase tracking-wider text-[#F4F4F2] rounded-sm flex items-center gap-2 cursor-pointer transition-colors"
+                          className="px-4 py-2.5 bg-[#121215] hover:bg-[#18181B] border border-[rgba(255,255,255,0.08)] text-xs font-mono uppercase tracking-wider text-[#FAFAFA] rounded-[4px] flex items-center gap-2 cursor-pointer transition-colors"
                         >
                           <span>Read Case Study</span>
                           <ArrowRight size={14} />
@@ -373,7 +366,7 @@ export default function ProjectsPage({ onOpenProject }) {
                             href={proj.githubUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="p-2.5 bg-[#111114] hover:bg-[#1C1C24] border border-[#272730] text-[#9E9EA8] hover:text-white rounded-sm transition-colors"
+                            className="p-2.5 bg-[#121215] hover:bg-[#18181B] border border-[rgba(255,255,255,0.08)] text-[#A1A1AA] hover:text-white rounded-[4px] transition-colors"
                             title="GitHub Repository"
                           >
                             <GithubIcon size={16} />

@@ -19,31 +19,31 @@ export default function Navbar() {
   const currentPath = location.pathname;
 
   return (
-    <header className="sticky top-0 z-40 w-full border-b border-[#1C1C22] bg-[#08080A]/85 backdrop-blur-md">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+    <header className="sticky top-0 z-40 w-full border-b border-[#27272A]/40 bg-[#09090B]/85 backdrop-blur-md">
+      <div className="max-w-6xl mx-auto px-6 sm:px-8 h-16 flex items-center justify-between">
         
         {/* Brand Identity */}
         <Link 
           to="/" 
-          className="flex items-center gap-3 group focus:outline-none focus-visible:ring-1 focus-visible:ring-[#6366F1]"
+          className="flex items-center gap-3 group focus:outline-none"
         >
-          <div className="w-7 h-7 rounded-md bg-[#16161B] border border-[#26262E] flex items-center justify-center text-xs font-mono font-semibold text-[#F4F4F0] group-hover:border-[#E10600] transition-colors relative">
+          <div className="w-7 h-7 rounded-[4px] bg-[#121215] border border-[rgba(255,255,255,0.08)] flex items-center justify-center text-xs font-mono font-medium text-[#FAFAFA] group-hover:border-[#FAFAFA]/40 transition-colors relative">
             <span>SS</span>
-            <span className="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-[#E10600] ring-2 ring-[#08080A]" />
+            <span className="absolute -top-0.5 -right-0.5 w-1.5 h-1.5 rounded-full bg-[#E10600]" />
           </div>
           <div className="flex flex-col">
-            <span className="text-sm font-semibold tracking-tight text-[#F4F4F0] group-hover:text-white transition-colors">
+            <span className="text-sm font-medium tracking-tight text-[#FAFAFA] group-hover:text-white transition-colors">
               Shubham Sharma
             </span>
-            <span className="text-[11px] text-[#9E9EA8] tracking-normal font-mono">
+            <span className="text-[11px] text-[#71717A] tracking-normal font-mono">
               AI / Data / Systems
             </span>
           </div>
         </Link>
 
-        {/* Desktop Navigation Links — Recessed Physical Track */}
+        {/* Desktop Navigation Links */}
         <nav 
-          className="hidden md:flex items-center gap-1 p-1 rounded-[6px] bg-[#0A0A0A] border border-[rgba(255,255,255,0.06)] shadow-[inset_0_2px_5px_rgba(0,0,0,0.8),inset_0_1px_1px_rgba(255,255,255,0.02)]" 
+          className="hidden md:flex items-center gap-1 px-1.5 py-1 rounded-[6px] bg-[#121215] border border-[rgba(255,255,255,0.06)]" 
           aria-label="Main Navigation"
         >
           {NAV_ITEMS.map((item) => {
@@ -56,14 +56,14 @@ export default function Navbar() {
               <NavLink
                 key={item.path}
                 to={item.path}
-                className={`relative px-3.5 py-1.5 rounded-[4px] text-xs font-mono transition-all duration-150 flex items-center gap-2 select-none ${
+                className={`relative px-3 py-1.5 rounded-[4px] text-xs font-mono transition-all duration-150 flex items-center gap-2 select-none ${
                   isActive
-                    ? 'text-[#F2F2F2] font-semibold bg-[#18181C] border border-[rgba(255,255,255,0.1)] shadow-[inset_0_1px_1px_rgba(255,255,255,0.12),inset_0_-1px_2px_rgba(0,0,0,0.7),0_2px_6px_rgba(0,0,0,0.5)]'
-                    : 'text-[#888888] hover:text-[#F2F2F2] hover:bg-[#121214]'
+                    ? 'text-[#FAFAFA] font-medium bg-[#18181B] border border-[rgba(255,255,255,0.1)]'
+                    : 'text-[#71717A] hover:text-[#FAFAFA] hover:bg-[#141418]'
                 }`}
               >
                 {isActive && (
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#FFFFFF] shadow-[0_0_6px_2px_rgba(225,6,0,0.95),0_0_2px_1px_rgba(225,6,0,0.95)]" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#E10600]" />
                 )}
                 <span>{item.label}</span>
               </NavLink>
@@ -79,19 +79,18 @@ export default function Navbar() {
             href="/resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-[5px] bg-[#141416] hover:bg-[#1A1A1E] border border-[rgba(255,255,255,0.08)] shadow-[inset_0_1px_1px_rgba(255,255,255,0.08),inset_0_-1px_2px_rgba(0,0,0,0.7),0_2px_5px_rgba(0,0,0,0.4)] active:translate-y-[1px] active:shadow-[inset_0_2px_4px_rgba(0,0,0,0.8)] text-xs font-mono text-[#A0A0A0] hover:text-[#F2F2F2] transition-all"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-[4px] bg-[#121215] hover:bg-[#18181B] border border-[rgba(255,255,255,0.08)] text-xs font-mono text-[#A1A1AA] hover:text-[#FAFAFA] transition-colors"
           >
-            <FileText className="w-3.5 h-3.5 text-[#818CF8]" />
+            <FileText className="w-3.5 h-3.5 text-[#71717A]" />
             <span>Resume</span>
           </a>
 
           <Link
             to="/contact"
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-[5px] bg-[#16161A] hover:bg-[#202026] border border-[#E10600]/40 shadow-[inset_0_1px_1px_rgba(225,6,0,0.3),inset_0_-1px_2px_rgba(0,0,0,0.7),0_2px_6px_rgba(0,0,0,0.4)] active:translate-y-[1px] text-xs font-mono uppercase text-[#F2F2F2] transition-all group"
+            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-[4px] bg-[#FAFAFA] hover:bg-white text-xs font-mono font-medium text-[#09090B] transition-colors group"
           >
-            <span className="w-1.5 h-1.5 rounded-full bg-[#FFFFFF] shadow-[0_0_6px_1.5px_rgba(225,6,0,0.9)]" />
             <span>Contact</span>
-            <ArrowUpRight className="w-3.5 h-3.5 text-[#E10600] group-hover:translate-x-0.5 transition-transform" />
+            <ArrowUpRight className="w-3 h-3 text-[#09090B] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
           </Link>
         </div>
 
@@ -99,7 +98,7 @@ export default function Navbar() {
         <div className="flex md:hidden items-center">
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2 rounded-md bg-[#16161B] border border-[#26262E] text-[#9E9EA8] hover:text-white focus:outline-none"
+            className="p-2 rounded-[4px] bg-[#121215] border border-[rgba(255,255,255,0.08)] text-[#A1A1AA] hover:text-white focus:outline-none"
             aria-label="Toggle navigation menu"
             aria-expanded={mobileMenuOpen}
           >
