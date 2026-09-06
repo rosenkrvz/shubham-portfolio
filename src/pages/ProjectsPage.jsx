@@ -3,6 +3,12 @@ import { ArrowRight, Search, ExternalLink } from 'lucide-react';
 import { GithubIcon } from '../components/SocialIcons.jsx';
 import { projects } from '../data/projects.js';
 import { usePageMeta } from '../hooks/usePageMeta';
+import PageTransition from '../components/ui/PageTransition.jsx';
+
+import ProjectSentinelCase from '../components/projects/ProjectSentinelCase.jsx';
+import ProjectDitherCase from '../components/projects/ProjectDitherCase.jsx';
+import ProjectOrchestratorCase from '../components/projects/ProjectOrchestratorCase.jsx';
+import ProjectRiskCase from '../components/projects/ProjectRiskCase.jsx';
 
 export default function ProjectsPage({ onOpenProject }) {
   usePageMeta({
@@ -27,200 +33,124 @@ export default function ProjectsPage({ onOpenProject }) {
 
   const isDefaultView = selectedCategory === 'All' && !searchQuery.trim();
 
+  const pSentinel = projects.find((p) => p.id === 'sentinel-npu') || projects[0];
+  const pDither = projects.find((p) => p.id === 'operator-vision') || projects[1];
+  const pOrchestrator = projects.find((p) => p.id === 'surveillance-operator') || projects[2];
+  const pRisk = projects.find((p) => p.id === 'loan-risk-prediction') || projects[3];
+
   return (
-    <div className="min-h-screen py-14 sm:py-20 lg:py-24">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 sm:space-y-16">
-        
-        {/* Header */}
-        <div className="space-y-4 border-b border-[#1C1C22] pb-10">
-          <div className="inline-flex items-center gap-2 text-xs text-[#818CF8] font-mono">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#818CF8]" />
-            <span>03 // Archive</span>
-          </div>
-
-          <h1 className="text-3xl sm:text-5xl font-display font-medium tracking-tight text-[#F4F4F0]">
-            Selected <span className="font-serif-editorial italic text-white font-normal">Projects.</span>
-          </h1>
-
-          <p className="text-sm sm:text-base text-[#9E9EA8] max-w-2xl leading-relaxed">
-            Case studies detailing machine learning models, computer vision pipelines, and distributed backends. Each project answers: what was built, why it matters, how it functions, and the measured outcome.
-          </p>
-        </div>
-
-        {/* Filter & Search Bar */}
-        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
+    <PageTransition>
+      <div className="min-h-screen py-14 sm:py-20 lg:py-24 bg-[#08080A] text-[#F4F4F0]">
+        <div className="max-w-7xl mx-auto px-6 space-y-12 sm:space-y-16">
           
-          {/* Category Pills */}
-          <div className="flex flex-wrap gap-1.5">
-            {categories.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setSelectedCategory(cat)}
-                className={`px-3 py-1.5 rounded-xl text-xs font-medium transition-colors ${
-                  selectedCategory === cat
-                    ? 'bg-[#4338CA] text-white shadow-sm'
-                    : 'bg-[#111114] text-[#9E9EA8] hover:text-[#F4F4F0] border border-[#1C1C22]'
-                }`}
-              >
-                {cat}
-              </button>
-            ))}
-          </div>
+          {/* Editorial Header */}
+          <div className="space-y-4 border-b border-[#1C1C22] pb-10">
+            <div className="inline-flex items-center gap-2 text-xs text-[#818CF8] font-mono">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#818CF8]" />
+              <span>PROJECT ARCHIVE // CASE STUDIES</span>
+            </div>
 
-          {/* Search Box */}
-          <div className="relative min-w-[240px]">
-            <Search className="w-3.5 h-3.5 text-[#8E8D96] absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
-            <input
-              type="text"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search by keyword, tool, or stack..."
-              className="w-full pl-8 pr-3 py-1.5 rounded-lg bg-[#141417] border border-[#202026] text-xs text-[#F4F4F2] placeholder-[#65656E] focus:outline-none focus:border-[#4338CA]"
-            />
-          </div>
+            <h1 className="text-4xl sm:text-6xl font-bold font-display uppercase tracking-tight text-[#F4F4F0]">
+              Engineered <br />
+              <span className="font-serif-editorial italic font-normal text-4xl sm:text-6xl lowercase text-[#C7D2FE] mr-3">
+                systems &amp;
+              </span>
+              Architectures
+            </h1>
 
-        </div>
-
-        {/* Empty State */}
-        {filteredProjects.length === 0 && (
-          <div className="text-center py-20 px-4 rounded-2xl bg-[#121215] border border-[#1E1E24] space-y-3">
-            <h3 className="text-sm font-semibold text-[#F4F4F2]">No matching projects found</h3>
-            <p className="text-xs text-[#8E8D96] max-w-sm mx-auto">
-              No projects matched "{searchQuery}". Try selecting "All" or resetting your query.
+            <p className="text-base sm:text-lg text-[#9E9EA8] max-w-2xl font-light leading-relaxed">
+              In-depth technical case studies detailing edge neural quantization runtimes, 1-bit spatial error diffusion, and distributed event-driven backends.
             </p>
-            <button
-              onClick={() => { setSelectedCategory('All'); setSearchQuery(''); }}
-              className="px-4 py-2 rounded-lg bg-[#4338CA] text-white text-xs font-semibold transition-colors"
-            >
-              Reset Filters
-            </button>
           </div>
-        )}
 
-        {/* Varied Project Presentations */}
-        {isDefaultView ? (
-          <div className="space-y-12">
+          {/* Filter & Search Bar */}
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 border-b border-[#1C1C22] pb-6">
             
-            {/* 1. Large Hero Project (Sentinel NPU) */}
-            {projects[0] && (
-              <div className="group rounded-2xl bg-[#121215] border border-[#1E1E24] hover:border-[#30303A] transition-all duration-300 overflow-hidden">
-                <div className="grid grid-cols-1 lg:grid-cols-12 items-stretch">
-                  <div 
-                    onClick={() => onOpenProject(projects[0])}
-                    className="lg:col-span-7 bg-black aspect-[16/10] lg:aspect-auto overflow-hidden cursor-pointer relative"
-                  >
-                    <img
-                      src={projects[0].image}
-                      alt={projects[0].title}
-                      className="w-full h-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-[1.02] transition-all duration-500"
-                    />
-                    <div className="absolute top-4 left-4">
-                      <span className="px-2.5 py-1 rounded bg-[#0C0C0E]/80 backdrop-blur border border-white/10 text-[11px] text-[#F4F4F2] font-medium">
-                        Lead Case Study
-                      </span>
-                    </div>
-                  </div>
+            {/* Category Pills */}
+            <div className="flex flex-wrap gap-2">
+              {categories.map((cat) => (
+                <button
+                  key={cat}
+                  onClick={() => setSelectedCategory(cat)}
+                  className={`px-3.5 py-1.5 rounded-sm text-xs font-mono transition-colors cursor-pointer ${
+                    selectedCategory === cat
+                      ? 'bg-[#F4F4F0] text-[#08080A] font-semibold shadow-sm'
+                      : 'bg-[#111114] text-[#9E9EA8] hover:text-[#F4F4F0] border border-[#272730]'
+                  }`}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
 
-                  <div className="lg:col-span-5 p-6 sm:p-8 lg:p-10 flex flex-col justify-between space-y-6">
-                    <div className="space-y-4">
-                      <div className="flex items-center gap-2 text-xs text-[#8E8D96]">
-                        <span>{projects[0].category}</span>
-                        <span>•</span>
-                        <span>{projects[0].timeline}</span>
-                      </div>
+            {/* Search Box */}
+            <div className="relative min-w-[260px]">
+              <Search className="w-3.5 h-3.5 text-[#656570] absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Search by kernel, algorithm, or stack..."
+                className="w-full pl-9 pr-3 py-2 rounded-sm bg-[#111114] border border-[#272730] text-xs font-mono text-[#F4F4F2] placeholder-[#656570] focus:outline-none focus:border-[#6366F1]"
+              />
+            </div>
 
-                      <h2 
-                        onClick={() => onOpenProject(projects[0])}
-                        className="text-2xl sm:text-3xl font-display font-semibold text-[#F4F4F2] group-hover:text-white cursor-pointer transition-colors"
-                      >
-                        {projects[0].title}
-                      </h2>
+          </div>
 
-                      <p className="text-xs sm:text-sm text-[#8E8D96] leading-relaxed">
-                        {projects[0].summary}
-                      </p>
+          {/* Empty State */}
+          {filteredProjects.length === 0 && (
+            <div className="text-center py-20 px-4 bg-[#111114] border border-[#1C1C22] rounded-sm space-y-3 font-mono">
+              <h3 className="text-sm font-semibold text-[#F4F4F2]">No matching projects found</h3>
+              <p className="text-xs text-[#656570] max-w-sm mx-auto">
+                No projects matched "{searchQuery}". Try selecting "All" or clearing the search query.
+              </p>
+              <button
+                onClick={() => { setSelectedCategory('All'); setSearchQuery(''); }}
+                className="px-4 py-2 bg-[#F4F4F0] text-[#08080A] text-xs font-semibold rounded-sm cursor-pointer"
+              >
+                Reset Filters
+              </button>
+            </div>
+          )}
 
-                      <div className="grid grid-cols-3 gap-2 pt-3 border-t border-[#1E1E24]">
-                        {projects[0].metrics.map((m) => (
-                          <div key={m.label}>
-                            <div className="text-sm font-semibold text-[#F4F4F2] font-mono">{m.value}</div>
-                            <div className="text-[10px] text-[#65656E]">{m.label}</div>
-                          </div>
-                        ))}
-                      </div>
-
-                      <div className="flex flex-wrap gap-1.5 pt-2">
-                        {projects[0].tags.map((tag) => (
-                          <span key={tag} className="px-2 py-0.5 rounded bg-[#1A1A20] text-[11px] text-[#8E8D96]">
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-
-                    <div className="pt-4 flex items-center gap-3">
-                      <button
-                        onClick={() => onOpenProject(projects[0])}
-                        className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#F4F4F2] hover:bg-white text-[#0C0C0E] text-xs font-semibold tracking-wide transition-colors"
-                      >
-                        <span>View Full Case Study</span>
-                        <ArrowRight className="w-3.5 h-3.5" />
-                      </button>
-                      {projects[0].githubUrl && (
-                        <a
-                          href={projects[0].githubUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="p-2 rounded-lg bg-[#18181D] hover:bg-[#222229] border border-[#25252E] text-[#8E8D96] hover:text-[#F4F4F2] transition-colors"
-                          aria-label="View source on GitHub"
-                        >
-                          <GithubIcon className="w-4 h-4" />
-                        </a>
-                      )}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            )}
-
-            {/* 2. Split Screen Showcase (Operator Vision & Operator System) */}
+          {/* If default view, render bespoke authored cases */}
+          {isDefaultView ? (
+            <div className="space-y-4">
+              <ProjectSentinelCase project={pSentinel} onOpenModal={onOpenProject} />
+              <ProjectDitherCase project={pDither} onOpenModal={onOpenProject} />
+              <ProjectOrchestratorCase project={pOrchestrator} onOpenModal={onOpenProject} />
+              <ProjectRiskCase project={pRisk} onOpenModal={onOpenProject} />
+            </div>
+          ) : (
+            /* Filtered View: High-contrast technical cards */
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {projects.slice(1, 3).map((proj) => (
+              {filteredProjects.map((proj) => (
                 <div
                   key={proj.id}
-                  className="group rounded-2xl bg-[#121215] border border-[#1E1E24] hover:border-[#30303A] transition-all duration-300 p-6 sm:p-7 flex flex-col justify-between space-y-6"
+                  className="p-6 bg-[#111114] border border-[#272730] rounded-sm flex flex-col justify-between space-y-6 hover:border-[#6366F1] transition-colors"
                 >
-                  <div className="space-y-5">
-                    <div 
-                      onClick={() => onOpenProject(proj)}
-                      className="aspect-[16/9] rounded-xl bg-black overflow-hidden cursor-pointer"
-                    >
+                  <div className="space-y-4">
+                    <div className="aspect-[16/9] bg-[#08080A] rounded-sm overflow-hidden border border-[#1C1C22]">
                       <img
                         src={proj.image}
                         alt={proj.title}
-                        className="w-full h-full object-cover opacity-85 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
-                        loading="lazy"
+                        className="w-full h-full object-cover grayscale contrast-125"
                       />
                     </div>
 
-                    <div className="space-y-2">
-                      <div className="text-xs text-[#8E8D96]">{proj.category}</div>
-                      <h3 
-                        onClick={() => onOpenProject(proj)}
-                        className="text-xl font-display font-semibold text-[#F4F4F2] group-hover:text-white cursor-pointer transition-colors"
-                      >
-                        {proj.title}
-                      </h3>
-                      <p className="text-xs text-[#8E8D96] leading-relaxed">
-                        {proj.summary}
-                      </p>
-                    </div>
+                    <div className="text-xs font-mono text-[#818CF8]">{proj.category}</div>
+                    <h3 className="text-xl font-display font-semibold uppercase text-[#F4F4F0]">
+                      {proj.title}
+                    </h3>
+                    <p className="text-sm text-[#9E9EA8] font-light leading-relaxed">
+                      {proj.summary}
+                    </p>
 
-                    <div className="grid grid-cols-3 gap-2 pt-2 border-t border-[#1E1E24]">
+                    <div className="grid grid-cols-3 gap-2 py-2 border-y border-[#1C1C22] font-mono">
                       {proj.metrics.map((m) => (
                         <div key={m.label}>
-                          <div className="text-xs font-semibold text-[#F4F4F2] font-mono">{m.value}</div>
-                          <div className="text-[10px] text-[#65656E]">{m.label}</div>
+                          <div className="text-xs text-[#F4F4F2] font-semibold">{m.value}</div>
+                          <div className="text-[10px] text-[#656570]">{m.label}</div>
                         </div>
                       ))}
                     </div>
@@ -229,130 +159,29 @@ export default function ProjectsPage({ onOpenProject }) {
                   <div className="flex items-center justify-between pt-2">
                     <button
                       onClick={() => onOpenProject(proj)}
-                      className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#F4F4F2] hover:text-[#6366F1] transition-colors"
+                      className="text-xs font-mono uppercase text-[#F4F4F2] hover:text-[#818CF8] flex items-center gap-1.5 cursor-pointer"
                     >
                       <span>Read Case Study</span>
-                      <ArrowRight className="w-3.5 h-3.5" />
+                      <ArrowRight size={14} />
                     </button>
-                    <div className="flex gap-1">
-                      {proj.tags.slice(0, 3).map((t) => (
-                        <span key={t} className="px-2 py-0.5 rounded bg-[#18181D] text-[10px] text-[#65656E]">
-                          {t}
-                        </span>
-                      ))}
-                    </div>
+                    {proj.githubUrl && (
+                      <a
+                        href={proj.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-[#9E9EA8] hover:text-white"
+                      >
+                        <ExternalLink size={16} />
+                      </a>
+                    )}
                   </div>
                 </div>
               ))}
             </div>
+          )}
 
-            {/* 3. Horizontal Studies for Tabular & Index Models */}
-            <div className="space-y-4">
-              <h3 className="text-xs uppercase tracking-wider text-[#65656E] font-medium">
-                Algorithm &amp; Systems Prototypes
-              </h3>
-              <div className="divide-y divide-[#1E1E24] border-y border-[#1E1E24]">
-                {projects.slice(3).map((proj) => (
-                  <div
-                    key={proj.id}
-                    onClick={() => onOpenProject(proj)}
-                    className="py-6 flex flex-col sm:flex-row sm:items-center justify-between gap-6 group cursor-pointer hover:bg-[#121215] px-4 -mx-4 rounded-xl transition-colors"
-                  >
-                    <div className="space-y-1.5 max-w-xl">
-                      <div className="flex items-center gap-2 text-xs text-[#8E8D96]">
-                        <span>{proj.category}</span>
-                        <span>•</span>
-                        <span>{proj.timeline}</span>
-                      </div>
-                      <h4 className="text-base font-semibold text-[#F4F4F2] group-hover:text-white transition-colors">
-                        {proj.title}
-                      </h4>
-                      <p className="text-xs text-[#8E8D96] leading-relaxed">
-                        {proj.summary}
-                      </p>
-                      <div className="flex flex-wrap gap-1.5 pt-1">
-                        {proj.tags.map((t) => (
-                          <span key={t} className="px-2 py-0.5 rounded bg-[#18181D] text-[10px] text-[#65656E]">
-                            {t}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-
-                    <div className="flex items-center gap-6 self-start sm:self-center shrink-0">
-                      <div className="text-right hidden md:block">
-                        <div className="text-xs font-mono font-semibold text-[#F4F4F2]">{proj.metrics[0]?.value}</div>
-                        <div className="text-[10px] text-[#65656E]">{proj.metrics[0]?.label}</div>
-                      </div>
-                      <div className="inline-flex items-center gap-1 text-xs font-semibold text-[#F4F4F2] group-hover:text-[#6366F1] transition-colors">
-                        <span>Case Study</span>
-                        <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-          </div>
-        ) : (
-          /* Filtered View */
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {filteredProjects.map((proj) => (
-              <div
-                key={proj.id}
-                className="group rounded-2xl bg-[#121215] border border-[#1E1E24] hover:border-[#30303A] transition-all p-6 flex flex-col justify-between space-y-6"
-              >
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between text-xs text-[#8E8D96]">
-                    <span>{proj.category}</span>
-                    <span>{proj.timeline}</span>
-                  </div>
-
-                  <h3 
-                    onClick={() => onOpenProject(proj)}
-                    className="text-lg font-semibold text-[#F4F4F2] group-hover:text-white cursor-pointer transition-colors"
-                  >
-                    {proj.title}
-                  </h3>
-
-                  <p className="text-xs text-[#8E8D96] leading-relaxed">
-                    {proj.summary}
-                  </p>
-
-                  <div className="grid grid-cols-3 gap-2 pt-2 border-t border-[#1E1E24]">
-                    {proj.metrics.map((m) => (
-                      <div key={m.label}>
-                        <div className="text-xs font-semibold text-[#F4F4F2] font-mono">{m.value}</div>
-                        <div className="text-[10px] text-[#65656E]">{m.label}</div>
-                      </div>
-                    ))}
-                  </div>
-
-                  <div className="flex flex-wrap gap-1">
-                    {proj.tags.map((t) => (
-                      <span key={t} className="px-2 py-0.5 rounded bg-[#18181D] text-[10px] text-[#65656E]">
-                        {t}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="pt-2">
-                  <button
-                    onClick={() => onOpenProject(proj)}
-                    className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#F4F4F2] hover:text-[#6366F1] transition-colors"
-                  >
-                    <span>Read Case Study</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </button>
-                </div>
-              </div>
-            ))}
-          </div>
-        )}
-
+        </div>
       </div>
-    </div>
+    </PageTransition>
   );
 }

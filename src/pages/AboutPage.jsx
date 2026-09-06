@@ -4,10 +4,12 @@ import { GraduationCap, BookOpen, Compass, Download, ArrowRight, CheckCircle2, C
 import { profile } from '../data/profile.js';
 import { skillCategories } from '../data/skills.js';
 import { usePageMeta } from '../hooks/usePageMeta';
+import PageTransition from '../components/ui/PageTransition.jsx';
+import MagneticButton from '../components/ui/MagneticButton.jsx';
 
 export default function AboutPage({ onShowToast }) {
   usePageMeta({
-    title: 'About — Shubham Sharma | IIT Jodhpur',
+    title: 'About & Dossier — Shubham Sharma | IIT Jodhpur',
     description: 'Academic background, technical direction, and engineering principles of Shubham Sharma, undergraduate in Applied AI & Data Science at IIT Jodhpur.',
     path: '/about'
   });
@@ -26,235 +28,244 @@ export default function AboutPage({ onShowToast }) {
   };
 
   return (
-    <div className="min-h-screen py-14 sm:py-20 lg:py-24">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16 sm:space-y-24">
-        
-        {/* Page Header */}
-        <div className="space-y-6 border-b border-[#1E1E23] pb-12">
-          <div className="inline-flex items-center gap-2 text-xs text-[#8E8D96]">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#6366F1]"></span>
-            <span>About &amp; Dossier</span>
-          </div>
-
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-display font-semibold tracking-tight text-[#F4F4F2] leading-tight">
-            Shubham Sharma
-          </h1>
-
-          <p className="text-lg sm:text-xl text-[#9A9AA2] font-normal leading-relaxed">
-            Applied AI &amp; Data Science undergraduate at the Indian Institute of Technology Jodhpur (IIT Jodhpur).
-          </p>
-
-          <p className="text-sm sm:text-base text-[#8E8D96] leading-relaxed max-w-2xl">
-            I am a student and software engineer driven by understanding how complex systems operate from mathematical first principles. My work focuses on deep learning model optimization, computer vision algorithms, and building dependable backend systems.
-          </p>
-
-          <div className="flex flex-wrap items-center gap-3 pt-2">
-            <button
-              onClick={handleDownloadResume}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#4338CA] hover:bg-[#4F46E5] text-white text-xs font-semibold tracking-wide transition-colors shadow-sm"
-            >
-              <Download className="w-3.5 h-3.5" />
-              <span>Download CV (PDF)</span>
-            </button>
-            <Link
-              to="/contact"
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#16161B] hover:bg-[#202026] border border-[#25252E] text-xs font-semibold text-[#F4F4F2] transition-colors"
-            >
-              <span>Get in Touch</span>
-              <ArrowRight className="w-3.5 h-3.5 text-[#8E8D96]" />
-            </Link>
-          </div>
-        </div>
-
-        {/* 1. Academic Foundation */}
-        <section className="space-y-6">
-          <div className="space-y-1">
-            <span className="text-xs uppercase tracking-wider text-[#818CF8] font-mono font-medium">
-              01 // Education
-            </span>
-            <h2 className="text-2xl sm:text-3xl font-display font-medium text-[#F4F4F0] tracking-tight">
-              Academic <span className="font-serif-editorial italic text-white font-normal">Foundation.</span>
-            </h2>
-          </div>
-
-          <div className="p-6 sm:p-8 rounded-2xl bg-[#111114] border border-[#1C1C22] space-y-6">
-            <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-2">
-              <div className="space-y-1">
-                <div className="flex items-center gap-2 text-xs text-[#818CF8]">
-                  <GraduationCap className="w-4 h-4" />
-                  <span className="font-medium">{profile.academic.degree}</span>
-                </div>
-                <h3 className="text-lg font-medium text-[#F4F4F0]">
-                  {profile.academic.institution}
-                </h3>
-              </div>
-              <span className="text-xs text-[#9E9EA8] font-mono px-2.5 py-1 rounded bg-[#16161B] border border-[#222228] self-start">
-                {profile.academic.period}
-              </span>
+    <PageTransition>
+      <div className="min-h-screen py-14 sm:py-20 lg:py-24 bg-[#08080A] text-[#F4F4F0]">
+        <div className="max-w-4xl mx-auto px-6 space-y-16 sm:space-y-24">
+          
+          {/* Page Header */}
+          <div className="space-y-6 border-b border-[#1C1C22] pb-12">
+            <div className="inline-flex items-center gap-2 text-xs font-mono text-[#818CF8]">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#6366F1]"></span>
+              <span>DOSSIER // IIT JODHPUR</span>
             </div>
 
-            <p className="text-xs sm:text-sm text-[#9E9EA8] leading-relaxed pt-2 border-t border-[#1C1C22]">
-              <strong className="text-[#F4F4F0]">Curriculum Focus:</strong> Linear Algebra, Multivariate Optimization, Deep Neural Networks, Computer Vision, Algorithms &amp; Data Structures, Discrete Mathematics, and Distributed Backends.
+            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-display font-bold uppercase tracking-tight text-[#F4F4F0] leading-tight">
+              Shubham <br />
+              <span className="font-serif-editorial italic font-normal text-4xl sm:text-6xl lowercase text-[#C7D2FE] mr-3">
+                about the
+              </span>
+              Sharma
+            </h1>
+
+            <p className="text-lg sm:text-2xl text-[#9E9EA8] font-light leading-relaxed">
+              Undergraduate in Applied AI &amp; Data Science at the Indian Institute of Technology Jodhpur (IIT Jodhpur).
             </p>
 
-            <div className="p-4 rounded-xl bg-[#16161B] border border-[#222228] flex items-start gap-3">
-              <CheckCircle2 className="w-4 h-4 text-emerald-400 mt-0.5 shrink-0" />
-              <div className="text-xs text-[#9E9EA8] leading-relaxed">
-                <strong className="text-[#F4F4F0]">Academic Distinction:</strong> Awarded Dean's List / Academic Merit Honor at IIT Jodhpur (2023 — 2024) for strong academic standing across foundational mathematics and computing coursework.
-              </div>
+            <p className="text-sm sm:text-base text-[#9E9EA8] leading-relaxed max-w-2xl font-light">
+              I am driven by understanding how computational systems operate from mathematical first principles. My work centers on edge neural runtime integrity, spatial computer vision algorithms, and resilient asynchronous backend services.
+            </p>
+
+            <div className="flex flex-wrap items-center gap-4 pt-4">
+              <MagneticButton
+                onClick={handleDownloadResume}
+                className="px-5 py-3 bg-[#F4F4F0] hover:bg-white text-[#08080A] text-xs font-mono uppercase tracking-wider font-semibold rounded-sm shadow-xl flex items-center gap-2 cursor-pointer"
+              >
+                <Download className="w-3.5 h-3.5" />
+                <span>Download CV (PDF)</span>
+              </MagneticButton>
+
+              <MagneticButton
+                as="div"
+                className="px-5 py-3 border border-[#272730] hover:border-[#6366F1] bg-[#111114] text-xs font-mono uppercase tracking-wider text-[#F4F4F2] rounded-sm cursor-pointer"
+              >
+                <Link to="/contact" className="flex items-center gap-2">
+                  <span>Contact Direct</span>
+                  <ArrowRight className="w-3.5 h-3.5 text-[#818CF8]" />
+                </Link>
+              </MagneticButton>
             </div>
           </div>
-        </section>
 
-        {/* 2. Current Learning & Technical Direction */}
-        <section className="space-y-6">
-          <div className="space-y-1">
-            <span className="text-xs uppercase tracking-wider text-[#818CF8] font-mono font-medium">
-              02 // Exploration
-            </span>
-            <h2 className="text-2xl sm:text-3xl font-display font-medium text-[#F4F4F0] tracking-tight">
-              Current Learning &amp; <span className="font-serif-editorial italic text-white font-normal">Technical Direction.</span>
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
-            
-            <div className="p-5 rounded-xl bg-[#111114] border border-[#1C1C22] space-y-3">
-              <div className="w-8 h-8 rounded-lg bg-[#16161B] flex items-center justify-center text-[#818CF8]">
-                <Cpu className="w-4 h-4" />
-              </div>
-              <h3 className="text-sm font-medium text-[#F4F4F0]">
-                Model Optimization &amp; Edge Inference
-              </h3>
-              <p className="text-xs text-[#9E9EA8] leading-relaxed">
-                Exploring post-training quantization (INT8/FP4), ONNX Runtime execution graphs, and memory-conscious tensor layouts to deploy models on edge hardware.
-              </p>
+          {/* 1. Academic Foundation */}
+          <section className="space-y-6">
+            <div className="space-y-1">
+              <span className="text-xs uppercase tracking-widest text-[#818CF8] font-mono">
+                01 // EDUCATION &amp; RESEARCH
+              </span>
+              <h2 className="text-2xl sm:text-4xl font-display font-bold uppercase text-[#F4F4F0] tracking-tight">
+                Academic <span className="font-serif-editorial italic text-[#C7D2FE] font-normal lowercase">foundation.</span>
+              </h2>
             </div>
 
-            <div className="p-5 rounded-xl bg-[#111114] border border-[#1C1C22] space-y-3">
-              <div className="w-8 h-8 rounded-lg bg-[#16161B] flex items-center justify-center text-[#818CF8]">
-                <BookOpen className="w-4 h-4" />
-              </div>
-              <h3 className="text-sm font-medium text-[#F4F4F0]">
-                Spatial Vision &amp; Dithering
-              </h3>
-              <p className="text-xs text-[#9E9EA8] leading-relaxed">
-                Investigating spatial error-diffusion kernels (Floyd-Steinberg, Bayer) to compress live telemetry streams while preserving facial contours and edge boundaries.
-              </p>
-            </div>
-
-            <div className="p-5 rounded-xl bg-[#111114] border border-[#1C1C22] space-y-3">
-              <div className="w-8 h-8 rounded-lg bg-[#16161B] flex items-center justify-center text-[#818CF8]">
-                <Compass className="w-4 h-4" />
-              </div>
-              <h3 className="text-sm font-medium text-[#F4F4F0]">
-                Concurrent Backend Services
-              </h3>
-              <p className="text-xs text-[#9E9EA8] leading-relaxed">
-                Designing event-driven streaming pipelines with Python AsyncIO, FastAPI, Redis streams, and PostgreSQL to serve low-latency inference predictions.
-              </p>
-            </div>
-
-          </div>
-        </section>
-
-        {/* 3. Technical Toolkit */}
-        <section className="space-y-6">
-          <div className="space-y-1">
-            <span className="text-xs uppercase tracking-wider text-[#818CF8] font-mono font-medium">
-              03 // Toolkit
-            </span>
-            <h2 className="text-2xl sm:text-3xl font-display font-medium text-[#F4F4F0] tracking-tight">
-              Technical <span className="font-serif-editorial italic text-white font-normal">Competencies.</span>
-            </h2>
-          </div>
-
-          <div className="space-y-6">
-            {skillCategories.map((group) => (
-              <div key={group.category} className="p-6 rounded-xl bg-[#111114] border border-[#1C1C22] space-y-4">
-                <div>
-                  <h3 className="text-sm font-medium text-[#F4F4F0]">
-                    {group.category}
+            <div className="p-6 sm:p-8 bg-[#111114] border border-[#1C1C24] rounded-sm space-y-6">
+              <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-2">
+                <div className="space-y-1">
+                  <div className="flex items-center gap-2 text-xs font-mono text-[#818CF8]">
+                    <GraduationCap className="w-4 h-4" />
+                    <span>{profile.academic.degree}</span>
+                  </div>
+                  <h3 className="text-lg font-display font-semibold uppercase text-[#F4F4F0]">
+                    {profile.academic.institution}
                   </h3>
-                  <p className="text-xs text-[#9E9EA8] mt-0.5">
-                    {group.description}
-                  </p>
                 </div>
+                <span className="text-xs text-[#9E9EA8] font-mono px-3 py-1 rounded bg-[#16161D] border border-[#272734] self-start">
+                  {profile.academic.period}
+                </span>
+              </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-                  {group.skills.map((skill) => (
-                    <div key={skill.name} className="p-3 rounded-lg bg-[#16161B] border border-[#202028] space-y-1">
-                      <div className="text-xs font-semibold text-[#F4F4F2]">
-                        {skill.name}
-                      </div>
-                      <div className="text-[11px] text-[#8E8D96] leading-relaxed">
-                        {skill.desc}
-                      </div>
-                    </div>
-                  ))}
+              <p className="text-xs sm:text-sm text-[#9E9EA8] leading-relaxed pt-2 border-t border-[#1C1C24] font-mono">
+                <strong className="text-[#F4F4F0]">CORE CURRICULUM:</strong> Linear Algebra, Multivariate Optimization, Deep Neural Networks, Computer Vision, Algorithms &amp; Data Structures, Discrete Mathematics, Distributed Systems.
+              </p>
+
+              <div className="p-4 bg-[#0C0C0E] border border-[#1F1F28] rounded flex items-start gap-3">
+                <CheckCircle2 className="w-4 h-4 text-emerald-400 mt-0.5 shrink-0" />
+                <div className="text-xs text-[#9E9EA8] leading-relaxed font-mono">
+                  <strong className="text-[#F4F4F0]">ACADEMIC MERIT:</strong> Awarded Dean's List / Academic Merit Honor at IIT Jodhpur (2023 — 2024) for top academic standing across foundational mathematics and computer science coursework.
                 </div>
               </div>
-            ))}
-          </div>
-        </section>
+            </div>
+          </section>
 
-        {/* 4. Engineering Principles */}
-        <section className="space-y-6">
-          <div className="space-y-1">
-            <span className="text-xs uppercase tracking-wider text-[#818CF8] font-mono font-medium">
-              04 // Philosophy
-            </span>
-            <h2 className="text-2xl sm:text-3xl font-display font-medium text-[#F4F4F0] tracking-tight">
-              Engineering <span className="font-serif-editorial italic text-white font-normal">Principles.</span>
-            </h2>
-          </div>
-
-          <div className="space-y-4">
-            <div className="p-6 rounded-2xl bg-[#111114] border border-[#1C1C22] space-y-2">
-              <h3 className="text-sm font-medium text-[#F4F4F0]">
-                1. First-Principles Understanding
-              </h3>
-              <p className="text-xs text-[#9E9EA8] leading-relaxed">
-                Before importing a library or tweaking hyperparameters, I write out the mathematical formulations on paper. Understanding gradients, loss surfaces, and time complexity makes debugging direct and effective.
-              </p>
+          {/* 2. Exploration & Directions */}
+          <section className="space-y-6">
+            <div className="space-y-1">
+              <span className="text-xs uppercase tracking-widest text-[#818CF8] font-mono">
+                02 // RESEARCH VECTORS
+              </span>
+              <h2 className="text-2xl sm:text-4xl font-display font-bold uppercase text-[#F4F4F0] tracking-tight">
+                Technical <span className="font-serif-editorial italic text-[#C7D2FE] font-normal lowercase">directions.</span>
+              </h2>
             </div>
 
-            <div className="p-6 rounded-2xl bg-[#111114] border border-[#1C1C22] space-y-2">
-              <h3 className="text-sm font-medium text-[#F4F4F0]">
-                2. Measure Before Optimizing
-              </h3>
-              <p className="text-xs text-[#9E9EA8] leading-relaxed">
-                Premature optimization creates tangled code. Every performance claim must be accompanied by profiler data — whether measuring socket throughput in Python or tensor memory allocations in PyTorch.
-              </p>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+              <div className="p-6 bg-[#111114] border border-[#1C1C24] rounded-sm space-y-3">
+                <div className="w-8 h-8 rounded bg-[#16161D] border border-[#272734] flex items-center justify-center text-[#818CF8]">
+                  <Cpu className="w-4 h-4" />
+                </div>
+                <h3 className="text-sm font-display font-semibold uppercase text-[#F4F4F0]">
+                  Model Optimization &amp; Edge Inference
+                </h3>
+                <p className="text-xs text-[#9E9EA8] leading-relaxed font-light">
+                  Exploring post-training quantization (INT8/FP4), ONNX Runtime execution graphs, and memory-conscious tensor layouts on edge hardware.
+                </p>
+              </div>
+
+              <div className="p-6 bg-[#111114] border border-[#1C1C24] rounded-sm space-y-3">
+                <div className="w-8 h-8 rounded bg-[#16161D] border border-[#272734] flex items-center justify-center text-[#818CF8]">
+                  <BookOpen className="w-4 h-4" />
+                </div>
+                <h3 className="text-sm font-display font-semibold uppercase text-[#F4F4F0]">
+                  Spatial Vision &amp; Dithering
+                </h3>
+                <p className="text-xs text-[#9E9EA8] leading-relaxed font-light">
+                  Investigating spatial error-diffusion kernels (Floyd-Steinberg, Bayer) to compress live telemetry streams while preserving facial contours and edge boundaries.
+                </p>
+              </div>
+
+              <div className="p-6 bg-[#111114] border border-[#1C1C24] rounded-sm space-y-3">
+                <div className="w-8 h-8 rounded bg-[#16161D] border border-[#272734] flex items-center justify-center text-[#818CF8]">
+                  <Compass className="w-4 h-4" />
+                </div>
+                <h3 className="text-sm font-display font-semibold uppercase text-[#F4F4F0]">
+                  Concurrent Backend Services
+                </h3>
+                <p className="text-xs text-[#9E9EA8] leading-relaxed font-light">
+                  Designing event-driven streaming pipelines with Python AsyncIO, FastAPI, Redis streams, and PostgreSQL to serve low-latency inference predictions.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          {/* 3. Technical Competencies */}
+          <section className="space-y-6">
+            <div className="space-y-1">
+              <span className="text-xs uppercase tracking-widest text-[#818CF8] font-mono">
+                03 // TOOLKIT
+              </span>
+              <h2 className="text-2xl sm:text-4xl font-display font-bold uppercase text-[#F4F4F0] tracking-tight">
+                Technical <span className="font-serif-editorial italic text-[#C7D2FE] font-normal lowercase">competencies.</span>
+              </h2>
             </div>
 
-            <div className="p-6 rounded-2xl bg-[#111114] border border-[#1C1C22] space-y-2">
-              <h3 className="text-sm font-medium text-[#F4F4F0]">
-                3. Simplicity Over Cleverness
-              </h3>
-              <p className="text-xs text-[#9E9EA8] leading-relaxed">
-                Maintainable software is readable, testable, and minimal. A clean tabular model that can be explained to non-technical stakeholders is far superior to an uninterpretable neural network when the data does not require it.
-              </p>
-            </div>
-          </div>
-        </section>
+            <div className="space-y-6">
+              {skillCategories.map((group) => (
+                <div key={group.category} className="p-6 bg-[#111114] border border-[#1C1C24] rounded-sm space-y-4">
+                  <div>
+                    <h3 className="text-base font-display font-semibold uppercase text-[#F4F4F0]">
+                      {group.category}
+                    </h3>
+                    <p className="text-xs text-[#9E9EA8] mt-0.5">
+                      {group.description}
+                    </p>
+                  </div>
 
-        {/* Bottom CTA */}
-        <div className="pt-8 border-t border-[#1C1C22] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-          <div>
-            <div className="text-sm font-medium text-[#F4F4F0]">Interested in collaborating or discussing a role?</div>
-            <div className="text-xs text-[#656570] mt-0.5">Open for technical internships, engineering roles, and academic collaborations.</div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+                    {group.skills.map((skill) => (
+                      <div key={skill.name} className="p-3 bg-[#0C0C0E] border border-[#1F1F28] rounded space-y-1">
+                        <div className="text-xs font-mono font-semibold text-[#F4F4F2]">
+                          {skill.name}
+                        </div>
+                        <div className="text-[11px] text-[#656570] leading-relaxed">
+                          {skill.desc}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* 4. Engineering Principles */}
+          <section className="space-y-6">
+            <div className="space-y-1">
+              <span className="text-xs uppercase tracking-widest text-[#818CF8] font-mono">
+                04 // PHILOSOPHY
+              </span>
+              <h2 className="text-2xl sm:text-4xl font-display font-bold uppercase text-[#F4F4F0] tracking-tight">
+                Engineering <span className="font-serif-editorial italic text-[#C7D2FE] font-normal lowercase">principles.</span>
+              </h2>
+            </div>
+
+            <div className="space-y-4">
+              <div className="p-6 bg-[#111114] border border-[#1C1C24] rounded-sm space-y-2">
+                <h3 className="text-sm font-mono font-semibold uppercase text-[#818CF8]">
+                  1. First-Principles Understanding
+                </h3>
+                <p className="text-xs sm:text-sm text-[#9E9EA8] leading-relaxed font-light">
+                  Before importing a library or tweaking hyperparameters, I write out the mathematical formulations on paper. Understanding gradients, loss surfaces, and time complexity makes debugging direct and effective.
+                </p>
+              </div>
+
+              <div className="p-6 bg-[#111114] border border-[#1C1C24] rounded-sm space-y-2">
+                <h3 className="text-sm font-mono font-semibold uppercase text-[#818CF8]">
+                  2. Measure Before Optimizing
+                </h3>
+                <p className="text-xs sm:text-sm text-[#9E9EA8] leading-relaxed font-light">
+                  Premature optimization creates tangled code. Every performance claim must be accompanied by profiler data — whether measuring socket throughput in Python or tensor memory allocations in PyTorch.
+                </p>
+              </div>
+
+              <div className="p-6 bg-[#111114] border border-[#1C1C24] rounded-sm space-y-2">
+                <h3 className="text-sm font-mono font-semibold uppercase text-[#818CF8]">
+                  3. Simplicity Over Cleverness
+                </h3>
+                <p className="text-xs sm:text-sm text-[#9E9EA8] leading-relaxed font-light">
+                  Maintainable software is readable, testable, and minimal. A clean tabular model that can be explained to non-technical stakeholders is far superior to an uninterpretable neural network when the data does not require it.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          {/* Bottom CTA */}
+          <div className="pt-8 border-t border-[#1C1C22] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <div>
+              <div className="text-sm font-display uppercase tracking-tight text-[#F4F4F0]">Interested in collaborating or discussing a role?</div>
+              <div className="text-xs font-mono text-[#656570] mt-0.5">Open for technical internships, engineering roles, and academic collaborations.</div>
+            </div>
+            <MagneticButton
+              as="div"
+              className="px-5 py-2.5 bg-[#4338CA] hover:bg-[#4F46E5] text-white text-xs font-mono uppercase tracking-wider rounded-sm shrink-0 cursor-pointer"
+            >
+              <Link to="/contact" className="flex items-center gap-2">
+                <span>Get in Touch</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
+            </MagneticButton>
           </div>
-          <Link
-            to="/contact"
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#4338CA] hover:bg-[#4F46E5] text-white text-xs font-medium tracking-wide transition-colors shadow-sm shrink-0"
-          >
-            <span>Get in Touch</span>
-            <ArrowRight className="w-3.5 h-3.5" />
-          </Link>
+
         </div>
-
       </div>
-    </div>
+    </PageTransition>
   );
 }

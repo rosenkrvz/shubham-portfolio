@@ -1,13 +1,15 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Terminal, Cpu, Sliders, Play, RefreshCw, Zap, Layers, Sparkles } from 'lucide-react';
+import { Terminal, Cpu, Sliders, Play, RefreshCw, Zap, Layers, Sparkles, Box, Compass } from 'lucide-react';
 import { labExperiments } from '../data/lab.js';
 import { usePageMeta } from '../hooks/usePageMeta';
+import Hero3DNeural from '../components/canvas/Hero3DNeural.jsx';
+import PageTransition from '../components/ui/PageTransition.jsx';
 
 export default function LabPage({ onShowToast }) {
   usePageMeta({
-    title: 'Interactive AI Research & Systems Lab',
-    description: 'Real-time in-browser engineering experiments: 1-Bit Ordered Spatial Dither Engine and Edge Silicon Quantization Inference Latency Matrix.',
-    path: '/lab'
+    title: 'Experiments & 3D WebGL Lab — Shubham Sharma',
+    description: 'Real-time in-browser engineering experiments: 3D Neural Manifold, 1-Bit Spatial Dither Engine, and Edge Silicon Latency Matrix.',
+    path: '/experiments'
   });
 
   const [activeExperiment, setActiveExperiment] = useState('dither-engine');
@@ -29,6 +31,15 @@ export default function LabPage({ onShowToast }) {
     variance: '± 0.3ms'
   });
 
+  // Vector Radar State
+  const [queryPoint, setQueryPoint] = useState({ x: 50, y: 50 });
+  const samplePoints = [
+    { id: 'V1', label: 'Query Embedding', x: queryPoint.x, y: queryPoint.y, color: '#6366F1' },
+    { id: 'V2', label: 'Nearest Cluster A', x: 38, y: 42, color: '#34D399' },
+    { id: 'V3', label: 'Semantic Cluster B', x: 74, y: 68, color: '#38BDF8' },
+    { id: 'V4', label: 'Orthogonal Manifold', x: 22, y: 78, color: '#A855F7' }
+  ];
+
   // Render interactive dither on canvas
   useEffect(() => {
     if (activeExperiment !== 'dither-engine') return;
@@ -43,12 +54,10 @@ export default function LabPage({ onShowToast }) {
       canvas.width = 360;
       canvas.height = 360;
 
-      // Draw original scaled
       ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
       const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
       const data = imgData.data;
 
-      // Apply 1-bit Bayer / ordered threshold quantization
       const bayer4x4 = [
         [0, 8, 2, 10],
         [12, 4, 14, 6],
@@ -59,16 +68,14 @@ export default function LabPage({ onShowToast }) {
       for (let y = 0; y < canvas.height; y += ditherScale) {
         for (let x = 0; x < canvas.width; x += ditherScale) {
           const idx = (y * canvas.width + x) * 4;
-          // Grayscale luminance
           const r = data[idx];
           const g = data[idx + 1];
           const b = data[idx + 2];
           const lum = 0.299 * r + 0.587 * g + 0.114 * b;
 
           const bayerValue = (bayer4x4[(y / ditherScale) % 4][(x / ditherScale) % 4] / 16) * 64 - 32;
-          const bit = lum + bayerValue > threshold ? 240 : 15;
+          const bit = lum + bayerValue > threshold ? 245 : 12;
 
-          // Fill block
           for (let dy = 0; dy < ditherScale && y + dy < canvas.height; dy++) {
             for (let dx = 0; dx < ditherScale && x + dx < canvas.width; dx++) {
               const pixelIdx = ((y + dy) * canvas.width + (x + dx)) * 4;
@@ -104,300 +111,330 @@ export default function LabPage({ onShowToast }) {
 
       onShowToast?.({
         type: 'success',
-        message: `Benchmark completed for ${quantMode} @ Batch ${batchSize}: P99=${baseLatency}ms`
+        message: `Benchmark complete: ${quantMode} @ Batch ${batchSize} (P99=${baseLatency}ms)`
       });
-    }, 850);
+    }, 700);
   };
 
   return (
-    <div className="min-h-screen py-10 lg:py-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+    <PageTransition>
+      <div className="min-h-screen py-12 lg:py-20 bg-[#08080A] text-[#F4F4F0]">
+        <div className="max-w-7xl mx-auto px-6 space-y-12">
 
-        {/* Header */}
-        <div className="space-y-4 border-b border-[#1F1F24] pb-8">
-          <div className="flex items-center gap-2 text-xs font-mono tracking-widest text-[#3E2CF0] uppercase">
-            <span className="w-2 h-2 rounded-full bg-[#3E2CF0] animate-pulse"></span>
-            <span>Applied AI Research // Experimental Sandbox</span>
+          {/* Editorial Header */}
+          <div className="border-b border-[#1C1C22] pb-10">
+            <div className="flex items-center gap-2 text-xs font-mono tracking-widest text-[#818CF8] uppercase mb-4">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+              <span>EXPERIMENTAL LAB // VISUAL COMPUTATION</span>
+            </div>
+            
+            <h1 className="text-4xl sm:text-6xl font-bold font-display uppercase tracking-tight text-[#F4F4F0] mb-4">
+              Algorithms, <br />
+              <span className="font-serif-editorial italic font-normal text-4xl sm:text-6xl lowercase text-[#C7D2FE] mr-3">
+                shaders &amp;
+              </span>
+              Prototypes
+            </h1>
+            
+            <p className="text-base sm:text-lg text-[#9E9EA8] max-w-2xl font-light leading-relaxed">
+              An interactive playground exploring 1-bit spatial error diffusion, real-time 3D WebGL neural manifolds, and edge silicon hardware execution profiles.
+            </p>
           </div>
-          <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-[#F0F0EE]">
-            AI &amp; Computational Lab
-          </h1>
-          <p className="text-sm sm:text-base text-[#85858B] max-w-2xl leading-relaxed">
-            Real-time interactive demonstrations of 1-bit spatial dithering, edge silicon inference benchmarks, and low-latency tensor optimization algorithms.
-          </p>
-        </div>
 
-        {/* Experiment Selector Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {labExperiments.map((exp) => (
-            <button
-              key={exp.id}
-              onClick={() => setActiveExperiment(exp.id)}
-              className={`p-5 rounded-lg border text-left transition-all flex flex-col justify-between ${activeExperiment === exp.id
-                ? 'bg-[#161619] border-[#3E2CF0] shadow-md shadow-[#3E2CF0]/20'
-                : 'bg-[#111113] border-[#1F1F24] hover:border-[#2E2E36] text-[#85858B]'
+          {/* Experiment Tabs */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {labExperiments.map((exp) => (
+              <button
+                key={exp.id}
+                onClick={() => setActiveExperiment(exp.id)}
+                className={`p-5 rounded-sm border text-left transition-all flex flex-col justify-between cursor-pointer ${
+                  activeExperiment === exp.id
+                    ? 'bg-[#16161D] border-[#6366F1] shadow-lg'
+                    : 'bg-[#111114] border-[#1C1C24] hover:border-[#2E2E38] text-[#9E9EA8]'
                 }`}
-            >
-              <div className="space-y-2">
-                <div className="flex items-center justify-between text-[10px] font-mono">
-                  <span className="text-[#3E2CF0] font-semibold">{exp.badge}</span>
-                  <span className="text-[#52525B]">{exp.category}</span>
-                </div>
-                <h3 className="text-sm font-bold text-[#F0F0EE]">
-                  {exp.title}
-                </h3>
-                <p className="text-xs text-[#85858B] leading-relaxed">
-                  {exp.summary}
-                </p>
-              </div>
-
-              <div className="pt-4 text-[10px] font-mono text-[#52525B]">
-                STATUS: {exp.status}
-              </div>
-            </button>
-          ))}
-        </div>
-
-        {/* Interactive Experiment Workspace */}
-        <div className="p-6 sm:p-8 rounded-xl bg-[#111113] border border-[#1F1F24]">
-
-          {/* EXPERIMENT 1: 1-Bit Dither Engine */}
-          {activeExperiment === 'dither-engine' && (
-            <div className="space-y-6">
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#1F1F24] pb-4">
-                <div>
-                  <h2 className="text-lg font-bold text-[#F0F0EE]">
-                    1-Bit Spatial Dither &amp; Halftone Quantizer
-                  </h2>
-                  <p className="text-xs text-[#85858B]">
-                    Transforms high-resolution continuous luminance into binary monochrome matrix tokens in real-time.
+              >
+                <div className="space-y-2">
+                  <div className="flex items-center justify-between text-[11px] font-mono">
+                    <span className="text-[#818CF8] font-semibold">{exp.badge}</span>
+                    <span className="text-[#656570]">{exp.status}</span>
+                  </div>
+                  <h3 className="text-sm font-display font-semibold uppercase tracking-tight text-[#F4F4F2]">
+                    {exp.title}
+                  </h3>
+                  <p className="text-xs text-[#9E9EA8] leading-relaxed line-clamp-2">
+                    {exp.summary}
                   </p>
                 </div>
-                <div className="flex items-center gap-2">
-                  <button
-                    onClick={() => setSelectedImagePreset('/assets/sentinel_portrait.jpg')}
-                    className={`px-3 py-1.5 rounded text-xs font-mono border transition-colors ${selectedImagePreset.includes('sentinel')
-                      ? 'bg-[#3E2CF0] text-white border-[#3E2CF0]'
-                      : 'bg-[#161619] border-[#232328] text-[#85858B]'
+              </button>
+            ))}
+          </div>
+
+          {/* Active Experiment Viewport */}
+          <div className="p-6 sm:p-8 bg-[#111114] border border-[#1C1C24] rounded-sm">
+            
+            {/* EXPERIMENT 1: 1-Bit Dither Engine */}
+            {activeExperiment === 'dither-engine' && (
+              <div className="space-y-8">
+                <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#1C1C22] pb-4">
+                  <div>
+                    <h2 className="text-xl font-display font-semibold uppercase text-[#F4F4F2]">
+                      1-Bit Spatial Dither &amp; Halftone Engine
+                    </h2>
+                    <p className="text-xs font-mono text-[#9E9EA8] mt-0.5">
+                      Transforms 8-bit luminance matrices into binary states using Bayer threshold distribution.
+                    </p>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <button
+                      onClick={() => setSelectedImagePreset('/assets/sentinel_portrait.jpg')}
+                      className={`px-3 py-1.5 rounded-sm text-xs font-mono border transition-colors cursor-pointer ${
+                        selectedImagePreset.includes('sentinel')
+                          ? 'bg-[#F4F4F0] text-[#08080A] font-semibold border-white'
+                          : 'bg-[#16161B] border-[#272730] text-[#9E9EA8]'
                       }`}
-                  >
-                    Preset: Eye
-                  </button>
-                  <button
-                    onClick={() => setSelectedImagePreset('/assets/circuit_hardware.jpg')}
-                    className={`px-3 py-1.5 rounded text-xs font-mono border transition-colors ${selectedImagePreset.includes('circuit')
-                      ? 'bg-[#3E2CF0] text-white border-[#3E2CF0]'
-                      : 'bg-[#161619] border-[#232328] text-[#85858B]'
+                    >
+                      Preset: Portrait
+                    </button>
+                    <button
+                      onClick={() => setSelectedImagePreset('/assets/circuit_hardware.jpg')}
+                      className={`px-3 py-1.5 rounded-sm text-xs font-mono border transition-colors cursor-pointer ${
+                        selectedImagePreset.includes('circuit')
+                          ? 'bg-[#F4F4F0] text-[#08080A] font-semibold border-white'
+                          : 'bg-[#16161B] border-[#272730] text-[#9E9EA8]'
                       }`}
-                  >
-                    Preset: NPU
-                  </button>
+                    >
+                      Preset: Circuit
+                    </button>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                  <div className="lg:col-span-5 flex flex-col items-center justify-center p-4 bg-[#08080A] border border-[#1C1C22] rounded-sm">
+                    <canvas ref={canvasRef} className="max-w-full rounded-sm border border-[#272730]" />
+                    <div className="mt-3 font-mono text-[10px] text-[#656570]">
+                      1-BIT MONOCHROME MATRIX BUFFER
+                    </div>
+                  </div>
+
+                  <div className="lg:col-span-7 space-y-6">
+                    <div className="space-y-2">
+                      <div className="flex justify-between text-xs font-mono">
+                        <span className="text-[#9E9EA8]">THRESHOLD CUTOFF</span>
+                        <span className="text-[#818CF8] font-bold">{threshold} / 255</span>
+                      </div>
+                      <input
+                        type="range"
+                        min="30"
+                        max="220"
+                        value={threshold}
+                        onChange={(e) => setThreshold(Number(e.target.value))}
+                        className="w-full h-1.5 bg-[#1C1C24] rounded-lg cursor-pointer accent-[#6366F1]"
+                      />
+                    </div>
+
+                    <div className="space-y-2">
+                      <div className="flex justify-between text-xs font-mono">
+                        <span className="text-[#9E9EA8]">BAYER BLOCK GRANULARITY</span>
+                        <span className="text-[#818CF8] font-bold">{ditherScale}× Scale</span>
+                      </div>
+                      <div className="flex gap-2">
+                        {[1, 2, 4, 6, 8].map((scale) => (
+                          <button
+                            key={scale}
+                            onClick={() => setDitherScale(scale)}
+                            className={`flex-1 py-1.5 text-xs font-mono border rounded-sm transition-colors cursor-pointer ${
+                              ditherScale === scale
+                                ? 'bg-[#F4F4F0] text-[#08080A] font-bold border-white'
+                                : 'bg-[#16161B] border-[#272730] text-[#9E9EA8]'
+                            }`}
+                          >
+                            {scale}×
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
+            )}
 
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-                {/* Canvas Display */}
-                <div className="lg:col-span-5 flex flex-col items-center justify-center p-4 bg-black rounded-lg border border-[#1F1F24]">
-                  <canvas
-                    ref={canvasRef}
-                    className="max-w-full rounded shadow-2xl border border-white/10"
-                  />
-                  <div className="mt-3 font-mono text-[10px] text-[#85858B]">
-                    REAL-TIME WebGL/CANVAS 1-BIT OUTPUT
-                  </div>
+            {/* EXPERIMENT 2: 3D Neural Manifold Lab */}
+            {activeExperiment === 'neural-3d-manifold' && (
+              <div className="space-y-6">
+                <div className="border-b border-[#1C1C22] pb-4">
+                  <h2 className="text-xl font-display font-semibold uppercase text-[#F4F4F2]">
+                    3D Neural Manifold &amp; Shaders
+                  </h2>
+                  <p className="text-xs font-mono text-[#9E9EA8] mt-0.5">
+                    Real-time GPU icosahedron wireframe lattice with floating telemetry rings reacting to mouse pointer dynamics.
+                  </p>
                 </div>
 
-                {/* Interactive Controls */}
-                <div className="lg:col-span-7 space-y-6">
-                  {/* Luminance Slider */}
-                  <div className="space-y-2">
-                    <div className="flex justify-between text-xs font-mono">
-                      <span className="text-[#85858B]">Threshold Cutoff</span>
-                      <span className="text-[#3E2CF0] font-bold">{threshold} / 255</span>
-                    </div>
-                    <input
-                      type="range"
-                      min="30"
-                      max="220"
-                      value={threshold}
-                      onChange={(e) => setThreshold(Number(e.target.value))}
-                      className="w-full h-1.5 bg-[#1F1F24] rounded-lg appearance-none cursor-pointer accent-[#3E2CF0]"
-                    />
-                    <div className="text-[11px] text-[#52525B]">
-                      Controls the binarization split between active ink tokens and bone background.
-                    </div>
+                <div className="relative aspect-[16/9] w-full bg-[#08080A] border border-[#1C1C24] rounded-sm overflow-hidden flex items-center justify-center">
+                  <Hero3DNeural className="w-full h-full" />
+                  <div className="absolute bottom-4 left-4 text-[11px] font-mono text-[#9E9EA8] bg-[#111114]/80 p-2.5 border border-[#272730] rounded">
+                    INTERACTIVE THREE.JS SCENE // POINTER RAYCASTING ACTIVE
                   </div>
+                </div>
+              </div>
+            )}
 
-                  {/* Matrix Granularity */}
-                  <div className="space-y-2">
-                    <div className="flex justify-between text-xs font-mono">
-                      <span className="text-[#85858B]">Matrix Scale Factor</span>
-                      <span className="text-[#3E2CF0] font-bold">{ditherScale}x Block</span>
-                    </div>
-                    <div className="flex gap-2">
-                      {[1, 2, 4, 6, 8].map((scale) => (
+            {/* EXPERIMENT 3: Edge Silicon Latency Matrix */}
+            {activeExperiment === 'neural-latency-bench' && (
+              <div className="space-y-8">
+                <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#1C1C22] pb-4">
+                  <div>
+                    <h2 className="text-xl font-display font-semibold uppercase text-[#F4F4F2]">
+                      Edge Silicon Quantization &amp; Latency Matrix
+                    </h2>
+                    <p className="text-xs font-mono text-[#9E9EA8] mt-0.5">
+                      Simulate memory bandwidth saturation and TensorRT INT8 vs FP32 inference cycles.
+                    </p>
+                  </div>
+                  <button
+                    onClick={handleRunBenchmark}
+                    disabled={benchRunning}
+                    className="px-4 py-2 bg-[#4338CA] hover:bg-[#4F46E5] text-white text-xs font-mono uppercase tracking-wider rounded-sm flex items-center gap-2 cursor-pointer transition-colors"
+                  >
+                    <Play size={14} className={benchRunning ? "animate-spin" : ""} />
+                    <span>{benchRunning ? "Simulating..." : "Run Benchmark Pass"}</span>
+                  </button>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="space-y-4">
+                    <div className="text-xs font-mono text-[#9E9EA8]">SELECT QUANTIZATION PROFILE:</div>
+                    <div className="grid grid-cols-3 gap-2">
+                      {['FP32', 'INT8', 'FP4'].map((mode) => (
                         <button
-                          key={scale}
-                          onClick={() => setDitherScale(scale)}
-                          className={`flex-1 py-1.5 rounded text-xs font-mono border transition-colors ${ditherScale === scale
-                            ? 'bg-[#3E2CF0] border-[#3E2CF0] text-white font-bold'
-                            : 'bg-[#161619] border-[#232328] text-[#85858B] hover:text-white'
-                            }`}
+                          key={mode}
+                          onClick={() => setQuantMode(mode)}
+                          className={`py-2 text-xs font-mono border rounded-sm transition-colors cursor-pointer ${
+                            quantMode === mode
+                              ? 'bg-[#F4F4F0] text-[#08080A] font-bold border-white'
+                              : 'bg-[#16161B] border-[#272730] text-[#9E9EA8]'
+                          }`}
                         >
-                          {scale}x
+                          {mode}
+                        </button>
+                      ))}
+                    </div>
+
+                    <div className="text-xs font-mono text-[#9E9EA8] pt-2">BATCH SIZE SWEEP:</div>
+                    <div className="grid grid-cols-4 gap-2">
+                      {[4, 8, 16, 32].map((bs) => (
+                        <button
+                          key={bs}
+                          onClick={() => setBatchSize(bs)}
+                          className={`py-2 text-xs font-mono border rounded-sm transition-colors cursor-pointer ${
+                            batchSize === bs
+                              ? 'bg-[#F4F4F0] text-[#08080A] font-bold border-white'
+                              : 'bg-[#16161B] border-[#272730] text-[#9E9EA8]'
+                          }`}
+                        >
+                          Batch {bs}
                         </button>
                       ))}
                     </div>
                   </div>
 
-                  {/* Theoretical Footprint Spec */}
-                  <div className="p-4 rounded bg-[#161619] border border-[#1F1F24] font-mono text-xs space-y-2 text-[#85858B]">
-                    <div className="flex justify-between">
-                      <span>Native 24-bit Frame:</span>
-                      <span className="text-[#F0F0EE]">388.8 KB</span>
+                  <div className="p-5 bg-[#08080A] border border-[#1C1C24] rounded-sm font-mono text-xs space-y-3">
+                    <div className="flex justify-between border-b border-[#1C1C24] pb-2">
+                      <span className="text-[#656570]">ESTIMATED P99 LATENCY:</span>
+                      <span className="text-emerald-400 font-bold">{benchResults.p99Latency}</span>
+                    </div>
+                    <div className="flex justify-between border-b border-[#1C1C24] pb-2">
+                      <span className="text-[#656570]">DEVICE THROUGHPUT:</span>
+                      <span className="text-[#F4F4F2]">{benchResults.throughput}</span>
+                    </div>
+                    <div className="flex justify-between border-b border-[#1C1C24] pb-2">
+                      <span className="text-[#656570]">MEMORY BANDWIDTH:</span>
+                      <span className="text-[#818CF8]">{benchResults.bandwidth}</span>
                     </div>
                     <div className="flex justify-between">
-                      <span>1-Bit Quantized Frame:</span>
-                      <span className="text-emerald-400 font-bold">16.2 KB (95.8% compression)</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span>Structural Landmark Recall:</span>
-                      <span className="text-[#3E2CF0] font-bold">99.2% mAP</span>
+                      <span className="text-[#656570]">VARIANCE DRIFT:</span>
+                      <span className="text-[#F4F4F2]">{benchResults.variance}</span>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-          )}
+            )}
 
-          {/* EXPERIMENT 2: Neural Inference Latency Benchmark */}
-          {activeExperiment === 'neural-latency-bench' && (
-            <div className="space-y-6">
-              <div className="border-b border-[#1F1F24] pb-4">
-                <h2 className="text-lg font-bold text-[#F0F0EE]">
-                  Edge Silicon Inference Latency Simulator
-                </h2>
-                <p className="text-xs text-[#85858B]">
-                  Measures P99 latency variance across TensorRT quantization modes under synthetic batch loads.
-                </p>
-              </div>
+            {/* EXPERIMENT 4: Vector Cosine Space Radar */}
+            {activeExperiment === 'vector-similarity-radar' && (
+              <div className="space-y-6">
+                <div className="border-b border-[#1C1C22] pb-4">
+                  <h2 className="text-xl font-display font-semibold uppercase text-[#F4F4F2]">
+                    Cosine Vector Space Projection &amp; Recall
+                  </h2>
+                  <p className="text-xs font-mono text-[#9E9EA8] mt-0.5">
+                    Click anywhere on the radar map to reposition Query Vector V1 and calculate real-time Cosine &amp; Euclidean distances.
+                  </p>
+                </div>
 
-              {/* Controls */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                  <label className="block text-xs font-mono text-[#85858B]">
-                    Model Quantization Mode
-                  </label>
-                  <div className="flex gap-2">
-                    {['FP32', 'INT8', 'FP4 (TensorRT)'].map((mode) => (
-                      <button
-                        key={mode}
-                        onClick={() => setQuantMode(mode.split(' ')[0])}
-                        className={`flex-1 py-2 rounded text-xs font-mono border transition-all ${quantMode === mode.split(' ')[0]
-                          ? 'bg-[#3E2CF0] border-[#3E2CF0] text-white font-bold'
-                          : 'bg-[#161619] border-[#232328] text-[#85858B] hover:text-white'
-                          }`}
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                  <div
+                    onClick={(e) => {
+                      const rect = e.currentTarget.getBoundingClientRect();
+                      const x = Math.round(((e.clientX - rect.left) / rect.width) * 100);
+                      const y = Math.round(((e.clientY - rect.top) / rect.height) * 100);
+                      setQueryPoint({ x, y });
+                    }}
+                    className="lg:col-span-6 relative aspect-square bg-[#08080A] border border-[#1C1C24] rounded-sm p-4 cursor-crosshair overflow-hidden"
+                  >
+                    {/* Concentric distance rings */}
+                    <div className="absolute inset-8 rounded-full border border-[#1C1C24] pointer-events-none" />
+                    <div className="absolute inset-20 rounded-full border border-[#1C1C24] pointer-events-none" />
+                    <div className="absolute inset-32 rounded-full border border-[#1C1C24] pointer-events-none" />
+
+                    {/* Points */}
+                    {samplePoints.map((pt) => (
+                      <div
+                        key={pt.id}
+                        style={{ left: `${pt.x}%`, top: `${pt.y}%` }}
+                        className="absolute -translate-x-1/2 -translate-y-1/2 flex items-center gap-1.5 transition-all duration-300"
                       >
-                        {mode}
-                      </button>
+                        <span
+                          style={{ backgroundColor: pt.color }}
+                          className="w-3 h-3 rounded-full shadow-lg ring-2 ring-black"
+                        />
+                        <span className="text-[10px] font-mono text-[#F4F4F2] bg-black/80 px-1 rounded">
+                          {pt.id}
+                        </span>
+                      </div>
                     ))}
                   </div>
-                </div>
 
-                <div className="space-y-2">
-                  <div className="flex justify-between text-xs font-mono">
-                    <span className="text-[#85858B]">Synthetic Batch Size</span>
-                    <span className="text-[#3E2CF0] font-bold">Batch: {batchSize}</span>
-                  </div>
-                  <input
-                    type="range"
-                    min="1"
-                    max="64"
-                    step="1"
-                    value={batchSize}
-                    onChange={(e) => setBatchSize(Number(e.target.value))}
-                    className="w-full h-1.5 bg-[#1F1F24] rounded-lg appearance-none cursor-pointer accent-[#3E2CF0]"
-                  />
-                </div>
-              </div>
+                  <div className="lg:col-span-6 font-mono text-xs space-y-3">
+                    <div className="p-4 bg-[#08080A] border border-[#1C1C24] rounded space-y-2">
+                      <div className="text-[#818CF8] text-[11px]">QUERY VECTOR COORDINATES:</div>
+                      <div className="text-[#F4F4F2]">X: {queryPoint.x}, Y: {queryPoint.y}</div>
+                    </div>
 
-              {/* Run Button */}
-              <div className="pt-2">
-                <button
-                  onClick={handleRunBenchmark}
-                  disabled={benchRunning}
-                  className="flex items-center gap-2 px-6 py-2.5 rounded bg-[#3E2CF0] hover:bg-[#3220D8] disabled:opacity-50 text-white text-xs font-mono font-semibold transition-all shadow-md shadow-[#3E2CF0]/30 active:scale-95"
-                >
-                  <Play className={`w-3.5 h-3.5 ${benchRunning ? 'animate-spin' : ''}`} />
-                  <span>{benchRunning ? 'Benchmarking 10k passes...' : 'Execute Silicon Benchmark'}</span>
-                </button>
-              </div>
-
-              {/* Benchmark Results Display */}
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-4">
-                <div className="p-4 rounded-lg bg-[#161619] border border-[#1F1F24]">
-                  <div className="text-[10px] font-mono uppercase text-[#85858B]">P99 Latency</div>
-                  <div className="text-xl sm:text-2xl font-mono font-bold text-[#F0F0EE] mt-1">
-                    {benchResults.p99Latency}
-                  </div>
-                </div>
-                <div className="p-4 rounded-lg bg-[#161619] border border-[#1F1F24]">
-                  <div className="text-[10px] font-mono uppercase text-[#85858B]">Throughput</div>
-                  <div className="text-xl sm:text-2xl font-mono font-bold text-emerald-400 mt-1">
-                    {benchResults.throughput}
-                  </div>
-                </div>
-                <div className="p-4 rounded-lg bg-[#161619] border border-[#1F1F24]">
-                  <div className="text-[10px] font-mono uppercase text-[#85858B]">Memory Bandwidth</div>
-                  <div className="text-xl sm:text-2xl font-mono font-bold text-[#3E2CF0] mt-1">
-                    {benchResults.bandwidth}
-                  </div>
-                </div>
-                <div className="p-4 rounded-lg bg-[#161619] border border-[#1F1F24]">
-                  <div className="text-[10px] font-mono uppercase text-[#85858B]">Jitter Variance</div>
-                  <div className="text-xl sm:text-2xl font-mono font-bold text-[#D4D4D8] mt-1">
-                    {benchResults.variance}
+                    <div className="p-4 bg-[#08080A] border border-[#1C1C24] rounded space-y-2">
+                      <div className="text-[#656570] text-[11px]">TOPOLOGICAL DISTANCES TO NEAREST NODES:</div>
+                      {samplePoints.slice(1).map((pt) => {
+                        const dx = queryPoint.x - pt.x;
+                        const dy = queryPoint.y - pt.y;
+                        const dist = Math.sqrt(dx * dx + dy * dy).toFixed(1);
+                        const cosineSim = (1 - dist / 141.4).toFixed(3);
+                        return (
+                          <div key={pt.id} className="flex justify-between text-[11px] border-t border-[#1C1C24] pt-1">
+                            <span className="text-[#F4F4F2]">{pt.label} ({pt.id}):</span>
+                            <span className="text-emerald-400">Cosine Sim: {cosineSim} (d={dist})</span>
+                          </div>
+                        );
+                      })}
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          )}
+            )}
 
-          {/* EXPERIMENT 3: Cosine Vector Radar */}
-          {activeExperiment === 'vector-similarity-radar' && (
-            <div className="space-y-6">
-              <div className="border-b border-[#1F1F24] pb-4">
-                <h2 className="text-lg font-bold text-[#F0F0EE]">
-                  High-Dimensional Vector Space Topology
-                </h2>
-                <p className="text-xs text-[#85858B]">
-                  Simulates cosine similarity cluster projection across semantic query embeddings.
-                </p>
-              </div>
-
-              <div className="p-8 rounded-lg bg-black border border-[#1F1F24] flex flex-col items-center justify-center space-y-4">
-                <div className="relative w-64 h-64 rounded-full border border-[#1F1F24] flex items-center justify-center">
-                  <div className="w-48 h-48 rounded-full border border-[#2E2E38] border-dashed"></div>
-                  <div className="w-24 h-24 rounded-full border border-[#3E2CF0]/40"></div>
-                  <div className="w-3 h-3 rounded-full bg-[#3E2CF0] shadow-lg shadow-[#3E2CF0]/80 animate-ping"></div>
-
-                  {/* Projected Points */}
-                  <div className="absolute top-12 left-16 w-2 h-2 rounded-full bg-white" title="Query Token"></div>
-                  <div className="absolute top-20 right-14 w-2 h-2 rounded-full bg-emerald-400" title="Neighbor 1"></div>
-                  <div className="absolute bottom-16 left-24 w-2 h-2 rounded-full bg-amber-400" title="Neighbor 2"></div>
-                  <div className="absolute bottom-12 right-20 w-2 h-2 rounded-full bg-[#3E2CF0]" title="Centroid"></div>
-                </div>
-
-                <div className="text-xs font-mono text-[#85858B]">
-                  COSINE SIMILARITY SCORE: <span className="text-emerald-400 font-bold">0.964</span> (TOP-1 MATCH)
-                </div>
-              </div>
-            </div>
-          )}
+          </div>
 
         </div>
-
       </div>
-    </div>
+    </PageTransition>
   );
 }

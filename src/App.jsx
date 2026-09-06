@@ -9,6 +9,9 @@ import ProjectDrawer from './components/ProjectDrawer.jsx';
 import CertificateModal from './components/CertificateModal.jsx';
 import MobileContactCTA from './components/MobileContactCTA.jsx';
 
+import NoiseOverlay from './components/canvas/NoiseOverlay.jsx';
+import CursorSpotlight from './components/ui/CursorSpotlight.jsx';
+
 import HomePage from './pages/HomePage.jsx';
 import AboutPage from './pages/AboutPage.jsx';
 import ProjectsPage from './pages/ProjectsPage.jsx';
@@ -56,7 +59,13 @@ export default function App() {
     <BrowserRouter>
       <ScrollToTop />
 
-      <div className="relative min-h-screen flex flex-col justify-between bg-[#0C0C0E] text-[#F4F4F2] selection:bg-[#312E81] selection:text-white">
+      {/* Subtle tactile micro-grain noise overlay */}
+      <NoiseOverlay />
+
+      {/* Ambient cursor spotlight glow for desktop */}
+      <CursorSpotlight />
+
+      <div className="relative min-h-screen flex flex-col justify-between bg-[#08080A] text-[#F4F4F0] selection:bg-[#312E81] selection:text-white">
         
         {/* Navigation Bar */}
         <Navbar />

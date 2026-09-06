@@ -10,6 +10,16 @@ export const labExperiments = [
     parameters: ["Error Diffusion Weight", "Threshold Bias", "Matrix Granularity (2x2 to 8x8)"]
   },
   {
+    id: "neural-3d-manifold",
+    title: "3D Neural Manifold & Shaders",
+    status: "Three.js WebGL",
+    category: "3D & Generative Systems",
+    badge: "Interactive 3D",
+    summary: "Real-time GPU-rendered icosahedron lattice, particle constellations, and orbiting telemetry rings responding to pointer physics.",
+    details: "Interactive Three.js WebGL scene with inertia-smoothed rotation, camera perspective adjustments, and additive alpha blending.",
+    parameters: ["Pointer Inertia", "Particle Constellation", "Orbiting Data Rings"]
+  },
+  {
     id: "neural-latency-bench",
     title: "Edge Silicon Inference Latency Matrix",
     status: "Silicon Simulator",
