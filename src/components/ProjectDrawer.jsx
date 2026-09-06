@@ -112,30 +112,35 @@ export default function ProjectDrawer({ project, onClose }) {
                 </div>
               )}
 
-              {/* Verified Metrics / Results Bar */}
-              <div className="p-5 bg-[#0D0D11] border border-[#1F1F28] rounded-sm space-y-3">
-                <div className="text-[11px] font-mono text-[#818CF8] uppercase tracking-wider">
-                  THE RESULT // EMPIRICALLY VERIFIED METRICS
+              {/* Verified Metrics / Results Bar — Recessed Hardware Chassis */}
+              <div className="p-5 bg-[#0C0C0E] border border-[rgba(255,255,255,0.06)] shadow-[inset_0_1px_1px_rgba(255,255,255,0.04),0_4px_12px_rgba(0,0,0,0.5)] rounded-[6px] space-y-3">
+                <div className="flex items-center justify-between text-[11px] font-mono text-[#A0A0A0] uppercase tracking-wider">
+                  <span>THE RESULT // EMPIRICALLY VERIFIED METRICS</span>
+                  <span className="text-emerald-400 font-semibold">[ BENCHMARKED ]</span>
                 </div>
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 font-mono">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 font-mono">
                   {project.metrics.map((m) => (
-                    <div key={m.label} className="p-3 bg-[#08080A] border border-[#1C1C24] rounded-sm">
-                      <div className="text-base font-bold text-white">{m.value}</div>
-                      <div className="text-[10px] text-[#656570] uppercase mt-0.5">{m.label}</div>
+                    <div 
+                      key={m.label} 
+                      className="p-3 bg-[#070709] border border-[rgba(255,255,255,0.05)] shadow-[inset_0_2px_4px_rgba(0,0,0,0.8)] rounded-[4px]"
+                    >
+                      <div className="text-base font-bold text-[#F2F2F2]">{m.value}</div>
+                      <div className="text-[10px] text-[#666666] uppercase mt-0.5">{m.label}</div>
                     </div>
                   ))}
                 </div>
               </div>
 
               {/* Structured Technical Narrative Sections */}
-              <div className="space-y-10 text-sm sm:text-base font-light leading-relaxed text-[#9E9EA8]">
+              <div className="space-y-10 text-sm sm:text-base font-light leading-relaxed text-[#A0A0A0]">
                 
                 {/* 1. THE PROBLEM */}
-                <section className="space-y-3 border-l-2 border-[#E10600] pl-6">
-                  <div className="text-xs font-mono text-[#E10600] uppercase tracking-widest font-semibold">
-                    01 // THE PROBLEM
+                <section className="space-y-3 border-l-2 border-[#E10600] pl-6 relative">
+                  <div className="text-xs font-mono text-[#E10600] uppercase tracking-widest font-semibold flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#E10600] shadow-[0_0_6px_rgba(225,6,0,0.9)]" />
+                    <span>01 // THE PROBLEM</span>
                   </div>
-                  <h2 className="text-xl font-display font-bold uppercase text-[#F4F4F2]">
+                  <h2 className="text-xl font-display font-bold uppercase text-[#F2F2F2]">
                     What was being solved?
                   </h2>
                   <p className="text-[#D1D5DB] leading-relaxed">
@@ -144,11 +149,12 @@ export default function ProjectDrawer({ project, onClose }) {
                 </section>
 
                 {/* 2. THE IDEA / APPROACH */}
-                <section className="space-y-3 border-l-2 border-[#818CF8] pl-6">
-                  <div className="text-xs font-mono text-[#818CF8] uppercase tracking-widest font-semibold">
-                    02 // THE IDEA
+                <section className="space-y-3 border-l-2 border-[#818CF8] pl-6 relative">
+                  <div className="text-xs font-mono text-[#818CF8] uppercase tracking-widest font-semibold flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#818CF8]" />
+                    <span>02 // THE IDEA</span>
                   </div>
-                  <h2 className="text-xl font-display font-bold uppercase text-[#F4F4F2]">
+                  <h2 className="text-xl font-display font-bold uppercase text-[#F2F2F2]">
                     Architectural Strategy &amp; Formulation
                   </h2>
                   <p className="text-[#D1D5DB] leading-relaxed">
@@ -157,11 +163,12 @@ export default function ProjectDrawer({ project, onClose }) {
                 </section>
 
                 {/* 3. THE SYSTEM & PIPELINE */}
-                <section className="space-y-3 border-l-2 border-[#38BDF8] pl-6">
-                  <div className="text-xs font-mono text-[#38BDF8] uppercase tracking-widest font-semibold">
-                    03 // THE SYSTEM {isAiProject ? '& MODEL PIPELINE' : '& DISTRIBUTED RUNTIME'}
+                <section className="space-y-3 border-l-2 border-[#38BDF8] pl-6 relative">
+                  <div className="text-xs font-mono text-[#38BDF8] uppercase tracking-widest font-semibold flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#38BDF8]" />
+                    <span>03 // THE SYSTEM {isAiProject ? '& MODEL PIPELINE' : '& DISTRIBUTED RUNTIME'}</span>
                   </div>
-                  <h2 className="text-xl font-display font-bold uppercase text-[#F4F4F2]">
+                  <h2 className="text-xl font-display font-bold uppercase text-[#F2F2F2]">
                     Execution Architecture
                   </h2>
                   <p className="text-[#D1D5DB] leading-relaxed">
@@ -170,11 +177,12 @@ export default function ProjectDrawer({ project, onClose }) {
                 </section>
 
                 {/* 4. WHAT I LEARNED */}
-                <section className="space-y-3 border-l-2 border-[#34D399] pl-6">
-                  <div className="text-xs font-mono text-[#34D399] uppercase tracking-widest font-semibold">
-                    04 // WHAT I LEARNED
+                <section className="space-y-3 border-l-2 border-[#34D399] pl-6 relative">
+                  <div className="text-xs font-mono text-[#34D399] uppercase tracking-widest font-semibold flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#34D399]" />
+                    <span>04 // WHAT I LEARNED</span>
                   </div>
-                  <h2 className="text-xl font-display font-bold uppercase text-[#F4F4F2]">
+                  <h2 className="text-xl font-display font-bold uppercase text-[#F2F2F2]">
                     Key Technical Lessons &amp; Trade-offs
                   </h2>
                   <p className="text-[#D1D5DB] leading-relaxed">

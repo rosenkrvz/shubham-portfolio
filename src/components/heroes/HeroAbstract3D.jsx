@@ -8,7 +8,7 @@ import { ArrowRight, Terminal, Cpu, Binary, Compass, Activity } from 'lucide-rea
 export default function HeroAbstract3D({ onExploreClick }) {
   return (
     <section className="relative min-h-[92vh] lg:min-h-[96vh] flex flex-col justify-between border-b border-[#1C1C22] overflow-hidden bg-[#08080A]">
-      
+
       {/* 3D WebGL Computational Manifold & Vector Field */}
       <div className="absolute inset-0 z-0 pointer-events-auto opacity-85 hover:opacity-100 transition-opacity duration-700">
         <Hero3DComputationalField />
@@ -59,59 +59,77 @@ export default function HeroAbstract3D({ onExploreClick }) {
 
           {/* Clear, Grounded Copy */}
           <div className="max-w-2xl space-y-3 mb-10">
-            <p className="text-xl sm:text-2xl md:text-3xl text-[#F4F4F2] font-light leading-snug tracking-tight">
+            <p className="text-xl sm:text-2xl md:text-3xl text-[#F2F2F2] font-light leading-snug tracking-tight">
               I build systems, analyze data, and experiment with intelligent models.
             </p>
-            <p className="text-sm sm:text-base text-[#9E9EA8] font-light leading-relaxed">
+            <p className="text-sm sm:text-base text-[#A0A0A0] font-light leading-relaxed">
               Applied AI &amp; Data Science at IIT Jodhpur. Focused on machine learning runtimes, computer vision pipelines, and resilient software architectures.
             </p>
           </div>
 
-          {/* Magnetic Action Triggers */}
+          {/* Tactile Action Triggers */}
           <div className="flex flex-wrap items-center gap-4">
-            <MagneticButton
+            <TactileButton
+              variant="primary"
+              size="lg"
               onClick={onExploreClick}
-              className="px-6 py-3.5 bg-[#F4F4F0] hover:bg-white text-[#08080A] font-semibold text-sm rounded-sm tracking-tight shadow-xl flex items-center gap-2 group cursor-pointer"
+              className="gap-2.5 group cursor-pointer"
             >
               <span>Explore Selected Work</span>
-              <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-            </MagneticButton>
+              <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform" />
+            </TactileButton>
 
-            <MagneticButton
-              as="div"
-              className="px-5 py-3.5 border border-[#272730] hover:border-[#6366F1] bg-[#111114]/70 backdrop-blur-sm text-[#F4F4F2] text-sm rounded-sm cursor-pointer"
-            >
-              <Link to="/ai-data" className="flex items-center gap-2">
-                <Binary size={15} className="text-[#818CF8]" />
+            <Link to="/ai-data">
+              <TactileButton
+                variant="secondary"
+                size="md"
+                className="gap-2 cursor-pointer"
+              >
+                <Binary size={14} className="text-[#818CF8]" />
                 <span>AI &amp; Data</span>
-              </Link>
-            </MagneticButton>
+              </TactileButton>
+            </Link>
 
-            <MagneticButton
-              as="div"
-              className="px-5 py-3.5 border border-[#272730] hover:border-[#6366F1] bg-[#111114]/70 backdrop-blur-sm text-[#9E9EA8] hover:text-white text-sm rounded-sm cursor-pointer"
-            >
-              <Link to="/experiments" className="flex items-center gap-2">
-                <Cpu size={15} className="text-[#818CF8]" />
+            <Link to="/experiments">
+              <TactileButton
+                variant="hardware"
+                size="md"
+                led="active"
+                className="gap-2 cursor-pointer"
+              >
+                <Cpu size={14} className="text-[#818CF8]" />
                 <span>Digital Lab</span>
-              </Link>
-            </MagneticButton>
+              </TactileButton>
+            </Link>
           </div>
         </motion.div>
       </div>
 
-      {/* Bottom Floating Telemetry Strip */}
-      <div className="relative z-10 max-w-7xl mx-auto w-full px-6 pb-8 border-t border-[#1C1C22]/60 pt-4 flex flex-wrap items-center justify-between gap-4 text-xs font-mono text-[#656570]">
+      {/* Laboratory Instrumentation & Telemetry Dock */}
+      <div className="relative z-10 max-w-7xl mx-auto w-full px-6 pb-6 border-t border-[rgba(255,255,255,0.06)] pt-4 flex flex-wrap items-center justify-between gap-4 text-xs font-mono text-[#666666]">
+        <div className="flex flex-wrap items-center gap-4 sm:gap-6">
+          <div className="inline-flex items-center gap-2 px-2.5 py-1 bg-[#0A0A0A] border border-[rgba(255,255,255,0.06)] rounded-[4px] shadow-[inset_0_1px_2px_rgba(0,0,0,0.8)]">
+            <StatusIndicator status="online" size="sm" />
+            <span className="text-[#F2F2F2] text-[11px]">SYSTEM: ONLINE</span>
+          </div>
+          <div className="inline-flex items-center gap-2 px-2.5 py-1 bg-[#0A0A0A] border border-[rgba(255,255,255,0.06)] rounded-[4px] shadow-[inset_0_1px_2px_rgba(0,0,0,0.8)]">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#38BDF8]" />
+            <span className="text-[#A0A0A0] text-[11px]">DIMENSION: 3D MANIFOLD</span>
+          </div>
+          <div className="hidden md:inline-flex items-center gap-2 px-2.5 py-1 bg-[#0A0A0A] border border-[rgba(255,255,255,0.06)] rounded-[4px] shadow-[inset_0_1px_2px_rgba(0,0,0,0.8)]">
+            <StatusIndicator status="active" size="sm" pulse />
+            <span className="text-[#A0A0A0] text-[11px]">VECTOR STREAM: ACTIVE</span>
+          </div>
+        </div>
+
         <div className="flex items-center gap-6">
           <span className="flex items-center gap-1.5 text-[#9E9EA8]">
             <Compass size={14} className="text-[#818CF8]" />
             Dimensionality Reduction &bull; Manifolds
           </span>
-          <span className="hidden md:inline">INT8 Quantization &bull; Tensor Digests</span>
-          <span className="hidden md:inline">Asynchronous Runtime &bull; Redis Streams</span>
-        </div>
-        <div>
-          <span>INTERACTIVE 3D COMPUTATIONAL FIELD</span>
+          <span className="text-[11px] text-[#666666] uppercase tracking-wider">
+            LAB CHASSIS // VOLT. 0.2.0
+          </span>
         </div>
       </div>
     </section>

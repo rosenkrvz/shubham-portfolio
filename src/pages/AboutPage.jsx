@@ -6,6 +6,8 @@ import { skillCategories } from '../data/skills.js';
 import { usePageMeta } from '../hooks/usePageMeta';
 import PageTransition from '../components/ui/PageTransition.jsx';
 import MagneticButton from '../components/ui/MagneticButton.jsx';
+import TactileButton from '../components/ui/TactileButton.jsx';
+import StatusIndicator from '../components/ui/StatusIndicator.jsx';
 import ColorSystemCard from '../components/ui/ColorSystemCard.jsx';
 
 export default function AboutPage({ onShowToast }) {
@@ -57,23 +59,25 @@ export default function AboutPage({ onShowToast }) {
             </p>
 
             <div className="flex flex-wrap items-center gap-4 pt-4">
-              <MagneticButton
+              <TactileButton
+                variant="primary"
+                size="md"
                 onClick={handleDownloadResume}
-                className="px-5 py-3 bg-[#F4F4F0] hover:bg-white text-[#08080A] text-xs font-mono uppercase tracking-wider font-semibold rounded-sm shadow-xl flex items-center gap-2 cursor-pointer"
+                icon={Download}
+                led="active"
               >
-                <Download className="w-3.5 h-3.5" />
-                <span>Download CV (PDF)</span>
-              </MagneticButton>
+                Download CV (PDF)
+              </TactileButton>
 
-              <MagneticButton
-                as="div"
-                className="px-5 py-3 border border-[#272730] hover:border-[#6366F1] bg-[#111114] text-xs font-mono uppercase tracking-wider text-[#F4F4F2] rounded-sm cursor-pointer"
+              <TactileButton
+                as={Link}
+                to="/contact"
+                variant="secondary"
+                size="md"
+                icon={ArrowRight}
               >
-                <Link to="/contact" className="flex items-center gap-2">
-                  <span>Contact Direct</span>
-                  <ArrowRight className="w-3.5 h-3.5 text-[#818CF8]" />
-                </Link>
-              </MagneticButton>
+                Contact Direct
+              </TactileButton>
             </div>
           </div>
 
@@ -281,20 +285,21 @@ export default function AboutPage({ onShowToast }) {
           </section>
 
           {/* Bottom CTA */}
-          <div className="pt-8 border-t border-[#1C1C22] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div className="pt-8 border-t border-[rgba(255,255,255,0.06)] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
             <div>
               <div className="text-sm font-display uppercase tracking-tight text-[#F4F4F0]">Interested in collaborating or discussing a role?</div>
               <div className="text-xs font-mono text-[#656570] mt-0.5">Open for technical internships, engineering roles, and academic collaborations.</div>
             </div>
-            <MagneticButton
-              as="div"
-              className="px-5 py-2.5 bg-[#4338CA] hover:bg-[#4F46E5] text-white text-xs font-mono uppercase tracking-wider rounded-sm shrink-0 cursor-pointer"
+            <TactileButton
+              as={Link}
+              to="/contact"
+              variant="primary"
+              size="md"
+              icon={ArrowRight}
+              led="active"
             >
-              <Link to="/contact" className="flex items-center gap-2">
-                <span>Get in Touch</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </Link>
-            </MagneticButton>
+              Get in Touch
+            </TactileButton>
           </div>
 
         </div>

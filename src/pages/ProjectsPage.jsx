@@ -84,27 +84,34 @@ export default function ProjectsPage({ onOpenProject }) {
           {/* Filter & View Switcher Bar */}
           <div className="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-6 border-b border-[#1C1C22] pb-8">
             
-            {/* Technical Category Buttons */}
-            <div className="flex flex-wrap items-center gap-2">
-              {categories.map((cat) => (
-                <button
-                  key={cat.id}
-                  onClick={() => setSelectedCategory(cat.id)}
-                  className={`px-3.5 py-1.5 rounded-sm text-xs font-mono transition-all cursor-pointer relative ${
-                    selectedCategory === cat.id
-                      ? 'bg-[#181824] border border-[#6366F1] text-white shadow-sm font-semibold'
-                      : 'bg-[#111114] text-[#9E9EA8] hover:text-[#F4F4F0] border border-[#272730]'
-                  }`}
-                >
-                  {selectedCategory === cat.id && (
-                    <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#E10600] mr-1.5 align-middle" />
-                  )}
-                  {cat.label}
-                </button>
-              ))}
+            {/* Technical Category Buttons — Recessed Tactile Segment */}
+            <div className="p-1 rounded-[6px] bg-[#0A0A0A] border border-[rgba(255,255,255,0.06)] shadow-[inset_0_2px_5px_rgba(0,0,0,0.85)] flex flex-wrap items-center gap-1">
+              {categories.map((cat) => {
+                const isSelected = selectedCategory === cat.id;
+                return (
+                  <button
+                    key={cat.id}
+                    onClick={() => setSelectedCategory(cat.id)}
+                    className={`px-3 py-1.5 rounded-[4px] text-xs font-mono transition-all duration-150 cursor-pointer flex items-center gap-1.5 select-none ${
+                      isSelected
+                        ? 'bg-[#18181C] text-[#F2F2F2] font-semibold border border-[rgba(255,255,255,0.1)] shadow-[inset_0_1px_1px_rgba(255,255,255,0.12),inset_0_-1px_2px_rgba(0,0,0,0.7),0_2px_6px_rgba(0,0,0,0.5)]'
+                        : 'text-[#888888] hover:text-[#F2F2F2] hover:bg-[#121214]'
+                    }`}
+                  >
+                    <span 
+                      className={`w-1.5 h-1.5 rounded-full transition-all ${
+                        isSelected 
+                          ? 'bg-[#FFFFFF] shadow-[0_0_6px_2px_rgba(225,6,0,0.95)]' 
+                          : 'bg-[#2A0808]'
+                      }`} 
+                    />
+                    <span>{cat.label}</span>
+                  </button>
+                );
+              })}
             </div>
 
-            {/* Right Controls: Segmented Industrial Switch & Search */}
+            {/* Right Controls: Segmented Industrial Switch & Recessed Search */}
             <div className="flex flex-wrap items-center gap-4">
               
               {/* Segmented Industrial Switch */}
@@ -118,15 +125,15 @@ export default function ProjectsPage({ onOpenProject }) {
                 />
               </div>
 
-              {/* Search Box */}
+              {/* Recessed Hardware Search Box */}
               <div className="relative min-w-[220px] flex-1 sm:flex-initial">
-                <Search className="w-3.5 h-3.5 text-[#656570] absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
+                <Search className="w-3.5 h-3.5 text-[#666666] absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
                 <input
                   type="text"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder="Filter by keyword..."
-                  className="w-full pl-9 pr-3 py-2.5 rounded-sm bg-[#111114] border border-[#272730] text-xs font-mono text-[#F4F4F2] placeholder-[#656570] focus:outline-none focus:border-[#6366F1]"
+                  className="w-full pl-9 pr-3.5 py-2 rounded-[5px] bg-[#0A0A0A] border border-[rgba(255,255,255,0.06)] shadow-[inset_0_2px_5px_rgba(0,0,0,0.85)] text-xs font-mono text-[#F2F2F2] placeholder-[#555555] focus:outline-none focus:border-[#E10600]/60 transition-colors"
                 />
               </div>
 

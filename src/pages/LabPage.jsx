@@ -166,32 +166,30 @@ export default function LabPage({ onShowToast }) {
 
                 {/* Controls */}
                 <div className="lg:col-span-7 space-y-6">
-                  <div className="flex items-center gap-2">
-                    <button
-                      onClick={() => setSelectedImagePreset('/assets/sentinel_portrait.jpg')}
-                      className={`px-3 py-1.5 rounded-sm text-xs font-mono border transition-colors cursor-pointer ${
-                        selectedImagePreset.includes('sentinel')
-                          ? 'bg-[#F4F4F0] text-[#08080A] font-semibold border-white'
-                          : 'bg-[#16161B] border-[#272730] text-[#9E9EA8]'
-                      }`}
-                    >
-                      Preset: Portrait
-                    </button>
-                    <button
-                      onClick={() => setSelectedImagePreset('/assets/circuit_hardware.jpg')}
-                      className={`px-3 py-1.5 rounded-sm text-xs font-mono border transition-colors cursor-pointer ${
-                        selectedImagePreset.includes('circuit')
-                          ? 'bg-[#F4F4F0] text-[#08080A] font-semibold border-white'
-                          : 'bg-[#16161B] border-[#272730] text-[#9E9EA8]'
-                      }`}
-                    >
-                      Preset: Circuit
-                    </button>
+                  {/* Preset Selector — Tactile Segment */}
+                  <div className="space-y-2">
+                    <span className="text-xs font-mono text-[#A0A0A0] uppercase tracking-wider">SOURCE FRAME BUFFER</span>
+                    <div className="inline-flex p-1 bg-[#0A0A0A] border border-[rgba(255,255,255,0.06)] shadow-[inset_0_2px_4px_rgba(0,0,0,0.8)] rounded-[5px] gap-1">
+                      <TactileButton
+                        size="sm"
+                        variant={selectedImagePreset.includes('sentinel') ? 'primary' : 'secondary'}
+                        onClick={() => setSelectedImagePreset('/assets/sentinel_portrait.jpg')}
+                      >
+                        Preset: Portrait
+                      </TactileButton>
+                      <TactileButton
+                        size="sm"
+                        variant={selectedImagePreset.includes('circuit') ? 'primary' : 'secondary'}
+                        onClick={() => setSelectedImagePreset('/assets/circuit_hardware.jpg')}
+                      >
+                        Preset: Circuit
+                      </TactileButton>
+                    </div>
                   </div>
 
                   <div className="space-y-2">
                     <div className="flex justify-between text-xs font-mono">
-                      <span className="text-[#9E9EA8]">THRESHOLD CUTOFF</span>
+                      <span className="text-[#A0A0A0] uppercase tracking-wider">THRESHOLD CUTOFF</span>
                       <span className="text-[#818CF8] font-bold">{threshold} / 255</span>
                     </div>
                     <input
@@ -200,24 +198,24 @@ export default function LabPage({ onShowToast }) {
                       max="220"
                       value={threshold}
                       onChange={(e) => setThreshold(Number(e.target.value))}
-                      className="w-full h-1.5 bg-[#1C1C24] rounded-lg cursor-pointer accent-[#6366F1]"
+                      className="w-full h-2 bg-[#0A0A0A] border border-[rgba(255,255,255,0.06)] shadow-[inset_0_1px_3px_rgba(0,0,0,0.9)] rounded-lg cursor-pointer accent-[#E10600]"
                     />
                   </div>
 
                   <div className="space-y-2">
                     <div className="flex justify-between text-xs font-mono">
-                      <span className="text-[#9E9EA8]">BAYER BLOCK GRANULARITY</span>
+                      <span className="text-[#A0A0A0] uppercase tracking-wider">BAYER BLOCK GRANULARITY</span>
                       <span className="text-[#818CF8] font-bold">{ditherScale}× Scale</span>
                     </div>
-                    <div className="flex gap-2">
+                    <div className="flex gap-1.5 p-1 bg-[#0A0A0A] border border-[rgba(255,255,255,0.06)] shadow-[inset_0_2px_4px_rgba(0,0,0,0.8)] rounded-[5px]">
                       {[1, 2, 4, 6, 8].map((scale) => (
                         <button
                           key={scale}
                           onClick={() => setDitherScale(scale)}
-                          className={`flex-1 py-1.5 text-xs font-mono border rounded-sm transition-colors cursor-pointer ${
+                          className={`flex-1 py-1.5 text-xs font-mono rounded-[3px] transition-all cursor-pointer select-none ${
                             ditherScale === scale
-                              ? 'bg-[#F4F4F0] text-[#08080A] font-bold border-white'
-                              : 'bg-[#16161B] border-[#272730] text-[#9E9EA8]'
+                              ? 'bg-[#18181C] text-[#F2F2F2] font-bold border border-[rgba(255,255,255,0.12)] shadow-[inset_0_1px_1px_rgba(255,255,255,0.12),0_2px_4px_rgba(0,0,0,0.5)]'
+                              : 'text-[#666666] hover:text-[#D1D5DB] border border-transparent'
                           }`}
                         >
                           {scale}×
@@ -226,7 +224,7 @@ export default function LabPage({ onShowToast }) {
                     </div>
                   </div>
 
-                  <div className="p-3 bg-[#08080A] border border-[#1C1C24] rounded text-xs font-mono text-[#9E9EA8]">
+                  <div className="p-3 bg-[#08080A] border border-[#1C1C24] rounded-[4px] shadow-[inset_0_1px_3px_rgba(0,0,0,0.8)] text-xs font-mono text-[#A0A0A0]">
                     <code>Bayer 4x4: [[0, 8, 2, 10], [12, 4, 14, 6], [3, 11, 1, 9], [15, 7, 13, 5]] / 16</code>
                   </div>
                 </div>
@@ -351,16 +349,16 @@ export default function LabPage({ onShowToast }) {
                 <div className="lg:col-span-6 space-y-6">
                   {/* Mode Toggle */}
                   <div className="space-y-2">
-                    <span className="text-xs font-mono text-[#9E9EA8]">QUANTIZATION MODE</span>
-                    <div className="flex gap-2">
+                    <span className="text-xs font-mono text-[#A0A0A0] uppercase tracking-wider">QUANTIZATION MODE</span>
+                    <div className="flex gap-1.5 p-1 bg-[#0A0A0A] border border-[rgba(255,255,255,0.06)] shadow-[inset_0_2px_4px_rgba(0,0,0,0.8)] rounded-[5px]">
                       {['FP32', 'INT8', 'FP4'].map((mode) => (
                         <button
                           key={mode}
                           onClick={() => setQuantMode(mode)}
-                          className={`flex-1 py-2 text-xs font-mono rounded-sm border transition-colors cursor-pointer ${
+                          className={`flex-1 py-2 text-xs font-mono rounded-[3px] transition-all cursor-pointer select-none ${
                             quantMode === mode
-                              ? 'bg-[#F4F4F0] text-[#08080A] font-bold border-white'
-                              : 'bg-[#16161B] border-[#272730] text-[#9E9EA8]'
+                              ? 'bg-[#18181C] text-[#F2F2F2] font-bold border border-[rgba(255,255,255,0.12)] shadow-[inset_0_1px_1px_rgba(255,255,255,0.12),0_2px_4px_rgba(0,0,0,0.5)]'
+                              : 'text-[#666666] hover:text-[#D1D5DB] border border-transparent'
                           }`}
                         >
                           {mode}
@@ -372,7 +370,7 @@ export default function LabPage({ onShowToast }) {
                   {/* Batch Size Slider */}
                   <div className="space-y-2">
                     <div className="flex justify-between text-xs font-mono">
-                      <span className="text-[#9E9EA8]">BATCH CONCURRENCY</span>
+                      <span className="text-[#A0A0A0] uppercase tracking-wider">BATCH CONCURRENCY</span>
                       <span className="text-[#818CF8] font-bold">{batchSize}</span>
                     </div>
                     <input
@@ -382,27 +380,29 @@ export default function LabPage({ onShowToast }) {
                       step="1"
                       value={batchSize}
                       onChange={(e) => setBatchSize(Number(e.target.value))}
-                      className="w-full h-1.5 bg-[#1C1C24] rounded-lg cursor-pointer accent-[#6366F1]"
+                      className="w-full h-2 bg-[#0A0A0A] border border-[rgba(255,255,255,0.06)] shadow-[inset_0_1px_3px_rgba(0,0,0,0.9)] rounded-lg cursor-pointer accent-[#E10600]"
                     />
                   </div>
 
-                  <button
+                  <TactileButton
+                    variant="danger"
+                    size="md"
                     onClick={handleRunBenchmark}
                     disabled={benchRunning}
-                    className="w-full py-3 bg-[#181822] hover:bg-[#202030] border border-[#6366F1] text-xs font-mono uppercase text-[#F4F4F2] rounded-sm flex items-center justify-center gap-2 cursor-pointer transition-colors"
+                    className="w-full justify-center"
                   >
                     {benchRunning ? (
                       <>
-                        <RefreshCw size={14} className="animate-spin text-[#818CF8]" />
-                        <span>Running TensorRT Pass...</span>
+                        <RefreshCw size={14} className="animate-spin text-white" />
+                        <span>Executing TensorRT Pass...</span>
                       </>
                     ) : (
                       <>
-                        <Play size={14} className="text-[#818CF8]" />
+                        <Play size={14} className="text-[#E10600]" />
                         <span>Simulate Benchmark Pass</span>
                       </>
                     )}
-                  </button>
+                  </TactileButton>
                 </div>
 
                 {/* Benchmark Output Grid */}

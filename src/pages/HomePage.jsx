@@ -21,6 +21,7 @@ import ProjectOrchestratorCase from '../components/projects/ProjectOrchestratorC
 import ProjectRiskCase from '../components/projects/ProjectRiskCase.jsx';
 
 import MagneticButton from '../components/ui/MagneticButton.jsx';
+import TactileButton from '../components/ui/TactileButton.jsx';
 import PageTransition from '../components/ui/PageTransition.jsx';
 
 import {
@@ -392,17 +393,20 @@ export default function HomePage({ onOpenProject, onShowToast }) {
             </p>
 
             <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
-              <MagneticButton
-                as="div"
-                className="px-8 py-4 bg-[#F4F4F0] hover:bg-white text-[#08080A] font-semibold text-xs font-mono uppercase tracking-wider rounded-sm shadow-2xl cursor-pointer"
+              <TactileButton
+                as={Link}
+                to="/contact"
+                variant="primary"
+                size="lg"
+                icon={ArrowRight}
+                led="active"
               >
-                <Link to="/contact" className="flex items-center gap-2">
-                  <span>Start a Conversation</span>
-                  <ArrowRight size={14} />
-                </Link>
-              </MagneticButton>
+                Start a Conversation
+              </TactileButton>
 
-              <button
+              <TactileButton
+                variant="secondary"
+                size="lg"
                 onClick={() => {
                   navigator.clipboard.writeText(profile.email);
                   if (onShowToast) {
@@ -412,10 +416,9 @@ export default function HomePage({ onOpenProject, onShowToast }) {
                     });
                   }
                 }}
-                className="px-6 py-4 border border-[#272730] hover:border-[#6366F1] bg-[#111114] text-xs font-mono uppercase tracking-wider text-[#9E9EA8] hover:text-white rounded-sm cursor-pointer transition-colors"
               >
                 Copy Email ({profile.email})
-              </button>
+              </TactileButton>
             </div>
           </div>
         </section>

@@ -53,20 +53,20 @@ export default function AiDataPage({ onShowToast }) {
               Studying Applied AI &amp; Data Science at IIT Jodhpur. From statistical distributions and high-dimensional latent spaces to deterministic inference on physical hardware, I focus on how models formulate reality, generalize beyond training distributions, and execute under strict computational budgets.
             </p>
 
-            {/* Technical Flow Label Banner */}
-            <div className="p-4 bg-[#0B0B0E] border border-[#1C1C24] rounded-sm font-mono text-xs flex flex-wrap items-center justify-between gap-4 text-[#818CF8]">
-              <div className="flex items-center gap-2">
-                <span className="text-[#656570]">CANONICAL PIPELINE:</span>
-                <span className="px-2 py-0.5 bg-[#14141C] text-white rounded">DATASET</span>
-                <span className="text-[#656570]">&rarr;</span>
-                <span className="px-2 py-0.5 bg-[#14141C] text-white rounded">TRANSFORMATION</span>
-                <span className="text-[#656570]">&rarr;</span>
-                <span className="px-2 py-0.5 bg-[#14141C] text-white rounded">MODEL</span>
-                <span className="text-[#656570]">&rarr;</span>
-                <span className="px-2 py-0.5 bg-[#14141C] text-emerald-400 rounded">EVALUATION</span>
+            {/* Technical Flow Label Banner — Recessed Hardware Channel */}
+            <div className="p-4 sm:p-5 bg-[#0A0A0A] border border-[rgba(255,255,255,0.06)] shadow-[inset_0_2px_6px_rgba(0,0,0,0.85)] rounded-[6px] font-mono text-xs flex flex-wrap items-center justify-between gap-4 text-[#818CF8]">
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="text-[#666666] text-[11px] uppercase tracking-wider mr-1">CANONICAL PIPELINE:</span>
+                <span className="px-2.5 py-1 bg-[#141418] border border-[rgba(255,255,255,0.08)] shadow-[inset_0_1px_1px_rgba(255,255,255,0.08),0_2px_4px_rgba(0,0,0,0.4)] text-[#F2F2F2] rounded-[4px]">DATASET</span>
+                <span className="text-[#666666]">&rarr;</span>
+                <span className="px-2.5 py-1 bg-[#141418] border border-[rgba(255,255,255,0.08)] shadow-[inset_0_1px_1px_rgba(255,255,255,0.08),0_2px_4px_rgba(0,0,0,0.4)] text-[#F2F2F2] rounded-[4px]">TRANSFORMATION</span>
+                <span className="text-[#666666]">&rarr;</span>
+                <span className="px-2.5 py-1 bg-[#141418] border border-[rgba(255,255,255,0.08)] shadow-[inset_0_1px_1px_rgba(255,255,255,0.08),0_2px_4px_rgba(0,0,0,0.4)] text-[#F2F2F2] rounded-[4px]">MODEL</span>
+                <span className="text-[#666666]">&rarr;</span>
+                <span className="px-2.5 py-1 bg-[#141418] border border-[#10B981]/40 shadow-[inset_0_1px_1px_rgba(16,185,129,0.2),0_2px_4px_rgba(0,0,0,0.4)] text-[#10B981] rounded-[4px]">EVALUATION</span>
               </div>
 
-              <div className="text-[11px] text-[#656570]">
+              <div className="text-[11px] text-[#666666]">
                 INPUT &rarr; FEATURES &rarr; MODEL &rarr; OUTPUT
               </div>
             </div>

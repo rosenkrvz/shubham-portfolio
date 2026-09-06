@@ -41,8 +41,11 @@ export default function Navbar() {
           </div>
         </Link>
 
-        {/* Desktop Navigation Links */}
-        <nav className="hidden md:flex items-center gap-1" aria-label="Main Navigation">
+        {/* Desktop Navigation Links — Recessed Physical Track */}
+        <nav 
+          className="hidden md:flex items-center gap-1 p-1 rounded-[6px] bg-[#0A0A0A] border border-[rgba(255,255,255,0.06)] shadow-[inset_0_2px_5px_rgba(0,0,0,0.8),inset_0_1px_1px_rgba(255,255,255,0.02)]" 
+          aria-label="Main Navigation"
+        >
           {NAV_ITEMS.map((item) => {
             const isActive = currentPath === item.path || 
               (item.path === '/projects' && (currentPath === '/work' || currentPath.startsWith('/projects/'))) ||
@@ -53,20 +56,16 @@ export default function Navbar() {
               <NavLink
                 key={item.path}
                 to={item.path}
-                className={`relative px-3 py-1.5 rounded-md text-xs font-medium tracking-wide transition-colors ${
+                className={`relative px-3.5 py-1.5 rounded-[4px] text-xs font-mono transition-all duration-150 flex items-center gap-2 select-none ${
                   isActive
-                    ? 'text-[#F4F4F0]'
-                    : 'text-[#9E9EA8] hover:text-[#F4F4F0] hover:bg-[#121216]'
+                    ? 'text-[#F2F2F2] font-semibold bg-[#18181C] border border-[rgba(255,255,255,0.1)] shadow-[inset_0_1px_1px_rgba(255,255,255,0.12),inset_0_-1px_2px_rgba(0,0,0,0.7),0_2px_6px_rgba(0,0,0,0.5)]'
+                    : 'text-[#888888] hover:text-[#F2F2F2] hover:bg-[#121214]'
                 }`}
               >
                 {isActive && (
-                  <motion.div
-                    layoutId="activeNavPill"
-                    className="absolute inset-0 rounded-md bg-[#16161C] border border-[#272730] -z-10"
-                    transition={{ type: 'spring', stiffness: 400, damping: 32 }}
-                  />
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#FFFFFF] shadow-[0_0_6px_2px_rgba(225,6,0,0.95),0_0_2px_1px_rgba(225,6,0,0.95)]" />
                 )}
-                {item.label}
+                <span>{item.label}</span>
               </NavLink>
             );
           })}
@@ -80,7 +79,7 @@ export default function Navbar() {
             href="/resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-[#111114] hover:bg-[#181820] border border-[#26262E] text-xs font-mono text-[#9E9EA8] hover:text-[#F4F4F0] transition-colors"
+            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-[5px] bg-[#141416] hover:bg-[#1A1A1E] border border-[rgba(255,255,255,0.08)] shadow-[inset_0_1px_1px_rgba(255,255,255,0.08),inset_0_-1px_2px_rgba(0,0,0,0.7),0_2px_5px_rgba(0,0,0,0.4)] active:translate-y-[1px] active:shadow-[inset_0_2px_4px_rgba(0,0,0,0.8)] text-xs font-mono text-[#A0A0A0] hover:text-[#F2F2F2] transition-all"
           >
             <FileText className="w-3.5 h-3.5 text-[#818CF8]" />
             <span>Resume</span>
@@ -88,10 +87,11 @@ export default function Navbar() {
 
           <Link
             to="/contact"
-            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-md bg-[#4338CA] hover:bg-[#4F46E5] text-xs font-medium text-white transition-colors shadow-sm"
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-[5px] bg-[#16161A] hover:bg-[#202026] border border-[#E10600]/40 shadow-[inset_0_1px_1px_rgba(225,6,0,0.3),inset_0_-1px_2px_rgba(0,0,0,0.7),0_2px_6px_rgba(0,0,0,0.4)] active:translate-y-[1px] text-xs font-mono uppercase text-[#F2F2F2] transition-all group"
           >
+            <span className="w-1.5 h-1.5 rounded-full bg-[#FFFFFF] shadow-[0_0_6px_1.5px_rgba(225,6,0,0.9)]" />
             <span>Contact</span>
-            <ArrowUpRight className="w-3.5 h-3.5" />
+            <ArrowUpRight className="w-3.5 h-3.5 text-[#E10600] group-hover:translate-x-0.5 transition-transform" />
           </Link>
         </div>
 
