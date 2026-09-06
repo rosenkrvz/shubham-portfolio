@@ -36,38 +36,38 @@ export default function HeroGenerativeField({ onExploreClick }) {
           transition={{ duration: 0.8 }}
           className="max-w-4xl"
         >
-          <div className="inline-block mb-6 px-4 py-1 border border-[#272730] bg-[#111114]/80 backdrop-blur-sm rounded-full text-xs font-mono text-[#818CF8]">
-            PHYSICS-BASED POINTER DYNAMICS
+          <div className="inline-block mb-6 px-4 py-1.5 border border-[rgba(255,255,255,0.08)] bg-[#121215]/85 backdrop-blur-sm rounded-full type-label text-[#B0B0B0]">
+            PHYSICS-BASED PARTICLE FIELD // THREE.JS
           </div>
 
-          <h1 className="text-5xl sm:text-7xl lg:text-9xl font-extrabold uppercase tracking-tighter font-display leading-[0.92] text-[#F4F4F0] mb-6">
+          <h1 className="type-hero font-medium uppercase tracking-tight font-display leading-[0.92] text-[#FAFAFA] mb-6">
             MATHEMATICAL <br />
-            <span className="font-serif-editorial italic font-normal text-4xl sm:text-6xl lg:text-8xl lowercase text-[#C7D2FE] mr-3">
+            <span className="font-serif-editorial italic font-normal lowercase text-white mr-3">
               geometry of
             </span>
             INTELLIGENCE
           </h1>
 
-          <p className="text-base sm:text-xl text-[#9E9EA8] max-w-2xl mx-auto font-light leading-relaxed mb-10">
+          <p className="type-body-lg text-[#E8E8E8] max-w-2xl mx-auto font-normal leading-relaxed mb-8">
             Pushing cursor through high-dimensional vector fields, neural latent spaces, and real-time algorithmic software pipelines.
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-4">
             <MagneticButton
               onClick={onExploreClick}
-              className="px-8 py-4 bg-[#F4F4F0] hover:bg-white text-[#08080A] font-semibold text-sm rounded-sm tracking-tight shadow-xl flex items-center gap-2 cursor-pointer"
+              className="px-8 py-4 bg-[#FAFAFA] hover:bg-white text-[#09090B] font-semibold text-sm rounded-sm tracking-tight shadow-xl flex items-center gap-2 cursor-pointer"
             >
-              <span>Explore Architecture Case Studies</span>
+              <span>VIEW WORK</span>
               <ArrowRight size={16} />
             </MagneticButton>
 
             <MagneticButton
               as="div"
-              className="px-6 py-4 border border-[#272730] hover:border-[#6366F1] bg-[#111114]/70 backdrop-blur-sm text-sm rounded-sm text-white cursor-pointer"
+              className="px-6 py-4 border border-[rgba(255,255,255,0.1)] hover:border-white bg-[#121215]/80 backdrop-blur-sm text-sm rounded-sm text-[#FAFAFA] cursor-pointer"
             >
               <Link to="/experiments" className="flex items-center gap-2">
-                <TerminalSquare size={16} className="text-[#818CF8]" />
-                <span>Interact in Lab</span>
+                <TerminalSquare size={16} className="text-[#B0B0B0]" />
+                <span>OPEN LAB</span>
               </Link>
             </MagneticButton>
           </div>

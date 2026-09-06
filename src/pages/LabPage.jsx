@@ -119,17 +119,17 @@ export default function LabPage({ onShowToast }) {
           
           {/* Editorial Header */}
           <div className="space-y-4 border-b border-[#27272A]/50 pb-10">
-            <div className="inline-flex items-center gap-2 text-xs text-[#71717A] font-mono uppercase tracking-widest">
+            <div className="inline-flex items-center gap-2 type-label text-[#9A9A9A] uppercase tracking-widest">
               <span className="w-1.5 h-1.5 rounded-full bg-[#E10600] ring-2 ring-[#E10600]/30" />
               <span>DIGITAL WORKBENCH // LABORATORY</span>
             </div>
 
-            <h1 className="text-5xl sm:text-7xl lg:text-8xl font-medium font-display uppercase tracking-tight text-[#FAFAFA] leading-[0.92]">
+            <h1 className="type-hero font-medium font-display uppercase tracking-tight text-[#FAFAFA] leading-[0.92]">
               LAB
             </h1>
 
-            <p className="text-lg sm:text-2xl text-[#A1A1AA] max-w-[65ch] font-light leading-relaxed">
-              Experiments, visualizations, algorithms and computational methods currently under exploration.
+            <p className="type-body-lg text-[#E8E8E8] max-w-[65ch] font-normal leading-relaxed">
+              Experiments, visualizations, algorithms, and computational methods currently under exploration.
             </p>
           </div>
 
@@ -142,14 +142,14 @@ export default function LabPage({ onShowToast }) {
             <article className="p-6 sm:p-10 bg-[#121215] border border-[rgba(255,255,255,0.08)] rounded-[4px] space-y-8">
               <div className="flex flex-col sm:flex-row sm:items-baseline justify-between border-b border-[#27272A]/50 pb-4 gap-2">
                 <div className="flex items-center gap-3">
-                  <span className="text-xs font-mono text-[#71717A] font-medium">LAB / 001</span>
-                  <span className="text-[#3F3F46]">//</span>
-                  <h2 className="text-xl sm:text-2xl font-display font-medium uppercase text-[#FAFAFA]">
+                  <span className="type-label text-[#9A9A9A] font-medium">LAB / 001</span>
+                  <span className="text-[#52525B]">//</span>
+                  <h2 className="type-h3 font-display font-medium uppercase text-[#FAFAFA]">
                     1-Bit Spatial Dither &amp; Halftone Engine
                   </h2>
                 </div>
-                <div className="flex items-center gap-3 text-xs font-mono text-[#71717A]">
-                  <span className="text-emerald-400">ACTIVE RESEARCH</span>
+                <div className="flex items-center gap-3 type-label text-[#9A9A9A]">
+                  <span className="text-emerald-400 font-medium">ACTIVE RESEARCH</span>
                   <span>&bull;</span>
                   <span>JAVASCRIPT &bull; CANVAS &bull; OPENCV</span>
                 </div>
@@ -159,9 +159,9 @@ export default function LabPage({ onShowToast }) {
                 {/* Canvas */}
                 <div className="lg:col-span-5 flex flex-col items-center justify-center p-4 bg-[#09090B] border border-[rgba(255,255,255,0.08)] rounded-[4px]">
                   <canvas ref={canvasRef} className="max-w-full rounded-[2px] border border-[#27272A]" />
-                  <div className="mt-3 font-mono text-[11px] text-[#71717A] flex items-center justify-between w-full">
+                  <div className="mt-3 type-label text-[#9A9A9A] flex items-center justify-between w-full">
                     <span>1-BIT BUFFER MATRIX</span>
-                    <span className="text-emerald-400">120+ FPS</span>
+                    <span className="text-emerald-400 font-medium">120+ FPS</span>
                   </div>
                 </div>
 
@@ -169,7 +169,7 @@ export default function LabPage({ onShowToast }) {
                 <div className="lg:col-span-7 space-y-6">
                   {/* Preset Selector */}
                   <div className="space-y-2">
-                    <span className="text-xs font-mono text-[#71717A] uppercase tracking-wider">SOURCE FRAME BUFFER</span>
+                    <span className="type-label text-[#9A9A9A] uppercase tracking-wider">SOURCE FRAME BUFFER</span>
                     <div className="inline-flex p-1 bg-[#09090B] border border-[rgba(255,255,255,0.08)] rounded-[4px] gap-1">
                       <TactileButton
                         size="sm"
@@ -189,8 +189,8 @@ export default function LabPage({ onShowToast }) {
                   </div>
 
                   <div className="space-y-2">
-                    <div className="flex justify-between text-xs font-mono">
-                      <span className="text-[#71717A] uppercase tracking-wider">THRESHOLD CUTOFF</span>
+                    <div className="flex justify-between type-label">
+                      <span className="text-[#9A9A9A] uppercase tracking-wider">THRESHOLD CUTOFF</span>
                       <span className="text-[#FAFAFA] font-medium">{threshold} / 255</span>
                     </div>
                     <input
@@ -204,8 +204,8 @@ export default function LabPage({ onShowToast }) {
                   </div>
 
                   <div className="space-y-2">
-                    <div className="flex justify-between text-xs font-mono">
-                      <span className="text-[#71717A] uppercase tracking-wider">BAYER BLOCK GRANULARITY</span>
+                    <div className="flex justify-between type-label">
+                      <span className="text-[#9A9A9A] uppercase tracking-wider">BAYER BLOCK GRANULARITY</span>
                       <span className="text-[#FAFAFA] font-medium">{ditherScale}× Scale</span>
                     </div>
                     <div className="flex gap-1.5 p-1 bg-[#09090B] border border-[rgba(255,255,255,0.08)] rounded-[4px]">
@@ -216,7 +216,7 @@ export default function LabPage({ onShowToast }) {
                           className={`flex-1 py-1.5 text-xs font-mono rounded-[3px] transition-all cursor-pointer select-none ${
                             ditherScale === scale
                               ? 'bg-[#18181B] text-[#FAFAFA] font-medium border border-[rgba(255,255,255,0.12)]'
-                              : 'text-[#71717A] hover:text-[#FAFAFA] border border-transparent'
+                              : 'text-[#9A9A9A] hover:text-[#FAFAFA] border border-transparent'
                           }`}
                         >
                           {scale}×
@@ -225,7 +225,7 @@ export default function LabPage({ onShowToast }) {
                     </div>
                   </div>
 
-                  <div className="p-3 bg-[#09090B] border border-[rgba(255,255,255,0.06)] rounded-[4px] text-xs font-mono text-[#71717A]">
+                  <div className="p-3 bg-[#09090B] border border-[rgba(255,255,255,0.06)] rounded-[4px] type-label text-[#9A9A9A]">
                     <code>Bayer 4x4: [[0, 8, 2, 10], [12, 4, 14, 6], [3, 11, 1, 9], [15, 7, 13, 5]] / 16</code>
                   </div>
                 </div>
@@ -238,14 +238,14 @@ export default function LabPage({ onShowToast }) {
             <article className="p-6 sm:p-10 bg-[#121215] border border-[rgba(255,255,255,0.08)] rounded-[4px] space-y-8">
               <div className="flex flex-col sm:flex-row sm:items-baseline justify-between border-b border-[#27272A]/50 pb-4 gap-2">
                 <div className="flex items-center gap-3">
-                  <span className="text-xs font-mono text-[#71717A] font-medium">LAB / 002</span>
-                  <span className="text-[#3F3F46]">//</span>
-                  <h2 className="text-xl sm:text-2xl font-display font-medium uppercase text-[#FAFAFA]">
+                  <span className="type-label text-[#9A9A9A] font-medium">LAB / 002</span>
+                  <span className="text-[#52525B]">//</span>
+                  <h2 className="type-h3 font-display font-medium uppercase text-[#FAFAFA]">
                     Cosine Vector Radar
                   </h2>
                 </div>
-                <div className="flex items-center gap-3 text-xs font-mono text-[#71717A]">
-                  <span className="text-[#38BDF8]">INTERACTIVE PROTOTYPE</span>
+                <div className="flex items-center gap-3 type-label text-[#9A9A9A]">
+                  <span className="text-[#38BDF8] font-medium">INTERACTIVE PROTOTYPE</span>
                   <span>&bull;</span>
                   <span>NUMPY &bull; HNSW &bull; SIMD</span>
                 </div>
@@ -289,14 +289,14 @@ export default function LabPage({ onShowToast }) {
                     ))}
                   </div>
 
-                  <div className="mt-3 font-mono text-[10px] text-[#71717A]">
+                  <div className="mt-3 type-label text-[#9A9A9A]">
                     CLICK ANYWHERE ON RADAR TO RE-POSITION QUERY VECTOR
                   </div>
                 </div>
 
                 {/* Distance Matrix Table */}
-                <div className="lg:col-span-6 space-y-4 font-mono text-xs">
-                  <div className="text-[11px] text-[#71717A] uppercase tracking-wider">
+                <div className="lg:col-span-6 space-y-4">
+                  <div className="type-label text-[#9A9A9A] uppercase tracking-wider">
                     COSINE SIMILARITY TO QUERY VECTOR (X: {queryPoint.x}, Y: {queryPoint.y})
                   </div>
 
@@ -306,21 +306,21 @@ export default function LabPage({ onShowToast }) {
                       const similarity = Math.max(0, (1 - dist / 100)).toFixed(3);
 
                       return (
-                        <div key={pt.id} className="p-3 bg-[#09090B] border border-[rgba(255,255,255,0.06)] rounded-[3px] flex items-center justify-between">
+                        <div key={pt.id} className="p-3 bg-[#09090B] border border-[rgba(255,255,255,0.06)] rounded-[3px] flex items-center justify-between type-label">
                           <div className="flex items-center gap-2">
                             <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: pt.color }} />
-                            <span className="text-[#FAFAFA]">{pt.label}</span>
+                            <span className="text-[#FAFAFA] font-medium">{pt.label}</span>
                           </div>
                           <div className="flex items-center gap-3">
-                            <span className="text-[#71717A]">SIM:</span>
-                            <span className="text-emerald-400 font-medium">{similarity}</span>
+                            <span className="text-[#9A9A9A]">SIM:</span>
+                            <span className="text-emerald-400 font-medium font-mono">{similarity}</span>
                           </div>
                         </div>
                       );
                     })}
                   </div>
 
-                  <p className="text-xs text-[#A1A1AA] font-sans leading-relaxed pt-2">
+                  <p className="type-body-sm text-[#B0B0B0] leading-relaxed pt-2">
                     High-dimensional semantic search relies on approximate nearest neighbor (ANN) graphs like HNSW to avoid brute-force Euclidean distance scans across millions of embeddings.
                   </p>
                 </div>
@@ -333,14 +333,14 @@ export default function LabPage({ onShowToast }) {
             <article className="p-6 sm:p-10 bg-[#121215] border border-[rgba(255,255,255,0.08)] rounded-[4px] space-y-8">
               <div className="flex flex-col sm:flex-row sm:items-baseline justify-between border-b border-[#27272A]/50 pb-4 gap-2">
                 <div className="flex items-center gap-3">
-                  <span className="text-xs font-mono text-[#71717A] font-medium">LAB / 003</span>
-                  <span className="text-[#3F3F46]">//</span>
-                  <h2 className="text-xl sm:text-2xl font-display font-medium uppercase text-[#FAFAFA]">
+                  <span className="type-label text-[#9A9A9A] font-medium">LAB / 003</span>
+                  <span className="text-[#52525B]">//</span>
+                  <h2 className="type-h3 font-display font-medium uppercase text-[#FAFAFA]">
                     Edge Silicon Latency Matrix
                   </h2>
                 </div>
-                <div className="flex items-center gap-3 text-xs font-mono text-[#71717A]">
-                  <span className="text-emerald-400">BENCHMARK SUITE</span>
+                <div className="flex items-center gap-3 type-label text-[#9A9A9A]">
+                  <span className="text-emerald-400 font-medium">BENCHMARK SUITE</span>
                   <span>&bull;</span>
                   <span>TENSORRT &bull; C++ &bull; PYTORCH</span>
                 </div>
@@ -350,7 +350,7 @@ export default function LabPage({ onShowToast }) {
                 <div className="lg:col-span-6 space-y-6">
                   {/* Mode Toggle */}
                   <div className="space-y-2">
-                    <span className="text-xs font-mono text-[#71717A] uppercase tracking-wider">QUANTIZATION MODE</span>
+                    <span className="type-label text-[#9A9A9A] uppercase tracking-wider">QUANTIZATION MODE</span>
                     <div className="flex gap-1.5 p-1 bg-[#09090B] border border-[rgba(255,255,255,0.08)] rounded-[4px]">
                       {['FP32', 'INT8', 'FP4'].map((mode) => (
                         <button
@@ -359,7 +359,7 @@ export default function LabPage({ onShowToast }) {
                           className={`flex-1 py-2 text-xs font-mono rounded-[3px] transition-all cursor-pointer select-none ${
                             quantMode === mode
                               ? 'bg-[#18181B] text-[#FAFAFA] font-medium border border-[rgba(255,255,255,0.12)]'
-                              : 'text-[#71717A] hover:text-[#FAFAFA] border border-transparent'
+                              : 'text-[#9A9A9A] hover:text-[#FAFAFA] border border-transparent'
                           }`}
                         >
                           {mode}
@@ -370,8 +370,8 @@ export default function LabPage({ onShowToast }) {
 
                   {/* Batch Size Slider */}
                   <div className="space-y-2">
-                    <div className="flex justify-between text-xs font-mono">
-                      <span className="text-[#71717A] uppercase tracking-wider">BATCH CONCURRENCY</span>
+                    <div className="flex justify-between type-label">
+                      <span className="text-[#9A9A9A] uppercase tracking-wider">BATCH CONCURRENCY</span>
                       <span className="text-[#FAFAFA] font-medium">{batchSize}</span>
                     </div>
                     <input
@@ -400,32 +400,32 @@ export default function LabPage({ onShowToast }) {
                     ) : (
                       <>
                         <Play size={14} className="text-[#E10600]" />
-                        <span>Simulate Benchmark Pass</span>
+                        <span>EXECUTE BENCHMARK PASS</span>
                       </>
                     )}
                   </TactileButton>
                 </div>
 
                 {/* Benchmark Output Grid */}
-                <div className="lg:col-span-6 grid grid-cols-2 gap-4 font-mono text-xs">
+                <div className="lg:col-span-6 grid grid-cols-2 gap-4">
                   <div className="p-4 bg-[#09090B] border border-[rgba(255,255,255,0.06)] rounded-[3px]">
-                    <div className="text-[#71717A] text-[10px] uppercase">P99 TAIL LATENCY</div>
-                    <div className="text-xl font-medium text-emerald-400 mt-1">{benchResults.p99Latency}</div>
+                    <div className="type-label text-[#9A9A9A] uppercase">P99 TAIL LATENCY</div>
+                    <div className="text-xl font-medium text-emerald-400 mt-1 font-mono">{benchResults.p99Latency}</div>
                   </div>
 
                   <div className="p-4 bg-[#09090B] border border-[rgba(255,255,255,0.06)] rounded-[3px]">
-                    <div className="text-[#71717A] text-[10px] uppercase">THROUGHPUT</div>
-                    <div className="text-xl font-medium text-[#FAFAFA] mt-1">{benchResults.throughput}</div>
+                    <div className="type-label text-[#9A9A9A] uppercase">THROUGHPUT</div>
+                    <div className="text-xl font-medium text-[#FAFAFA] mt-1 font-mono">{benchResults.throughput}</div>
                   </div>
 
                   <div className="p-4 bg-[#09090B] border border-[rgba(255,255,255,0.06)] rounded-[3px]">
-                    <div className="text-[#71717A] text-[10px] uppercase">MEMORY BANDWIDTH</div>
-                    <div className="text-xl font-medium text-[#FAFAFA] mt-1">{benchResults.bandwidth}</div>
+                    <div className="type-label text-[#9A9A9A] uppercase">MEMORY BANDWIDTH</div>
+                    <div className="text-xl font-medium text-[#FAFAFA] mt-1 font-mono">{benchResults.bandwidth}</div>
                   </div>
 
                   <div className="p-4 bg-[#09090B] border border-[rgba(255,255,255,0.06)] rounded-[3px]">
-                    <div className="text-[#71717A] text-[10px] uppercase">LATENCY VARIANCE</div>
-                    <div className="text-xl font-medium text-[#A1A1AA] mt-1">{benchResults.variance}</div>
+                    <div className="type-label text-[#9A9A9A] uppercase">LATENCY VARIANCE</div>
+                    <div className="text-xl font-medium text-[#B0B0B0] mt-1 font-mono">{benchResults.variance}</div>
                   </div>
                 </div>
               </div>
@@ -435,33 +435,33 @@ export default function LabPage({ onShowToast }) {
             {/* WORKBENCH STATION 04: Technical Thoughts & Unfinished Hypotheses */}
             {/* ============================================================== */}
             <article className="p-6 sm:p-10 bg-[#121215] border border-[rgba(255,255,255,0.08)] rounded-[4px] space-y-6">
-              <div className="flex items-center gap-3 text-xs font-mono text-[#71717A] font-medium">
+              <div className="flex items-center gap-3 type-label text-[#9A9A9A] font-medium">
                 <span>LAB / 004</span>
-                <span className="text-[#3F3F46]">//</span>
+                <span className="text-[#52525B]">//</span>
                 <span className="tracking-wider uppercase">Open Hypotheses &amp; Experimental Vectors</span>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 font-mono text-xs">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div className="p-6 bg-[#09090B] border border-[rgba(255,255,255,0.06)] rounded-[3px] space-y-2">
-                  <div className="text-[#71717A] text-[11px]">THOUGHT 01 // HESSIAN TRACE</div>
-                  <div className="text-sm font-medium text-[#FAFAFA]">Flat Minima Robustness</div>
-                  <p className="text-xs text-[#A1A1AA] font-sans leading-relaxed">
+                  <div className="type-label text-[#9A9A9A]">THOUGHT 01 // HESSIAN TRACE</div>
+                  <div className="text-base font-semibold text-[#FAFAFA]">Flat Minima Robustness</div>
+                  <p className="type-body-sm text-[#B0B0B0] leading-relaxed">
                     Does the top eigenvalue of the empirical Hessian correlate more tightly with out-of-distribution transfer than validation cross-entropy? Currently verifying on small CIFAR-10 subsets.
                   </p>
                 </div>
 
                 <div className="p-6 bg-[#09090B] border border-[rgba(255,255,255,0.06)] rounded-[3px] space-y-2">
-                  <div className="text-[#71717A] text-[11px]">THOUGHT 02 // SUB-BYTE ARITHMETIC</div>
-                  <div className="text-sm font-medium text-[#FAFAFA]">Microscaling Exponent Tiling</div>
-                  <p className="text-xs text-[#A1A1AA] font-sans leading-relaxed">
+                  <div className="type-label text-[#9A9A9A]">THOUGHT 02 // SUB-BYTE ARITHMETIC</div>
+                  <div className="text-base font-semibold text-[#FAFAFA]">Microscaling Exponent Tiling</div>
+                  <p className="type-body-sm text-[#B0B0B0] leading-relaxed">
                     Testing how per-tile floating-point scale factors (MXFP4) behave when executed on standard ARM NEON SIMD registers using integer emulation routines.
                   </p>
                 </div>
 
                 <div className="p-6 bg-[#09090B] border border-[rgba(255,255,255,0.06)] rounded-[3px] space-y-2">
-                  <div className="text-[#71717A] text-[11px]">THOUGHT 03 // EVENT-DRIVEN PIPELINES</div>
-                  <div className="text-sm font-medium text-[#FAFAFA]">Sliding-Window Dedup Overhead</div>
-                  <p className="text-xs text-[#A1A1AA] font-sans leading-relaxed">
+                  <div className="type-label text-[#9A9A9A]">THOUGHT 03 // EVENT-DRIVEN PIPELINES</div>
+                  <div className="text-base font-semibold text-[#FAFAFA]">Sliding-Window Dedup Overhead</div>
+                  <p className="type-body-sm text-[#B0B0B0] leading-relaxed">
                     Comparing Redis Bloom filters against sliding-window sorted sets (ZSET) for high-frequency telemetry deduplication under 10k evt/s ingestion loads.
                   </p>
                 </div>

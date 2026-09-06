@@ -132,70 +132,142 @@ export default function ProjectDrawer({ project, onClose }) {
               </div>
 
               {/* Structured Technical Narrative Sections */}
-              <div className="space-y-10 text-base font-normal leading-[1.75] text-[#A1A1AA]">
+              <div className="space-y-10 text-base font-normal leading-[1.7] text-[#E8E8E8]">
                 
-                {/* 1. THE PROBLEM */}
-                <section className="space-y-3 border-l-2 border-[#FAFAFA]/20 pl-6 relative">
-                  <div className="text-xs font-mono text-[#71717A] uppercase tracking-widest flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#E10600]" />
-                    <span>01 // THE PROBLEM</span>
-                  </div>
-                  <h2 className="text-xl font-medium font-display uppercase tracking-tight text-[#FAFAFA]">
-                    What was being solved?
-                  </h2>
-                  <p className="text-[#A1A1AA] leading-relaxed max-w-[65ch]">
-                    {project.whyDidIBuildIt || project.summary}
-                  </p>
-                </section>
+                {/* OVERVIEW */}
+                {project.overview && (
+                  <section className="space-y-3 border-l-2 border-[#FAFAFA]/20 pl-6 relative">
+                    <div className="type-label flex items-center gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#FAFAFA]" />
+                      <span>01 // OVERVIEW</span>
+                    </div>
+                    <h2 className="text-xl font-medium font-display uppercase tracking-tight text-[#FAFAFA]">
+                      Context &amp; Core Purpose
+                    </h2>
+                    <p className="text-[#E8E8E8] leading-relaxed max-w-[65ch]">
+                      {project.overview}
+                    </p>
+                  </section>
+                )}
 
-                {/* 2. THE IDEA / APPROACH */}
-                <section className="space-y-3 border-l-2 border-[#FAFAFA]/20 pl-6 relative">
-                  <div className="text-xs font-mono text-[#71717A] uppercase tracking-widest flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#38BDF8]" />
-                    <span>02 // THE IDEA</span>
-                  </div>
-                  <h2 className="text-xl font-medium font-display uppercase tracking-tight text-[#FAFAFA]">
-                    Architectural Strategy &amp; Formulation
-                  </h2>
-                  <p className="text-[#A1A1AA] leading-relaxed max-w-[65ch]">
-                    {project.whatDidIBuild}
-                  </p>
-                </section>
+                {/* PROBLEM */}
+                {project.problem && (
+                  <section className="space-y-3 border-l-2 border-[#FAFAFA]/20 pl-6 relative">
+                    <div className="type-label flex items-center gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#E10600]" />
+                      <span>02 // PROBLEM</span>
+                    </div>
+                    <h2 className="text-xl font-medium font-display uppercase tracking-tight text-[#FAFAFA]">
+                      What was being solved?
+                    </h2>
+                    <p className="text-[#B0B0B0] leading-relaxed max-w-[65ch]">
+                      {project.problem}
+                    </p>
+                  </section>
+                )}
 
-                {/* 3. THE SYSTEM & PIPELINE */}
-                <section className="space-y-3 border-l-2 border-[#FAFAFA]/20 pl-6 relative">
-                  <div className="text-xs font-mono text-[#71717A] uppercase tracking-widest flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-                    <span>03 // THE SYSTEM {isAiProject ? '& MODEL PIPELINE' : '& DISTRIBUTED RUNTIME'}</span>
-                  </div>
-                  <h2 className="text-xl font-medium font-display uppercase tracking-tight text-[#FAFAFA]">
-                    Execution Architecture
-                  </h2>
-                  <p className="text-[#A1A1AA] leading-relaxed max-w-[65ch]">
-                    {project.howDoesItWork}
-                  </p>
-                </section>
+                {/* APPROACH */}
+                {project.approach && (
+                  <section className="space-y-3 border-l-2 border-[#FAFAFA]/20 pl-6 relative">
+                    <div className="type-label flex items-center gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#38BDF8]" />
+                      <span>03 // APPROACH</span>
+                    </div>
+                    <h2 className="text-xl font-medium font-display uppercase tracking-tight text-[#FAFAFA]">
+                      Architectural Strategy &amp; Formulation
+                    </h2>
+                    <p className="text-[#E8E8E8] leading-relaxed max-w-[65ch]">
+                      {project.approach}
+                    </p>
+                  </section>
+                )}
 
-                {/* 4. WHAT I LEARNED */}
-                <section className="space-y-3 border-l-2 border-[#FAFAFA]/20 pl-6 relative">
-                  <div className="text-xs font-mono text-[#71717A] uppercase tracking-widest flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#A78BFA]" />
-                    <span>04 // WHAT I LEARNED</span>
-                  </div>
-                  <h2 className="text-xl font-medium font-display uppercase tracking-tight text-[#FAFAFA]">
-                    Key Technical Lessons &amp; Trade-offs
-                  </h2>
-                  <p className="text-[#A1A1AA] leading-relaxed max-w-[65ch]">
-                    {project.whatDidILearn}
-                  </p>
-                </section>
+                {/* DATA / INPUT */}
+                {project.dataInput && (
+                  <section className="space-y-3 border-l-2 border-[#FAFAFA]/20 pl-6 relative">
+                    <div className="type-label flex items-center gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
+                      <span>04 // DATA &amp; INPUT</span>
+                    </div>
+                    <h2 className="text-xl font-medium font-display uppercase tracking-tight text-[#FAFAFA]">
+                      Input Modalities &amp; Representations
+                    </h2>
+                    <p className="text-[#B0B0B0] leading-relaxed max-w-[65ch]">
+                      {project.dataInput}
+                    </p>
+                  </section>
+                )}
+
+                {/* MODEL / METHOD */}
+                {project.modelMethod && (
+                  <section className="space-y-3 border-l-2 border-[#FAFAFA]/20 pl-6 relative">
+                    <div className="type-label flex items-center gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                      <span>05 // MODEL &amp; METHOD</span>
+                    </div>
+                    <h2 className="text-xl font-medium font-display uppercase tracking-tight text-[#FAFAFA]">
+                      Algorithmic Foundations
+                    </h2>
+                    <p className="text-[#E8E8E8] leading-relaxed max-w-[65ch]">
+                      {project.modelMethod}
+                    </p>
+                  </section>
+                )}
+
+                {/* IMPLEMENTATION */}
+                {project.implementation && (
+                  <section className="space-y-3 border-l-2 border-[#FAFAFA]/20 pl-6 relative">
+                    <div className="type-label flex items-center gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#A78BFA]" />
+                      <span>06 // IMPLEMENTATION</span>
+                    </div>
+                    <h2 className="text-xl font-medium font-display uppercase tracking-tight text-[#FAFAFA]">
+                      Execution Runtime &amp; Tooling
+                    </h2>
+                    <p className="text-[#B0B0B0] leading-relaxed max-w-[65ch]">
+                      {project.implementation}
+                    </p>
+                  </section>
+                )}
+
+                {/* RESULTS */}
+                {project.results && (
+                  <section className="space-y-3 border-l-2 border-[#FAFAFA]/20 pl-6 relative">
+                    <div className="type-label flex items-center gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                      <span>07 // RESULTS</span>
+                    </div>
+                    <h2 className="text-xl font-medium font-display uppercase tracking-tight text-[#FAFAFA]">
+                      Empirical Measurements &amp; Findings
+                    </h2>
+                    <p className="text-[#E8E8E8] leading-relaxed max-w-[65ch]">
+                      {project.results}
+                    </p>
+                  </section>
+                )}
+
+                {/* WHAT I LEARNED */}
+                {project.whatILearned && (
+                  <section className="space-y-3 border-l-2 border-[#FAFAFA]/20 pl-6 relative">
+                    <div className="type-label flex items-center gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#FAFAFA]" />
+                      <span>08 // WHAT I LEARNED</span>
+                    </div>
+                    <h2 className="text-xl font-medium font-display uppercase tracking-tight text-[#FAFAFA]">
+                      Key Technical Lessons &amp; Trade-offs
+                    </h2>
+                    <p className="text-[#B0B0B0] leading-relaxed max-w-[65ch]">
+                      {project.whatILearned}
+                    </p>
+                  </section>
+                )}
 
               </div>
 
               {/* Related Work & Navigation */}
               <div className="pt-8 border-t border-[#27272A]/50 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
                 <div className="space-y-1">
-                  <div className="text-[11px] font-mono text-[#71717A] uppercase">NEXT CASE STUDY</div>
+                  <div className="type-label">NEXT CASE STUDY</div>
                   <button
                     onClick={() => {
                       onClose();
@@ -204,7 +276,7 @@ export default function ProjectDrawer({ project, onClose }) {
                         window.dispatchEvent(evt);
                       }, 250);
                     }}
-                    className="text-sm font-display font-medium uppercase text-[#FAFAFA] hover:text-[#A1A1AA] flex items-center gap-1.5 cursor-pointer transition-colors"
+                    className="text-sm font-display font-medium uppercase text-[#FAFAFA] hover:text-[#B0B0B0] flex items-center gap-1.5 cursor-pointer transition-colors"
                   >
                     <span>{nextProject.title}</span>
                     <ArrowRight size={14} />
@@ -217,10 +289,10 @@ export default function ProjectDrawer({ project, onClose }) {
                       href={project.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="px-3.5 py-2 bg-[#121215] hover:bg-[#18181B] border border-[rgba(255,255,255,0.08)] text-xs font-mono text-[#A1A1AA] hover:text-white rounded-[4px] flex items-center gap-2 transition-colors"
+                      className="px-4 py-2.5 bg-[#121215] hover:bg-[#18181B] border border-[rgba(255,255,255,0.08)] text-xs font-mono uppercase tracking-wider text-[#E8E8E8] hover:text-white rounded-[4px] flex items-center gap-2 transition-colors"
                     >
                       <GithubIcon size={14} />
-                      <span>GitHub Repo</span>
+                      <span>VIEW GITHUB</span>
                     </a>
                   )}
                   {project.demoUrl && (
@@ -228,10 +300,10 @@ export default function ProjectDrawer({ project, onClose }) {
                       href={project.demoUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="px-3.5 py-2 bg-[#FAFAFA] hover:bg-white text-xs font-mono font-medium text-[#09090B] rounded-[4px] flex items-center gap-2 transition-colors"
+                      className="px-4 py-2.5 bg-[#FAFAFA] hover:bg-white text-xs font-mono uppercase tracking-wider font-medium text-[#09090B] rounded-[4px] flex items-center gap-2 transition-colors"
                     >
                       <ExternalLink size={14} />
-                      <span>Live Source</span>
+                      <span>EXPLORE SOURCE</span>
                     </a>
                   )}
                 </div>

@@ -25,38 +25,38 @@ export default function HeroEditorial({ onExploreClick }) {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
           >
-            <div className="text-xs font-mono tracking-widest text-[#818CF8] uppercase mb-4">
-              [SHUBHAM SHARMA // AI · DATA · SOFTWARE]
+            <div className="type-label tracking-widest text-[#9A9A9A] uppercase mb-4">
+              [SHUBHAM SHARMA // AI &bull; DATA SCIENCE &bull; SYSTEMS]
             </div>
 
-            <h1 className="text-6xl sm:text-8xl lg:text-9xl font-extrabold tracking-tighter uppercase font-display leading-[0.88] text-[#F4F4F0] mb-6">
+            <h1 className="type-hero font-medium tracking-tight uppercase font-display leading-[0.92] text-[#FAFAFA] mb-6">
               SHUBHAM <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-[#E2E8F0] to-[#94A3B8]">
                 SHARMA
               </span>
             </h1>
 
-            <p className="text-xl sm:text-2xl text-[#F4F4F2] font-light max-w-xl leading-relaxed mt-6 mb-2">
-              I build systems, analyze data, and experiment with intelligent models.
+            <p className="type-body-lg text-[#E8E8E8] font-light max-w-xl leading-relaxed mb-3">
+              Building systems, studying data, and exploring how computation can turn theoretical models into measurable reality.
             </p>
-            <p className="text-sm text-[#9E9EA8] font-light max-w-lg leading-relaxed mb-8">
-              Applied AI &amp; Data Science at IIT Jodhpur. Turning theoretical methods into robust software and measurable data pipelines.
+            <p className="type-body text-[#B0B0B0] max-w-lg leading-relaxed mb-8">
+              Undergraduate in Applied AI &amp; Data Science at IIT Jodhpur. Working across statistical modeling, machine learning pipelines, and computational software.
             </p>
 
             <div className="flex items-center gap-6">
               <MagneticButton
                 onClick={onExploreClick}
-                className="px-7 py-4 bg-[#F4F4F0] hover:bg-white text-[#08080A] font-semibold text-sm rounded-sm tracking-tight flex items-center gap-2 cursor-pointer shadow-lg"
+                className="px-7 py-4 bg-[#FAFAFA] hover:bg-white text-[#09090B] font-semibold text-sm rounded-sm tracking-tight flex items-center gap-2 cursor-pointer shadow-lg"
               >
-                <span>Read Selected Works</span>
+                <span>VIEW WORK</span>
                 <ArrowDownRight size={16} />
               </MagneticButton>
 
               <Link
                 to="/about"
-                className="text-xs font-mono uppercase tracking-wider text-[#9E9EA8] hover:text-white border-b border-[#272730] hover:border-white pb-1 transition-colors"
+                className="type-label uppercase tracking-wider text-[#B0B0B0] hover:text-white border-b border-[#272730] hover:border-white pb-1 transition-colors"
               >
-                About & Research Statement &rarr;
+                FULL DOSSIER &rarr;
               </Link>
             </div>
           </motion.div>

@@ -19,10 +19,13 @@
     --accent: #E10600;
     --accent-hover: #C41414;
     --accent-dim: #A50F0F;
-    --text-primary: #FAFAFA;
-    --text-secondary: #A1A1AA;
-    --text-muted: #71717A;
-    --text-tertiary: #71717A;
+    --heading-ink: #FAFAFA;
+    /* Patch 0.2.1 Contrast & Accessibility Scale */
+    --text-primary: #E8E8E8;
+    --text-secondary: #B0B0B0;
+    --text-muted: #858585;
+    --text-label: #9A9A9A;
+    --text-tertiary: #858585;
   }
 
   html.light {
@@ -43,18 +46,21 @@
     --accent: #E10600;
     --accent-hover: #C41414;
     --accent-dim: #A50F0F;
-    --text-primary: #09090B;
+    --heading-ink: #111113;
+    --text-primary: #18181B;
     --text-secondary: #52525B;
     --text-muted: #71717A;
+    --text-label: #52525B;
     --text-tertiary: #71717A;
   }
 
   body {
     background-color: var(--bg-page);
     color: var(--text-primary);
-    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    letter-spacing: -0.012em;
-    line-height: 1.7;
+    font-family: 'Manrope', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 1rem;
+    line-height: 1.65;
+    letter-spacing: 0;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     transition: background-color 0.25s ease, color 0.25s ease;
@@ -63,6 +69,7 @@
   h1, h2, h3, h4, .font-display {
     font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
     letter-spacing: -0.025em;
+    color: var(--heading-ink);
   }
 
   .font-serif-editorial {
@@ -79,6 +86,102 @@
     background-color: rgba(225, 6, 0, 0.25);
     color: #FAFAFA;
   }
+}
+
+/* ==========================================================================
+   FLUID TYPOGRAPHIC SYSTEM (Patch 0.2.1)
+   ========================================================================== */
+.type-display {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(4rem, 8vw, 9rem);
+  line-height: 0.92;
+  letter-spacing: -0.04em;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: var(--heading-ink);
+}
+
+.type-hero {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(3.5rem, 7vw, 8rem);
+  line-height: 0.95;
+  letter-spacing: -0.035em;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: var(--heading-ink);
+}
+
+.type-h1 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(2.75rem, 5vw, 5.5rem);
+  line-height: 1.0;
+  letter-spacing: -0.03em;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: var(--heading-ink);
+}
+
+.type-h2 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(2rem, 3.5vw, 4rem);
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: var(--heading-ink);
+}
+
+.type-h3 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(1.35rem, 2vw, 2rem);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  font-weight: 500;
+  color: var(--heading-ink);
+}
+
+.type-body-lg {
+  font-family: 'Manrope', sans-serif;
+  font-size: clamp(1.15rem, 1.4vw, 1.3rem);
+  line-height: 1.55;
+  color: var(--text-primary);
+  font-weight: 400;
+}
+
+.type-body {
+  font-family: 'Manrope', sans-serif;
+  font-size: 1.0625rem; /* 17px */
+  line-height: 1.7;
+  color: var(--text-primary);
+  font-weight: 400;
+}
+
+.type-body-sm {
+  font-family: 'Manrope', sans-serif;
+  font-size: 0.9375rem; /* 15px */
+  line-height: 1.6;
+  color: var(--text-secondary);
+  font-weight: 400;
+}
+
+.type-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.775rem; /* ~12.4px */
+  line-height: 1.3;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-label);
+}
+
+/* Reading & Layout Constraints */
+.reading-measure {
+  max-width: 68ch;
+  line-height: 1.7;
+}
+
+.text-scrim {
+  background: radial-gradient(ellipse at center, rgba(9,9,11,0.85) 0%, rgba(9,9,11,0.5) 70%, transparent 100%);
+  backdrop-filter: blur(2px);
 }
 
 /* Editorial Spacing, Container & Layout Utilities */
@@ -100,6 +203,7 @@
 .editorial-prose {
   max-width: 68ch;
   line-height: 1.75;
+  color: var(--text-primary);
 }
 
 .editorial-section {

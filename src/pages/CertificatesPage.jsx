@@ -44,16 +44,16 @@ export default function CertificatesPage({ onInspectCert, onDownloadSimulation }
           
           {/* Header */}
           <div className="space-y-4 border-b border-[#27272A]/50 pb-10">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-[4px] bg-[#121215] border border-[rgba(255,255,255,0.08)] text-[11px] font-mono text-[#71717A]">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-[4px] bg-[#121215] border border-[rgba(255,255,255,0.08)] type-label text-[#9A9A9A]">
               <StatusIndicator status="online" size="sm" />
               <span className="uppercase tracking-wider">ARCHIVE // VERIFIED ACADEMIC &amp; RESEARCH CREDENTIALS</span>
             </div>
 
-            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-medium font-display uppercase tracking-tight text-[#FAFAFA] leading-[0.92]">
+            <h1 className="type-hero font-medium font-display uppercase tracking-tight text-[#FAFAFA] leading-[0.92]">
               Certifications &amp; <span className="font-serif-editorial italic text-white font-normal lowercase">Distinctions.</span>
             </h1>
 
-            <p className="text-sm sm:text-base text-[#A1A1AA] max-w-[65ch] leading-relaxed font-light">
+            <p className="type-body-lg text-[#E8E8E8] max-w-[65ch] leading-relaxed font-normal">
               Verified academic honors, technical specializations, and professional credentials from Stanford Online, DeepLearning.AI, Amazon Web Services, and IIT Jodhpur.
             </p>
           </div>
@@ -76,19 +76,19 @@ export default function CertificatesPage({ onInspectCert, onDownloadSimulation }
                     <Award className="w-5 h-5" />
                   </div>
                   <div>
-                    <div className="text-[11px] font-mono uppercase tracking-widest text-[#71717A] flex items-center gap-1.5">
+                    <div className="type-label uppercase tracking-widest text-[#9A9A9A] flex items-center gap-1.5">
                       <StatusIndicator status="active" size="sm" />
                       <span>FEATURED INSTITUTIONAL RECOGNITION</span>
                     </div>
-                    <div className="text-sm font-display font-medium text-[#FAFAFA]">
+                    <div className="text-base font-semibold text-[#FAFAFA]">
                       {featuredCert.issuer}
                     </div>
                   </div>
                 </div>
 
-                <div className="flex items-center gap-3 font-mono text-xs">
-                  <span className="text-[#71717A]">{featuredCert.issueDate}</span>
-                  <span className="inline-flex items-center gap-1.5 text-xs text-emerald-400 bg-emerald-950/20 border border-emerald-800/30 px-2.5 py-1 rounded-[4px]">
+                <div className="flex items-center gap-3 type-label">
+                  <span className="text-[#9A9A9A]">{featuredCert.issueDate}</span>
+                  <span className="inline-flex items-center gap-1.5 text-emerald-400 bg-emerald-950/20 border border-emerald-800/30 px-2.5 py-1 rounded-[4px]">
                     <ShieldCheck className="w-3.5 h-3.5" />
                     <span>Verified Distinction</span>
                   </span>
@@ -97,21 +97,21 @@ export default function CertificatesPage({ onInspectCert, onDownloadSimulation }
 
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
                 <div className="lg:col-span-8 space-y-4">
-                  <h2 className="text-xl sm:text-2xl font-display font-medium uppercase text-[#FAFAFA] tracking-tight">
+                  <h2 className="type-h3 font-display font-medium uppercase text-[#FAFAFA] tracking-tight">
                     {featuredCert.title}
                   </h2>
-                  <p className="text-xs sm:text-sm text-[#A1A1AA] leading-relaxed max-w-[65ch]">
+                  <p className="type-body-sm text-[#B0B0B0] leading-relaxed max-w-[65ch]">
                     {featuredCert.description}
                   </p>
-                  <p className="text-xs text-[#FAFAFA] font-mono bg-[#09090B] p-3.5 rounded-[4px] border border-[rgba(255,255,255,0.06)]">
-                    <strong className="text-[#FAFAFA]">HIGHLIGHT:</strong> <span className="text-[#A1A1AA]">{featuredCert.highlights}</span>
+                  <p className="type-body-sm text-[#E8E8E8] bg-[#09090B] p-3.5 rounded-[4px] border border-[rgba(255,255,255,0.06)]">
+                    <strong className="text-[#FAFAFA] font-mono text-xs uppercase mr-2">Highlight:</strong> <span className="text-[#B0B0B0]">{featuredCert.highlights}</span>
                   </p>
 
                   <div className="flex flex-wrap gap-1.5 pt-2">
                     {featuredCert.skills.map((skill) => (
                       <span
                         key={skill}
-                        className="px-2.5 py-1 rounded-[3px] bg-[#09090B] border border-[rgba(255,255,255,0.06)] text-[11px] font-mono text-[#A1A1AA]"
+                        className="px-2.5 py-1 rounded-[3px] bg-[#09090B] border border-[rgba(255,255,255,0.06)] type-label text-[#B0B0B0]"
                       >
                         {skill}
                       </span>
@@ -121,17 +121,17 @@ export default function CertificatesPage({ onInspectCert, onDownloadSimulation }
 
                 {/* Visual Preview Specimen Block */}
                 <div className="lg:col-span-4 p-5 bg-[#09090B] border border-[rgba(255,255,255,0.06)] rounded-[4px] space-y-4">
-                  <div className="text-[11px] font-mono text-[#71717A] uppercase flex items-center justify-between">
+                  <div className="type-label text-[#9A9A9A] uppercase flex items-center justify-between">
                     <span>SPECIMEN RECORD</span>
                     <span>{featuredCert.pdfPreview.format}</span>
                   </div>
 
                   <div className="py-6 border-y border-[rgba(255,255,255,0.06)] text-center space-y-1">
-                    <FileText className="w-8 h-8 text-[#71717A] mx-auto mb-2" />
-                    <div className="text-xs font-mono font-medium text-[#FAFAFA]">
+                    <FileText className="w-8 h-8 text-[#9A9A9A] mx-auto mb-2" />
+                    <div className="type-label font-medium text-[#FAFAFA]">
                       {featuredCert.pdfPreview.type}
                     </div>
-                    <div className="text-[11px] font-mono text-[#71717A]">
+                    <div className="type-label text-[#9A9A9A]">
                       File Size: {featuredCert.pdfPreview.size}
                     </div>
                   </div>
@@ -144,7 +144,7 @@ export default function CertificatesPage({ onInspectCert, onDownloadSimulation }
                       className="w-full justify-center"
                       icon={FileText}
                     >
-                      Inspect Specimen
+                      INSPECT SPECIMEN
                     </TactileButton>
                   </div>
                 </div>
@@ -170,12 +170,12 @@ export default function CertificatesPage({ onInspectCert, onDownloadSimulation }
                           <Award className="w-4 h-4" />
                         </div>
                         <div>
-                          <div className="text-xs font-medium text-[#FAFAFA]">{cert.issuer}</div>
-                          <div className="text-[11px] font-mono text-[#71717A]">{cert.issueDate}</div>
+                          <div className="text-sm font-semibold text-[#FAFAFA]">{cert.issuer}</div>
+                          <div className="type-label text-[#9A9A9A]">{cert.issueDate}</div>
                         </div>
                       </div>
 
-                      <span className="inline-flex items-center gap-1 text-[11px] font-mono text-emerald-400 bg-emerald-950/20 border border-emerald-800/30 px-2 py-0.5 rounded-[3px]">
+                      <span className="inline-flex items-center gap-1 type-label text-emerald-400 bg-emerald-950/20 border border-emerald-800/30 px-2 py-0.5 rounded-[3px]">
                         <CheckCircle2 className="w-3 h-3" />
                         <span>Verified</span>
                       </span>
@@ -185,43 +185,43 @@ export default function CertificatesPage({ onInspectCert, onDownloadSimulation }
                     <div>
                       <h3
                         onClick={() => onInspectCert?.(cert)}
-                        className="text-base font-medium text-[#FAFAFA] hover:text-white cursor-pointer transition-colors"
+                        className="text-base font-semibold text-[#FAFAFA] hover:text-white cursor-pointer transition-colors"
                       >
                         {cert.title}
                       </h3>
                       {cert.instructor && (
-                        <div className="text-xs text-[#71717A] mt-0.5 font-mono">
-                          Instructor: <span className="text-[#A1A1AA]">{cert.instructor}</span>
+                        <div className="type-label text-[#9A9A9A] mt-0.5">
+                          Instructor: <span className="text-[#B0B0B0]">{cert.instructor}</span>
                         </div>
                       )}
                     </div>
 
                     {/* Description */}
-                    <p className="text-xs text-[#A1A1AA] leading-relaxed">
+                    <p className="type-body-sm text-[#B0B0B0] leading-relaxed">
                       {cert.description}
                     </p>
 
                     {/* Expandable Engineering Highlights */}
                     {isExpanded && (
-                      <div className="p-3 bg-[#09090B] border border-[rgba(255,255,255,0.06)] rounded-[4px] text-xs font-mono text-[#FAFAFA] space-y-1.5">
-                        <div className="text-[#71717A] text-[10px] uppercase tracking-wider">
+                      <div className="p-3 bg-[#09090B] border border-[rgba(255,255,255,0.06)] rounded-[4px] space-y-1.5">
+                        <div className="type-label text-[#9A9A9A] uppercase tracking-wider">
                           ENGINEERING EVIDENCE &amp; SYLLABUS HIGHLIGHTS:
                         </div>
-                        <p className="text-[#A1A1AA] leading-relaxed font-sans">
+                        <p className="type-body-sm text-[#B0B0B0] leading-relaxed">
                           {cert.highlights}
                         </p>
                       </div>
                     )}
 
                     {/* Credential ID & Toggle */}
-                    <div className="flex items-center justify-between text-[11px] font-mono text-[#71717A] pt-1">
+                    <div className="flex items-center justify-between type-label text-[#9A9A9A] pt-1">
                       <div>
-                        ID: <span className="text-[#A1A1AA]">{cert.credentialId}</span>
+                        ID: <span className="text-[#B0B0B0]">{cert.credentialId}</span>
                       </div>
 
                       <button
                         onClick={() => toggleExpand(cert.id)}
-                        className="text-xs text-[#A1A1AA] hover:text-[#FAFAFA] flex items-center gap-1 transition-colors cursor-pointer"
+                        className="type-label text-[#B0B0B0] hover:text-[#FAFAFA] flex items-center gap-1 transition-colors cursor-pointer"
                       >
                         <span>{isExpanded ? 'Less' : 'Details'}</span>
                         {isExpanded ? <ChevronUp size={13} /> : <ChevronDown size={13} />}
@@ -233,7 +233,7 @@ export default function CertificatesPage({ onInspectCert, onDownloadSimulation }
                       {cert.skills.map((s) => (
                         <span
                           key={s}
-                          className="px-2 py-0.5 rounded-[3px] bg-[#09090B] border border-[rgba(255,255,255,0.06)] text-[10px] font-mono text-[#A1A1AA]"
+                          className="px-2 py-0.5 rounded-[3px] bg-[#09090B] border border-[rgba(255,255,255,0.06)] type-label text-[#9A9A9A]"
                         >
                           {s}
                         </span>
@@ -249,7 +249,7 @@ export default function CertificatesPage({ onInspectCert, onDownloadSimulation }
                       onClick={() => onInspectCert?.(cert)}
                       icon={FileText}
                     >
-                      Inspect Specimen
+                      INSPECT SPECIMEN
                     </TactileButton>
 
                     {cert.verifyUrl && (
@@ -257,9 +257,9 @@ export default function CertificatesPage({ onInspectCert, onDownloadSimulation }
                         href={cert.verifyUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1 text-xs font-mono text-[#71717A] hover:text-[#FAFAFA] transition-colors"
+                        className="inline-flex items-center gap-1 type-label text-[#9A9A9A] hover:text-[#FAFAFA] transition-colors"
                       >
-                        <span>Verify Record</span>
+                        <span>VERIFY RECORD</span>
                         <ExternalLink className="w-3 h-3" />
                       </a>
                     )}

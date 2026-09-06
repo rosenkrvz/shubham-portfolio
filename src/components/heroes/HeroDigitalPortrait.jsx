@@ -41,44 +41,44 @@ export default function HeroDigitalPortrait({ onExploreClick }) {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.9 }}
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1 mb-4 rounded-full border border-[#272730] bg-[#111114] text-xs font-mono text-[#818CF8]">
+            <div className="inline-flex items-center gap-2 px-3 py-1 mb-4 rounded-full border border-[rgba(255,255,255,0.08)] bg-[#121215] type-label text-[#B0B0B0]">
               <Eye size={13} />
               <span>SPATIAL ERROR DIFFUSION RESEARCH</span>
             </div>
 
-            <h1 className="text-5xl sm:text-7xl font-bold tracking-tighter uppercase font-display leading-[0.94] text-[#F4F4F0] mb-6">
+            <h1 className="type-hero font-bold tracking-tight uppercase font-display leading-[0.94] text-[#FAFAFA] mb-6">
               1-Bit <br />
-              <span className="font-serif-editorial italic font-normal text-4xl sm:text-6xl lowercase text-[#C7D2FE] mr-2">
+              <span className="font-serif-editorial italic font-normal lowercase text-white mr-2">
                 perceptual
               </span>
               Extraction
             </h1>
 
-            <p className="text-base sm:text-lg text-[#9E9EA8] font-light leading-relaxed mb-6">
+            <p className="type-body-lg text-[#E8E8E8] font-normal leading-relaxed mb-6">
               Converting heavy 24-bit RGB video frames into 1-bit spatial error-diffused rasters that preserve structural facial contours and edge boundaries at 120+ FPS on resource-constrained microprocessors.
             </p>
 
-            <div className="grid grid-cols-3 gap-4 border-y border-[#1C1C22] py-4 mb-8 text-xs font-mono">
+            <div className="grid grid-cols-3 gap-4 border-y border-[#27272A]/50 py-4 mb-8 type-label">
               <div>
-                <div className="text-[#656570]">LATENCY</div>
-                <div className="text-base text-[#F4F4F2] font-semibold">120+ FPS</div>
+                <div className="text-[#9A9A9A]">LATENCY</div>
+                <div className="text-base text-[#FAFAFA] font-semibold font-mono">120+ FPS</div>
               </div>
               <div>
-                <div className="text-[#656570]">COMPRESSION</div>
-                <div className="text-base text-emerald-400 font-semibold">-87.5%</div>
+                <div className="text-[#9A9A9A]">COMPRESSION</div>
+                <div className="text-base text-emerald-400 font-semibold font-mono">-87.5%</div>
               </div>
               <div>
-                <div className="text-[#656570]">RECALL</div>
-                <div className="text-base text-[#818CF8] font-semibold">96.4% mAP</div>
+                <div className="text-[#9A9A9A]">RECALL</div>
+                <div className="text-base text-[#FAFAFA] font-semibold font-mono">96.4% mAP</div>
               </div>
             </div>
 
             <div className="flex items-center gap-4">
               <MagneticButton
                 onClick={onExploreClick}
-                className="px-6 py-3.5 bg-[#F4F4F0] hover:bg-white text-[#08080A] font-semibold text-sm rounded-sm tracking-tight flex items-center gap-2 cursor-pointer shadow-lg"
+                className="px-6 py-3.5 bg-[#FAFAFA] hover:bg-white text-[#09090B] font-semibold text-sm rounded-sm tracking-tight flex items-center gap-2 cursor-pointer shadow-lg"
               >
-                <span>Read Full Vision Case Study</span>
+                <span>READ CASE STUDY</span>
                 <ArrowDownRight size={16} />
               </MagneticButton>
             </div>

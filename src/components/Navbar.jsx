@@ -35,15 +35,15 @@ export default function Navbar() {
             <span className="text-sm font-medium tracking-tight text-[#FAFAFA] group-hover:text-white transition-colors">
               Shubham Sharma
             </span>
-            <span className="text-[11px] text-[#71717A] tracking-normal font-mono">
-              AI / Data / Systems
+            <span className="type-label text-[#9A9A9A]">
+              Applied AI &bull; IIT Jodhpur
             </span>
           </div>
         </Link>
 
         {/* Desktop Navigation Links */}
         <nav 
-          className="hidden md:flex items-center gap-1 px-1.5 py-1 rounded-[6px] bg-[#121215] border border-[rgba(255,255,255,0.06)]" 
+          className="hidden md:flex items-center gap-1 px-2 py-1 rounded-[6px] bg-[#121215] border border-[rgba(255,255,255,0.06)]" 
           aria-label="Main Navigation"
         >
           {NAV_ITEMS.map((item) => {
@@ -56,10 +56,10 @@ export default function Navbar() {
               <NavLink
                 key={item.path}
                 to={item.path}
-                className={`relative px-3 py-1.5 rounded-[4px] text-xs font-mono transition-all duration-150 flex items-center gap-2 select-none ${
+                className={`relative px-3.5 py-1.5 rounded-[4px] text-sm font-sans tracking-tight transition-all duration-150 flex items-center gap-2 select-none ${
                   isActive
                     ? 'text-[#FAFAFA] font-medium bg-[#18181B] border border-[rgba(255,255,255,0.1)]'
-                    : 'text-[#71717A] hover:text-[#FAFAFA] hover:bg-[#141418]'
+                    : 'text-[#B0B0B0] hover:text-[#FAFAFA] hover:bg-[#141418]'
                 }`}
               >
                 {isActive && (
@@ -79,15 +79,15 @@ export default function Navbar() {
             href="/resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-[4px] bg-[#121215] hover:bg-[#18181B] border border-[rgba(255,255,255,0.08)] text-xs font-mono text-[#A1A1AA] hover:text-[#FAFAFA] transition-colors"
+            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-[4px] bg-[#121215] hover:bg-[#18181B] border border-[rgba(255,255,255,0.08)] text-xs font-sans font-medium text-[#B0B0B0] hover:text-[#FAFAFA] transition-colors"
           >
-            <FileText className="w-3.5 h-3.5 text-[#71717A]" />
+            <FileText className="w-3.5 h-3.5 text-[#9A9A9A]" />
             <span>Resume</span>
           </a>
 
           <Link
             to="/contact"
-            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-[4px] bg-[#FAFAFA] hover:bg-white text-xs font-mono font-medium text-[#09090B] transition-colors group"
+            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-[4px] bg-[#FAFAFA] hover:bg-white text-xs font-sans font-medium text-[#09090B] transition-colors group"
           >
             <span>Contact</span>
             <ArrowUpRight className="w-3 h-3 text-[#09090B] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />

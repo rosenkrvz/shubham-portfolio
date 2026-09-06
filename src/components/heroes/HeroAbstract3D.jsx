@@ -20,17 +20,17 @@ export default function HeroAbstract3D({ onExploreClick }) {
       <div className="absolute inset-0 z-1 pointer-events-none bg-gradient-to-r from-[#09090B]/90 via-[#09090B]/40 to-transparent" />
 
       {/* Top Academic & Telemetry Strip */}
-      <div className="relative z-10 max-w-6xl mx-auto w-full px-6 sm:px-8 pt-8 sm:pt-12 flex flex-wrap items-center justify-between gap-4 text-xs font-mono text-[#71717A]">
+      <div className="relative z-10 max-w-6xl mx-auto w-full px-6 sm:px-8 pt-8 sm:pt-12 flex flex-wrap items-center justify-between gap-4 type-label text-[#9A9A9A]">
         <div className="flex items-center gap-3">
           <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-          <span className="tracking-widest uppercase text-[#FAFAFA]">
-            AI &bull; DATA SCIENCE &bull; SYSTEMS RESEARCH
+          <span className="tracking-widest uppercase text-[#FAFAFA] font-medium">
+            AI &bull; DATA SCIENCE &bull; COMPUTATION
           </span>
         </div>
         <div className="hidden sm:flex items-center gap-6">
           <span>IIT JODHPUR // APPLIED AI &amp; DATA SCIENCE</span>
           <span className="text-[#3F3F46]">|</span>
-          <span className="text-emerald-400 font-medium">FIRST PRINCIPLES</span>
+          <span className="text-[#B0B0B0]">EMPIRICAL RESEARCH</span>
         </div>
       </div>
 
@@ -43,33 +43,30 @@ export default function HeroAbstract3D({ onExploreClick }) {
           className="max-w-3xl"
         >
           {/* Eyebrow / Discipline Metadata */}
-          <div className="inline-flex items-center gap-2.5 px-3 py-1 mb-8 rounded-[4px] border border-[rgba(255,255,255,0.08)] bg-[#121215]/80 backdrop-blur-md text-xs font-mono text-[#A1A1AA]">
+          <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 mb-6 rounded-[4px] border border-[rgba(255,255,255,0.1)] bg-[#121215]/85 backdrop-blur-md type-label text-[#B0B0B0]">
             <span className="w-2 h-2 rounded-full bg-[#E10600]" />
             <span className="text-[#FAFAFA] font-medium">SHUBHAM SHARMA</span>
             <span className="text-[#52525B]">//</span>
-            <span>AI &bull; DATA &bull; SOFTWARE</span>
+            <span>AI &bull; DATA SCIENCE &bull; SYSTEMS</span>
           </div>
 
           {/* Monumental Headline */}
-          <h1 className="text-5xl sm:text-7xl lg:text-8xl font-medium tracking-tight uppercase font-display leading-[0.92] text-[#FAFAFA] mb-8">
+          <h1 className="type-hero font-medium tracking-tight uppercase font-display leading-[0.92] text-[#FAFAFA] mb-6">
             SHUBHAM <br />
-            <span className="font-serif-editorial italic lowercase text-white font-normal mr-3">
-              researches
-            </span>
             SHARMA
           </h1>
 
-          {/* Clear, Grounded Copy with strict line-length limit */}
-          <div className="max-w-[65ch] space-y-3 mb-10">
-            <p className="text-xl sm:text-2xl text-[#FAFAFA] font-light leading-relaxed tracking-tight">
-              I build systems, analyze data, and experiment with intelligent models.
+          {/* Clear, Grounded Copy with scrim for 3D art visibility */}
+          <div className="max-w-[65ch] space-y-3 mb-8 text-scrim p-6 -ml-6 rounded-lg">
+            <p className="type-body-lg text-[#E8E8E8] font-medium leading-relaxed tracking-tight">
+              Building systems, studying data, and exploring how computation can turn theoretical models into measurable reality.
             </p>
-            <p className="text-base text-[#A1A1AA] font-normal leading-[1.75]">
-              Applied AI &amp; Data Science at IIT Jodhpur. Focused on machine learning runtimes, computer vision pipelines, and resilient software architectures.
+            <p className="type-body text-[#B0B0B0] font-normal leading-relaxed">
+              Undergraduate in Applied AI &amp; Data Science at IIT Jodhpur. Working across statistical modeling, machine learning pipelines, and computational software.
             </p>
           </div>
 
-          {/* Action Triggers */}
+          {/* Action Triggers with concise buttons */}
           <div className="flex flex-wrap items-center gap-4">
             <TactileButton
               variant="primary"
@@ -77,7 +74,7 @@ export default function HeroAbstract3D({ onExploreClick }) {
               onClick={onExploreClick}
               className="gap-2.5 group cursor-pointer"
             >
-              <span>Explore Selected Work</span>
+              <span>VIEW WORK</span>
               <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform" />
             </TactileButton>
 
@@ -87,8 +84,8 @@ export default function HeroAbstract3D({ onExploreClick }) {
                 size="md"
                 className="gap-2 cursor-pointer"
               >
-                <Binary size={14} className="text-[#A1A1AA]" />
-                <span>AI &amp; Data</span>
+                <Binary size={14} className="text-[#B0B0B0]" />
+                <span>AI &amp; DATA</span>
               </TactileButton>
             </Link>
 
@@ -99,8 +96,8 @@ export default function HeroAbstract3D({ onExploreClick }) {
                 led="active"
                 className="gap-2 cursor-pointer"
               >
-                <Cpu size={14} className="text-[#A1A1AA]" />
-                <span>Digital Lab</span>
+                <Cpu size={14} className="text-[#B0B0B0]" />
+                <span>OPEN LAB</span>
               </TactileButton>
             </Link>
           </div>
@@ -108,28 +105,28 @@ export default function HeroAbstract3D({ onExploreClick }) {
       </div>
 
       {/* Understated Telemetry Strip */}
-      <div className="relative z-10 max-w-6xl mx-auto w-full px-6 sm:px-8 pb-6 border-t border-[rgba(255,255,255,0.06)] pt-4 flex flex-wrap items-center justify-between gap-4 text-xs font-mono text-[#71717A]">
+      <div className="relative z-10 max-w-6xl mx-auto w-full px-6 sm:px-8 pb-6 border-t border-[rgba(255,255,255,0.06)] pt-4 flex flex-wrap items-center justify-between gap-4 type-label text-[#9A9A9A]">
         <div className="flex flex-wrap items-center gap-4 sm:gap-6">
           <div className="inline-flex items-center gap-2">
             <StatusIndicator status="online" size="sm" />
-            <span className="text-[#FAFAFA] text-[11px]">SYSTEM: ONLINE</span>
+            <span className="text-[#E8E8E8]">SYSTEM: ONLINE</span>
           </div>
           <div className="inline-flex items-center gap-2">
             <span className="w-1.5 h-1.5 rounded-full bg-[#38BDF8]" />
-            <span className="text-[#A1A1AA] text-[11px]">DIMENSION: 3D MANIFOLD</span>
+            <span className="text-[#B0B0B0]">CANVAS: 3D MANIFOLD</span>
           </div>
           <div className="hidden md:inline-flex items-center gap-2">
             <StatusIndicator status="active" size="sm" pulse />
-            <span className="text-[#A1A1AA] text-[11px]">VECTOR STREAM: ACTIVE</span>
+            <span className="text-[#B0B0B0]">STREAM: ACTIVE</span>
           </div>
         </div>
 
         <div className="flex items-center gap-6">
-          <span className="flex items-center gap-1.5 text-[#A1A1AA]">
-            <Compass size={14} className="text-[#71717A]" />
-            Dimensionality Reduction &bull; Manifolds
+          <span className="flex items-center gap-1.5 text-[#B0B0B0]">
+            <Compass size={14} className="text-[#9A9A9A]" />
+            Topological Manifold Visualizer
           </span>
-          <span className="text-[11px] text-[#71717A] uppercase tracking-wider">
+          <span className="text-[#9A9A9A] uppercase tracking-wider">
             PORTFOLIO // 2026
           </span>
         </div>

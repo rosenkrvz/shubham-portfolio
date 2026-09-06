@@ -110,21 +110,21 @@ export default function ContactPage({ onShowToast }) {
 
           {/* Editorial Section Statement */}
           <div className="space-y-6 border-b border-[#27272A]/50 pb-12">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-[4px] bg-[#121215] border border-[rgba(255,255,255,0.08)] text-[11px] font-mono text-[#A1A1AA]">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-[4px] bg-[#121215] border border-[rgba(255,255,255,0.08)] type-label text-[#9A9A9A]">
               <StatusIndicator status="online" size="sm" />
-              <span className="tracking-wider uppercase">Direct Telemetry &amp; Inquiries</span>
+              <span className="tracking-wider uppercase">COMMUNICATION // INQUIRIES &amp; COLLABORATION</span>
             </div>
 
-            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-medium font-display uppercase tracking-tight text-[#FAFAFA] leading-[0.95]">
+            <h1 className="type-hero font-medium font-display uppercase tracking-tight text-[#FAFAFA] leading-[0.95]">
               Let's build <br />
-              <span className="font-serif-editorial italic font-normal text-4xl sm:text-6xl lg:text-7xl lowercase text-[#C7D2FE] mr-3">
+              <span className="font-serif-editorial italic font-normal lowercase text-white mr-3">
                 something
               </span>
               Resilient.
             </h1>
 
-            <p className="text-base sm:text-lg text-[#A1A1AA] max-w-[65ch] font-light leading-relaxed">
-              Available for software engineering roles, machine learning research internships, and systems architecture consultations. Direct communication channels are audited daily.
+            <p className="type-body-lg text-[#E8E8E8] max-w-[65ch] font-normal leading-relaxed">
+              Available for machine learning research internships, data science roles, and computational software engineering. Direct communication channels are reviewed daily.
             </p>
           </div>
 
@@ -135,12 +135,12 @@ export default function ContactPage({ onShowToast }) {
 
               {/* Direct Mail Node */}
               <div className="p-6 sm:p-8 bg-[#121215] border border-[rgba(255,255,255,0.08)] rounded-[4px] space-y-4">
-                <div className="flex items-center justify-between text-xs font-mono text-[#71717A] uppercase tracking-wider">
+                <div className="flex items-center justify-between type-label text-[#9A9A9A] uppercase tracking-wider">
                   <span>Direct Communication</span>
                   <StatusIndicator status="active" size="sm" />
                 </div>
                 
-                <div className="text-sm sm:text-base font-mono font-medium text-[#FAFAFA] select-all break-all">
+                <div className="text-base font-mono font-medium text-[#FAFAFA] select-all break-all">
                   {profile.email}
                 </div>
 
@@ -150,50 +150,50 @@ export default function ContactPage({ onShowToast }) {
                   onClick={handleCopyEmail}
                   className="w-full flex items-center justify-center gap-2"
                 >
-                  {copied ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5 text-[#A1A1AA]" />}
-                  <span>{copied ? 'Copied to Clipboard' : 'Copy Email Address'}</span>
+                  {copied ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5 text-[#B0B0B0]" />}
+                  <span>{copied ? 'COPIED TO CLIPBOARD' : 'COPY EMAIL'}</span>
                 </TactileButton>
               </div>
 
               {/* Verified Identities */}
               <div className="p-6 sm:p-8 bg-[#121215] border border-[rgba(255,255,255,0.08)] rounded-[4px] space-y-4">
-                <div className="text-xs uppercase tracking-wider text-[#71717A] font-mono">
-                  Verified Channels
+                <div className="type-label uppercase tracking-wider text-[#9A9A9A]">
+                  Verified Profiles
                 </div>
                 
-                <div className="space-y-2.5 font-mono text-xs">
+                <div className="space-y-2.5 type-label">
                   <a
                     href={profile.links.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-between p-3.5 rounded-[4px] bg-[#09090B] border border-[rgba(255,255,255,0.06)] hover:border-[#FAFAFA]/20 text-[#A1A1AA] hover:text-[#FAFAFA] transition-colors"
+                    className="flex items-center justify-between p-3.5 rounded-[4px] bg-[#09090B] border border-[rgba(255,255,255,0.06)] hover:border-[#FAFAFA]/20 text-[#B0B0B0] hover:text-[#FAFAFA] transition-colors"
                   >
                     <div className="flex items-center gap-2.5">
                       <GithubIcon className="w-4 h-4" />
                       <span>github.com/rosenkrvz</span>
                     </div>
-                    <ArrowRight className="w-3.5 h-3.5 text-[#71717A]" />
+                    <ArrowRight className="w-3.5 h-3.5 text-[#9A9A9A]" />
                   </a>
 
                   <a
                     href={profile.links.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-between p-3.5 rounded-[4px] bg-[#09090B] border border-[rgba(255,255,255,0.06)] hover:border-[#FAFAFA]/20 text-[#A1A1AA] hover:text-[#FAFAFA] transition-colors"
+                    className="flex items-center justify-between p-3.5 rounded-[4px] bg-[#09090B] border border-[rgba(255,255,255,0.06)] hover:border-[#FAFAFA]/20 text-[#B0B0B0] hover:text-[#FAFAFA] transition-colors"
                   >
                     <div className="flex items-center gap-2.5">
                       <LinkedinIcon className="w-4 h-4" />
                       <span>linkedin.com/in/rosenkrvz</span>
                     </div>
-                    <ArrowRight className="w-3.5 h-3.5 text-[#71717A]" />
+                    <ArrowRight className="w-3.5 h-3.5 text-[#9A9A9A]" />
                   </a>
                 </div>
               </div>
 
               {/* SLA Notice */}
-              <div className="p-4 bg-[#121215] border border-[rgba(255,255,255,0.06)] rounded-[4px] flex items-center gap-3 text-xs font-mono text-[#71717A]">
-                <Clock className="w-4 h-4 text-[#A1A1AA] shrink-0" />
-                <span>RESPONSE SLA: WITHIN 24 BUSINESS HOURS</span>
+              <div className="p-4 bg-[#121215] border border-[rgba(255,255,255,0.06)] rounded-[4px] flex items-center gap-3 type-label text-[#9A9A9A]">
+                <Clock className="w-4 h-4 text-[#B0B0B0] shrink-0" />
+                <span>RESPONSE TIME: TYPICALLY WITHIN 24 HOURS</span>
               </div>
 
             </div>
@@ -240,15 +240,15 @@ export default function ContactPage({ onShowToast }) {
                     placeholder="name@organization.com"
                   />
 
-                  <div className="space-y-1.5 font-mono">
-                    <label className="text-xs uppercase tracking-wider text-[#A1A1AA] block" htmlFor="contact-topic">
-                      Engagement Topic
+                  <div className="space-y-1.5">
+                    <label className="type-label uppercase tracking-wider text-[#B0B0B0] block" htmlFor="contact-topic">
+                      Topic
                     </label>
                     <select
                       id="contact-topic"
                       value={formData.topic}
                       onChange={(e) => setFormData({ ...formData, topic: e.target.value })}
-                      className="w-full px-4 py-3 rounded-[4px] bg-[#09090B] border border-[rgba(255,255,255,0.08)] hover:border-[rgba(255,255,255,0.16)] focus:border-[#FAFAFA]/40 text-xs sm:text-sm font-mono text-[#FAFAFA] focus:outline-none transition-colors"
+                      className="w-full px-4 py-3 rounded-[4px] bg-[#09090B] border border-[rgba(255,255,255,0.08)] hover:border-[rgba(255,255,255,0.16)] focus:border-[#FAFAFA]/40 type-body-sm font-sans text-[#FAFAFA] focus:outline-none transition-colors"
                     >
                       <option value="Engineering Role / Internship">Engineering Role / Internship</option>
                       <option value="Research & Applied AI Collaboration">Research &amp; Applied AI Collaboration</option>
@@ -260,7 +260,7 @@ export default function ContactPage({ onShowToast }) {
                   <TactileInput
                     as="textarea"
                     id="contact-msg"
-                    label="Transmission Message *"
+                    label="Message *"
                     required
                     rows={5}
                     maxLength={2000}
@@ -279,12 +279,12 @@ export default function ContactPage({ onShowToast }) {
                   className="w-full"
                 >
                   <Send className={`w-3.5 h-3.5 ${isSubmitting ? 'animate-pulse' : ''}`} />
-                  <span>{isSubmitting ? 'TRANSMITTING...' : 'SEND TRANSMISSION'}</span>
+                  <span>{isSubmitting ? 'SENDING...' : 'SEND MESSAGE'}</span>
                 </TactileButton>
 
-                <div className="text-[11px] font-mono text-[#71717A] text-center flex items-center justify-center gap-1.5 pt-2">
+                <div className="type-label text-[#9A9A9A] text-center flex items-center justify-center gap-1.5 pt-2">
                   <ShieldCheck size={13} className="text-emerald-400" />
-                  <span>SECURE CHANNEL // ANTI-SPAM ENFORCED</span>
+                  <span>DIRECT INBOX // NO SPAM GUARANTEE</span>
                 </div>
               </form>
             </div>

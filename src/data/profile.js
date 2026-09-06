@@ -1,35 +1,35 @@
 export const profile = {
   name: "Shubham Sharma",
   handle: "rosenkrvz",
-  title: "AI & Data Science • Software Engineer",
+  title: "AI & Data Science • Computational Systems",
   tagline: "Applied AI & Data Science at IIT Jodhpur",
-  statement: "Building thoughtful machine learning models, computer vision algorithms, and resilient software architectures from mathematical first principles.",
-  bio: "Undergraduate student in Applied AI & Data Science at the Indian Institute of Technology Jodhpur (IIT Jodhpur). I focus on the intersection of deep learning, computer vision, and backend systems engineering — turning mathematical models into reliable, production-ready software.",
+  statement: "Building systems, studying data, and exploring how computation can turn theoretical models into measurable things.",
+  bio: "Studying Applied AI & Data Science at the Indian Institute of Technology Jodhpur (IIT Jodhpur). My focus is on understanding complex systems through computation — analyzing high-dimensional distributions, exploring optimization surfaces, and writing hardware-conscious code to execute models deterministically.",
   email: "marksrv047@gmail.com",
   location: "IIT Jodhpur, Rajasthan, India",
-  status: "Available for internships, engineering roles & collaborations",
+  status: "Open for technical research, machine learning internships & engineering roles",
   academic: {
     degree: "Bachelor of Science in Applied AI & Data Science",
     institution: "Indian Institute of Technology Jodhpur (IIT Jodhpur)",
     period: "2023 — Present",
-    focus: "Deep Learning, Mathematical Optimization, Computer Vision, Algorithms & Distributed Systems"
+    focus: "Statistical Learning, High-Dimensional Data Analysis, Optimization, Computer Vision & Systems Engineering"
   },
   focusAreas: [
     {
-      title: "Machine Learning & Deep Learning",
-      description: "Developing neural architectures, transformer models, and quantization pipelines using PyTorch and Scikit-Learn."
+      title: "Machine Learning & Statistical Models",
+      description: "Formulating empirical risk objectives, analyzing generalization behavior, and implementing quantized neural architectures using PyTorch and Scikit-Learn."
     },
     {
-      title: "Computer Vision & Graphics",
-      description: "Implementing spatial image algorithms, binarized neural networks, and real-time OpenCV processing pipelines."
+      title: "High-Dimensional Data & Dimensionality",
+      description: "Exploring topological manifolds, PCA covariance projections, and vector space nearest-neighbor indexing across large embedding sets."
     },
     {
-      title: "Backend & Systems",
-      description: "Designing low-latency APIs with FastAPI and Python AsyncIO, paired with PostgreSQL, Redis, and Docker."
+      title: "Computer Vision & Spatial Computing",
+      description: "Investigating spatial error diffusion, 1-bit quantization kernels, and real-time matrix transformations on constrained hardware."
     },
     {
-      title: "Applied Mathematics",
-      description: "Applying linear algebra, multivariate calculus, and statistical optimization directly to algorithmic design."
+      title: "Low-Latency & Event-Driven Systems",
+      description: "Using software as a rigorous engineering medium — building asynchronous ingestion pipelines with Python AsyncIO, Redis, and C++ extensions."
     }
   ],
   links: {
@@ -38,3 +38,4 @@ export const profile = {
     email: "mailto:marksrv047@gmail.com"
   }
 };
+

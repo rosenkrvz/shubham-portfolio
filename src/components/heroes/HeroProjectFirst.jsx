@@ -40,52 +40,52 @@ export default function HeroProjectFirst({ onOpenProject, onExploreClick }) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1 mb-4 rounded-full border border-[#272730] bg-[#111114] text-xs font-mono text-[#818CF8]">
+            <div className="inline-flex items-center gap-2 px-3 py-1 mb-4 rounded-full border border-[rgba(255,255,255,0.08)] bg-[#121215] type-label text-[#B0B0B0]">
               <Cpu size={14} />
               <span>EDGE AI RUNTIME VERIFICATION</span>
             </div>
 
-            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tighter uppercase font-display leading-[0.95] text-[#F4F4F0] mb-6">
+            <h1 className="type-hero font-bold tracking-tight uppercase font-display leading-[0.95] text-[#FAFAFA] mb-6">
               Sentinel <br />
-              <span className="font-serif-editorial italic font-normal text-3xl sm:text-5xl lg:text-6xl lowercase text-[#C7D2FE] mr-3">
+              <span className="font-serif-editorial italic font-normal lowercase text-white mr-3">
                 neural
               </span>
               Attestation
             </h1>
 
-            <p className="text-base sm:text-lg text-[#9E9EA8] font-light leading-relaxed mb-6">
+            <p className="type-body-lg text-[#E8E8E8] font-normal leading-relaxed mb-6">
               A lightweight cryptographic verification runtime that validates INT8 neural network layer weights against tamper-evident digests in &lt;4.2ms before high-consequence edge inference.
             </p>
 
-            <div className="grid grid-cols-3 gap-3 border-y border-[#1C1C22] py-4 mb-8 text-xs font-mono">
+            <div className="grid grid-cols-3 gap-3 border-y border-[#27272A]/50 py-4 mb-8 type-label">
               <div>
-                <div className="text-[#656570]">VERIFY LATENCY</div>
-                <div className="text-sm sm:text-base text-emerald-400 font-semibold">&lt; 4.2ms</div>
+                <div className="text-[#9A9A9A]">VERIFY LATENCY</div>
+                <div className="text-sm sm:text-base text-emerald-400 font-semibold font-mono">&lt; 4.2ms</div>
               </div>
               <div>
-                <div className="text-[#656570]">MEMORY FOOTPRINT</div>
-                <div className="text-sm sm:text-base text-[#F4F4F2] font-semibold">1.2 MB</div>
+                <div className="text-[#9A9A9A]">MEMORY FOOTPRINT</div>
+                <div className="text-sm sm:text-base text-[#FAFAFA] font-semibold font-mono">1.2 MB</div>
               </div>
               <div>
-                <div className="text-[#656570]">DRIFT DETECTION</div>
-                <div className="text-sm sm:text-base text-[#818CF8] font-semibold">100% Deterministic</div>
+                <div className="text-[#9A9A9A]">DRIFT DETECTION</div>
+                <div className="text-sm sm:text-base text-[#FAFAFA] font-semibold font-mono">100% Deterministic</div>
               </div>
             </div>
 
             <div className="flex flex-wrap items-center gap-4">
               <MagneticButton
                 onClick={() => onOpenProject && onOpenProject({ id: 'sentinel-npu' })}
-                className="px-6 py-3.5 bg-[#F4F4F0] hover:bg-white text-[#08080A] font-semibold text-sm rounded-sm tracking-tight flex items-center gap-2 cursor-pointer shadow-lg"
+                className="px-6 py-3.5 bg-[#FAFAFA] hover:bg-white text-[#09090B] font-semibold text-sm rounded-sm tracking-tight flex items-center gap-2 cursor-pointer shadow-lg"
               >
-                <span>Read Architecture Case Study</span>
+                <span>READ CASE STUDY</span>
                 <ArrowRight size={16} />
               </MagneticButton>
 
               <button
                 onClick={onExploreClick}
-                className="text-xs font-mono uppercase tracking-wider text-[#9E9EA8] hover:text-white transition-colors"
+                className="type-label uppercase tracking-wider text-[#B0B0B0] hover:text-white transition-colors cursor-pointer"
               >
-                Browse All 4 Projects &darr;
+                BROWSE ALL PROJECTS &darr;
               </button>
             </div>
           </motion.div>
