@@ -1,18 +1,18 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import Hero3DComputationalField from '../canvas/Hero3DComputationalField.jsx';
+import HeroDistortingGlass from '../canvas/HeroDistortingGlass.jsx';
 import TactileButton from '../ui/TactileButton.jsx';
 import StatusIndicator from '../ui/StatusIndicator.jsx';
 import { ArrowRight, Terminal, Cpu, Binary, Compass, Activity } from 'lucide-react';
 
 export default function HeroAbstract3D({ onExploreClick }) {
   return (
-    <section className="relative min-h-[90vh] lg:min-h-[94vh] flex flex-col justify-between border-b border-[#27272A]/50 overflow-hidden bg-[#09090B]">
+    <section className="relative min-h-[90vh] lg:min-h-[94vh] flex flex-col justify-between border-b border-[rgba(255,255,255,0.08)] overflow-hidden bg-[#0A0D12]">
 
-      {/* 3D WebGL Computational Manifold & Vector Field */}
-      <div className="absolute inset-0 z-0 pointer-events-auto opacity-75 hover:opacity-95 transition-opacity duration-700">
-        <Hero3DComputationalField />
+      {/* Distorting Typographic Glass Canvas (Refractive dispersion over bold typography) */}
+      <div className="absolute inset-0 z-0 pointer-events-auto opacity-90 hover:opacity-100 transition-opacity duration-700">
+        <HeroDistortingGlass />
       </div>
 
       {/* Radial vignette gradient ensures typographical contrast and legibility */}

@@ -2,74 +2,78 @@
 
 @layer base {
   :root {
-    --bg-page: #09090B;
-    --bg-base: #09090B;
-    --bg-surface: #121215;
-    --bg-surface-elevated: #18181B;
-    --bg-subtle: #141418;
-    --surface-base: #09090B;
-    --surface-raised: #121215;
-    --surface-raised-hover: #18181B;
-    --surface-inset: #0C0C0E;
-    --surface-control: #121215;
+    --bg-page: #0A0D12;
+    --bg-base: #0A0D12;
+    --bg-surface: #101318;
+    --bg-surface-elevated: #161B22;
+    --bg-subtle: #12161F;
+    --surface-base: #0A0D12;
+    --surface-raised: #101318;
+    --surface-raised-hover: #161B22;
+    --surface-inset: #07090C;
+    --surface-control: #101318;
     --border-hairline: rgba(255, 255, 255, 0.08);
-    --border-subtle: rgba(255, 255, 255, 0.08);
+    --border-subtle: rgba(255, 255, 255, 0.09);
     --border-strong: rgba(255, 255, 255, 0.16);
-    --border-highlight: rgba(255, 255, 255, 0.22);
+    --border-highlight: rgba(255, 255, 255, 0.24);
     --accent: #E10600;
     --accent-hover: #C41414;
     --accent-dim: #A50F0F;
-    --heading-ink: #FAFAFA;
-    /* Patch 0.2.1 Contrast & Accessibility Scale */
-    --text-primary: #E8E8E8;
-    --text-secondary: #B0B0B0;
-    --text-muted: #858585;
-    --text-label: #9A9A9A;
-    --text-tertiary: #858585;
+    --heading-ink: #F8FAFC;
+    /* Untitled UI & Modern Figma Contrast Tokens */
+    --text-primary: #F8FAFC;
+    --text-secondary: #94A3B8;
+    --text-muted: #64748B;
+    --text-label: #94A3B8;
+    --text-tertiary: #64748B;
   }
 
   html.light {
-    --bg-page: #FAFAFA;
-    --bg-base: #FAFAFA;
+    --bg-page: #F8FAFC;
+    --bg-base: #F8FAFC;
     --bg-surface: #FFFFFF;
-    --bg-surface-elevated: #F4F4F5;
-    --bg-subtle: #E4E4E7;
-    --surface-base: #FAFAFA;
+    --bg-surface-elevated: #F1F5F9;
+    --bg-subtle: #E2E8F0;
+    --surface-base: #F8FAFC;
     --surface-raised: #FFFFFF;
-    --surface-raised-hover: #F4F4F5;
-    --surface-inset: #F4F4F5;
+    --surface-raised-hover: #F1F5F9;
+    --surface-inset: #F1F5F9;
     --surface-control: #FFFFFF;
     --border-hairline: rgba(0, 0, 0, 0.08);
-    --border-subtle: #E4E4E7;
-    --border-strong: #D4D4D8;
-    --border-highlight: #A1A1AA;
+    --border-subtle: #E2E8F0;
+    --border-strong: #CBD5E1;
+    --border-highlight: #94A3B8;
     --accent: #E10600;
     --accent-hover: #C41414;
     --accent-dim: #A50F0F;
-    --heading-ink: #111113;
-    --text-primary: #18181B;
-    --text-secondary: #52525B;
-    --text-muted: #71717A;
-    --text-label: #52525B;
-    --text-tertiary: #71717A;
+    --heading-ink: #0F172A;
+    --text-primary: #0F172A;
+    --text-secondary: #475569;
+    --text-muted: #64748B;
+    --text-label: #475569;
+    --text-tertiary: #64748B;
   }
 
   body {
     background-color: var(--bg-page);
     color: var(--text-primary);
-    font-family: 'Manrope', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     font-size: 1rem;
     line-height: 1.65;
-    letter-spacing: 0;
+    letter-spacing: -0.01em;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     transition: background-color 0.25s ease, color 0.25s ease;
   }
 
   h1, h2, h3, h4, .font-display {
-    font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: 'Space Grotesk', 'Plus Jakarta Sans', -apple-system, sans-serif;
     letter-spacing: -0.025em;
     color: var(--heading-ink);
+  }
+
+  .font-body {
+    font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
   }
 
   .font-serif-editorial {
@@ -84,7 +88,7 @@
 
   ::selection {
     background-color: rgba(225, 6, 0, 0.25);
-    color: #FAFAFA;
+    color: #FFFFFF;
   }
 }
 
@@ -615,4 +619,75 @@ html.light .text-\[\#656570\] {
     0 0 5px 2px rgba(15, 165, 70, 0.9),
     0 0 3px 1px rgba(15, 165, 70, 0.9);
 }
+
+/* ==========================================================================
+   STATIC PAGE BACKGROUND PATTERNS (Inspired by chase2k25/rare-bear-68)
+   ========================================================================== */
+.bg-grid-pattern {
+  background-image: 
+    radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(to right, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+  background-size: 32px 32px, 96px 96px, 96px 96px;
+  background-position: center center;
+}
+
+.bg-crosshair-pattern {
+  background-image: 
+    radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.06) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+/* ==========================================================================
+   SPOTLIGHT 3D HOVER & EXPAND BLUR (Inspired by Cornerstone-04/moody-treefrog-55)
+   ========================================================================== */
+.spotlight-group:hover .spotlight-item:not(:hover) {
+  filter: blur(8px) brightness(0.4) saturate(0.6);
+  opacity: 0.35;
+  transform: scale(0.985);
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+
+.perspective-1200 {
+  perspective: 1200px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+/* Range Slider Custom Styling (Inspired by Stavros2410/wet-duck-69) */
+.uiverse-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  background: #161B22;
+  border-radius: 9999px;
+  outline: none;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.uiverse-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #F8FAFC;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 0 0 0 2px rgba(225, 6, 0, 0.8);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.uiverse-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+  box-shadow: 0 0 14px rgba(225, 6, 0, 1), 0 0 0 3px rgba(255, 255, 255, 0.9);
+}
+
 

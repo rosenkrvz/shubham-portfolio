@@ -32,33 +32,30 @@ export default function AboutPage({ onShowToast }) {
 
   return (
     <PageTransition>
-      <div className="min-h-screen py-24 md:py-32 bg-[#09090B] text-[#FAFAFA]">
+      <div className="min-h-screen py-24 md:py-32 bg-[#0A0D12] text-[#F8FAFC] bg-crosshair-pattern">
         <div className="max-w-4xl mx-auto px-6 sm:px-8 space-y-20 sm:space-y-28">
 
           {/* Page Header */}
-          <div className="space-y-6 border-b border-[#27272A]/50 pb-12">
-            <div className="inline-flex items-center gap-2 type-label text-[#9A9A9A]">
+          <div className="space-y-6 border-b border-[rgba(255,255,255,0.08)] pb-12">
+            <div className="inline-flex items-center gap-2 type-label text-[#94A3B8]">
               <span className="w-1.5 h-1.5 rounded-full bg-[#E10600]"></span>
               <span>DOSSIER // IIT JODHPUR</span>
             </div>
 
-            <h1 className="type-hero font-display font-medium uppercase tracking-tight text-[#FAFAFA] leading-[0.95]">
-              Shubham <br />
-              <span className="font-serif-editorial italic font-normal lowercase text-white mr-3">
-                profile &amp;
-              </span>
-              Sharma
+            <h1 className="type-hero font-display font-medium uppercase tracking-tight text-[#F8FAFC] leading-[0.95]">
+              SHUBHAM <br />
+              SHARMA
             </h1>
 
-            <p className="type-body-lg text-[#E8E8E8] font-normal leading-relaxed">
+            <p className="type-body-lg text-[#F8FAFC] font-normal leading-relaxed">
               Undergraduate in Applied AI &amp; Data Science at the Indian Institute of Technology Jodhpur (IIT Jodhpur).
             </p>
 
             <div className="space-y-4 max-w-[68ch]">
-              <p className="type-body text-[#B0B0B0] leading-relaxed">
+              <p className="type-body text-[#94A3B8] leading-relaxed">
                 I think through problems with mathematics, data distributions, and computational experiments. Software engineering is my instrument for building and validating ideas, but the primary curiosity has always been understanding how systems behave, how high-dimensional representations organize information, and how statistical models generalize.
               </p>
-              <p className="type-body text-[#B0B0B0] leading-relaxed">
+              <p className="type-body text-[#94A3B8] leading-relaxed">
                 Rather than treating algorithms as opaque black boxes, I build prototypes from mathematical foundations up &mdash; studying loss surfaces, measuring latency bounds, and testing edge failure modes on actual compute devices.
               </p>
             </div>

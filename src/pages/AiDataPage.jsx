@@ -31,42 +31,42 @@ export default function AiDataPage({ onShowToast }) {
 
   return (
     <PageTransition>
-      <div className="min-h-screen py-24 md:py-32 bg-[#09090B] text-[#FAFAFA]">
+      <div className="min-h-screen py-24 md:py-32 bg-[#0A0D12] text-[#F8FAFC] bg-crosshair-pattern">
         <div className="max-w-6xl mx-auto px-6 sm:px-8 space-y-24 md:space-y-32">
 
           {/* 01. Analytical Scientific Hero */}
-          <div className="border-b border-[#27272A]/50 pb-12 space-y-6">
-            <div className="flex items-center gap-2 type-label text-[#9A9A9A] uppercase">
+          <div className="border-b border-[rgba(255,255,255,0.08)] pb-12 space-y-6">
+            <div className="flex items-center gap-2 type-label text-[#94A3B8] uppercase">
               <span className="w-1.5 h-1.5 rounded-full bg-[#E10600] ring-2 ring-[#E10600]/30" />
               <span>DISCIPLINARY CORE // AI &bull; DATA SCIENCE &bull; MATHEMATICS</span>
             </div>
 
-            <h1 className="type-hero font-medium font-display uppercase tracking-tight text-[#FAFAFA] leading-[0.92]">
+            <h1 className="type-hero font-medium font-display uppercase tracking-tight text-[#F8FAFC] leading-[0.92]">
               AI / DATA
             </h1>
 
-            <p className="type-body-lg text-[#E8E8E8] font-light max-w-[65ch] leading-snug">
+            <p className="type-body-lg text-[#F8FAFC] font-light max-w-[65ch] leading-snug">
               Exploring models, patterns, and computational systems.
             </p>
 
-            <p className="type-body text-[#B0B0B0] max-w-[68ch] font-normal leading-relaxed">
+            <p className="type-body text-[#94A3B8] max-w-[68ch] font-normal leading-relaxed">
               Studying Applied AI &amp; Data Science at IIT Jodhpur. From statistical distributions and high-dimensional latent manifolds to deterministic inference on physical hardware, I focus on how models formulate reality, generalize beyond training distributions, and execute under strict computational budgets.
             </p>
 
             {/* Technical Flow Label Banner */}
-            <div className="p-4 sm:p-5 bg-[#121215] border border-[rgba(255,255,255,0.08)] rounded-[4px] type-label flex flex-wrap items-center justify-between gap-4 text-[#B0B0B0]">
+            <div className="p-4 sm:p-5 bg-[#101318] border border-[rgba(255,255,255,0.08)] rounded-xl type-label flex flex-wrap items-center justify-between gap-4 text-[#94A3B8]">
               <div className="flex flex-wrap items-center gap-2">
-                <span className="text-[#9A9A9A] uppercase tracking-wider mr-1">CANONICAL PIPELINE:</span>
-                <span className="px-2.5 py-1 bg-[#09090B] border border-[rgba(255,255,255,0.08)] text-[#FAFAFA] rounded-[3px]">DATASET</span>
-                <span className="text-[#9A9A9A]">&rarr;</span>
-                <span className="px-2.5 py-1 bg-[#09090B] border border-[rgba(255,255,255,0.08)] text-[#FAFAFA] rounded-[3px]">TRANSFORMATION</span>
-                <span className="text-[#9A9A9A]">&rarr;</span>
-                <span className="px-2.5 py-1 bg-[#09090B] border border-[rgba(255,255,255,0.08)] text-[#FAFAFA] rounded-[3px]">MODEL</span>
-                <span className="text-[#9A9A9A]">&rarr;</span>
-                <span className="px-2.5 py-1 bg-[#09090B] border border-emerald-500/30 text-emerald-400 rounded-[3px]">EVALUATION</span>
+                <span className="text-[#64748B] uppercase tracking-wider mr-1">CANONICAL PIPELINE:</span>
+                <span className="px-2.5 py-1 bg-[#0A0D12] border border-[rgba(255,255,255,0.08)] text-[#F8FAFC] rounded-md">DATASET</span>
+                <span className="text-[#64748B]">&rarr;</span>
+                <span className="px-2.5 py-1 bg-[#0A0D12] border border-[rgba(255,255,255,0.08)] text-[#F8FAFC] rounded-md">TRANSFORMATION</span>
+                <span className="text-[#64748B]">&rarr;</span>
+                <span className="px-2.5 py-1 bg-[#0A0D12] border border-[rgba(255,255,255,0.08)] text-[#F8FAFC] rounded-md">MODEL</span>
+                <span className="text-[#64748B]">&rarr;</span>
+                <span className="px-2.5 py-1 bg-[#0A0D12] border border-emerald-500/30 text-emerald-400 rounded-md">EVALUATION</span>
               </div>
 
-              <div className="text-[#9A9A9A]">
+              <div className="text-[#64748B]">
                 INPUT &rarr; FEATURES &rarr; MODEL &rarr; OUTPUT
               </div>
             </div>

@@ -6,6 +6,7 @@ import Hero3DNeural from '../components/canvas/Hero3DNeural.jsx';
 import PageTransition from '../components/ui/PageTransition.jsx';
 import TactileButton from '../components/ui/TactileButton.jsx';
 import CompactPillSwitch from '../components/ui/CompactPillSwitch.jsx';
+import { UiverseSlider, UiverseToggleSwitch, UiverseRadialButton, UiverseLoader } from '../components/ui/UiverseControls.jsx';
 
 export default function LabPage({ onShowToast }) {
   usePageMeta({
@@ -114,21 +115,21 @@ export default function LabPage({ onShowToast }) {
 
   return (
     <PageTransition>
-      <div className="min-h-screen py-24 md:py-32 bg-[#09090B] text-[#FAFAFA]">
+      <div className="min-h-screen py-24 md:py-32 bg-[#0A0D12] text-[#F8FAFC] bg-crosshair-pattern">
         <div className="max-w-6xl mx-auto px-6 sm:px-8 space-y-24 md:space-y-32">
           
           {/* Editorial Header */}
-          <div className="space-y-4 border-b border-[#27272A]/50 pb-10">
-            <div className="inline-flex items-center gap-2 type-label text-[#9A9A9A] uppercase tracking-widest">
+          <div className="space-y-4 border-b border-[rgba(255,255,255,0.08)] pb-10">
+            <div className="inline-flex items-center gap-2 type-label text-[#94A3B8] uppercase tracking-widest">
               <span className="w-1.5 h-1.5 rounded-full bg-[#E10600] ring-2 ring-[#E10600]/30" />
               <span>DIGITAL WORKBENCH // LABORATORY</span>
             </div>
 
-            <h1 className="type-hero font-medium font-display uppercase tracking-tight text-[#FAFAFA] leading-[0.92]">
+            <h1 className="type-hero font-medium font-display uppercase tracking-tight text-[#F8FAFC] leading-[0.92]">
               LAB
             </h1>
 
-            <p className="type-body-lg text-[#E8E8E8] max-w-[65ch] font-normal leading-relaxed">
+            <p className="type-body-lg text-[#94A3B8] max-w-[65ch] font-normal leading-relaxed">
               Experiments, visualizations, algorithms, and computational methods currently under exploration.
             </p>
           </div>
@@ -139,16 +140,16 @@ export default function LabPage({ onShowToast }) {
             {/* ============================================================== */}
             {/* WORKBENCH STATION 01: 1-Bit Spatial Dither Engine              */}
             {/* ============================================================== */}
-            <article className="p-6 sm:p-10 bg-[#121215] border border-[rgba(255,255,255,0.08)] rounded-[4px] space-y-8">
-              <div className="flex flex-col sm:flex-row sm:items-baseline justify-between border-b border-[#27272A]/50 pb-4 gap-2">
+            <article className="p-6 sm:p-10 bg-[#101318] border border-[rgba(255,255,255,0.08)] rounded-2xl space-y-8 shadow-lg">
+              <div className="flex flex-col sm:flex-row sm:items-baseline justify-between border-b border-[rgba(255,255,255,0.08)] pb-4 gap-2">
                 <div className="flex items-center gap-3">
-                  <span className="type-label text-[#9A9A9A] font-medium">LAB / 001</span>
-                  <span className="text-[#52525B]">//</span>
-                  <h2 className="type-h3 font-display font-medium uppercase text-[#FAFAFA]">
+                  <span className="type-label text-[#94A3B8] font-medium">LAB / 001</span>
+                  <span className="text-[#64748B]">//</span>
+                  <h2 className="type-h3 font-display font-medium uppercase text-[#F8FAFC]">
                     1-Bit Spatial Dither &amp; Halftone Engine
                   </h2>
                 </div>
-                <div className="flex items-center gap-3 type-label text-[#9A9A9A]">
+                <div className="flex items-center gap-3 type-label text-[#94A3B8]">
                   <span className="text-emerald-400 font-medium">ACTIVE RESEARCH</span>
                   <span>&bull;</span>
                   <span>JAVASCRIPT &bull; CANVAS &bull; OPENCV</span>
@@ -157,9 +158,9 @@ export default function LabPage({ onShowToast }) {
 
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                 {/* Canvas */}
-                <div className="lg:col-span-5 flex flex-col items-center justify-center p-4 bg-[#09090B] border border-[rgba(255,255,255,0.08)] rounded-[4px]">
-                  <canvas ref={canvasRef} className="max-w-full rounded-[2px] border border-[#27272A]" />
-                  <div className="mt-3 type-label text-[#9A9A9A] flex items-center justify-between w-full">
+                <div className="lg:col-span-5 flex flex-col items-center justify-center p-4 bg-[#0A0D12] border border-[rgba(255,255,255,0.08)] rounded-xl">
+                  <canvas ref={canvasRef} className="max-w-full rounded-lg border border-[rgba(255,255,255,0.08)]" />
+                  <div className="mt-3 type-label text-[#94A3B8] flex items-center justify-between w-full">
                     <span>1-BIT BUFFER MATRIX</span>
                     <span className="text-emerald-400 font-medium">120+ FPS</span>
                   </div>
@@ -169,8 +170,8 @@ export default function LabPage({ onShowToast }) {
                 <div className="lg:col-span-7 space-y-6">
                   {/* Preset Selector */}
                   <div className="space-y-2">
-                    <span className="type-label text-[#9A9A9A] uppercase tracking-wider">SOURCE FRAME BUFFER</span>
-                    <div className="inline-flex p-1 bg-[#09090B] border border-[rgba(255,255,255,0.08)] rounded-[4px] gap-1">
+                    <span className="type-label text-[#94A3B8] uppercase tracking-wider">SOURCE FRAME BUFFER</span>
+                    <div className="inline-flex p-1 bg-[#0A0D12] border border-[rgba(255,255,255,0.08)] rounded-lg gap-1">
                       <TactileButton
                         size="sm"
                         variant={selectedImagePreset.includes('sentinel') ? 'primary' : 'secondary'}
@@ -188,35 +189,30 @@ export default function LabPage({ onShowToast }) {
                     </div>
                   </div>
 
-                  <div className="space-y-2">
-                    <div className="flex justify-between type-label">
-                      <span className="text-[#9A9A9A] uppercase tracking-wider">THRESHOLD CUTOFF</span>
-                      <span className="text-[#FAFAFA] font-medium">{threshold} / 255</span>
-                    </div>
-                    <input
-                      type="range"
-                      min="30"
-                      max="220"
-                      value={threshold}
-                      onChange={(e) => setThreshold(Number(e.target.value))}
-                      className="w-full h-1.5 bg-[#09090B] border border-[rgba(255,255,255,0.08)] rounded cursor-pointer accent-[#FAFAFA]"
-                    />
-                  </div>
+                  {/* Uiverse Slider for Cutoff Threshold */}
+                  <UiverseSlider
+                    label="THRESHOLD CUTOFF"
+                    min={30}
+                    max={220}
+                    value={threshold}
+                    onChange={setThreshold}
+                    unit="/ 255"
+                  />
 
                   <div className="space-y-2">
                     <div className="flex justify-between type-label">
-                      <span className="text-[#9A9A9A] uppercase tracking-wider">BAYER BLOCK GRANULARITY</span>
-                      <span className="text-[#FAFAFA] font-medium">{ditherScale}× Scale</span>
+                      <span className="text-[#94A3B8] uppercase tracking-wider">BAYER BLOCK GRANULARITY</span>
+                      <span className="text-[#F8FAFC] font-medium">{ditherScale}× Scale</span>
                     </div>
-                    <div className="flex gap-1.5 p-1 bg-[#09090B] border border-[rgba(255,255,255,0.08)] rounded-[4px]">
+                    <div className="flex gap-1.5 p-1 bg-[#0A0D12] border border-[rgba(255,255,255,0.08)] rounded-lg">
                       {[1, 2, 4, 6, 8].map((scale) => (
                         <button
                           key={scale}
                           onClick={() => setDitherScale(scale)}
-                          className={`flex-1 py-1.5 text-xs font-mono rounded-[3px] transition-all cursor-pointer select-none ${
+                          className={`flex-1 py-1.5 text-xs font-mono rounded-md transition-all cursor-pointer select-none ${
                             ditherScale === scale
-                              ? 'bg-[#18181B] text-[#FAFAFA] font-medium border border-[rgba(255,255,255,0.12)]'
-                              : 'text-[#9A9A9A] hover:text-[#FAFAFA] border border-transparent'
+                              ? 'bg-[#161B22] text-[#F8FAFC] font-medium border border-[rgba(255,255,255,0.18)]'
+                              : 'text-[#94A3B8] hover:text-[#F8FAFC] border border-transparent'
                           }`}
                         >
                           {scale}×
@@ -225,7 +221,7 @@ export default function LabPage({ onShowToast }) {
                     </div>
                   </div>
 
-                  <div className="p-3 bg-[#09090B] border border-[rgba(255,255,255,0.06)] rounded-[4px] type-label text-[#9A9A9A]">
+                  <div className="p-3 bg-[#0A0D12] border border-[rgba(255,255,255,0.06)] rounded-lg type-label text-[#64748B]">
                     <code>Bayer 4x4: [[0, 8, 2, 10], [12, 4, 14, 6], [3, 11, 1, 9], [15, 7, 13, 5]] / 16</code>
                   </div>
                 </div>
@@ -238,13 +234,13 @@ export default function LabPage({ onShowToast }) {
             <article className="p-6 sm:p-10 bg-[#121215] border border-[rgba(255,255,255,0.08)] rounded-[4px] space-y-8">
               <div className="flex flex-col sm:flex-row sm:items-baseline justify-between border-b border-[#27272A]/50 pb-4 gap-2">
                 <div className="flex items-center gap-3">
-                  <span className="type-label text-[#9A9A9A] font-medium">LAB / 002</span>
-                  <span className="text-[#52525B]">//</span>
-                  <h2 className="type-h3 font-display font-medium uppercase text-[#FAFAFA]">
+                  <span className="type-label text-[#94A3B8] font-medium">LAB / 002</span>
+                  <span className="text-[#64748B]">//</span>
+                  <h2 className="type-h3 font-display font-medium uppercase text-[#F8FAFC]">
                     Cosine Vector Radar
                   </h2>
                 </div>
-                <div className="flex items-center gap-3 type-label text-[#9A9A9A]">
+                <div className="flex items-center gap-3 type-label text-[#94A3B8]">
                   <span className="text-[#38BDF8] font-medium">INTERACTIVE PROTOTYPE</span>
                   <span>&bull;</span>
                   <span>NUMPY &bull; HNSW &bull; SIMD</span>
@@ -253,7 +249,7 @@ export default function LabPage({ onShowToast }) {
 
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                 {/* 2D Interactive Radar */}
-                <div className="lg:col-span-6 flex flex-col items-center justify-center p-4 bg-[#09090B] border border-[rgba(255,255,255,0.08)] rounded-[4px]">
+                <div className="lg:col-span-6 flex flex-col items-center justify-center p-6 bg-[#0A0D12] border border-[rgba(255,255,255,0.08)] rounded-2xl">
                   <div 
                     onClick={(e) => {
                       const rect = e.currentTarget.getBoundingClientRect();
@@ -261,17 +257,17 @@ export default function LabPage({ onShowToast }) {
                       const y = Math.round(((e.clientY - rect.top) / rect.height) * 100);
                       setQueryPoint({ x, y });
                     }}
-                    className="relative w-[280px] h-[280px] sm:w-[320px] sm:h-[320px] bg-[#09090B] border border-[#27272A] rounded-full overflow-hidden cursor-crosshair"
+                    className="relative w-[280px] h-[280px] sm:w-[320px] sm:h-[320px] bg-[#0A0D12] border border-[rgba(255,255,255,0.12)] rounded-full overflow-hidden cursor-crosshair shadow-inner"
                   >
                     {/* Concentric Radar Rings */}
-                    <div className="absolute inset-4 border border-[#27272A] rounded-full pointer-events-none" />
-                    <div className="absolute inset-16 border border-[#27272A] rounded-full pointer-events-none" />
-                    <div className="absolute inset-28 border border-[#27272A] rounded-full pointer-events-none" />
+                    <div className="absolute inset-4 border border-[rgba(255,255,255,0.08)] rounded-full pointer-events-none" />
+                    <div className="absolute inset-16 border border-[rgba(255,255,255,0.08)] rounded-full pointer-events-none" />
+                    <div className="absolute inset-28 border border-[rgba(255,255,255,0.08)] rounded-full pointer-events-none" />
                     <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                      <div className="w-full h-[1px] bg-[#27272A]" />
+                      <div className="w-full h-[1px] bg-[rgba(255,255,255,0.08)]" />
                     </div>
                     <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                      <div className="h-full w-[1px] bg-[#27272A]" />
+                      <div className="h-full w-[1px] bg-[rgba(255,255,255,0.08)]" />
                     </div>
 
                     {/* Embedding Points */}
@@ -282,21 +278,21 @@ export default function LabPage({ onShowToast }) {
                         className="absolute -translate-x-1/2 -translate-y-1/2 w-4 h-4 rounded-full flex items-center justify-center text-[9px] font-mono font-bold text-white shadow-lg transition-all"
                       >
                         <span 
-                          className="w-2.5 h-2.5 rounded-full ring-2 ring-[#09090B]"
+                          className="w-3 h-3 rounded-full ring-2 ring-[#0A0D12]"
                           style={{ backgroundColor: pt.color }}
                         />
                       </div>
                     ))}
                   </div>
 
-                  <div className="mt-3 type-label text-[#9A9A9A]">
+                  <div className="mt-4 type-label text-[#94A3B8]">
                     CLICK ANYWHERE ON RADAR TO RE-POSITION QUERY VECTOR
                   </div>
                 </div>
 
                 {/* Distance Matrix Table */}
                 <div className="lg:col-span-6 space-y-4">
-                  <div className="type-label text-[#9A9A9A] uppercase tracking-wider">
+                  <div className="type-label text-[#94A3B8] uppercase tracking-wider">
                     COSINE SIMILARITY TO QUERY VECTOR (X: {queryPoint.x}, Y: {queryPoint.y})
                   </div>
 
@@ -306,13 +302,13 @@ export default function LabPage({ onShowToast }) {
                       const similarity = Math.max(0, (1 - dist / 100)).toFixed(3);
 
                       return (
-                        <div key={pt.id} className="p-3 bg-[#09090B] border border-[rgba(255,255,255,0.06)] rounded-[3px] flex items-center justify-between type-label">
-                          <div className="flex items-center gap-2">
+                        <div key={pt.id} className="p-3.5 bg-[#0A0D12] border border-[rgba(255,255,255,0.08)] rounded-xl flex items-center justify-between type-label">
+                          <div className="flex items-center gap-2.5">
                             <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: pt.color }} />
-                            <span className="text-[#FAFAFA] font-medium">{pt.label}</span>
+                            <span className="text-[#F8FAFC] font-medium">{pt.label}</span>
                           </div>
                           <div className="flex items-center gap-3">
-                            <span className="text-[#9A9A9A]">SIM:</span>
+                            <span className="text-[#64748B]">SIM:</span>
                             <span className="text-emerald-400 font-medium font-mono">{similarity}</span>
                           </div>
                         </div>
@@ -320,7 +316,7 @@ export default function LabPage({ onShowToast }) {
                     })}
                   </div>
 
-                  <p className="type-body-sm text-[#B0B0B0] leading-relaxed pt-2">
+                  <p className="type-body-sm text-[#94A3B8] leading-relaxed pt-2">
                     High-dimensional semantic search relies on approximate nearest neighbor (ANN) graphs like HNSW to avoid brute-force Euclidean distance scans across millions of embeddings.
                   </p>
                 </div>
@@ -330,16 +326,16 @@ export default function LabPage({ onShowToast }) {
             {/* ============================================================== */}
             {/* WORKBENCH STATION 03: Edge Silicon Latency Matrix              */}
             {/* ============================================================== */}
-            <article className="p-6 sm:p-10 bg-[#121215] border border-[rgba(255,255,255,0.08)] rounded-[4px] space-y-8">
-              <div className="flex flex-col sm:flex-row sm:items-baseline justify-between border-b border-[#27272A]/50 pb-4 gap-2">
+            <article className="p-6 sm:p-10 bg-[#101318] border border-[rgba(255,255,255,0.08)] rounded-2xl space-y-8 shadow-lg">
+              <div className="flex flex-col sm:flex-row sm:items-baseline justify-between border-b border-[rgba(255,255,255,0.08)] pb-4 gap-2">
                 <div className="flex items-center gap-3">
-                  <span className="type-label text-[#9A9A9A] font-medium">LAB / 003</span>
-                  <span className="text-[#52525B]">//</span>
-                  <h2 className="type-h3 font-display font-medium uppercase text-[#FAFAFA]">
+                  <span className="type-label text-[#94A3B8] font-medium">LAB / 003</span>
+                  <span className="text-[#64748B]">//</span>
+                  <h2 className="type-h3 font-display font-medium uppercase text-[#F8FAFC]">
                     Edge Silicon Latency Matrix
                   </h2>
                 </div>
-                <div className="flex items-center gap-3 type-label text-[#9A9A9A]">
+                <div className="flex items-center gap-3 type-label text-[#94A3B8]">
                   <span className="text-emerald-400 font-medium">BENCHMARK SUITE</span>
                   <span>&bull;</span>
                   <span>TENSORRT &bull; C++ &bull; PYTORCH</span>
@@ -348,42 +344,32 @@ export default function LabPage({ onShowToast }) {
 
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                 <div className="lg:col-span-6 space-y-6">
-                  {/* Mode Toggle */}
+                  {/* Quantization Mode using UiverseRadialButton */}
                   <div className="space-y-2">
-                    <span className="type-label text-[#9A9A9A] uppercase tracking-wider">QUANTIZATION MODE</span>
-                    <div className="flex gap-1.5 p-1 bg-[#09090B] border border-[rgba(255,255,255,0.08)] rounded-[4px]">
+                    <span className="type-label text-[#94A3B8] uppercase tracking-wider">QUANTIZATION MODE</span>
+                    <div className="flex flex-wrap gap-2">
                       {['FP32', 'INT8', 'FP4'].map((mode) => (
-                        <button
+                        <UiverseRadialButton
                           key={mode}
+                          selected={quantMode === mode}
                           onClick={() => setQuantMode(mode)}
-                          className={`flex-1 py-2 text-xs font-mono rounded-[3px] transition-all cursor-pointer select-none ${
-                            quantMode === mode
-                              ? 'bg-[#18181B] text-[#FAFAFA] font-medium border border-[rgba(255,255,255,0.12)]'
-                              : 'text-[#9A9A9A] hover:text-[#FAFAFA] border border-transparent'
-                          }`}
                         >
                           {mode}
-                        </button>
+                        </UiverseRadialButton>
                       ))}
                     </div>
                   </div>
 
-                  {/* Batch Size Slider */}
-                  <div className="space-y-2">
-                    <div className="flex justify-between type-label">
-                      <span className="text-[#9A9A9A] uppercase tracking-wider">BATCH CONCURRENCY</span>
-                      <span className="text-[#FAFAFA] font-medium">{batchSize}</span>
-                    </div>
-                    <input
-                      type="range"
-                      min="1"
-                      max="64"
-                      step="1"
-                      value={batchSize}
-                      onChange={(e) => setBatchSize(Number(e.target.value))}
-                      className="w-full h-1.5 bg-[#09090B] border border-[rgba(255,255,255,0.08)] rounded cursor-pointer accent-[#FAFAFA]"
-                    />
-                  </div>
+                  {/* Batch Size using UiverseSlider */}
+                  <UiverseSlider
+                    label="BATCH CONCURRENCY"
+                    min={1}
+                    max={64}
+                    step={1}
+                    value={batchSize}
+                    onChange={setBatchSize}
+                    unit="SAMPLES"
+                  />
 
                   <TactileButton
                     variant="danger"
@@ -393,39 +379,39 @@ export default function LabPage({ onShowToast }) {
                     className="w-full justify-center"
                   >
                     {benchRunning ? (
-                      <>
-                        <RefreshCw size={14} className="animate-spin text-white" />
+                      <div className="flex items-center gap-2">
+                        <UiverseLoader size="sm" />
                         <span>Executing TensorRT Pass...</span>
-                      </>
+                      </div>
                     ) : (
-                      <>
+                      <div className="flex items-center gap-2">
                         <Play size={14} className="text-[#E10600]" />
                         <span>EXECUTE BENCHMARK PASS</span>
-                      </>
+                      </div>
                     )}
                   </TactileButton>
                 </div>
 
                 {/* Benchmark Output Grid */}
                 <div className="lg:col-span-6 grid grid-cols-2 gap-4">
-                  <div className="p-4 bg-[#09090B] border border-[rgba(255,255,255,0.06)] rounded-[3px]">
-                    <div className="type-label text-[#9A9A9A] uppercase">P99 TAIL LATENCY</div>
+                  <div className="p-4 bg-[#0A0D12] border border-[rgba(255,255,255,0.06)] rounded-xl">
+                    <div className="type-label text-[#64748B] uppercase">P99 TAIL LATENCY</div>
                     <div className="text-xl font-medium text-emerald-400 mt-1 font-mono">{benchResults.p99Latency}</div>
                   </div>
 
-                  <div className="p-4 bg-[#09090B] border border-[rgba(255,255,255,0.06)] rounded-[3px]">
-                    <div className="type-label text-[#9A9A9A] uppercase">THROUGHPUT</div>
-                    <div className="text-xl font-medium text-[#FAFAFA] mt-1 font-mono">{benchResults.throughput}</div>
+                  <div className="p-4 bg-[#0A0D12] border border-[rgba(255,255,255,0.06)] rounded-xl">
+                    <div className="type-label text-[#64748B] uppercase">THROUGHPUT</div>
+                    <div className="text-xl font-medium text-[#F8FAFC] mt-1 font-mono">{benchResults.throughput}</div>
                   </div>
 
-                  <div className="p-4 bg-[#09090B] border border-[rgba(255,255,255,0.06)] rounded-[3px]">
-                    <div className="type-label text-[#9A9A9A] uppercase">MEMORY BANDWIDTH</div>
-                    <div className="text-xl font-medium text-[#FAFAFA] mt-1 font-mono">{benchResults.bandwidth}</div>
+                  <div className="p-4 bg-[#0A0D12] border border-[rgba(255,255,255,0.06)] rounded-xl">
+                    <div className="type-label text-[#64748B] uppercase">MEMORY BANDWIDTH</div>
+                    <div className="text-xl font-medium text-[#F8FAFC] mt-1 font-mono">{benchResults.bandwidth}</div>
                   </div>
 
-                  <div className="p-4 bg-[#09090B] border border-[rgba(255,255,255,0.06)] rounded-[3px]">
-                    <div className="type-label text-[#9A9A9A] uppercase">LATENCY VARIANCE</div>
-                    <div className="text-xl font-medium text-[#B0B0B0] mt-1 font-mono">{benchResults.variance}</div>
+                  <div className="p-4 bg-[#0A0D12] border border-[rgba(255,255,255,0.06)] rounded-xl">
+                    <div className="type-label text-[#64748B] uppercase">LATENCY VARIANCE</div>
+                    <div className="text-xl font-medium text-[#94A3B8] mt-1 font-mono">{benchResults.variance}</div>
                   </div>
                 </div>
               </div>
@@ -434,34 +420,34 @@ export default function LabPage({ onShowToast }) {
             {/* ============================================================== */}
             {/* WORKBENCH STATION 04: Technical Thoughts & Unfinished Hypotheses */}
             {/* ============================================================== */}
-            <article className="p-6 sm:p-10 bg-[#121215] border border-[rgba(255,255,255,0.08)] rounded-[4px] space-y-6">
-              <div className="flex items-center gap-3 type-label text-[#9A9A9A] font-medium">
+            <article className="p-6 sm:p-10 bg-[#101318] border border-[rgba(255,255,255,0.08)] rounded-2xl space-y-6 shadow-lg">
+              <div className="flex items-center gap-3 type-label text-[#94A3B8] font-medium">
                 <span>LAB / 004</span>
-                <span className="text-[#52525B]">//</span>
+                <span className="text-[#64748B]">//</span>
                 <span className="tracking-wider uppercase">Open Hypotheses &amp; Experimental Vectors</span>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div className="p-6 bg-[#09090B] border border-[rgba(255,255,255,0.06)] rounded-[3px] space-y-2">
-                  <div className="type-label text-[#9A9A9A]">THOUGHT 01 // HESSIAN TRACE</div>
-                  <div className="text-base font-semibold text-[#FAFAFA]">Flat Minima Robustness</div>
-                  <p className="type-body-sm text-[#B0B0B0] leading-relaxed">
+                <div className="p-6 bg-[#0A0D12] border border-[rgba(255,255,255,0.06)] rounded-xl space-y-2">
+                  <div className="type-label text-[#64748B]">THOUGHT 01 // HESSIAN TRACE</div>
+                  <div className="text-base font-semibold text-[#F8FAFC]">Flat Minima Robustness</div>
+                  <p className="type-body-sm text-[#94A3B8] leading-relaxed">
                     Does the top eigenvalue of the empirical Hessian correlate more tightly with out-of-distribution transfer than validation cross-entropy? Currently verifying on small CIFAR-10 subsets.
                   </p>
                 </div>
 
-                <div className="p-6 bg-[#09090B] border border-[rgba(255,255,255,0.06)] rounded-[3px] space-y-2">
-                  <div className="type-label text-[#9A9A9A]">THOUGHT 02 // SUB-BYTE ARITHMETIC</div>
-                  <div className="text-base font-semibold text-[#FAFAFA]">Microscaling Exponent Tiling</div>
-                  <p className="type-body-sm text-[#B0B0B0] leading-relaxed">
+                <div className="p-6 bg-[#0A0D12] border border-[rgba(255,255,255,0.06)] rounded-xl space-y-2">
+                  <div className="type-label text-[#64748B]">THOUGHT 02 // SUB-BYTE ARITHMETIC</div>
+                  <div className="text-base font-semibold text-[#F8FAFC]">Microscaling Exponent Tiling</div>
+                  <p className="type-body-sm text-[#94A3B8] leading-relaxed">
                     Testing how per-tile floating-point scale factors (MXFP4) behave when executed on standard ARM NEON SIMD registers using integer emulation routines.
                   </p>
                 </div>
 
-                <div className="p-6 bg-[#09090B] border border-[rgba(255,255,255,0.06)] rounded-[3px] space-y-2">
-                  <div className="type-label text-[#9A9A9A]">THOUGHT 03 // EVENT-DRIVEN PIPELINES</div>
-                  <div className="text-base font-semibold text-[#FAFAFA]">Sliding-Window Dedup Overhead</div>
-                  <p className="type-body-sm text-[#B0B0B0] leading-relaxed">
+                <div className="p-6 bg-[#0A0D12] border border-[rgba(255,255,255,0.06)] rounded-xl space-y-2">
+                  <div className="type-label text-[#64748B]">THOUGHT 03 // EVENT-DRIVEN PIPELINES</div>
+                  <div className="text-base font-semibold text-[#F8FAFC]">Sliding-Window Dedup Overhead</div>
+                  <p className="type-body-sm text-[#94A3B8] leading-relaxed">
                     Comparing Redis Bloom filters against sliding-window sorted sets (ZSET) for high-frequency telemetry deduplication under 10k evt/s ingestion loads.
                   </p>
                 </div>

@@ -105,17 +105,17 @@ export default function ContactPage({ onShowToast }) {
 
   return (
     <PageTransition>
-      <div className="min-h-screen py-24 md:py-32 bg-[#09090B] text-[#FAFAFA]">
+      <div className="min-h-screen py-24 md:py-32 bg-[#0A0D12] text-[#F8FAFC] bg-crosshair-pattern">
         <div className="max-w-6xl mx-auto px-6 sm:px-8 space-y-16">
 
           {/* Editorial Section Statement */}
-          <div className="space-y-6 border-b border-[#27272A]/50 pb-12">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-[4px] bg-[#121215] border border-[rgba(255,255,255,0.08)] type-label text-[#9A9A9A]">
+          <div className="space-y-6 border-b border-[rgba(255,255,255,0.08)] pb-12">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#101318] border border-[rgba(255,255,255,0.08)] type-label text-[#94A3B8]">
               <StatusIndicator status="online" size="sm" />
               <span className="tracking-wider uppercase">COMMUNICATION // INQUIRIES &amp; COLLABORATION</span>
             </div>
 
-            <h1 className="type-hero font-medium font-display uppercase tracking-tight text-[#FAFAFA] leading-[0.95]">
+            <h1 className="type-hero font-medium font-display uppercase tracking-tight text-[#F8FAFC] leading-[0.95]">
               LET'S BUILD <br />
               <span className="font-serif-editorial italic font-normal lowercase text-white mr-3">
                 something
@@ -123,7 +123,7 @@ export default function ContactPage({ onShowToast }) {
               INTERESTING.
             </h1>
 
-            <p className="type-body-lg text-[#E8E8E8] max-w-[65ch] font-normal leading-relaxed">
+            <p className="type-body-lg text-[#94A3B8] max-w-[65ch] font-normal leading-relaxed">
               Available for machine learning research internships, data science roles, and computational software engineering. Direct communication channels are reviewed daily.
             </p>
           </div>
@@ -134,13 +134,13 @@ export default function ContactPage({ onShowToast }) {
             <div className="lg:col-span-5 space-y-6">
 
               {/* Direct Mail Node */}
-              <div className="p-6 sm:p-8 bg-[#121215] border border-[rgba(255,255,255,0.08)] rounded-[4px] space-y-4">
-                <div className="flex items-center justify-between type-label text-[#9A9A9A] uppercase tracking-wider">
+              <div className="p-6 sm:p-8 bg-[#101318] border border-[rgba(255,255,255,0.08)] rounded-xl space-y-4 shadow-md">
+                <div className="flex items-center justify-between type-label text-[#94A3B8] uppercase tracking-wider">
                   <span>Direct Communication</span>
                   <StatusIndicator status="active" size="sm" />
                 </div>
                 
-                <div className="text-base font-mono font-medium text-[#FAFAFA] select-all break-all">
+                <div className="text-base font-mono font-medium text-[#F8FAFC] select-all break-all">
                   {profile.email}
                 </div>
 
@@ -150,14 +150,14 @@ export default function ContactPage({ onShowToast }) {
                   onClick={handleCopyEmail}
                   className="w-full flex items-center justify-center gap-2"
                 >
-                  {copied ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5 text-[#B0B0B0]" />}
+                  {copied ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5 text-[#94A3B8]" />}
                   <span>{copied ? 'COPIED TO CLIPBOARD' : 'COPY EMAIL'}</span>
                 </TactileButton>
               </div>
 
               {/* Verified Identities */}
-              <div className="p-6 sm:p-8 bg-[#121215] border border-[rgba(255,255,255,0.08)] rounded-[4px] space-y-4">
-                <div className="type-label uppercase tracking-wider text-[#9A9A9A]">
+              <div className="p-6 sm:p-8 bg-[#101318] border border-[rgba(255,255,255,0.08)] rounded-xl space-y-4 shadow-md">
+                <div className="type-label uppercase tracking-wider text-[#94A3B8]">
                   Verified Profiles
                 </div>
                 
@@ -166,33 +166,33 @@ export default function ContactPage({ onShowToast }) {
                     href={profile.links.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-between p-3.5 rounded-[4px] bg-[#09090B] border border-[rgba(255,255,255,0.06)] hover:border-[#FAFAFA]/20 text-[#B0B0B0] hover:text-[#FAFAFA] transition-colors"
+                    className="flex items-center justify-between p-3.5 rounded-lg bg-[#0A0D12] border border-[rgba(255,255,255,0.06)] hover:border-[rgba(255,255,255,0.2)] text-[#94A3B8] hover:text-[#F8FAFC] transition-colors"
                   >
                     <div className="flex items-center gap-2.5">
                       <GithubIcon className="w-4 h-4" />
                       <span>github.com/rosenkrvz</span>
                     </div>
-                    <ArrowRight className="w-3.5 h-3.5 text-[#9A9A9A]" />
+                    <ArrowRight className="w-3.5 h-3.5 text-[#64748B]" />
                   </a>
 
                   <a
                     href={profile.links.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-between p-3.5 rounded-[4px] bg-[#09090B] border border-[rgba(255,255,255,0.06)] hover:border-[#FAFAFA]/20 text-[#B0B0B0] hover:text-[#FAFAFA] transition-colors"
+                    className="flex items-center justify-between p-3.5 rounded-lg bg-[#0A0D12] border border-[rgba(255,255,255,0.06)] hover:border-[rgba(255,255,255,0.2)] text-[#94A3B8] hover:text-[#F8FAFC] transition-colors"
                   >
                     <div className="flex items-center gap-2.5">
                       <LinkedinIcon className="w-4 h-4" />
                       <span>linkedin.com/in/rosenkrvz</span>
                     </div>
-                    <ArrowRight className="w-3.5 h-3.5 text-[#9A9A9A]" />
+                    <ArrowRight className="w-3.5 h-3.5 text-[#64748B]" />
                   </a>
                 </div>
               </div>
 
               {/* SLA Notice */}
-              <div className="p-4 bg-[#121215] border border-[rgba(255,255,255,0.06)] rounded-[4px] flex items-center gap-3 type-label text-[#9A9A9A]">
-                <Clock className="w-4 h-4 text-[#B0B0B0] shrink-0" />
+              <div className="p-4 bg-[#101318] border border-[rgba(255,255,255,0.06)] rounded-xl flex items-center gap-3 type-label text-[#94A3B8]">
+                <Clock className="w-4 h-4 text-[#94A3B8] shrink-0" />
                 <span>RESPONSE TIME: TYPICALLY WITHIN 24 HOURS</span>
               </div>
 
