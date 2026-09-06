@@ -1,8 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ShieldAlert, ArrowLeft, Terminal } from 'lucide-react';
+import { usePageMeta } from '../hooks/usePageMeta';
 
 export default function NotFoundPage() {
+  usePageMeta({
+    title: '404 Route Terminated — Unmapped Node',
+    description: 'The requested route does not correspond to an active Sentinel telemetry endpoint or memory registry.',
+    path: '/404'
+  });
+
   return (
     <div className="min-h-[75vh] flex items-center justify-center p-4">
       <div className="max-w-md w-full p-8 rounded-xl bg-[#111113] border border-[#1F1F24] text-center space-y-6 shadow-2xl">

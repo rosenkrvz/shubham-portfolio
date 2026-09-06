@@ -4,9 +4,16 @@ import { motion } from 'framer-motion';
 import { ArrowUpRight, ShieldCheck, Terminal, Cpu, Check, Activity, ArrowRight } from 'lucide-react';
 import { profile } from '../data/profile.js';
 import { projects } from '../data/projects.js';
+import { usePageMeta } from '../hooks/usePageMeta';
 
 export default function HomePage({ onOpenProject, onShowToast }) {
   const navigate = useNavigate();
+
+  usePageMeta({
+    title: 'AI Systems Architect & Applied AI Engineer',
+    description: 'Shubham Sharma — Undergraduate at IIT Jodhpur specializing in high-performance machine learning systems, edge silicon attestation, and distributed architectures.',
+    path: '/'
+  });
 
   // Telemetry feed tab state
   const [activeFeedTab, setActiveFeedTab] = useState('live');
@@ -55,12 +62,19 @@ export default function HomePage({ onOpenProject, onShowToast }) {
     setIsSubmitting(true);
     setTimeout(() => {
       setIsSubmitting(false);
+      const refId = `REQ-${Math.random().toString(36).substring(2, 9).toUpperCase()}`;
       onShowToast?.({
         type: 'success',
-        message: `Transmission received. Dispatched to marksrv047@gmail.com for ${formData.email}`
+        message: `Transmission registered [${refId}]. Redirecting to confirmation...`
       });
-      setFormData({ fullName: '', email: '', digest: false });
-    }, 900);
+      navigate('/thank-you', {
+        state: {
+          refId,
+          name: formData.fullName || 'Operator',
+          timestamp: new Date().toISOString()
+        }
+      });
+    }, 700);
   };
 
   return (
@@ -72,7 +86,7 @@ export default function HomePage({ onOpenProject, onShowToast }) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-14">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
             
-            {/* Left Column: Bold Headline & Telemetry Metrics */}
+            {/* Left Column: Bold Headline, Above-the-Fold CTAs & Telemetry Metrics */}
             <div className="lg:col-span-4 flex flex-col justify-between space-y-8 py-2">
               <div className="space-y-4">
                 <div className="flex items-center gap-2 text-xs font-mono tracking-widest text-[#85858B] uppercase">
@@ -85,9 +99,26 @@ export default function HomePage({ onOpenProject, onShowToast }) {
                   <span className="text-white">one bit.</span>
                 </h1>
 
-                <p className="text-sm text-[#85858B] leading-relaxed max-w-sm pt-2">
-                  Raster Sentinel scores every prompt, call, and commit the moment it happens, then acts before the pattern completes. No dashboards to babysit. One verdict at a time.
+                <p className="text-sm text-[#85858B] leading-relaxed max-w-sm pt-1">
+                  Raster Sentinel scores every prompt, call, and commit the moment it happens, then acts before the pattern completes. Architected by Shubham Sharma at IIT Jodhpur.
                 </p>
+
+                {/* Strong Above-The-Fold Action CTAs */}
+                <div className="pt-3 flex flex-wrap gap-2.5">
+                  <Link
+                    to="/projects"
+                    className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-[#3E2CF0] hover:bg-[#5344F5] text-white font-mono text-xs font-semibold tracking-wider transition-all shadow-md shadow-[#3E2CF0]/30 active:scale-95 group"
+                  >
+                    <span>EXPLORE SYSTEMS</span>
+                    <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+                  </Link>
+                  <Link
+                    to="/about"
+                    className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-[#141416] hover:bg-[#1E1E22] border border-[#232326] text-[#F0F0EE] font-mono text-xs transition-colors"
+                  >
+                    <span>VIEW DOSSIER</span>
+                  </Link>
+                </div>
               </div>
 
               {/* Live Metric Counters */}
@@ -121,8 +152,9 @@ export default function HomePage({ onOpenProject, onShowToast }) {
                 <div className="w-full max-w-[280px] sm:max-w-[320px] aspect-[3/4] rounded overflow-hidden border border-[#0B0B0C]/20 bg-white/40 shadow-sm relative">
                   <img
                     src="/assets/sentinel_portrait.jpg"
-                    alt="Raster Sentinel 1-Bit AI Portrait"
+                    alt="Raster Sentinel 1-bit high-contrast dither portrait of Shubham Sharma, Applied AI Engineer"
                     className="w-full h-full object-cover grayscale contrast-125"
+                    loading="eager"
                   />
                   <div className="absolute bottom-2 left-2 font-mono text-[9px] bg-[#0B0B0C] text-[#E9E7E1] px-1.5 py-0.5 rounded uppercase">
                     1-BIT RASTER EYE
@@ -331,12 +363,13 @@ export default function HomePage({ onOpenProject, onShowToast }) {
               <div className="relative aspect-[16/9] bg-black overflow-hidden">
                 <img
                   src="/assets/circuit_hardware.jpg"
-                  alt="Hardware attestation circuit"
+                  alt="Hardware attestation circuit board with edge silicon microcontrollers"
                   className="w-full h-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-300"
+                  loading="lazy"
                 />
                 <button
                   className="absolute bottom-3 right-3 p-1.5 rounded bg-black/80 border border-white/20 text-white group-hover:bg-[#3E2CF0] group-hover:border-[#3E2CF0] transition-colors"
-                  aria-label="Expand case study"
+                  aria-label="Expand hardware attestation case study"
                 >
                   <ArrowUpRight className="w-4 h-4" />
                 </button>
@@ -364,12 +397,13 @@ export default function HomePage({ onOpenProject, onShowToast }) {
               <div className="relative aspect-[16/9] bg-black overflow-hidden">
                 <img
                   src="/assets/operator_silhouette.jpg"
-                  alt="Operator review profile"
+                  alt="Operator review workstation telemetry console and incident dispatch interface"
                   className="w-full h-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-300"
+                  loading="lazy"
                 />
                 <button
                   className="absolute bottom-3 right-3 p-1.5 rounded bg-black/80 border border-white/20 text-white group-hover:bg-[#3E2CF0] group-hover:border-[#3E2CF0] transition-colors"
-                  aria-label="Expand case study"
+                  aria-label="Expand operator review case study"
                 >
                   <ArrowUpRight className="w-4 h-4" />
                 </button>

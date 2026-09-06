@@ -1,8 +1,15 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Terminal, Cpu, Sliders, Play, RefreshCw, Zap, Layers, Sparkles } from 'lucide-react';
 import { labExperiments } from '../data/lab.js';
+import { usePageMeta } from '../hooks/usePageMeta';
 
 export default function LabPage({ onShowToast }) {
+  usePageMeta({
+    title: 'Interactive AI Research & Systems Lab',
+    description: 'Real-time in-browser engineering experiments: 1-Bit Ordered Spatial Dither Engine and Edge Silicon Quantization Inference Latency Matrix.',
+    path: '/lab'
+  });
+
   const [activeExperiment, setActiveExperiment] = useState('dither-engine');
 
   // Dither Engine State

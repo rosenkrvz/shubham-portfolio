@@ -1,8 +1,15 @@
 import React, { useState } from 'react';
 import { Award, ShieldCheck, Download, ExternalLink, FileText, CheckCircle2, Eye } from 'lucide-react';
 import { certificates } from '../data/certificates.js';
+import { usePageMeta } from '../hooks/usePageMeta';
 
 export default function CertificatesPage({ onInspectCert, onDownloadSimulation }) {
+  usePageMeta({
+    title: 'Verified Certifications & Academic Distinctions',
+    description: 'Cryptographically verifiable credentials from Stanford Online, DeepLearning.AI, AWS, and IIT Jodhpur awarded to Shubham Sharma.',
+    path: '/certifications'
+  });
+
   const [activeCategory, setActiveCategory] = useState('All');
 
   const categories = ['All', 'Neural Networks & Deep Learning', 'Statistical Learning & Algorithms', 'Cloud & Infrastructure', 'Academic Distinction', 'Systems & Backend'];

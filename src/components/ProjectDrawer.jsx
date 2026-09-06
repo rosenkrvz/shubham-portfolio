@@ -34,24 +34,38 @@ export default function ProjectDrawer({ project, onClose }) {
           animate={{ x: 0 }}
           exit={{ x: '100%' }}
           transition={{ type: 'spring', damping: 30, stiffness: 300 }}
+          role="dialog"
+          aria-modal="true"
+          aria-label={`Case Study: ${project.title}`}
           className="relative w-full max-w-2xl h-full bg-[#0E0E11] border-l border-[#1F1F24] overflow-y-auto shadow-2xl z-10 flex flex-col justify-between"
         >
-          {/* Drawer Header */}
+          {/* Drawer Header & Breadcrumb Trail */}
           <div>
-            <div className="sticky top-0 z-20 flex items-center justify-between p-6 bg-[#0E0E11]/95 backdrop-blur border-b border-[#1F1F24]">
-              <div className="flex items-center gap-2">
-                <span className="inline-block w-2 h-2 rounded-full bg-[#3E2CF0] animate-pulse"></span>
-                <span className="text-xs font-mono uppercase tracking-widest text-[#85858B]">
-                  System Dossier // {project.category}
-                </span>
+            <div className="sticky top-0 z-20 p-5 bg-[#0E0E11]/95 backdrop-blur border-b border-[#1F1F24]">
+              {/* Breadcrumb Navigation Trail */}
+              <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 font-mono text-[11px] text-[#8E8D8A] mb-3">
+                <span className="hover:text-[#F0F0EE] transition-colors">SYSTEMS</span>
+                <span>/</span>
+                <span className="text-[#3E2CF0] uppercase font-semibold">{project.category}</span>
+                <span>/</span>
+                <span className="text-[#F0F0EE] truncate max-w-[200px]">{project.title}</span>
+              </nav>
+
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <span className="inline-block w-2 h-2 rounded-full bg-[#3E2CF0] animate-pulse"></span>
+                  <span className="text-xs font-mono uppercase tracking-widest text-[#85858B]">
+                    Case Study Dossier
+                  </span>
+                </div>
+                <button
+                  onClick={onClose}
+                  className="p-2 rounded-md bg-[#161619] border border-[#232328] text-[#85858B] hover:text-white hover:border-[#3E2CF0] transition-colors focus:outline-none focus:ring-1 focus:ring-[#3E2CF0]"
+                  aria-label="Close project drawer"
+                >
+                  <X className="w-4 h-4" />
+                </button>
               </div>
-              <button
-                onClick={onClose}
-                className="p-2 rounded-md bg-[#161619] border border-[#232328] text-[#85858B] hover:text-white hover:border-[#3E2CF0] transition-colors focus:outline-none"
-                aria-label="Close project drawer"
-              >
-                <X className="w-4 h-4" />
-              </button>
             </div>
 
             {/* Drawer Body */}
@@ -77,8 +91,9 @@ export default function ProjectDrawer({ project, onClose }) {
                 <div className="relative rounded-lg overflow-hidden border border-[#1F1F24] bg-black">
                   <img
                     src={project.image}
-                    alt={project.title}
+                    alt={`Architecture visualization and telemetry for ${project.title}`}
                     className="w-full h-56 object-cover opacity-90 hover:opacity-100 transition-opacity"
+                    loading="lazy"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0E0E11] via-transparent to-transparent pointer-events-none"></div>
                   <div className="absolute bottom-3 left-3 font-mono text-[10px] px-2 py-1 rounded bg-black/80 border border-white/10 text-[#85858B]">

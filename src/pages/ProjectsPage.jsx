@@ -2,8 +2,15 @@ import React, { useState } from 'react';
 import { ArrowUpRight, Search, Filter, Cpu, Terminal, ExternalLink } from 'lucide-react';
 import { GithubIcon } from '../components/SocialIcons.jsx';
 import { projects } from '../data/projects.js';
+import { usePageMeta } from '../hooks/usePageMeta';
 
 export default function ProjectsPage({ onOpenProject }) {
+  usePageMeta({
+    title: 'Engineering Systems & Architecture Catalog',
+    description: 'Archive of production machine learning systems, zero-trust edge silicon attestation nodes, and high-throughput backends architected by Shubham Sharma.',
+    path: '/projects'
+  });
+
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -68,6 +75,23 @@ export default function ProjectsPage({ onOpenProject }) {
           </div>
         </div>
 
+        {/* Empty State */}
+        {filteredProjects.length === 0 && (
+          <div className="text-center py-16 px-4 rounded-lg bg-[#111113] border border-[#1F1F24] space-y-3">
+            <Terminal className="w-8 h-8 text-[#85858B] mx-auto" />
+            <h3 className="font-mono text-sm text-[#F0F0EE]">NO MATCHING SYSTEMS LOCATED</h3>
+            <p className="text-xs text-[#85858B] max-w-md mx-auto">
+              No systems matched your query "{searchQuery}". Clear your search or select "All" to inspect the complete fleet.
+            </p>
+            <button
+              onClick={() => { setSelectedCategory('All'); setSearchQuery(''); }}
+              className="px-4 py-2 rounded bg-[#3E2CF0] hover:bg-[#5344F5] text-white text-xs font-mono transition-colors"
+            >
+              RESET FILTERS
+            </button>
+          </div>
+        )}
+
         {/* Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredProjects.map((project) => (
@@ -83,8 +107,9 @@ export default function ProjectsPage({ onOpenProject }) {
                 >
                   <img
                     src={project.image}
-                    alt={project.title}
+                    alt={`System architecture snapshot for ${project.title}`}
                     className="w-full h-full object-cover opacity-85 group-hover:opacity-100 group-hover:scale-105 transition-all duration-300"
+                    loading="lazy"
                   />
                   <div className="absolute top-2.5 left-2.5">
                     <span className="px-2 py-0.5 rounded text-[10px] font-mono uppercase font-semibold bg-black/80 border border-white/10 text-[#3E2CF0]">

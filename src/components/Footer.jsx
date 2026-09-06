@@ -55,19 +55,21 @@ export default function Footer({ onCopyEmail }) {
           {/* Verification & Security */}
           <div className="space-y-2">
             <h4 className="font-mono uppercase text-[10px] tracking-widest text-[#F0F0EE] mb-3">
-              Verification &amp; Trust
+              Verification &amp; Transparency
             </h4>
             <ul className="space-y-2 font-mono text-[11px]">
               <li className="flex items-center gap-1.5 text-[#A1A1AA]">
                 <ShieldCheck className="w-3.5 h-3.5 text-[#3E2CF0]" />
-                <span>Zero-Trust Architecture</span>
+                <Link to="/privacy" className="hover:text-[#F0F0EE] transition-colors">Privacy &amp; Telemetry Notice</Link>
               </li>
               <li className="flex items-center gap-1.5 text-[#A1A1AA]">
                 <Terminal className="w-3.5 h-3.5 text-[#3E2CF0]" />
-                <span>Deterministic Latency</span>
+                <a href="/sitemap.xml" target="_blank" rel="noopener noreferrer" className="hover:text-[#F0F0EE] transition-colors">
+                  System Sitemap (XML)
+                </a>
               </li>
               <li className="text-[#85858B]">
-                Repository: <a href={profile.links.github} target="_blank" rel="noopener noreferrer" className="text-[#F0F0EE] hover:underline">rosenkrvz/portfolio</a>
+                Repository: <a href={profile.links.github} target="_blank" rel="noopener noreferrer" className="text-[#F0F0EE] hover:underline">rosenkrvz/shubham-portfolio</a>
               </li>
             </ul>
           </div>

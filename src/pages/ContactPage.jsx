@@ -1,8 +1,18 @@
-import React, { useState } from 'react';
-import { Mail, Copy, Check, Send, ShieldAlert, ArrowUpRight, Terminal, Clock, CheckCircle2 } from 'lucide-react';
+import React, { useState, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Mail, Copy, Check, Send, ShieldAlert, ArrowUpRight, Terminal, Clock, CheckCircle2, ShieldCheck } from 'lucide-react';
 import { profile } from '../data/profile.js';
+import { usePageMeta } from '../hooks/usePageMeta';
 
 export default function ContactPage({ onShowToast }) {
+  const navigate = useNavigate();
+
+  usePageMeta({
+    title: 'Operator Transmission Terminal & Inquiries',
+    description: 'Direct transmission channel to Shubham Sharma for AI engineering roles, high-consequence system architectures, and technical collaborations.',
+    path: '/contact'
+  });
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -15,6 +25,7 @@ export default function ContactPage({ onShowToast }) {
   const [copied, setCopied] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submittedTransmission, setSubmittedTransmission] = useState(null);
+  const lastSubmitTimeRef = useRef(0);
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText(profile.email);
@@ -35,7 +46,22 @@ export default function ContactPage({ onShowToast }) {
       return;
     }
 
-    if (!formData.name || !formData.email || !formData.message) {
+    // Client-side rate limiting to prevent retry storms and spam
+    const now = Date.now();
+    if (now - lastSubmitTimeRef.current < 10000) {
+      onShowToast?.({
+        type: 'error',
+        message: 'RATE_LIMIT_ACTIVE: Please pause 10s between dispatch attempts.'
+      });
+      return;
+    }
+
+    // Input bounds validation
+    const trimmedName = formData.name.trim();
+    const trimmedEmail = formData.email.trim();
+    const trimmedMsg = formData.message.trim();
+
+    if (!trimmedName || !trimmedEmail || !trimmedMsg) {
       onShowToast?.({
         type: 'error',
         message: 'Please complete all required fields.'
@@ -43,36 +69,36 @@ export default function ContactPage({ onShowToast }) {
       return;
     }
 
+    if (trimmedMsg.length < 10) {
+      onShowToast?.({
+        type: 'error',
+        message: 'Transmission payload must contain at least 10 characters.'
+      });
+      return;
+    }
+
+    lastSubmitTimeRef.current = now;
     setIsSubmitting(true);
 
-    const refId = `IITJ-${Math.floor(100000 + Math.random() * 900000)}`;
+    const refId = `SENTINEL-${Math.floor(100000 + Math.random() * 900000)}`;
 
     setTimeout(() => {
       setIsSubmitting(false);
-      setSubmittedTransmission({
-        refId,
-        senderName: formData.name,
-        senderEmail: formData.email,
-        timestamp: new Date().toLocaleTimeString(),
-        inquiryType: formData.inquiryType,
-        subject: formData.subject || 'Engineering Inquiry'
-      });
-
       onShowToast?.({
         type: 'success',
-        message: `Transmission [${refId}] routed to marksrv047@gmail.com. Automation triggered!`
+        message: `Transmission [${refId}] routed to marksrv047@gmail.com.`
       });
 
-      // Clear input fields
-      setFormData({
-        name: '',
-        email: '',
-        subject: '',
-        inquiryType: 'Recruitment & High-Impact Role',
-        message: '',
-        honeypot: ''
+      // Redirect to dedicated Thank You receipt page
+      navigate('/thank-you', {
+        state: {
+          refId,
+          name: trimmedName,
+          email: trimmedEmail,
+          timestamp: new Date().toISOString()
+        }
       });
-    }, 950);
+    }, 850);
   };
 
   return (
@@ -129,6 +155,7 @@ export default function ContactPage({ onShowToast }) {
                   <input
                     type="text"
                     required
+                    maxLength={100}
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     placeholder="Ada Lovelace"
@@ -143,6 +170,7 @@ export default function ContactPage({ onShowToast }) {
                   <input
                     type="email"
                     required
+                    maxLength={120}
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     placeholder="operator@company.com"
@@ -174,6 +202,7 @@ export default function ContactPage({ onShowToast }) {
                   </label>
                   <input
                     type="text"
+                    maxLength={150}
                     value={formData.subject}
                     onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                     placeholder="Full-Stack AI Engineer Opportunity"
@@ -189,6 +218,7 @@ export default function ContactPage({ onShowToast }) {
                 <textarea
                   rows="5"
                   required
+                  maxLength={5000}
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   placeholder="Outline the role, system requirements, or project details..."

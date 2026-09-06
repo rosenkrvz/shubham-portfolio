@@ -9,6 +9,7 @@ import Footer from './components/Footer.jsx';
 import Toast from './components/Toast.jsx';
 import ProjectDrawer from './components/ProjectDrawer.jsx';
 import CertificateModal from './components/CertificateModal.jsx';
+import MobileContactCTA from './components/MobileContactCTA.jsx';
 
 import HomePage from './pages/HomePage.jsx';
 import AboutPage from './pages/AboutPage.jsx';
@@ -16,6 +17,8 @@ import ProjectsPage from './pages/ProjectsPage.jsx';
 import CertificatesPage from './pages/CertificatesPage.jsx';
 import LabPage from './pages/LabPage.jsx';
 import ContactPage from './pages/ContactPage.jsx';
+import PrivacyPage from './pages/PrivacyPage.jsx';
+import ThankYouPage from './pages/ThankYouPage.jsx';
 import NotFoundPage from './pages/NotFoundPage.jsx';
 
 import { profile } from './data/profile.js';
@@ -107,9 +110,14 @@ export default function App() {
               path="/contact"
               element={<ContactPage onShowToast={showToast} />}
             />
+            <Route path="/privacy" element={<PrivacyPage />} />
+            <Route path="/thank-you" element={<ThankYouPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </main>
+
+        {/* Mobile floating contact CTA */}
+        <MobileContactCTA />
 
         {/* Editorial Colophon Footer */}
         <Footer onCopyEmail={handleCopyEmail} />

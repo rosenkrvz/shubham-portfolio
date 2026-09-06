@@ -4,8 +4,15 @@ import { motion } from 'framer-motion';
 import { GraduationCap, Shield, Cpu, Terminal, ArrowRight, Award, CheckCircle2, Download } from 'lucide-react';
 import { profile } from '../data/profile.js';
 import { skillCategories } from '../data/skills.js';
+import { usePageMeta } from '../hooks/usePageMeta';
 
 export default function AboutPage({ onShowToast }) {
+  usePageMeta({
+    title: 'Engineer Dossier & Academic Foundation',
+    description: 'Academic background of Shubham Sharma at IIT Jodhpur (B.S. in Applied AI & Data Science), engineering principles, and technical arsenal.',
+    path: '/about'
+  });
+
   const [selectedCategory, setSelectedCategory] = useState(0);
 
   const handleDownloadResume = () => {
