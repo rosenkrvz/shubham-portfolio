@@ -9,9 +9,26 @@
     --border-strong: #272730;
     --accent: #4338CA;
     --accent-light: #6366F1;
+    --accent-red: #E10600;
+    --accent-red-hover: #D90404;
     --text-primary: #F4F4F0;
     --text-secondary: #9E9EA8;
     --text-tertiary: #656570;
+  }
+
+  html.light {
+    --bg-page: #F6F6F9;
+    --bg-surface: #FFFFFF;
+    --bg-surface-elevated: #EDECEF;
+    --border-subtle: #E2E1E6;
+    --border-strong: #CFCDD5;
+    --accent: #4338CA;
+    --accent-light: #4F46E5;
+    --accent-red: #D90404;
+    --accent-red-hover: #B80303;
+    --text-primary: #0D0D11;
+    --text-secondary: #4E4E58;
+    --text-tertiary: #757582;
   }
 
   body {
@@ -21,6 +38,7 @@
     letter-spacing: -0.015em;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
 
   h1, h2, h3, h4, .font-display {
@@ -42,6 +60,53 @@
     background-color: #312E81;
     color: #FFFFFF;
   }
+}
+
+/* Light mode overrides for utility containers */
+html.light .bg-\[\#08080A\] {
+  background-color: var(--bg-page) !important;
+}
+
+html.light .bg-\[\#0C0C0E\],
+html.light .bg-\[\#0A0A0D\],
+html.light .bg-\[\#0E0E12\] {
+  background-color: #EFEFF3 !important;
+}
+
+html.light .bg-\[\#111114\] {
+  background-color: var(--bg-surface) !important;
+}
+
+html.light .bg-\[\#16161B\],
+html.light .bg-\[\#181822\],
+html.light .bg-\[\#18181F\] {
+  background-color: var(--bg-surface-elevated) !important;
+}
+
+html.light .border-\[\#1C1C22\],
+html.light .border-\[\#1C1C24\],
+html.light .border-\[\#1F1F26\],
+html.light .border-\[\#1F1F28\] {
+  border-color: var(--border-subtle) !important;
+}
+
+html.light .border-\[\#272730\],
+html.light .border-\[\#26262E\],
+html.light .border-\[\#272734\] {
+  border-color: var(--border-strong) !important;
+}
+
+html.light .text-\[\#F4F4F0\],
+html.light .text-\[\#F4F4F2\] {
+  color: var(--text-primary) !important;
+}
+
+html.light .text-\[\#9E9EA8\] {
+  color: var(--text-secondary) !important;
+}
+
+html.light .text-\[\#656570\] {
+  color: var(--text-tertiary) !important;
 }
 
 /* Restrained, elegant scrollbar */
@@ -67,6 +132,26 @@
 :focus-visible {
   outline: 2px solid #6366F1;
   outline-offset: 2px;
+}
+
+/* Celestial Theme Toggle Keyframe Animations */
+@keyframes cloud-move {
+  0% { transform: translateX(0px); }
+  40% { transform: translateX(4px); }
+  80% { transform: translateX(-4px); }
+  100% { transform: translateX(0px); }
+}
+
+@keyframes star-twinkle {
+  0% { transform: scale(1); opacity: 0.7; }
+  40% { transform: scale(1.2); opacity: 1; }
+  80% { transform: scale(0.8); opacity: 0.5; }
+  100% { transform: scale(1); opacity: 0.7; }
+}
+
+@keyframes rotate-center {
+  0% { transform: translateX(26px) rotate(0); }
+  100% { transform: translateX(26px) rotate(360deg); }
 }
 
 /* Reduced motion preference support */

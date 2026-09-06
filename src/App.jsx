@@ -22,6 +22,7 @@ import ThankYouPage from './pages/ThankYouPage.jsx';
 import NotFoundPage from './pages/NotFoundPage.jsx';
 import LabPage from './pages/LabPage.jsx';
 import AiDataPage from './pages/AiDataPage.jsx';
+import { ThemeProvider } from './context/ThemeContext.jsx';
 
 import { profile } from './data/profile.js';
 
@@ -57,8 +58,9 @@ export default function App() {
   };
 
   return (
-    <BrowserRouter>
-      <ScrollToTop />
+    <ThemeProvider>
+      <BrowserRouter>
+        <ScrollToTop />
 
       {/* Subtle tactile micro-grain noise overlay */}
       <NoiseOverlay />
@@ -155,7 +157,8 @@ export default function App() {
           onClose={() => setToast(null)}
         />
 
-      </div>
-    </BrowserRouter>
+        </div>
+      </BrowserRouter>
+    </ThemeProvider>
   );
 }

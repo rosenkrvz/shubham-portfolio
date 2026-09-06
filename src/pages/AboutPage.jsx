@@ -6,6 +6,7 @@ import { skillCategories } from '../data/skills.js';
 import { usePageMeta } from '../hooks/usePageMeta';
 import PageTransition from '../components/ui/PageTransition.jsx';
 import MagneticButton from '../components/ui/MagneticButton.jsx';
+import ColorSystemCard from '../components/ui/ColorSystemCard.jsx';
 
 export default function AboutPage({ onShowToast }) {
   usePageMeta({
@@ -203,6 +204,38 @@ export default function AboutPage({ onShowToast }) {
                   </div>
                 </div>
               ))}
+            </div>
+          </section>
+
+          {/* 3. Visual System & Design Tokens */}
+          <section className="space-y-6">
+            <div className="space-y-1">
+              <span className="text-xs uppercase tracking-widest text-[#818CF8] font-mono">
+                03 // DESIGN SYSTEM &bull; VISUAL IDENTITY
+              </span>
+              <h2 className="text-2xl sm:text-4xl font-display font-bold uppercase text-[#F4F4F0] tracking-tight">
+                Visual <span className="font-serif-editorial italic text-[#C7D2FE] font-normal lowercase">language.</span>
+              </h2>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center p-6 sm:p-8 bg-[#111114] border border-[#1C1C24] rounded-sm">
+              <div className="lg:col-span-7 space-y-4">
+                <h3 className="text-lg font-display font-semibold uppercase text-[#F4F4F2]">
+                  Minimal Structure &bull; Expressive Art Direction
+                </h3>
+                <p className="text-sm text-[#9E9EA8] font-light leading-relaxed">
+                  Minimalism is not empty space; it is structural discipline. The interface uses a strictly controlled monochromatic palette spanning Pitch Black <code className="text-[#F4F4F2] bg-[#1C1C24] px-1 py-0.5 rounded text-xs">#000000</code> to Anti-Flash White <code className="text-[#F4F4F2] bg-[#1C1C24] px-1 py-0.5 rounded text-xs">#F3F3F3</code>, complemented by an intentional Accent Red <code className="text-[#E10600] bg-[#1C1C24] px-1 py-0.5 rounded text-xs">#E10600</code>.
+                </p>
+                <p className="text-sm text-[#9E9EA8] font-light leading-relaxed">
+                  Accent red is reserved strictly for high-consequence state signals: telemetry warnings, active LED indicators, and physical error thresholds. Click any token on the card to copy its raw hex value.
+                </p>
+              </div>
+
+              <div className="lg:col-span-5 flex justify-center lg:justify-end">
+                <ColorSystemCard
+                  onCopyHex={(msg) => onShowToast?.({ type: 'success', message: msg })}
+                />
+              </div>
             </div>
           </section>
 

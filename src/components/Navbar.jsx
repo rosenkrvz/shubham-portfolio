@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { NavLink, Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, ArrowUpRight, FileText } from 'lucide-react';
+import ThemeToggle from './ui/ThemeToggle.jsx';
 
 const NAV_ITEMS = [
   { path: '/projects', label: 'Work', num: '01' },
@@ -26,8 +27,9 @@ export default function Navbar() {
           to="/" 
           className="flex items-center gap-3 group focus:outline-none focus-visible:ring-1 focus-visible:ring-[#6366F1]"
         >
-          <div className="w-7 h-7 rounded-md bg-[#16161B] border border-[#26262E] flex items-center justify-center text-xs font-mono font-semibold text-[#F4F4F0] group-hover:border-[#6366F1] transition-colors">
-            SS
+          <div className="w-7 h-7 rounded-md bg-[#16161B] border border-[#26262E] flex items-center justify-center text-xs font-mono font-semibold text-[#F4F4F0] group-hover:border-[#E10600] transition-colors relative">
+            <span>SS</span>
+            <span className="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-[#E10600] ring-2 ring-[#08080A]" />
           </div>
           <div className="flex flex-col">
             <span className="text-sm font-semibold tracking-tight text-[#F4F4F0] group-hover:text-white transition-colors">
@@ -70,8 +72,10 @@ export default function Navbar() {
           })}
         </nav>
 
-        {/* Actions: Resume & Contact */}
-        <div className="hidden md:flex items-center gap-2.5">
+        {/* Actions: Theme Toggle, Resume & Contact */}
+        <div className="hidden md:flex items-center gap-3">
+          <ThemeToggle />
+
           <a
             href="/resume.pdf"
             target="_blank"
@@ -147,6 +151,11 @@ export default function Navbar() {
             </div>
 
             <div className="pt-8 border-t border-[#1C1C22] space-y-4">
+              <div className="flex items-center justify-between py-2 px-1">
+                <span className="text-xs font-mono text-[#9E9EA8]">THEME PREFERENCE</span>
+                <ThemeToggle />
+              </div>
+
               <div className="flex gap-3">
                 <a
                   href="/resume.pdf"
