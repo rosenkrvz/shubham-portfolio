@@ -1,41 +1,44 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ShieldAlert, ArrowLeft, Terminal } from 'lucide-react';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { usePageMeta } from '../hooks/usePageMeta';
 
 export default function NotFoundPage() {
   usePageMeta({
-    title: '404 Route Terminated — Unmapped Node',
-    description: 'The requested route does not correspond to an active Sentinel telemetry endpoint or memory registry.',
+    title: '404 — Page Not Found | Shubham Sharma',
+    description: 'The requested page could not be found. Return to the home page or browse projects.',
     path: '/404'
   });
 
   return (
-    <div className="min-h-[75vh] flex items-center justify-center p-4">
-      <div className="max-w-md w-full p-8 rounded-xl bg-[#111113] border border-[#1F1F24] text-center space-y-6 shadow-2xl">
-        <div className="w-12 h-12 rounded-full bg-[#1A1A22] border border-[#3E2CF0] flex items-center justify-center text-[#3E2CF0] mx-auto">
-          <ShieldAlert className="w-6 h-6" />
-        </div>
+    <div className="min-h-[75vh] flex items-center justify-center px-6 py-24">
+      <div className="max-w-md w-full text-center space-y-6">
+        <span className="font-mono text-xs uppercase tracking-widest text-[#818CF8]">
+          Error 404
+        </span>
 
-        <div className="space-y-2">
-          <div className="text-xs font-mono text-[#3E2CF0] uppercase tracking-widest">
-            ERROR 404 // UNMAPPED NODE
-          </div>
-          <h1 className="text-2xl font-bold tracking-tight text-[#F0F0EE]">
-            Route Terminated
-          </h1>
-          <p className="text-xs text-[#85858B] leading-relaxed">
-            The requested URI path does not correspond to an active Sentinel endpoint or memory registry.
-          </p>
-        </div>
+        <h1 className="text-4xl sm:text-5xl font-display font-medium text-[#F4F4F2] tracking-tight">
+          Page not found
+        </h1>
 
-        <div className="pt-2">
+        <p className="text-sm text-[#94949E] leading-relaxed max-w-sm mx-auto">
+          The page you are looking for doesn't exist, has been moved, or the link may have changed.
+        </p>
+
+        <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-3">
           <Link
-            to="/home"
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded bg-[#3E2CF0] hover:bg-[#3220D8] text-white text-xs font-semibold tracking-wide transition-all shadow-md shadow-[#3E2CF0]/30"
+            to="/"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-[#4338CA] hover:bg-[#4F46E5] text-white text-xs font-medium tracking-wide transition-colors"
           >
-            <ArrowLeft className="w-4 h-4" />
-            <span>Return to Platform Overview</span>
+            <ArrowLeft className="w-3.5 h-3.5" />
+            <span>Return Home</span>
+          </Link>
+          <Link
+            to="/projects"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-[#141417] hover:bg-[#1E1E22] text-[#F4F4F2] text-xs font-medium border border-[#222226] transition-colors"
+          >
+            <span>View Projects</span>
+            <ArrowRight className="w-3.5 h-3.5 text-[#94949E]" />
           </Link>
         </div>
       </div>

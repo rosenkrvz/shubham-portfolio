@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
 
 import ScrollToTop from './components/ScrollToTop.jsx';
-import FluidCanvas from './components/FluidCanvas.jsx';
 import Navbar from './components/Navbar.jsx';
 import Footer from './components/Footer.jsx';
 import Toast from './components/Toast.jsx';
@@ -15,7 +13,6 @@ import HomePage from './pages/HomePage.jsx';
 import AboutPage from './pages/AboutPage.jsx';
 import ProjectsPage from './pages/ProjectsPage.jsx';
 import CertificatesPage from './pages/CertificatesPage.jsx';
-import LabPage from './pages/LabPage.jsx';
 import ContactPage from './pages/ContactPage.jsx';
 import PrivacyPage from './pages/PrivacyPage.jsx';
 import ThankYouPage from './pages/ThankYouPage.jsx';
@@ -33,34 +30,32 @@ export default function App() {
   };
 
   const handleCopyEmail = (email) => {
-    navigator.clipboard.writeText(email || profile.email);
+    const targetEmail = email || profile.email;
+    navigator.clipboard.writeText(targetEmail);
     showToast({
       type: 'success',
-      message: `Operator email copied to clipboard: ${email || profile.email}`
+      message: `Email copied to clipboard: ${targetEmail}`
     });
   };
 
   const handleDownloadCertificateSimulation = (cert) => {
     showToast({
       type: 'info',
-      message: `Generating signed certificate PDF for ${cert.title}...`
+      message: `Preparing certificate document for ${cert.title}...`
     });
     setTimeout(() => {
       showToast({
         type: 'success',
-        message: `Download complete: ${cert.credentialId}.pdf (Verified)`
+        message: `Certificate record ready: ${cert.credentialId}.pdf`
       });
-    }, 900);
+    }, 700);
   };
 
   return (
     <BrowserRouter>
       <ScrollToTop />
-      
-      {/* Dynamic GPU-accelerated fluid background */}
-      <FluidCanvas />
 
-      <div className="relative min-h-screen flex flex-col justify-between bg-[#0B0B0C] text-[#F0F0EE] selection:bg-[#3E2CF0] selection:text-white">
+      <div className="relative min-h-screen flex flex-col justify-between bg-[#0C0C0E] text-[#F4F4F2] selection:bg-[#312E81] selection:text-white">
         
         {/* Navigation Bar */}
         <Navbar />
@@ -68,9 +63,8 @@ export default function App() {
         {/* Multi-Page Route Outlet */}
         <main className="flex-1 relative z-10">
           <Routes>
-            <Route path="/" element={<Navigate to="/home" replace />} />
             <Route
-              path="/home"
+              path="/"
               element={
                 <HomePage
                   onOpenProject={(proj) => setActiveProject(proj)}
@@ -78,6 +72,7 @@ export default function App() {
                 />
               }
             />
+            <Route path="/home" element={<Navigate to="/" replace />} />
             <Route
               path="/about"
               element={<AboutPage onShowToast={showToast} />}
@@ -103,10 +98,6 @@ export default function App() {
             />
             <Route path="/credentials" element={<Navigate to="/certifications" replace />} />
             <Route
-              path="/lab"
-              element={<LabPage onShowToast={showToast} />}
-            />
-            <Route
               path="/contact"
               element={<ContactPage onShowToast={showToast} />}
             />
@@ -116,26 +107,26 @@ export default function App() {
           </Routes>
         </main>
 
-        {/* Mobile floating contact CTA */}
+        {/* Mobile floating contact button */}
         <MobileContactCTA />
 
-        {/* Editorial Colophon Footer */}
+        {/* Editorial Footer */}
         <Footer onCopyEmail={handleCopyEmail} />
 
-        {/* Interactive Case Study Drawer Modal */}
+        {/* Case Study Drawer */}
         <ProjectDrawer
           project={activeProject}
           onClose={() => setActiveProject(null)}
         />
 
-        {/* Verified Certificate Modal */}
+        {/* Certificate Inspector Modal */}
         <CertificateModal
           cert={activeCert}
           onClose={() => setActiveCert(null)}
           onDownloadSimulation={handleDownloadCertificateSimulation}
         />
 
-        {/* Global Toast Alerts */}
+        {/* Toast Notification Alerts */}
         <Toast
           toast={toast}
           onClose={() => setToast(null)}

@@ -1,32 +1,37 @@
 export const profile = {
   name: "Shubham Sharma",
   handle: "rosenkrvz",
-  title: "AI Architect & Software Engineer",
+  title: "AI & Data Science • Software Engineer",
   tagline: "Applied AI & Data Science at IIT Jodhpur",
+  statement: "Building thoughtful machine learning models, computer vision algorithms, and resilient software architectures from mathematical first principles.",
+  bio: "Undergraduate student in Applied AI & Data Science at the Indian Institute of Technology Jodhpur (IIT Jodhpur). I focus on the intersection of deep learning, computer vision, and backend systems engineering — turning mathematical models into reliable, production-ready software.",
   email: "marksrv047@gmail.com",
   location: "IIT Jodhpur, Rajasthan, India",
-  status: "AVAILABLE FOR HIGH-IMPACT ROLES & RESEARCH",
-  telemetry: {
-    signalsLive: "42,810",
-    modelsActive: "18 Nodes",
-    medianVerdict: "8.4ms",
-    precisionIndex: "99.4%",
-    academicGpa: "IIT Jodhpur Applied AI"
-  },
-  disciplines: [
-    { name: "Identify", desc: "Formulate rigorous problem definitions from raw empirical data", active: false },
-    { name: "Architect", desc: "Construct end-to-end scalable ML pipelines & distributed backends", active: false },
-    { name: "Predict", desc: "Train transformer, diffusion, & graph neural architectures", active: true },
-    { name: "Optimize", desc: "Prune, quantize (INT8/FP4), and compile for low-latency edge silicon", active: false },
-    { name: "Harden", desc: "Implement robust security enclaves, anti-exploitation & audit feeds", active: false }
-  ],
-  bio: "Architecting high-performance machine learning systems, distributed software backends, and mathematical computing architectures. Pursuing Applied AI & Data Science at IIT Jodhpur with a focus on real-time neural inference, computer vision, and resilient distributed platforms.",
+  status: "Available for internships, engineering roles & collaborations",
   academic: {
     degree: "Bachelor of Science in Applied AI & Data Science",
     institution: "Indian Institute of Technology Jodhpur (IIT Jodhpur)",
     period: "2023 — Present",
-    focus: "Neural Networks, Mathematical Optimization, Distributed Systems, Computational Linear Algebra"
+    focus: "Deep Learning, Mathematical Optimization, Computer Vision, Algorithms & Distributed Systems"
   },
+  focusAreas: [
+    {
+      title: "Machine Learning & Deep Learning",
+      description: "Developing neural architectures, transformer models, and quantization pipelines using PyTorch and Scikit-Learn."
+    },
+    {
+      title: "Computer Vision & Graphics",
+      description: "Implementing spatial image algorithms, binarized neural networks, and real-time OpenCV processing pipelines."
+    },
+    {
+      title: "Backend & Systems",
+      description: "Designing low-latency APIs with FastAPI and Python AsyncIO, paired with PostgreSQL, Redis, and Docker."
+    },
+    {
+      title: "Applied Mathematics",
+      description: "Applying linear algebra, multivariate calculus, and statistical optimization directly to algorithmic design."
+    }
+  ],
   links: {
     github: "https://github.com/rosenkrvz",
     linkedin: "https://linkedin.com/in/rosenkrvz",

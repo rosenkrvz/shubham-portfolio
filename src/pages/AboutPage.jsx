@@ -1,205 +1,257 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import { GraduationCap, Shield, Cpu, Terminal, ArrowRight, Award, CheckCircle2, Download } from 'lucide-react';
+import { GraduationCap, BookOpen, Compass, Download, ArrowRight, CheckCircle2, Code2, Cpu } from 'lucide-react';
 import { profile } from '../data/profile.js';
 import { skillCategories } from '../data/skills.js';
 import { usePageMeta } from '../hooks/usePageMeta';
 
 export default function AboutPage({ onShowToast }) {
   usePageMeta({
-    title: 'Engineer Dossier & Academic Foundation',
-    description: 'Academic background of Shubham Sharma at IIT Jodhpur (B.S. in Applied AI & Data Science), engineering principles, and technical arsenal.',
+    title: 'About — Shubham Sharma | IIT Jodhpur',
+    description: 'Academic background, technical direction, and engineering principles of Shubham Sharma, undergraduate in Applied AI & Data Science at IIT Jodhpur.',
     path: '/about'
   });
-
-  const [selectedCategory, setSelectedCategory] = useState(0);
 
   const handleDownloadResume = () => {
     onShowToast?.({
       type: 'info',
-      message: 'Generating encrypted curriculum vitae PDF for Shubham Sharma...'
+      message: 'Preparing CV document...'
     });
     setTimeout(() => {
       onShowToast?.({
         type: 'success',
-        message: 'Resume dossier ready: Shubham_Sharma_IITJ_AI_Resume.pdf'
+        message: 'Resume ready: Shubham_Sharma_IITJ_Resume.pdf'
       });
-    }, 800);
+    }, 600);
   };
 
   return (
-    <div className="min-h-screen py-10 lg:py-16">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+    <div className="min-h-screen py-14 sm:py-20 lg:py-24">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16 sm:space-y-24">
         
         {/* Page Header */}
-        <div className="space-y-4 border-b border-[#1F1F24] pb-8">
-          <div className="flex items-center gap-2 text-xs font-mono tracking-widest text-[#3E2CF0] uppercase">
-            <span className="w-2 h-2 rounded-full bg-[#3E2CF0] animate-pulse"></span>
-            <span>Operator Dossier // Identity &amp; Capabilities</span>
+        <div className="space-y-6 border-b border-[#1E1E23] pb-12">
+          <div className="inline-flex items-center gap-2 text-xs text-[#8E8D96]">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#6366F1]"></span>
+            <span>About &amp; Dossier</span>
           </div>
-          <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-[#F0F0EE]">
+
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-display font-semibold tracking-tight text-[#F4F4F2] leading-tight">
             Shubham Sharma
           </h1>
-          <p className="text-base sm:text-lg text-[#85858B] max-w-3xl leading-relaxed">
-            Applied AI &amp; Data Science at the Indian Institute of Technology Jodhpur (IIT Jodhpur). Building at the intersection of mathematical neural modeling, edge silicon acceleration, and zero-trust distributed backends.
+
+          <p className="text-lg sm:text-xl text-[#9A9AA2] font-normal leading-relaxed">
+            Applied AI &amp; Data Science undergraduate at the Indian Institute of Technology Jodhpur (IIT Jodhpur).
+          </p>
+
+          <p className="text-sm sm:text-base text-[#8E8D96] leading-relaxed max-w-2xl">
+            I am a student and software engineer driven by understanding how complex systems operate from mathematical first principles. My work focuses on deep learning model optimization, computer vision algorithms, and building dependable backend systems.
           </p>
 
           <div className="flex flex-wrap items-center gap-3 pt-2">
             <button
               onClick={handleDownloadResume}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded bg-[#3E2CF0] hover:bg-[#3220D8] text-white text-xs font-semibold tracking-wide transition-all shadow-md shadow-[#3E2CF0]/30 active:scale-95"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#4338CA] hover:bg-[#4F46E5] text-white text-xs font-semibold tracking-wide transition-colors shadow-sm"
             >
               <Download className="w-3.5 h-3.5" />
-              <span>Download Full CV / Resume (PDF)</span>
+              <span>Download CV (PDF)</span>
             </button>
             <Link
               to="/contact"
-              className="inline-flex items-center gap-2 px-4 py-2 rounded bg-[#161619] hover:bg-[#202025] border border-[#232328] text-xs font-semibold text-[#F0F0EE] transition-colors"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#16161B] hover:bg-[#202026] border border-[#25252E] text-xs font-semibold text-[#F4F4F2] transition-colors"
             >
-              <span>Transmit Inquiry</span>
-              <ArrowRight className="w-3.5 h-3.5" />
+              <span>Get in Touch</span>
+              <ArrowRight className="w-3.5 h-3.5 text-[#8E8D96]" />
             </Link>
           </div>
         </div>
 
-        {/* Academic Foundation & Institutional Credential */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
-          <div className="md:col-span-1 space-y-2">
-            <h2 className="text-xl font-bold text-[#F0F0EE]">
-              Institutional Base
+        {/* 1. Academic Foundation */}
+        <section className="space-y-6">
+          <div className="space-y-1">
+            <span className="text-xs uppercase tracking-wider text-[#6366F1] font-medium">
+              Education
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-display font-semibold text-[#F4F4F2] tracking-tight">
+              Academic Foundation
             </h2>
-            <p className="text-xs text-[#85858B] leading-relaxed">
-              Rigorous theoretical and empirical training at one of India's premier institutes of national importance.
-            </p>
           </div>
 
-          <div className="md:col-span-2 p-6 rounded-lg bg-[#111113] border border-[#1F1F24] space-y-4">
-            <div className="flex items-start justify-between gap-4">
+          <div className="p-6 sm:p-8 rounded-2xl bg-[#121215] border border-[#1E1E24] space-y-6">
+            <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-2">
               <div className="space-y-1">
-                <div className="flex items-center gap-2">
-                  <GraduationCap className="w-4 h-4 text-[#3E2CF0]" />
-                  <span className="font-mono text-xs uppercase tracking-wider text-[#3E2CF0]">
-                    Degree Program
-                  </span>
+                <div className="flex items-center gap-2 text-xs text-[#6366F1]">
+                  <GraduationCap className="w-4 h-4" />
+                  <span className="font-medium">{profile.academic.degree}</span>
                 </div>
-                <h3 className="text-lg font-bold text-[#F0F0EE]">
-                  {profile.academic.degree}
-                </h3>
-                <div className="text-sm font-medium text-[#D4D4D8]">
+                <h3 className="text-lg font-semibold text-[#F4F4F2]">
                   {profile.academic.institution}
-                </div>
+                </h3>
               </div>
-              <span className="px-2.5 py-1 rounded bg-[#1A1A20] border border-[#262630] font-mono text-xs text-[#85858B]">
+              <span className="text-xs text-[#8E8D96] font-mono px-2.5 py-1 rounded bg-[#18181D] border border-[#24242C] self-start">
                 {profile.academic.period}
               </span>
             </div>
 
-            <p className="text-xs text-[#85858B] leading-relaxed pt-2 border-t border-[#1F1F24]">
-              {profile.academic.focus}
+            <p className="text-xs sm:text-sm text-[#8E8D96] leading-relaxed pt-2 border-t border-[#1E1E24]">
+              <strong className="text-[#F4F4F2]">Curriculum Focus:</strong> Linear Algebra, Multivariate Optimization, Deep Neural Networks, Computer Vision, Algorithms &amp; Data Structures, Discrete Mathematics, and Distributed Backends.
             </p>
-          </div>
-        </div>
 
-        {/* Core Architectural Philosophy */}
-        <div className="space-y-6">
-          <div className="space-y-2">
-            <h2 className="text-xl sm:text-2xl font-bold text-[#F0F0EE]">
+            <div className="p-4 rounded-xl bg-[#16161B] border border-[#22222A] flex items-start gap-3">
+              <CheckCircle2 className="w-4 h-4 text-[#10B981] mt-0.5 shrink-0" />
+              <div className="text-xs text-[#8E8D96] leading-relaxed">
+                <strong className="text-[#F4F4F2]">Academic Distinction:</strong> Awarded Dean's List / Academic Merit Honor at IIT Jodhpur (2023 — 2024) for strong academic standing across foundational mathematics and computing coursework.
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* 2. Current Learning & Technical Direction */}
+        <section className="space-y-6">
+          <div className="space-y-1">
+            <span className="text-xs uppercase tracking-wider text-[#6366F1] font-medium">
+              Exploration
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-display font-semibold text-[#F4F4F2] tracking-tight">
+              Current Learning &amp; Technical Direction
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+            
+            <div className="p-5 rounded-xl bg-[#121215] border border-[#1E1E24] space-y-3">
+              <div className="w-8 h-8 rounded-lg bg-[#18181F] flex items-center justify-center text-[#6366F1]">
+                <Cpu className="w-4 h-4" />
+              </div>
+              <h3 className="text-sm font-semibold text-[#F4F4F2]">
+                Model Optimization &amp; Edge Inference
+              </h3>
+              <p className="text-xs text-[#8E8D96] leading-relaxed">
+                Exploring post-training quantization (INT8/FP4), ONNX Runtime execution graphs, and memory-conscious tensor memory layout to deploy models on edge hardware.
+              </p>
+            </div>
+
+            <div className="p-5 rounded-xl bg-[#121215] border border-[#1E1E24] space-y-3">
+              <div className="w-8 h-8 rounded-lg bg-[#18181F] flex items-center justify-center text-[#6366F1]">
+                <BookOpen className="w-4 h-4" />
+              </div>
+              <h3 className="text-sm font-semibold text-[#F4F4F2]">
+                Spatial Vision &amp; Dithering
+              </h3>
+              <p className="text-xs text-[#8E8D96] leading-relaxed">
+                Investigating spatial error-diffusion kernels (Floyd-Steinberg, Bayer) to compress live telemetry streams while preserving facial contours and edge boundaries.
+              </p>
+            </div>
+
+            <div className="p-5 rounded-xl bg-[#121215] border border-[#1E1E24] space-y-3">
+              <div className="w-8 h-8 rounded-lg bg-[#18181F] flex items-center justify-center text-[#6366F1]">
+                <Compass className="w-4 h-4" />
+              </div>
+              <h3 className="text-sm font-semibold text-[#F4F4F2]">
+                Concurrent Backend Services
+              </h3>
+              <p className="text-xs text-[#8E8D96] leading-relaxed">
+                Designing event-driven streaming pipelines with Python AsyncIO, FastAPI, Redis streams, and PostgreSQL to serve low-latency inference predictions.
+              </p>
+            </div>
+
+          </div>
+        </section>
+
+        {/* 3. Technical Toolkit */}
+        <section className="space-y-6">
+          <div className="space-y-1">
+            <span className="text-xs uppercase tracking-wider text-[#6366F1] font-medium">
+              Toolkit
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-display font-semibold text-[#F4F4F2] tracking-tight">
+              Technical Competencies
+            </h2>
+          </div>
+
+          <div className="space-y-6">
+            {skillCategories.map((group) => (
+              <div key={group.category} className="p-6 rounded-xl bg-[#121215] border border-[#1E1E24] space-y-4">
+                <div>
+                  <h3 className="text-sm font-semibold text-[#F4F4F2]">
+                    {group.category}
+                  </h3>
+                  <p className="text-xs text-[#8E8D96] mt-0.5">
+                    {group.description}
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+                  {group.skills.map((skill) => (
+                    <div key={skill.name} className="p-3 rounded-lg bg-[#16161B] border border-[#202028] space-y-1">
+                      <div className="text-xs font-semibold text-[#F4F4F2]">
+                        {skill.name}
+                      </div>
+                      <div className="text-[11px] text-[#8E8D96] leading-relaxed">
+                        {skill.desc}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* 4. Engineering Principles */}
+        <section className="space-y-6">
+          <div className="space-y-1">
+            <span className="text-xs uppercase tracking-wider text-[#6366F1] font-medium">
+              Philosophy
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-display font-semibold text-[#F4F4F2] tracking-tight">
               Engineering Principles
             </h2>
-            <p className="text-xs text-[#85858B]">
-              The core tenets that guide every algorithm, pipeline, and distributed system I architect.
-            </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="p-6 rounded-lg bg-[#111113] border border-[#1F1F24] space-y-3">
-              <div className="w-8 h-8 rounded bg-[#1A1A22] border border-[#3E2CF0] flex items-center justify-center text-[#3E2CF0] text-sm font-mono font-bold">
-                01
-              </div>
-              <h3 className="text-base font-bold text-[#F0F0EE]">
-                Deterministic Inference
+          <div className="space-y-4">
+            <div className="p-5 rounded-xl bg-[#121215] border border-[#1E1E24] space-y-1.5">
+              <h3 className="text-sm font-semibold text-[#F4F4F2]">
+                1. First-Principles Understanding
               </h3>
-              <p className="text-xs text-[#85858B] leading-relaxed">
-                Stochastic models belong in exploratory notebooks. Production systems demand bounded latency variance (&lt;1.5ms), rigorous memory layout, and deterministic execution bounds.
+              <p className="text-xs text-[#8E8D96] leading-relaxed">
+                Before importing a library or tweaking hyperparameters, I write out the mathematical formulations on paper. Understanding gradients, loss surfaces, and time complexity makes debugging direct and effective.
               </p>
             </div>
 
-            <div className="p-6 rounded-lg bg-[#111113] border border-[#1F1F24] space-y-3">
-              <div className="w-8 h-8 rounded bg-[#1A1A22] border border-[#3E2CF0] flex items-center justify-center text-[#3E2CF0] text-sm font-mono font-bold">
-                02
-              </div>
-              <h3 className="text-base font-bold text-[#F0F0EE]">
-                Zero-Trust Silicon
+            <div className="p-5 rounded-xl bg-[#121215] border border-[#1E1E24] space-y-1.5">
+              <h3 className="text-sm font-semibold text-[#F4F4F2]">
+                2. Measure Before Optimizing
               </h3>
-              <p className="text-xs text-[#85858B] leading-relaxed">
-                Weights and computation passes must be verifiable through cryptographic hardware chains. Every input vector is treated as potentially adversarial until validated.
+              <p className="text-xs text-[#8E8D96] leading-relaxed">
+                Premature optimization creates tangled code. Every performance claim must be accompanied by profiler data — whether measuring socket throughput in Python or tensor memory allocations in PyTorch.
               </p>
             </div>
 
-            <div className="p-6 rounded-lg bg-[#111113] border border-[#1F1F24] space-y-3">
-              <div className="w-8 h-8 rounded bg-[#1A1A22] border border-[#3E2CF0] flex items-center justify-center text-[#3E2CF0] text-sm font-mono font-bold">
-                03
-              </div>
-              <h3 className="text-base font-bold text-[#F0F0EE]">
-                Mathematical Efficiency
+            <div className="p-5 rounded-xl bg-[#121215] border border-[#1E1E24] space-y-1.5">
+              <h3 className="text-sm font-semibold text-[#F4F4F2]">
+                3. Simplicity Over Cleverness
               </h3>
-              <p className="text-xs text-[#85858B] leading-relaxed">
-                Binarization, 1-bit dithering, and INT8/FP4 quantization over parameter bloat. If 1-bit resolution captures 99% of variance, running 32-bit float matrix multiplication is computational negligence.
+              <p className="text-xs text-[#8E8D96] leading-relaxed">
+                Maintainable software is readable, testable, and minimal. A clean tabular XGBoost model that can be explained to non-technical stakeholders is far superior to an uninterpretable neural network when the data does not require it.
               </p>
             </div>
           </div>
-        </div>
+        </section>
 
-        {/* Technical Arsenal & Competency Radar */}
-        <div className="space-y-6">
-          <div className="space-y-2">
-            <h2 className="text-xl sm:text-2xl font-bold text-[#F0F0EE]">
-              Technical Arsenal &amp; Capabilities
-            </h2>
-            <p className="text-xs text-[#85858B]">
-              Categorized breakdown of frameworks, runtimes, and engineering proficiencies.
-            </p>
+        {/* Bottom CTA */}
+        <div className="pt-8 border-t border-[#1E1E23] flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div>
+            <div className="text-sm font-semibold text-[#F4F4F2]">Interested in collaborating or discussing a role?</div>
+            <div className="text-xs text-[#8E8D96] mt-0.5">I am available for summer 2025 and 2026 engineering opportunities.</div>
           </div>
-
-          {/* Category Selector Tabs */}
-          <div className="flex flex-wrap gap-2 border-b border-[#1F1F24] pb-3">
-            {skillCategories.map((cat, idx) => (
-              <button
-                key={cat.category}
-                onClick={() => setSelectedCategory(idx)}
-                className={`px-3.5 py-1.5 rounded text-xs font-mono tracking-wide transition-all ${
-                  selectedCategory === idx
-                    ? 'bg-[#3E2CF0] text-white font-semibold'
-                    : 'bg-[#111113] text-[#85858B] hover:text-[#F0F0EE] border border-[#1F1F24]'
-                }`}
-              >
-                {cat.category}
-              </button>
-            ))}
-          </div>
-
-          {/* Active Category Skills Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {skillCategories[selectedCategory].skills.map((skill) => (
-              <div
-                key={skill.name}
-                className="p-4 rounded-lg bg-[#111113] border border-[#1F1F24] space-y-1.5 hover:border-[#2E2E36] transition-colors"
-              >
-                <div className="flex items-center justify-between">
-                  <span className="text-sm font-bold text-[#F0F0EE] font-mono">
-                    {skill.name}
-                  </span>
-                  <span className="text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-[#1A1A22] border border-[#2E2E38] text-[#3E2CF0]">
-                    {skill.level}
-                  </span>
-                </div>
-                <p className="text-xs text-[#85858B] leading-relaxed">
-                  {skill.desc}
-                </p>
-              </div>
-            ))}
-          </div>
+          <Link
+            to="/contact"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[#4338CA] hover:bg-[#4F46E5] text-white text-xs font-semibold tracking-wide transition-colors shadow-sm shrink-0"
+          >
+            <span>Get in Touch</span>
+            <ArrowRight className="w-3.5 h-3.5" />
+          </Link>
         </div>
 
       </div>

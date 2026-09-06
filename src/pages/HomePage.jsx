@@ -1,503 +1,504 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowUpRight, ShieldCheck, Terminal, Cpu, Check, Activity, ArrowRight } from 'lucide-react';
+import { ArrowUpRight, ArrowRight, ExternalLink, GraduationCap, Code2, Layers, CheckCircle2 } from 'lucide-react';
+import { GithubIcon } from '../components/SocialIcons.jsx';
 import { profile } from '../data/profile.js';
 import { projects } from '../data/projects.js';
 import { usePageMeta } from '../hooks/usePageMeta';
 
 export default function HomePage({ onOpenProject, onShowToast }) {
-  const navigate = useNavigate();
-
   usePageMeta({
-    title: 'AI Systems Architect & Applied AI Engineer',
-    description: 'Shubham Sharma — Undergraduate at IIT Jodhpur specializing in high-performance machine learning systems, edge silicon attestation, and distributed architectures.',
+    title: 'Shubham Sharma — AI & Data Science | Software Engineer',
+    description: 'Undergraduate at IIT Jodhpur specializing in machine learning systems, computer vision algorithms, and scalable distributed backends.',
     path: '/'
   });
 
-  // Telemetry feed tab state
-  const [activeFeedTab, setActiveFeedTab] = useState('live');
-
-  // Request access form state
-  const [formData, setFormData] = useState({
-    fullName: '',
-    email: '',
-    digest: false
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  // Simulated live feed events
-  const [events, setEvents] = useState([
-    { time: '22:41:07', event: 'prompt injection, api-7', verdict: 'blocked', color: 'text-zinc-400' },
-    { time: '22:41:09', event: 'token scales, cdx-2', verdict: 'blocked', color: 'text-zinc-400' },
-    { time: '22:41:22', event: 'sedil pattern, sl-risk', verdict: 'escalated', color: 'text-[#3E2CF0]' },
-    { time: '22:41:35', event: 'scheme drift, model-tr', verdict: 'patched', color: 'text-emerald-400' },
-    { time: '22:41:50', event: 'retry storm, api-3', verdict: 'throttled', color: 'text-amber-400' }
-  ]);
-
-  // Periodic simulated live pulse
-  useEffect(() => {
-    const interval = setInterval(() => {
-      const now = new Date();
-      const timeStr = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;
-      const newItems = [
-        { time: timeStr, event: 'gradient check, layer-34', verdict: 'verified', color: 'text-emerald-400' },
-        { time: timeStr, event: 'inference batch, nlp-9', verdict: '4.1ms', color: 'text-[#3E2CF0]' },
-        { time: timeStr, event: 'tensor parity, node-04', verdict: 'synchronized', color: 'text-zinc-300' }
-      ];
-      const randomEvent = newItems[Math.floor(Math.random() * newItems.length)];
-      setEvents((prev) => [randomEvent, ...prev.slice(0, 4)]);
-    }, 4500);
-
-    return () => clearInterval(interval);
-  }, []);
-
-  const handleFormSubmit = (e) => {
-    e.preventDefault();
-    if (!formData.email) {
-      onShowToast?.({ type: 'error', message: 'Please provide a valid contact email.' });
-      return;
-    }
-
-    setIsSubmitting(true);
-    setTimeout(() => {
-      setIsSubmitting(false);
-      const refId = `REQ-${Math.random().toString(36).substring(2, 9).toUpperCase()}`;
-      onShowToast?.({
-        type: 'success',
-        message: `Transmission registered [${refId}]. Redirecting to confirmation...`
-      });
-      navigate('/thank-you', {
-        state: {
-          refId,
-          name: formData.fullName || 'Operator',
-          timestamp: new Date().toISOString()
-        }
-      });
-    }, 700);
-  };
+  const featuredProject = projects.find((p) => p.id === 'sentinel-npu') || projects[0];
+  const visionProject = projects.find((p) => p.id === 'operator-vision');
+  const backendProject = projects.find((p) => p.id === 'surveillance-operator');
+  const otherProjects = projects.filter((p) => !['sentinel-npu', 'operator-vision', 'surveillance-operator'].includes(p.id));
 
   return (
     <div className="relative min-h-screen">
+      
       {/* ------------------------------------------------------------- */}
-      {/* HERO SECTION: Split Layout with Inverted Bone Column */}
+      {/* 1. HERO SECTION: Typographic, Uncluttered, Immediate */}
       {/* ------------------------------------------------------------- */}
-      <section className="relative border-b border-[#1F1F24] overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-14">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
-            
-            {/* Left Column: Bold Headline, Above-the-Fold CTAs & Telemetry Metrics */}
-            <div className="lg:col-span-4 flex flex-col justify-between space-y-8 py-2">
-              <div className="space-y-4">
-                <div className="flex items-center gap-2 text-xs font-mono tracking-widest text-[#85858B] uppercase">
-                  <span className="w-2 h-2 rounded-full bg-[#3E2CF0] animate-pulse"></span>
-                  <span>Sentinel Telemetry // IIT JODHPUR</span>
-                </div>
-
-                <h1 className="text-4xl sm:text-5xl xl:text-6xl font-extrabold tracking-tight text-[#F0F0EE] leading-[1.05]">
-                  Threats read in <br />
-                  <span className="text-white">one bit.</span>
-                </h1>
-
-                <p className="text-sm text-[#85858B] leading-relaxed max-w-sm pt-1">
-                  Raster Sentinel scores every prompt, call, and commit the moment it happens, then acts before the pattern completes. Architected by Shubham Sharma at IIT Jodhpur.
-                </p>
-
-                {/* Strong Above-The-Fold Action CTAs */}
-                <div className="pt-3 flex flex-wrap gap-2.5">
-                  <Link
-                    to="/projects"
-                    className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-[#3E2CF0] hover:bg-[#5344F5] text-white font-mono text-xs font-semibold tracking-wider transition-all shadow-md shadow-[#3E2CF0]/30 active:scale-95 group"
-                  >
-                    <span>EXPLORE SYSTEMS</span>
-                    <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
-                  </Link>
-                  <Link
-                    to="/about"
-                    className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-[#141416] hover:bg-[#1E1E22] border border-[#232326] text-[#F0F0EE] font-mono text-xs transition-colors"
-                  >
-                    <span>VIEW DOSSIER</span>
-                  </Link>
-                </div>
-              </div>
-
-              {/* Live Metric Counters */}
-              <div className="grid grid-cols-2 gap-4 pt-6 border-t border-[#1F1F24]">
-                <div>
-                  <div className="text-2xl sm:text-3xl font-mono font-bold text-white tracking-tight">
-                    31,406
-                  </div>
-                  <div className="text-[11px] font-mono text-[#85858B] mt-1">
-                    events scored in the last hour
-                  </div>
-                </div>
-                <div>
-                  <div className="text-2xl sm:text-3xl font-mono font-bold text-white tracking-tight">
-                    99.2%
-                  </div>
-                  <div className="text-[11px] font-mono text-[#85858B] mt-1">
-                    resolved without waking a human
-                  </div>
-                </div>
-              </div>
+      <section className="pt-16 sm:pt-24 lg:pt-32 pb-16 sm:pb-24 border-b border-[#1E1E23]">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <div className="max-w-3xl space-y-6">
+            {/* Institution Badge */}
+            <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-[#16161B] border border-[#25252E] text-xs text-[#8E8D96]">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#6366F1]"></span>
+              <span>IIT Jodhpur • Applied AI &amp; Data Science</span>
             </div>
 
-            {/* Center Column: The Inverted Bone Column */}
-            <div className="lg:col-span-5 bg-[#E9E7E1] text-[#0B0B0C] rounded-lg p-6 sm:p-8 flex flex-col justify-between shadow-2xl relative overflow-hidden group">
-              {/* Background dither stipple pattern on bone */}
-              <div className="absolute inset-0 bg-bone-dither opacity-30 pointer-events-none"></div>
+            {/* Main Headline */}
+            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-display font-semibold tracking-tight text-[#F4F4F2] leading-[1.06]">
+              Shubham Sharma
+            </h1>
 
-              {/* Dither Portrait Art */}
-              <div className="relative z-10 flex flex-col items-center">
-                <div className="w-full max-w-[280px] sm:max-w-[320px] aspect-[3/4] rounded overflow-hidden border border-[#0B0B0C]/20 bg-white/40 shadow-sm relative">
-                  <img
-                    src="/assets/sentinel_portrait.jpg"
-                    alt="Raster Sentinel 1-bit high-contrast dither portrait of Shubham Sharma, Applied AI Engineer"
-                    className="w-full h-full object-cover grayscale contrast-125"
-                    loading="eager"
-                  />
-                  <div className="absolute bottom-2 left-2 font-mono text-[9px] bg-[#0B0B0C] text-[#E9E7E1] px-1.5 py-0.5 rounded uppercase">
-                    1-BIT RASTER EYE
-                  </div>
-                </div>
+            <p className="text-xl sm:text-2xl font-display text-[#9A9AA2] font-normal tracking-tight">
+              Software • Machine Learning • Systems
+            </p>
 
-                <div className="mt-6 text-center space-y-1">
-                  <div className="text-xl sm:text-2xl font-bold tracking-tight text-[#0B0B0C]">
-                    Seen before it strikes.
-                  </div>
-                  <div className="text-xs font-mono text-[#4A4A4E]">
-                    One bit is enough. Flat ink, bone column, ultramarine action.
-                  </div>
-                </div>
-              </div>
+            {/* Personal Statement */}
+            <p className="text-base sm:text-lg text-[#8E8D96] leading-relaxed max-w-2xl pt-2">
+              Undergraduate at the Indian Institute of Technology Jodhpur. I bridge mathematical theory with production-grade engineering — designing deep learning models, computer vision algorithms, and resilient software systems.
+            </p>
 
-              {/* Action Buttons inside Bone Column */}
-              <div className="relative z-10 mt-8 space-y-2.5">
-                <Link
-                  to="/projects"
-                  className="w-full flex items-center justify-center gap-2 py-3 px-6 rounded bg-[#3E2CF0] hover:bg-[#3220D8] text-white text-xs font-semibold tracking-wide transition-all shadow-md shadow-[#3E2CF0]/25 active:scale-[0.98]"
-                >
-                  <span>Start monitoring</span>
-                </Link>
+            {/* Primary Action CTAs */}
+            <div className="pt-4 flex flex-wrap items-center gap-3">
+              <a
+                href="#selected-work"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[#4338CA] hover:bg-[#4F46E5] text-white text-xs font-semibold tracking-wide transition-colors shadow-sm"
+              >
+                <span>View Selected Work</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </a>
 
-                <Link
-                  to="/about"
-                  className="w-full flex items-center justify-center gap-2 py-2.5 px-6 rounded border border-[#0B0B0C]/40 hover:border-[#0B0B0C] hover:bg-[#0B0B0C]/5 text-[#0B0B0C] text-xs font-semibold tracking-wide transition-colors"
-                >
-                  <span>About the system</span>
-                </Link>
-              </div>
+              <Link
+                to="/contact"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[#16161B] hover:bg-[#202026] border border-[#25252E] hover:border-[#383844] text-[#F4F4F2] text-xs font-semibold tracking-wide transition-colors"
+              >
+                <span>Get in Touch</span>
+                <ArrowUpRight className="w-3.5 h-3.5 text-[#8E8D96]" />
+              </Link>
             </div>
 
-            {/* Right Column: Disciplines & Telemetry Stack */}
-            <div className="lg:col-span-3 flex flex-col justify-between py-2 space-y-8">
-              {/* Disciplines list */}
-              <div className="space-y-1">
-                {profile.disciplines.map((item) => (
-                  <div
-                    key={item.name}
-                    className={`text-2xl sm:text-3xl font-extrabold tracking-tight transition-all ${
-                      item.active
-                        ? 'text-white translate-x-1'
-                        : 'text-[#52525B] hover:text-[#85858B]'
-                    }`}
-                  >
-                    {item.name}
-                  </div>
-                ))}
+            {/* Grounded Status Row */}
+            <div className="pt-8 border-t border-[#1E1E23] grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs text-[#8E8D96]">
+              <div>
+                <div className="text-[#65656E] uppercase text-[10px] tracking-wider mb-0.5">Institution</div>
+                <div className="text-[#F4F4F2] font-medium">IIT Jodhpur (2023 — Present)</div>
               </div>
-
-              {/* Telemetry live data table */}
-              <div className="space-y-2 font-mono text-xs border-t border-[#1F1F24] pt-6">
-                <div className="flex items-center justify-between py-1 border-b border-[#1F1F24]/60">
-                  <span className="text-[#85858B]">signals live</span>
-                  <span className="text-[#F0F0EE] font-medium">{profile.telemetry.signalsLive}</span>
-                </div>
-                <div className="flex items-center justify-between py-1 border-b border-[#1F1F24]/60">
-                  <span className="text-[#85858B]">models active</span>
-                  <span className="text-[#F0F0EE] font-medium">{profile.telemetry.modelsActive}</span>
-                </div>
-                <div className="flex items-center justify-between py-1 border-b border-[#1F1F24]/60">
-                  <span className="text-[#85858B]">median verdict</span>
-                  <span className="text-[#3E2CF0] font-semibold">{profile.telemetry.medianVerdict}</span>
-                </div>
-                <div className="flex items-center justify-between py-1">
-                  <span className="text-[#85858B]">precision index</span>
-                  <span className="text-emerald-400 font-semibold">{profile.telemetry.precisionIndex}</span>
-                </div>
+              <div>
+                <div className="text-[#65656E] uppercase text-[10px] tracking-wider mb-0.5">Primary Focus</div>
+                <div className="text-[#F4F4F2] font-medium">Deep Learning &amp; Backend Systems</div>
+              </div>
+              <div>
+                <div className="text-[#65656E] uppercase text-[10px] tracking-wider mb-0.5">Availability</div>
+                <div className="text-[#F4F4F2] font-medium">Internships &amp; Engineering Roles</div>
               </div>
             </div>
 
           </div>
+
         </div>
       </section>
 
       {/* ------------------------------------------------------------- */}
-      {/* SECTION 2: The console is the contract */}
+      {/* 2. SELECTED WORK: Varied Compositions */}
       {/* ------------------------------------------------------------- */}
-      <section className="border-b border-[#1F1F24] py-12 lg:py-16 bg-[#080809]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-            
-            {/* Left Headline */}
-            <div className="lg:col-span-5 space-y-4">
-              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#F0F0EE]">
-                The console is the contract.
+      <section id="selected-work" className="py-20 sm:py-28 border-b border-[#1E1E23]">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+          
+          {/* Section Header */}
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-[#1E1E23] pb-6">
+            <div>
+              <span className="text-xs uppercase tracking-wider text-[#6366F1] font-medium">
+                Portfolio
+              </span>
+              <h2 className="text-2xl sm:text-4xl font-display font-semibold text-[#F4F4F2] tracking-tight mt-1">
+                Selected Work
               </h2>
-              <p className="text-sm text-[#85858B] leading-relaxed">
-                Every block, escalation, and rollback is written to the feed the instant it happens. What you read here is the same record your auditors receive, byte for byte.
+            </div>
+            <p className="text-xs sm:text-sm text-[#8E8D96] max-w-md">
+              Real projects spanning model integrity attestation, spatial computer vision, and high-throughput backend services.
+            </p>
+          </div>
+
+          {/* COMPOSITION 1: Large Featured Project (Sentinel NPU) */}
+          {featuredProject && (
+            <div className="group rounded-2xl bg-[#121215] border border-[#1E1E24] hover:border-[#32323D] transition-all duration-300 overflow-hidden">
+              <div className="grid grid-cols-1 lg:grid-cols-12 items-stretch">
+                
+                {/* Visual Half */}
+                <div 
+                  onClick={() => onOpenProject(featuredProject)}
+                  className="lg:col-span-7 relative bg-black aspect-[16/10] lg:aspect-auto overflow-hidden cursor-pointer"
+                >
+                  <img
+                    src={featuredProject.image}
+                    alt={featuredProject.title}
+                    className="w-full h-full object-cover opacity-85 group-hover:opacity-100 group-hover:scale-[1.02] transition-all duration-500"
+                  />
+                  <div className="absolute top-4 left-4">
+                    <span className="px-2.5 py-1 rounded bg-[#0C0C0E]/80 backdrop-blur border border-white/10 text-[11px] text-[#F4F4F2] font-medium">
+                      Featured Case Study
+                    </span>
+                  </div>
+                </div>
+
+                {/* Narrative Half */}
+                <div className="lg:col-span-5 p-6 sm:p-8 lg:p-10 flex flex-col justify-between space-y-6">
+                  <div className="space-y-4">
+                    <div className="flex items-center gap-2 text-xs text-[#8E8D96]">
+                      <span>{featuredProject.category}</span>
+                      <span>•</span>
+                      <span>{featuredProject.timeline}</span>
+                    </div>
+
+                    <h3 
+                      onClick={() => onOpenProject(featuredProject)}
+                      className="text-2xl sm:text-3xl font-display font-semibold text-[#F4F4F2] group-hover:text-white cursor-pointer transition-colors leading-snug"
+                    >
+                      {featuredProject.title}
+                    </h3>
+
+                    <p className="text-xs sm:text-sm text-[#8E8D96] leading-relaxed">
+                      {featuredProject.summary}
+                    </p>
+
+                    {/* Real Metrics */}
+                    <div className="grid grid-cols-3 gap-2 pt-3 border-t border-[#1E1E24]">
+                      {featuredProject.metrics.map((m) => (
+                        <div key={m.label}>
+                          <div className="text-sm font-semibold text-[#F4F4F2] font-mono">{m.value}</div>
+                          <div className="text-[10px] text-[#65656E]">{m.label}</div>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Tech Stack Pills */}
+                    <div className="flex flex-wrap gap-1.5 pt-2">
+                      {featuredProject.tags.slice(0, 5).map((tag) => (
+                        <span key={tag} className="px-2 py-0.5 rounded bg-[#1A1A20] text-[11px] text-[#8E8D96]">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Actions */}
+                  <div className="pt-4 flex items-center gap-3">
+                    <button
+                      onClick={() => onOpenProject(featuredProject)}
+                      className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#F4F4F2] hover:bg-white text-[#0C0C0E] text-xs font-semibold tracking-wide transition-colors"
+                    >
+                      <span>Read Case Study</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </button>
+                    {featuredProject.githubUrl && (
+                      <a
+                        href={featuredProject.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-2 rounded-lg bg-[#18181D] hover:bg-[#222229] border border-[#25252E] text-[#8E8D96] hover:text-[#F4F4F2] transition-colors"
+                        aria-label="View source on GitHub"
+                      >
+                        <GithubIcon className="w-4 h-4" />
+                      </a>
+                    )}
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          )}
+
+          {/* COMPOSITION 2: Split-Screen Editorial Pair */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            
+            {/* Vision Project */}
+            {visionProject && (
+              <div className="group rounded-xl bg-[#121215] border border-[#1E1E24] hover:border-[#32323D] transition-all duration-300 p-6 sm:p-7 flex flex-col justify-between space-y-6">
+                <div className="space-y-5">
+                  <div 
+                    onClick={() => onOpenProject(visionProject)}
+                    className="aspect-[16/9] rounded-lg bg-black overflow-hidden cursor-pointer"
+                  >
+                    <img
+                      src={visionProject.image}
+                      alt={visionProject.title}
+                      className="w-full h-full object-cover opacity-85 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
+                      loading="lazy"
+                    />
+                  </div>
+
+                  <div className="space-y-2">
+                    <div className="text-xs text-[#8E8D96]">{visionProject.category}</div>
+                    <h3 
+                      onClick={() => onOpenProject(visionProject)}
+                      className="text-xl font-display font-semibold text-[#F4F4F2] group-hover:text-white cursor-pointer transition-colors"
+                    >
+                      {visionProject.title}
+                    </h3>
+                    <p className="text-xs text-[#8E8D96] leading-relaxed">
+                      {visionProject.summary}
+                    </p>
+                  </div>
+
+                  <div className="grid grid-cols-3 gap-2 pt-2 border-t border-[#1E1E24]">
+                    {visionProject.metrics.map((m) => (
+                      <div key={m.label}>
+                        <div className="text-xs font-semibold text-[#F4F4F2] font-mono">{m.value}</div>
+                        <div className="text-[10px] text-[#65656E]">{m.label}</div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="flex items-center justify-between pt-2">
+                  <button
+                    onClick={() => onOpenProject(visionProject)}
+                    className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#F4F4F2] hover:text-[#6366F1] transition-colors"
+                  >
+                    <span>Read Case Study</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </button>
+                  <div className="flex gap-1">
+                    {visionProject.tags.slice(0, 3).map((t) => (
+                      <span key={t} className="px-2 py-0.5 rounded bg-[#18181D] text-[10px] text-[#65656E]">
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* Backend Project */}
+            {backendProject && (
+              <div className="group rounded-xl bg-[#121215] border border-[#1E1E24] hover:border-[#32323D] transition-all duration-300 p-6 sm:p-7 flex flex-col justify-between space-y-6">
+                <div className="space-y-5">
+                  <div 
+                    onClick={() => onOpenProject(backendProject)}
+                    className="aspect-[16/9] rounded-lg bg-black overflow-hidden cursor-pointer"
+                  >
+                    <img
+                      src={backendProject.image}
+                      alt={backendProject.title}
+                      className="w-full h-full object-cover opacity-85 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
+                      loading="lazy"
+                    />
+                  </div>
+
+                  <div className="space-y-2">
+                    <div className="text-xs text-[#8E8D96]">{backendProject.category}</div>
+                    <h3 
+                      onClick={() => onOpenProject(backendProject)}
+                      className="text-xl font-display font-semibold text-[#F4F4F2] group-hover:text-white cursor-pointer transition-colors"
+                    >
+                      {backendProject.title}
+                    </h3>
+                    <p className="text-xs text-[#8E8D96] leading-relaxed">
+                      {backendProject.summary}
+                    </p>
+                  </div>
+
+                  <div className="grid grid-cols-3 gap-2 pt-2 border-t border-[#1E1E24]">
+                    {backendProject.metrics.map((m) => (
+                      <div key={m.label}>
+                        <div className="text-xs font-semibold text-[#F4F4F2] font-mono">{m.value}</div>
+                        <div className="text-[10px] text-[#65656E]">{m.label}</div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="flex items-center justify-between pt-2">
+                  <button
+                    onClick={() => onOpenProject(backendProject)}
+                    className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#F4F4F2] hover:text-[#6366F1] transition-colors"
+                  >
+                    <span>Read Case Study</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </button>
+                  <div className="flex gap-1">
+                    {backendProject.tags.slice(0, 3).map((t) => (
+                      <span key={t} className="px-2 py-0.5 rounded bg-[#18181D] text-[10px] text-[#65656E]">
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            )}
+
+          </div>
+
+          {/* COMPOSITION 3: Horizontal Studies */}
+          <div className="space-y-4">
+            <h3 className="text-xs uppercase tracking-wider text-[#65656E] font-medium">
+              Additional Case Studies
+            </h3>
+            <div className="divide-y divide-[#1E1E24] border-y border-[#1E1E24]">
+              {otherProjects.map((p) => (
+                <div
+                  key={p.id}
+                  onClick={() => onOpenProject(p)}
+                  className="py-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 group cursor-pointer hover:bg-[#121215] px-3 -mx-3 rounded-lg transition-colors"
+                >
+                  <div className="space-y-1 max-w-xl">
+                    <div className="flex items-center gap-2 text-xs text-[#8E8D96]">
+                      <span>{p.category}</span>
+                      <span>•</span>
+                      <span>{p.timeline}</span>
+                    </div>
+                    <h4 className="text-base font-semibold text-[#F4F4F2] group-hover:text-white transition-colors">
+                      {p.title}
+                    </h4>
+                    <p className="text-xs text-[#8E8D96] line-clamp-1">
+                      {p.summary}
+                    </p>
+                  </div>
+
+                  <div className="flex items-center gap-4">
+                    <div className="hidden sm:flex gap-1">
+                      {p.tags.slice(0, 3).map((t) => (
+                        <span key={t} className="px-2 py-0.5 rounded bg-[#18181D] text-[10px] text-[#65656E]">
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+                    <div className="inline-flex items-center gap-1 text-xs font-medium text-[#8E8D96] group-hover:text-[#F4F4F2] transition-colors">
+                      <span>View Study</span>
+                      <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Catalog Link */}
+          <div className="pt-2 flex justify-center">
+            <Link
+              to="/projects"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#16161B] hover:bg-[#202026] border border-[#25252E] hover:border-[#383844] text-[#F4F4F2] text-xs font-semibold tracking-wide transition-colors"
+            >
+              <span>Explore All Projects &amp; Case Studies</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
+          </div>
+
+        </div>
+      </section>
+
+      {/* ------------------------------------------------------------- */}
+      {/* 3. ACADEMIC & PERSPECTIVE SECTION */}
+      {/* ------------------------------------------------------------- */}
+      <section className="py-20 sm:py-28 border-b border-[#1E1E23]">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+            
+            {/* Left: About Summary */}
+            <div className="lg:col-span-5 space-y-6">
+              <div>
+                <span className="text-xs uppercase tracking-wider text-[#6366F1] font-medium">
+                  Background
+                </span>
+                <h2 className="text-2xl sm:text-4xl font-display font-semibold text-[#F4F4F2] tracking-tight mt-1">
+                  Academic Foundation &amp; Perspective
+                </h2>
+              </div>
+
+              <p className="text-sm text-[#8E8D96] leading-relaxed">
+                Currently pursuing a Bachelor of Science in Applied AI &amp; Data Science at the Indian Institute of Technology Jodhpur.
               </p>
+
+              <p className="text-sm text-[#8E8D96] leading-relaxed">
+                My approach centers on first-principles understanding: deriving loss functions from optimization theory, profiling memory bandwidth before optimizing code, and creating systems that are reliable and interpretable.
+              </p>
+
               <div className="pt-2">
                 <Link
-                  to="/projects"
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded bg-[#111113] hover:bg-[#1A1A1E] border border-[#1F1F24] text-xs font-mono text-[#F0F0EE] transition-colors"
+                  to="/about"
+                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#F4F4F2] hover:text-[#6366F1] transition-colors"
                 >
-                  <span>View live coverage</span>
-                  <ArrowRight className="w-3.5 h-3.5 text-[#3E2CF0]" />
+                  <span>Read Full About &amp; Dossier</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
                 </Link>
               </div>
             </div>
 
-            {/* Right Telemetry Terminal Table */}
-            <div className="lg:col-span-7 bg-[#111113] border border-[#1F1F24] rounded-lg overflow-hidden">
-              {/* Tab Header */}
-              <div className="flex items-center justify-between px-4 py-2.5 border-b border-[#1F1F24] bg-[#161619] text-xs font-mono">
-                <div className="flex items-center gap-4">
-                  {['live', 'rules', 'models'].map((tab) => (
-                    <button
-                      key={tab}
-                      onClick={() => setActiveFeedTab(tab)}
-                      className={`capitalize transition-colors ${
-                        activeFeedTab === tab ? 'text-white font-semibold' : 'text-[#85858B] hover:text-[#D4D4D8]'
-                      }`}
-                    >
-                      {tab === 'live' ? 'Live feed' : tab}
-                    </button>
-                  ))}
+            {/* Right: Core Pillars */}
+            <div className="lg:col-span-7 space-y-4">
+              
+              <div className="p-6 rounded-xl bg-[#121215] border border-[#1E1E24] space-y-2">
+                <div className="flex items-center gap-2 text-xs font-semibold text-[#F4F4F2]">
+                  <GraduationCap className="w-4 h-4 text-[#6366F1]" />
+                  <span>IIT Jodhpur Curriculum &amp; Research</span>
                 </div>
-                <div className="flex items-center gap-1.5 text-[11px] text-[#3E2CF0]">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#3E2CF0] animate-ping"></span>
-                  <span>SYNCED</span>
-                </div>
+                <p className="text-xs text-[#8E8D96] leading-relaxed">
+                  Rigorous foundational coursework in Applied Mathematics, Linear Algebra, Multivariate Calculus, Data Structures &amp; Algorithms, Deep Learning, and Computer Vision.
+                </p>
               </div>
 
-              {/* Feed Content */}
-              <div className="p-4 space-y-2.5 font-mono text-xs">
-                {activeFeedTab === 'live' && (
-                  events.map((ev, idx) => (
-                    <div
-                      key={idx}
-                      className="flex items-center justify-between py-1 border-b border-[#1A1A1E] last:border-0 hover:bg-[#16161A] px-2 rounded transition-colors"
-                    >
-                      <div className="flex items-center gap-3">
-                        <span className="text-[#52525B] text-[11px]">{ev.time}</span>
-                        <span className="text-[#D4D4D8]">{ev.event}</span>
-                      </div>
-                      <span className={`uppercase text-[11px] font-semibold ${ev.color}`}>
-                        {ev.verdict}
-                      </span>
-                    </div>
-                  ))
-                )}
-
-                {activeFeedTab === 'rules' && (
-                  <div className="space-y-2 text-[#A1A1AA]">
-                    <div className="flex justify-between py-1 border-b border-[#1A1A1E]">
-                      <span>RULE 01: Zero-Trust Weight Attestation</span>
-                      <span className="text-emerald-400">ENFORCED</span>
-                    </div>
-                    <div className="flex justify-between py-1 border-b border-[#1A1A1E]">
-                      <span>RULE 02: Maximum In-Flight Jitter &lt; 1.2ms</span>
-                      <span className="text-emerald-400">COMPLIANT</span>
-                    </div>
-                    <div className="flex justify-between py-1">
-                      <span>RULE 03: Adversarial Input Sanitization</span>
-                      <span className="text-[#3E2CF0]">ACTIVE (GPU)</span>
-                    </div>
-                  </div>
-                )}
-
-                {activeFeedTab === 'models' && (
-                  <div className="space-y-2 text-[#A1A1AA]">
-                    <div className="flex justify-between py-1 border-b border-[#1A1A1E]">
-                      <span>sentinel-npu-int8</span>
-                      <span className="text-white">CUDA // 4.2ms</span>
-                    </div>
-                    <div className="flex justify-between py-1 border-b border-[#1A1A1E]">
-                      <span>raster-halftone-vision</span>
-                      <span className="text-white">WebGL // 140 FPS</span>
-                    </div>
-                    <div className="flex justify-between py-1">
-                      <span>risk-gradient-ensemble</span>
-                      <span className="text-white">SHAP // 1.8ms</span>
-                    </div>
-                  </div>
-                )}
+              <div className="p-6 rounded-xl bg-[#121215] border border-[#1E1E24] space-y-2">
+                <div className="flex items-center gap-2 text-xs font-semibold text-[#F4F4F2]">
+                  <Code2 className="w-4 h-4 text-[#6366F1]" />
+                  <span>Empirical Benchmarking Over Guesswork</span>
+                </div>
+                <p className="text-xs text-[#8E8D96] leading-relaxed">
+                  Every pipeline is validated with empirical metrics — measuring P99 query latency, cache locality, memory footprint, and ROC-AUC scores against clear baselines.
+                </p>
               </div>
+
+              <div className="p-6 rounded-xl bg-[#121215] border border-[#1E1E24] space-y-2">
+                <div className="flex items-center gap-2 text-xs font-semibold text-[#F4F4F2]">
+                  <Layers className="w-4 h-4 text-[#6366F1]" />
+                  <span>Full-Stack &amp; Systems Execution</span>
+                </div>
+                <p className="text-xs text-[#8E8D96] leading-relaxed">
+                  Bridging the gap between standalone machine learning notebooks and production applications — integrating PyTorch with FastAPI, Docker, and responsive interfaces.
+                </p>
+              </div>
+
             </div>
 
           </div>
+
         </div>
       </section>
 
       {/* ------------------------------------------------------------- */}
-      {/* SECTION 3: Coverage from silicon to operator */}
+      {/* 4. DIRECT CONTACT INVITATION */}
       {/* ------------------------------------------------------------- */}
-      <section className="py-14 lg:py-20 border-b border-[#1F1F24]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mb-8">
-            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#F0F0EE]">
-              Coverage from silicon to operator.
+      <section className="py-20 sm:py-28">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-2xl space-y-6">
+            <span className="text-xs uppercase tracking-wider text-[#6366F1] font-medium">
+              Get in Touch
+            </span>
+            <h2 className="text-3xl sm:text-5xl font-display font-semibold text-[#F4F4F2] tracking-tight leading-tight">
+              Let's build something thoughtful together.
             </h2>
-            <p className="text-sm text-[#85858B] mt-1">
-              End-to-end telemetry across physical edge silicon and human verification dispatch.
+            <p className="text-sm sm:text-base text-[#8E8D96] leading-relaxed">
+              Whether you have an engineering opportunity, a research collaboration, or an interesting machine learning challenge — feel free to reach out directly.
             </p>
-          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-            {/* Card 1: Hardware Attestation */}
-            <div
-              onClick={() => onOpenProject?.(projects[0])}
-              className="group cursor-pointer rounded-lg bg-[#111113] border border-[#1F1F24] hover:border-[#3E2CF0]/60 transition-all duration-200 overflow-hidden flex flex-col"
-            >
-              <div className="relative aspect-[16/9] bg-black overflow-hidden">
-                <img
-                  src="/assets/circuit_hardware.jpg"
-                  alt="Hardware attestation circuit board with edge silicon microcontrollers"
-                  className="w-full h-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-300"
-                  loading="lazy"
-                />
-                <button
-                  className="absolute bottom-3 right-3 p-1.5 rounded bg-black/80 border border-white/20 text-white group-hover:bg-[#3E2CF0] group-hover:border-[#3E2CF0] transition-colors"
-                  aria-label="Expand hardware attestation case study"
-                >
-                  <ArrowUpRight className="w-4 h-4" />
-                </button>
-              </div>
-
-              <div className="p-6 space-y-2 flex-1">
-                <h3 className="text-lg font-bold text-[#F0F0EE] group-hover:text-white transition-colors">
-                  Hardware attestation
-                </h3>
-                <p className="text-xs text-[#85858B] leading-relaxed">
-                  Every node proves its boot chain before it serves a single token. Unverified silicon never joins the fleet.
-                </p>
-                <div className="pt-2 flex items-center gap-2 text-[11px] font-mono text-[#3E2CF0]">
-                  <span>INSPECT CASE STUDY</span>
-                  <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
-                </div>
-              </div>
-            </div>
-
-            {/* Card 2: Operator Review */}
-            <div
-              onClick={() => onOpenProject?.(projects[2])}
-              className="group cursor-pointer rounded-lg bg-[#111113] border border-[#1F1F24] hover:border-[#3E2CF0]/60 transition-all duration-200 overflow-hidden flex flex-col"
-            >
-              <div className="relative aspect-[16/9] bg-black overflow-hidden">
-                <img
-                  src="/assets/operator_silhouette.jpg"
-                  alt="Operator review workstation telemetry console and incident dispatch interface"
-                  className="w-full h-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-300"
-                  loading="lazy"
-                />
-                <button
-                  className="absolute bottom-3 right-3 p-1.5 rounded bg-black/80 border border-white/20 text-white group-hover:bg-[#3E2CF0] group-hover:border-[#3E2CF0] transition-colors"
-                  aria-label="Expand operator review case study"
-                >
-                  <ArrowUpRight className="w-4 h-4" />
-                </button>
-              </div>
-
-              <div className="p-6 space-y-2 flex-1">
-                <h3 className="text-lg font-bold text-[#F0F0EE] group-hover:text-white transition-colors">
-                  Operator review
-                </h3>
-                <p className="text-xs text-[#85858B] leading-relaxed">
-                  Escalations land with a person in under a minute, full context attached, decision logged.
-                </p>
-                <div className="pt-2 flex items-center gap-2 text-[11px] font-mono text-[#3E2CF0]">
-                  <span>INSPECT CASE STUDY</span>
-                  <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ------------------------------------------------------------- */}
-      {/* SECTION 4: Request Access / Contact */}
-      {/* ------------------------------------------------------------- */}
-      <section className="py-14 lg:py-20 bg-[#080809]">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="space-y-3 mb-8">
-            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#F0F0EE]">
-              Request access.
-            </h2>
-            <p className="text-sm text-[#85858B]">
-              Tell us where Sentinel will stand watch. We reply within one business day to all prospective clients &amp; employers.
-            </p>
-          </div>
-
-          <form onSubmit={handleFormSubmit} className="space-y-4">
-            <div>
-              <label htmlFor="fullname" className="block text-xs font-mono text-[#85858B] mb-1.5">
-                Fullname
-              </label>
-              <input
-                id="fullname"
-                type="text"
-                value={formData.fullName}
-                onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                placeholder="Ada Lovelace"
-                className="w-full px-4 py-2.5 rounded bg-[#111113] border border-[#1F1F24] focus:border-[#3E2CF0] focus:ring-1 focus:ring-[#3E2CF0] text-sm text-[#F0F0EE] placeholder-[#52525B] font-mono transition-colors focus:outline-none"
-              />
-            </div>
-
-            <div>
-              <label htmlFor="workemail" className="block text-xs font-mono text-[#85858B] mb-1.5">
-                Work email
-              </label>
-              <input
-                id="workemail"
-                type="email"
-                required
-                value={formData.email}
-                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                placeholder="operator@company.com"
-                className="w-full px-4 py-2.5 rounded bg-[#111113] border border-[#1F1F24] focus:border-[#3E2CF0] focus:ring-1 focus:ring-[#3E2CF0] text-sm text-[#F0F0EE] placeholder-[#52525B] font-mono transition-colors focus:outline-none"
-              />
-              <p className="text-[11px] font-mono text-[#3E2CF0] mt-1.5">
-                Target Operator: marksrv047@gmail.com
-              </p>
-            </div>
-
-            <div className="flex items-center gap-2 pt-2">
-              <input
-                id="weekly-digest"
-                type="checkbox"
-                checked={formData.digest}
-                onChange={(e) => setFormData({ ...formData, digest: e.target.checked })}
-                className="w-4 h-4 rounded bg-[#111113] border-[#1F1F24] text-[#3E2CF0] focus:ring-[#3E2CF0] focus:ring-offset-0 focus:ring-1 cursor-pointer"
-              />
-              <label htmlFor="weekly-digest" className="text-xs font-mono text-[#85858B] cursor-pointer">
-                Send technical telemetry &amp; project updates
-              </label>
-            </div>
-
-            <div className="pt-2">
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="px-6 py-2.5 rounded bg-[#3E2CF0] hover:bg-[#3220D8] disabled:opacity-50 text-white text-xs font-semibold tracking-wide transition-all shadow-md shadow-[#3E2CF0]/30 active:scale-95"
+            <div className="pt-2 flex flex-wrap items-center gap-4">
+              <Link
+                to="/contact"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[#4338CA] hover:bg-[#4F46E5] text-white text-xs font-semibold tracking-wide transition-colors"
               >
-                {isSubmitting ? 'Transmitting...' : 'Request access'}
+                <span>Send a Message</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
+
+              <button
+                onClick={() => {
+                  navigator.clipboard.writeText(profile.email);
+                  onShowToast?.({
+                    type: 'success',
+                    message: `Email copied: ${profile.email}`
+                  });
+                }}
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[#16161B] hover:bg-[#202026] border border-[#25252E] text-xs font-mono text-[#F4F4F2] transition-colors"
+              >
+                <span>{profile.email}</span>
+                <span className="text-[10px] text-[#65656E]">Copy</span>
               </button>
             </div>
-          </form>
+          </div>
         </div>
       </section>
+
     </div>
   );
 }
