@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, Search, ExternalLink, SlidersHorizontal, Layers, CheckCircle2 } from 'lucide-react';
+import { ArrowRight, Search, ExternalLink, SlidersHorizontal, Layers, CheckCircle2, ArrowUpRight } from 'lucide-react';
 import { GithubIcon } from '../components/SocialIcons.jsx';
 import { projects } from '../data/projects.js';
 import { usePageMeta } from '../hooks/usePageMeta';
@@ -14,34 +14,37 @@ import ProjectRiskCase from '../components/projects/ProjectRiskCase.jsx';
 
 export default function ProjectsPage({ onOpenProject }) {
   usePageMeta({
-    title: 'Projects & Case Studies — Shubham Sharma',
-    description: 'Archive of machine learning models, computer vision pipelines, and backend architectures built by Shubham Sharma at IIT Jodhpur.',
+    title: 'Work & Projects — Shubham Sharma | IIT Jodhpur',
+    description: 'Selected projects, experiments and systems built by Shubham Sharma. AI models, edge runtimes, computer vision algorithms, and backend architectures.',
     path: '/projects'
   });
 
   const [selectedCategory, setSelectedCategory] = useState('ALL');
   const [searchQuery, setSearchQuery] = useState('');
-  // viewMode: false = "CASE STUDIES", true = "GRID VIEW"
-  const [isGridView, setIsGridView] = useState(false);
+  // viewMode: false = "EDITORIAL ARCHIVE", true = "DEEP CASE STUDIES"
+  const [isCaseStudiesView, setIsCaseStudiesView] = useState(false);
 
   const categories = [
     { id: 'ALL', label: 'ALL' },
-    { id: 'AI_ML', label: 'AI & ML' },
-    { id: 'DATA', label: 'DATA & ANALYSIS' },
-    { id: 'SYSTEMS', label: 'SYSTEMS & BACKEND' },
-    { id: 'VISION', label: 'COMPUTER VISION' }
+    { id: 'AI', label: 'AI' },
+    { id: 'DATA', label: 'DATA' },
+    { id: 'SOFTWARE', label: 'SOFTWARE' },
+    { id: 'WEB', label: 'WEB' },
+    { id: 'EXPERIMENTS', label: 'EXPERIMENTS' }
   ];
 
   const filteredProjects = projects.filter((proj) => {
     let matchesCategory = true;
-    if (selectedCategory === 'AI_ML') {
-      matchesCategory = proj.category.includes('Machine Learning') || proj.tags.some(t => ['PyTorch', 'TensorRT', 'XGBoost'].includes(t));
+    if (selectedCategory === 'AI') {
+      matchesCategory = proj.category.includes('Machine Learning') || proj.tags.some(t => ['PyTorch', 'TensorRT', 'Edge AI'].includes(t));
     } else if (selectedCategory === 'DATA') {
       matchesCategory = proj.id === 'loan-risk-prediction' || proj.tags.some(t => ['Pandas', 'NumPy', 'SHAP', 'Scikit-Learn'].includes(t));
-    } else if (selectedCategory === 'SYSTEMS') {
+    } else if (selectedCategory === 'SOFTWARE') {
       matchesCategory = proj.category.includes('Backend') || proj.category.includes('Systems');
-    } else if (selectedCategory === 'VISION') {
-      matchesCategory = proj.category.includes('Vision');
+    } else if (selectedCategory === 'WEB') {
+      matchesCategory = proj.tags.some(t => ['FastAPI', 'Docker', 'AsyncIO'].includes(t));
+    } else if (selectedCategory === 'EXPERIMENTS') {
+      matchesCategory = proj.category.includes('Vision') || proj.id === 'distributed-vector-mesh';
     }
 
     const matchesSearch =
@@ -51,8 +54,6 @@ export default function ProjectsPage({ onOpenProject }) {
 
     return matchesCategory && matchesSearch;
   });
-
-  const isDefaultView = !isGridView && selectedCategory === 'ALL' && !searchQuery.trim();
 
   const pSentinel = projects.find((p) => p.id === 'sentinel-npu') || projects[0];
   const pDither = projects.find((p) => p.id === 'operator-vision') || projects[1];
@@ -66,25 +67,21 @@ export default function ProjectsPage({ onOpenProject }) {
           
           {/* Editorial Header */}
           <div className="space-y-4 border-b border-[#1C1C22] pb-10">
-            <div className="inline-flex items-center gap-2 text-xs text-[#818CF8] font-mono">
+            <div className="inline-flex items-center gap-2 text-xs text-[#818CF8] font-mono uppercase tracking-widest">
               <span className="w-2 h-2 rounded-full bg-[#E10600] ring-2 ring-[#E10600]/30 animate-pulse" />
-              <span>PROJECT ARCHIVE // TECHNICAL CASE STUDIES</span>
+              <span>PROJECT ARCHIVE // INDEX</span>
             </div>
 
-            <h1 className="text-4xl sm:text-6xl font-bold font-display uppercase tracking-tight text-[#F4F4F0]">
-              Engineered <br />
-              <span className="font-serif-editorial italic font-normal text-4xl sm:text-6xl lowercase text-[#C7D2FE] mr-3">
-                systems &amp;
-              </span>
-              Architectures
+            <h1 className="text-5xl sm:text-7xl lg:text-8xl font-bold font-display uppercase tracking-tight text-[#F4F4F0]">
+              WORK
             </h1>
 
-            <p className="text-base sm:text-lg text-[#9E9EA8] max-w-2xl font-light leading-relaxed">
-              In-depth technical case studies detailing edge neural quantization runtimes, 1-bit spatial error diffusion, and distributed event-driven backends.
+            <p className="text-lg sm:text-2xl text-[#9E9EA8] max-w-2xl font-light leading-relaxed">
+              Selected projects, experiments and systems I've built.
             </p>
           </div>
 
-          {/* Filter, View Switcher & Search Bar */}
+          {/* Filter & View Switcher Bar */}
           <div className="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-6 border-b border-[#1C1C22] pb-8">
             
             {/* Technical Category Buttons */}
@@ -107,28 +104,28 @@ export default function ProjectsPage({ onOpenProject }) {
               ))}
             </div>
 
-            {/* Right Controls: Segmented Switch & Search */}
+            {/* Right Controls: Segmented Industrial Switch & Search */}
             <div className="flex flex-wrap items-center gap-4">
               
-              {/* Component A: Segmented Industrial Switch */}
+              {/* Segmented Industrial Switch */}
               <div className="flex items-center gap-2">
                 <SegmentedIndustrialSwitch
-                  checked={isGridView}
-                  onChange={setIsGridView}
-                  leftLabel="CASE STUDIES"
-                  rightLabel="GRID VIEW"
-                  ariaLabel="Toggle between case studies and grid layout"
+                  checked={isCaseStudiesView}
+                  onChange={setIsCaseStudiesView}
+                  leftLabel="ARCHIVE"
+                  rightLabel="CASE STUDIES"
+                  ariaLabel="Toggle between archive and detailed case studies"
                 />
               </div>
 
               {/* Search Box */}
-              <div className="relative min-w-[240px] flex-1 sm:flex-initial">
+              <div className="relative min-w-[220px] flex-1 sm:flex-initial">
                 <Search className="w-3.5 h-3.5 text-[#656570] absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
                 <input
                   type="text"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder="Search by kernel, model, or stack..."
+                  placeholder="Filter by keyword..."
                   className="w-full pl-9 pr-3 py-2.5 rounded-sm bg-[#111114] border border-[#272730] text-xs font-mono text-[#F4F4F2] placeholder-[#656570] focus:outline-none focus:border-[#6366F1]"
                 />
               </div>
@@ -142,7 +139,7 @@ export default function ProjectsPage({ onOpenProject }) {
             <div className="text-center py-20 px-4 bg-[#111114] border border-[#1C1C22] rounded-sm space-y-3 font-mono">
               <h3 className="text-sm font-semibold text-[#F4F4F2]">No matching systems found</h3>
               <p className="text-xs text-[#656570] max-w-sm mx-auto">
-                No projects matched "{searchQuery}". Try selecting "ALL" or resetting query parameters.
+                No projects matched "{searchQuery}". Try selecting "ALL" or resetting your search query.
               </p>
               <button
                 onClick={() => { setSelectedCategory('ALL'); setSearchQuery(''); }}
@@ -153,91 +150,233 @@ export default function ProjectsPage({ onOpenProject }) {
             </div>
           )}
 
-          {/* View Mode 1: Comprehensive In-Depth Case Studies */}
-          {isDefaultView ? (
-            <div className="space-y-6">
+          {/* VIEW MODE 1: Detailed Deep-Dive Case Studies */}
+          {isCaseStudiesView ? (
+            <div className="space-y-12">
               <ProjectSentinelCase project={pSentinel} onOpenModal={onOpenProject} />
               <ProjectDitherCase project={pDither} onOpenModal={onOpenProject} />
               <ProjectOrchestratorCase project={pOrchestrator} onOpenModal={onOpenProject} />
               <ProjectRiskCase project={pRisk} onOpenModal={onOpenProject} />
             </div>
           ) : (
-            /* View Mode 2: High-Density Technical Grid Cards */
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {filteredProjects.map((proj) => (
-                <div
-                  key={proj.id}
-                  className="p-6 bg-[#111114] border border-[#272730] rounded-sm flex flex-col justify-between space-y-6 hover:border-[#6366F1] transition-all group hover:-translate-y-0.5 duration-300"
-                >
-                  <div className="space-y-4">
-                    {/* Media Frame with subtle zoom on hover */}
-                    <div className="aspect-[16/9] bg-[#08080A] rounded-sm overflow-hidden border border-[#1C1C22] relative">
+            /* VIEW MODE 2: Editorial Alternating Archive */
+            <div className="space-y-16 sm:space-y-24">
+              {filteredProjects.map((proj, index) => {
+                const projectNum = `0${index + 1}`.slice(-2);
+                const isEven = index % 2 === 0;
+                const isBanner = index === 0;
+
+                // Alternate composition styles:
+                if (isBanner) {
+                  // COMPOSITION 01: Huge visual banner + oversized number + thesis
+                  return (
+                    <article
+                      key={proj.id}
+                      className="border-b border-[#1C1C22] pb-16 space-y-8 group"
+                    >
+                      <div className="flex items-baseline justify-between border-b border-[#1C1C22] pb-3 text-xs font-mono text-[#656570]">
+                        <span className="text-[#818CF8] font-bold">{projectNum} // FEATURED SYSTEM</span>
+                        <span>{proj.timeline} &bull; {proj.category}</span>
+                      </div>
+
+                      {/* Huge Project Visual */}
+                      <div
+                        onClick={() => onOpenProject(proj)}
+                        className="relative w-full aspect-[21/9] sm:aspect-[2.4/1] bg-[#111114] border border-[#1F1F28] overflow-hidden cursor-pointer group rounded-sm"
+                      >
+                        <img
+                          src={proj.image}
+                          alt={proj.title}
+                          className="w-full h-full object-cover grayscale contrast-125 opacity-85 group-hover:opacity-100 group-hover:scale-102 transition-all duration-700"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#08080A] via-transparent to-transparent opacity-80" />
+                        <div className="absolute bottom-6 left-6 right-6 flex flex-wrap items-end justify-between gap-4">
+                          <div>
+                            <div className="text-xs font-mono text-[#818CF8] uppercase tracking-wider mb-1">
+                              {proj.category}
+                            </div>
+                            <h2 className="text-3xl sm:text-5xl font-bold font-display uppercase tracking-tight text-[#F4F4F0] group-hover:text-white transition-colors">
+                              {proj.title}
+                            </h2>
+                          </div>
+
+                          <div className="px-4 py-2 bg-[#08080A]/90 border border-[#272730] backdrop-blur text-xs font-mono text-white flex items-center gap-2">
+                            <span>Inspect Case Study</span>
+                            <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+                        <div className="md:col-span-8 space-y-3">
+                          <p className="text-lg sm:text-xl text-[#F4F4F2] font-light leading-relaxed">
+                            {proj.subtitle}
+                          </p>
+                          <p className="text-sm text-[#9E9EA8] font-light leading-relaxed">
+                            {proj.summary}
+                          </p>
+                        </div>
+
+                        <div className="md:col-span-4 border-l border-[#1C1C22] pl-6 space-y-3 font-mono text-xs">
+                          <div className="text-[#656570] uppercase">VERIFIED METRICS</div>
+                          {proj.metrics.map((m) => (
+                            <div key={m.label} className="flex items-baseline justify-between">
+                              <span className="text-[#9E9EA8]">{m.label}</span>
+                              <span className="text-[#F4F4F2] font-semibold">{m.value}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </article>
+                  );
+                }
+
+                if (isEven) {
+                  // COMPOSITION 02: Split screen (Title & specs on left, visual on right)
+                  return (
+                    <article
+                      key={proj.id}
+                      className="border-b border-[#1C1C22] pb-16 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center group"
+                    >
+                      <div className="lg:col-span-6 space-y-6">
+                        <div className="flex items-center gap-3 text-xs font-mono text-[#656570]">
+                          <span className="text-[#818CF8] font-bold">{projectNum}</span>
+                          <span>//</span>
+                          <span className="text-[#9E9EA8]">{proj.category}</span>
+                          <span>&bull;</span>
+                          <span>{proj.timeline}</span>
+                        </div>
+
+                        <h2 
+                          onClick={() => onOpenProject(proj)}
+                          className="text-2xl sm:text-4xl font-bold font-display uppercase tracking-tight text-[#F4F4F0] group-hover:text-white cursor-pointer transition-colors"
+                        >
+                          {proj.title}
+                        </h2>
+
+                        <p className="text-base text-[#9E9EA8] font-light leading-relaxed">
+                          {proj.summary}
+                        </p>
+
+                        <div className="flex flex-wrap gap-1.5 font-mono text-xs">
+                          {proj.tags.map((t) => (
+                            <span key={t} className="px-2 py-0.5 bg-[#111114] border border-[#1C1C24] text-[#818CF8] rounded-sm">
+                              {t}
+                            </span>
+                          ))}
+                        </div>
+
+                        <div className="flex items-center gap-4 pt-2">
+                          <button
+                            onClick={() => onOpenProject(proj)}
+                            className="px-5 py-2.5 bg-[#14141A] hover:bg-[#1E1E28] border border-[#272734] text-xs font-mono uppercase tracking-wider text-[#F4F4F2] rounded-sm flex items-center gap-2 cursor-pointer transition-colors"
+                          >
+                            <span>Read Case Study</span>
+                            <ArrowRight size={14} />
+                          </button>
+                          {proj.githubUrl && (
+                            <a
+                              href={proj.githubUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="p-2.5 bg-[#111114] hover:bg-[#1C1C24] border border-[#272730] text-[#9E9EA8] hover:text-white rounded-sm transition-colors"
+                              title="GitHub Repository"
+                            >
+                              <GithubIcon size={16} />
+                            </a>
+                          )}
+                        </div>
+                      </div>
+
+                      <div 
+                        onClick={() => onOpenProject(proj)}
+                        className="lg:col-span-6 aspect-[16/10] bg-[#111114] border border-[#1F1F28] overflow-hidden rounded-sm cursor-pointer group/img relative"
+                      >
+                        <img
+                          src={proj.image}
+                          alt={proj.title}
+                          className="w-full h-full object-cover grayscale contrast-125 group-hover/img:scale-105 transition-transform duration-700"
+                        />
+                        <div className="absolute top-3 right-3 px-2 py-0.5 bg-[#08080A]/85 border border-[#272730] rounded text-[10px] font-mono text-emerald-400">
+                          {proj.status}
+                        </div>
+                      </div>
+                    </article>
+                  );
+                }
+
+                // COMPOSITION 03: Split screen (Visual on left, title & specs on right)
+                return (
+                  <article
+                    key={proj.id}
+                    className="border-b border-[#1C1C22] pb-16 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center group"
+                  >
+                    <div 
+                      onClick={() => onOpenProject(proj)}
+                      className="lg:col-span-6 order-2 lg:order-1 aspect-[16/10] bg-[#111114] border border-[#1F1F28] overflow-hidden rounded-sm cursor-pointer group/img relative"
+                    >
                       <img
                         src={proj.image}
                         alt={proj.title}
-                        className="w-full h-full object-cover grayscale contrast-125 group-hover:scale-105 transition-transform duration-500"
+                        className="w-full h-full object-cover grayscale contrast-125 group-hover/img:scale-105 transition-transform duration-700"
                       />
-                      <div className="absolute top-2 right-2 px-2 py-0.5 bg-[#08080A]/85 backdrop-blur-md border border-[#272730] rounded text-[10px] font-mono text-[#818CF8] flex items-center gap-1.5">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#E10600]" />
-                        <span>{proj.status}</span>
+                      <div className="absolute top-3 left-3 px-2 py-0.5 bg-[#08080A]/85 border border-[#272730] rounded text-[10px] font-mono text-[#818CF8]">
+                        {proj.status}
                       </div>
                     </div>
 
-                    <div className="flex items-center justify-between text-xs font-mono">
-                      <span className="text-[#818CF8]">{proj.category}</span>
-                      <span className="text-[#656570]">{proj.timeline}</span>
-                    </div>
+                    <div className="lg:col-span-6 order-1 lg:order-2 space-y-6">
+                      <div className="flex items-center gap-3 text-xs font-mono text-[#656570]">
+                        <span className="text-[#818CF8] font-bold">{projectNum}</span>
+                        <span>//</span>
+                        <span className="text-[#9E9EA8]">{proj.category}</span>
+                        <span>&bull;</span>
+                        <span>{proj.timeline}</span>
+                      </div>
 
-                    <h3 className="text-xl font-display font-semibold uppercase text-[#F4F4F0] group-hover:text-white transition-colors">
-                      {proj.title}
-                    </h3>
-                    
-                    <p className="text-sm text-[#9E9EA8] font-light leading-relaxed">
-                      {proj.summary}
-                    </p>
-
-                    {/* Metrics Grid */}
-                    <div className="grid grid-cols-3 gap-2 py-2 border-y border-[#1C1C22] font-mono">
-                      {proj.metrics.map((m) => (
-                        <div key={m.label}>
-                          <div className="text-xs text-[#F4F4F2] font-semibold">{m.value}</div>
-                          <div className="text-[10px] text-[#656570]">{m.label}</div>
-                        </div>
-                      ))}
-                    </div>
-
-                    {/* Tags */}
-                    <div className="flex flex-wrap gap-1.5">
-                      {proj.tags.map((tag) => (
-                        <span key={tag} className="px-2 py-0.5 bg-[#16161C] border border-[#242430] text-[11px] font-mono text-[#9E9EA8] rounded-sm">
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className="flex items-center justify-between pt-2 border-t border-[#1C1C24]">
-                    <button
-                      onClick={() => onOpenProject(proj)}
-                      className="text-xs font-mono uppercase text-[#F4F4F2] hover:text-[#818CF8] flex items-center gap-1.5 cursor-pointer"
-                    >
-                      <span>Read Full Case Study</span>
-                      <ArrowRight size={14} />
-                    </button>
-                    {proj.githubUrl && (
-                      <a
-                        href={proj.githubUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="p-2 bg-[#16161B] hover:bg-[#22222B] border border-[#272730] text-[#9E9EA8] hover:text-white rounded transition-colors"
-                        title="View GitHub Repository"
+                      <h2 
+                        onClick={() => onOpenProject(proj)}
+                        className="text-2xl sm:text-4xl font-bold font-display uppercase tracking-tight text-[#F4F4F0] group-hover:text-white cursor-pointer transition-colors"
                       >
-                        <ExternalLink size={14} />
-                      </a>
-                    )}
-                  </div>
-                </div>
-              ))}
+                        {proj.title}
+                      </h2>
+
+                      <p className="text-base text-[#9E9EA8] font-light leading-relaxed">
+                        {proj.summary}
+                      </p>
+
+                      <div className="flex flex-wrap gap-1.5 font-mono text-xs">
+                        {proj.tags.map((t) => (
+                          <span key={t} className="px-2 py-0.5 bg-[#111114] border border-[#1C1C24] text-[#818CF8] rounded-sm">
+                            {t}
+                          </span>
+                        ))}
+                      </div>
+
+                      <div className="flex items-center gap-4 pt-2">
+                        <button
+                          onClick={() => onOpenProject(proj)}
+                          className="px-5 py-2.5 bg-[#14141A] hover:bg-[#1E1E28] border border-[#272734] text-xs font-mono uppercase tracking-wider text-[#F4F4F2] rounded-sm flex items-center gap-2 cursor-pointer transition-colors"
+                        >
+                          <span>Read Case Study</span>
+                          <ArrowRight size={14} />
+                        </button>
+                        {proj.githubUrl && (
+                          <a
+                            href={proj.githubUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="p-2.5 bg-[#111114] hover:bg-[#1C1C24] border border-[#272730] text-[#9E9EA8] hover:text-white rounded-sm transition-colors"
+                            title="GitHub Repository"
+                          >
+                            <GithubIcon size={16} />
+                          </a>
+                        )}
+                      </div>
+                    </div>
+                  </article>
+                );
+              })}
             </div>
           )}
 

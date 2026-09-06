@@ -105,7 +105,7 @@ export default function ContactPage({ onShowToast }) {
     <PageTransition>
       <div className="min-h-screen py-14 sm:py-20 lg:py-24 bg-[#08080A] text-[#F4F4F0]">
         <div className="max-w-5xl mx-auto px-6 space-y-12 sm:space-y-16">
-          
+
           {/* Header */}
           <div className="space-y-4 border-b border-[#1C1C22] pb-10">
             <div className="inline-flex items-center gap-2 text-xs text-[#818CF8] font-mono">
@@ -127,10 +127,10 @@ export default function ContactPage({ onShowToast }) {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
-            
+
             {/* Left Column: Coordinates */}
             <div className="lg:col-span-5 space-y-6">
-              
+
               {/* Direct Mail Card */}
               <div className="p-6 bg-[#111114] border border-[#1C1C24] rounded-sm space-y-4">
                 <div className="text-xs uppercase tracking-widest text-[#656570] font-mono">
@@ -192,7 +192,7 @@ export default function ContactPage({ onShowToast }) {
             {/* Right Column: Transmission Form */}
             <div className="lg:col-span-7">
               <form onSubmit={handleSubmit} className="p-6 sm:p-8 bg-[#111114] border border-[#1C1C24] rounded-sm space-y-5">
-                
+
                 {/* Honeypot */}
                 <div className="hidden" aria-hidden="true">
                   <label htmlFor="hp_field">Leave empty</label>

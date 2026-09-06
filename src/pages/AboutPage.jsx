@@ -32,7 +32,7 @@ export default function AboutPage({ onShowToast }) {
     <PageTransition>
       <div className="min-h-screen py-14 sm:py-20 lg:py-24 bg-[#08080A] text-[#F4F4F0]">
         <div className="max-w-4xl mx-auto px-6 space-y-16 sm:space-y-24">
-          
+
           {/* Page Header */}
           <div className="space-y-6 border-b border-[#1C1C22] pb-12">
             <div className="inline-flex items-center gap-2 text-xs font-mono text-[#818CF8]">

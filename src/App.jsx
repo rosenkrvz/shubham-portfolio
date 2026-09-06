@@ -31,6 +31,12 @@ export default function App() {
   const [activeCert, setActiveCert] = useState(null);
   const [toast, setToast] = useState(null);
 
+  React.useEffect(() => {
+    const handler = (e) => setActiveProject(e.detail);
+    window.addEventListener('open-project', handler);
+    return () => window.removeEventListener('open-project', handler);
+  }, []);
+
   const showToast = (toastData) => {
     setToast(toastData);
   };

@@ -41,25 +41,31 @@ export default function HeroAbstract3D({ onExploreClick }) {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="max-w-4xl"
         >
-          {/* Eyebrow */}
-          <div className="inline-flex items-center gap-2 px-3 py-1 mb-6 rounded-full border border-[#272730] bg-[#111114]/80 backdrop-blur-sm text-xs font-mono text-[#818CF8]">
-            <Activity size={13} />
-            <span>AI / DATA / SYSTEMS</span>
+          {/* Eyebrow / Discipline Metadata */}
+          <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 mb-6 rounded-full border border-[#272730] bg-[#111114]/90 backdrop-blur-md text-xs font-mono text-[#818CF8]">
+            <span className="w-2 h-2 rounded-full bg-[#E10600] ring-2 ring-[#E10600]/30 animate-pulse" />
+            <span className="text-[#F4F4F2] font-semibold">SHUBHAM SHARMA</span>
+            <span className="text-[#656570]">//</span>
+            <span>AI · DATA · SOFTWARE</span>
           </div>
 
           {/* Monumental Headline */}
-          <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-bold tracking-tighter uppercase font-display leading-[0.92] text-[#F4F4F0] mb-6">
-            Shubham <br />
-            <span className="font-serif-editorial italic font-normal text-4xl sm:text-6xl md:text-7xl lg:text-8xl lowercase text-[#C7D2FE] tracking-normal mr-3">
-              computes
+          <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-[7.25rem] font-bold tracking-tighter uppercase font-display leading-[0.88] text-[#F4F4F0] mb-6">
+            SHUBHAM <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FFFFFF] via-[#E2E8F0] to-[#94A3B8]">
+              SHARMA
             </span>
-            Sharma
           </h1>
 
-          {/* Concise, Grounded Copywriting */}
-          <p className="text-base sm:text-xl text-[#9E9EA8] max-w-2xl font-light leading-relaxed mb-10">
-            Turning mathematical models into systems that can be measured. Exploring how high-dimensional representations translate to deterministic execution on physical silicon.
-          </p>
+          {/* Clear, Grounded Copy */}
+          <div className="max-w-2xl space-y-3 mb-10">
+            <p className="text-xl sm:text-2xl md:text-3xl text-[#F4F4F2] font-light leading-snug tracking-tight">
+              I build systems, analyze data, and experiment with intelligent models.
+            </p>
+            <p className="text-sm sm:text-base text-[#9E9EA8] font-light leading-relaxed">
+              Applied AI &amp; Data Science at IIT Jodhpur. Focused on machine learning runtimes, computer vision pipelines, and resilient software architectures.
+            </p>
+          </div>
 
           {/* Magnetic Action Triggers */}
           <div className="flex flex-wrap items-center gap-4">
@@ -67,7 +73,7 @@ export default function HeroAbstract3D({ onExploreClick }) {
               onClick={onExploreClick}
               className="px-6 py-3.5 bg-[#F4F4F0] hover:bg-white text-[#08080A] font-semibold text-sm rounded-sm tracking-tight shadow-xl flex items-center gap-2 group cursor-pointer"
             >
-              <span>Explore Intelligence &amp; Work</span>
+              <span>Explore Selected Work</span>
               <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
             </MagneticButton>
 
@@ -77,7 +83,7 @@ export default function HeroAbstract3D({ onExploreClick }) {
             >
               <Link to="/ai-data" className="flex items-center gap-2">
                 <Binary size={15} className="text-[#818CF8]" />
-                <span>AI &amp; Data Philosophy</span>
+                <span>AI &amp; Data</span>
               </Link>
             </MagneticButton>
 
@@ -87,7 +93,7 @@ export default function HeroAbstract3D({ onExploreClick }) {
             >
               <Link to="/experiments" className="flex items-center gap-2">
                 <Cpu size={15} className="text-[#818CF8]" />
-                <span>Interactive Lab</span>
+                <span>Digital Lab</span>
               </Link>
             </MagneticButton>
           </div>

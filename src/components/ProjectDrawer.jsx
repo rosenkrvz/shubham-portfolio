@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, ExternalLink, CheckCircle2, ArrowRight } from 'lucide-react';
+import { X, ExternalLink, CheckCircle2, ArrowRight, Database, Cpu, Activity, Sparkles, Terminal } from 'lucide-react';
 import { GithubIcon } from './SocialIcons.jsx';
+import { projects } from '../data/projects.js';
 
 export default function ProjectDrawer({ project, onClose }) {
   // ESC key listener to close drawer
@@ -15,6 +16,11 @@ export default function ProjectDrawer({ project, onClose }) {
 
   if (!project) return null;
 
+  const isAiProject = project.category.includes('Machine Learning') || project.category.includes('Vision');
+  const projectIdx = projects.findIndex((p) => p.id === project.id);
+  const projectNum = `0${projectIdx + 1}`.slice(-2);
+  const nextProject = projects[(projectIdx + 1) % projects.length];
+
   return (
     <AnimatePresence>
       <div className="fixed inset-0 z-50 flex justify-end">
@@ -23,9 +29,9 @@ export default function ProjectDrawer({ project, onClose }) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.18 }}
+          transition={{ duration: 0.2 }}
           onClick={onClose}
-          className="fixed inset-0 bg-black/60 backdrop-blur-sm"
+          className="fixed inset-0 bg-black/75 backdrop-blur-md"
         />
 
         {/* Drawer Panel */}
@@ -33,26 +39,24 @@ export default function ProjectDrawer({ project, onClose }) {
           initial={{ x: '100%' }}
           animate={{ x: 0 }}
           exit={{ x: '100%' }}
-          transition={{ type: 'spring', damping: 30, stiffness: 320 }}
+          transition={{ type: 'spring', damping: 32, stiffness: 300 }}
           role="dialog"
           aria-modal="true"
           aria-label={`Case Study: ${project.title}`}
-          className="relative w-full max-w-2xl h-full bg-[#0E0E11] border-l border-[#1E1E23] overflow-y-auto shadow-2xl z-10 flex flex-col justify-between"
+          className="relative w-full max-w-3xl h-full bg-[#09090C] border-l border-[#1C1C22] overflow-y-auto shadow-2xl z-10 flex flex-col justify-between"
         >
-          {/* Drawer Sticky Header */}
           <div>
-            <div className="sticky top-0 z-20 px-6 sm:px-8 py-5 bg-[#0E0E11]/90 backdrop-blur border-b border-[#1E1E23] flex items-center justify-between">
-              
-              {/* Breadcrumbs */}
-              <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 text-xs text-[#8E8D96]">
-                <span>Projects</span>
-                <span>/</span>
-                <span className="text-[#F4F4F2] font-medium">{project.category}</span>
-              </nav>
+            {/* Sticky Header */}
+            <div className="sticky top-0 z-30 px-6 sm:px-10 py-5 bg-[#09090C]/90 backdrop-blur-md border-b border-[#1C1C22] flex items-center justify-between">
+              <div className="flex items-center gap-3 text-xs font-mono">
+                <span className="text-[#818CF8] font-bold">PROJECT / {projectNum}</span>
+                <span className="text-[#656570]">//</span>
+                <span className="text-[#F4F4F2]">{project.category}</span>
+              </div>
 
               <button
                 onClick={onClose}
-                className="p-1.5 rounded-lg bg-[#16161A] border border-[#22222A] text-[#8E8D96] hover:text-[#F4F4F2] transition-colors focus:outline-none"
+                className="p-2 rounded-sm bg-[#121216] border border-[#272734] text-[#9E9EA8] hover:text-[#F4F4F2] transition-colors cursor-pointer"
                 aria-label="Close project drawer"
               >
                 <X className="w-4 h-4" />
@@ -60,143 +64,185 @@ export default function ProjectDrawer({ project, onClose }) {
             </div>
 
             {/* Case Study Content */}
-            <div className="p-6 sm:p-8 lg:p-10 space-y-10">
+            <div className="p-6 sm:p-10 space-y-12">
               
-              {/* Title & Subtitle */}
-              <div className="space-y-2">
-                <div className="flex items-center gap-2 text-xs text-[#8E8D96]">
-                  <span>{project.category}</span>
-                  <span>•</span>
-                  <span>{project.timeline}</span>
+              {/* Title & Thesis */}
+              <div className="space-y-4 border-b border-[#1C1C22] pb-8">
+                <div className="flex items-center gap-3 text-xs font-mono text-[#656570]">
+                  <span>TIMELINE: {project.timeline}</span>
+                  <span>&bull;</span>
+                  <span className="text-emerald-400 font-semibold">{project.status}</span>
                 </div>
-                <h2 className="text-2xl sm:text-3xl font-display font-semibold text-[#F4F4F2] tracking-tight">
+
+                <h1 className="text-3xl sm:text-5xl font-bold font-display uppercase tracking-tight text-[#F4F4F0] leading-tight">
                   {project.title}
-                </h2>
-                <p className="text-sm text-[#8E8D96] leading-relaxed">
+                </h1>
+
+                {/* One-Sentence Thesis */}
+                <p className="text-lg sm:text-xl text-[#C7D2FE] font-light leading-relaxed">
                   {project.subtitle}
                 </p>
-              </div>
 
-              {/* Cover Image if available */}
-              {project.image && (
-                <div className="rounded-xl overflow-hidden bg-black border border-[#1E1E24]">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-56 sm:h-64 object-cover opacity-90"
-                  />
-                </div>
-              )}
-
-              {/* Empirical Metrics Bar */}
-              <div className="p-4 rounded-xl bg-[#141417] border border-[#1E1E24] grid grid-cols-3 gap-3">
-                {project.metrics.map((m) => (
-                  <div key={m.label}>
-                    <div className="text-sm font-semibold font-mono text-[#F4F4F2]">{m.value}</div>
-                    <div className="text-[11px] text-[#65656E]">{m.label}</div>
-                  </div>
-                ))}
-              </div>
-
-              {/* Comprehensive Case Study Questions */}
-              <div className="space-y-8 divide-y divide-[#1E1E24]">
-                
-                {/* 1. What Did I Build? */}
-                <div className="space-y-2 pt-6 first:pt-0">
-                  <h3 className="text-xs uppercase tracking-wider text-[#6366F1] font-semibold">
-                    1. What Did I Build?
-                  </h3>
-                  <p className="text-sm text-[#F4F4F2] leading-relaxed">
-                    {project.whatDidIBuild || project.summary}
-                  </p>
-                </div>
-
-                {/* 2. Why Did I Build It? */}
-                <div className="space-y-2 pt-6">
-                  <h3 className="text-xs uppercase tracking-wider text-[#6366F1] font-semibold">
-                    2. Why Did I Build It?
-                  </h3>
-                  <p className="text-sm text-[#8E8D96] leading-relaxed">
-                    {project.whyDidIBuildIt || project.problemStatement}
-                  </p>
-                </div>
-
-                {/* 3. How Does It Work? */}
-                <div className="space-y-2 pt-6">
-                  <h3 className="text-xs uppercase tracking-wider text-[#6366F1] font-semibold">
-                    3. How Does It Work?
-                  </h3>
-                  <p className="text-sm text-[#8E8D96] leading-relaxed">
-                    {project.howDoesItWork || project.architecture}
-                  </p>
-                </div>
-
-                {/* 4. What Did I Learn? */}
-                <div className="space-y-2 pt-6">
-                  <h3 className="text-xs uppercase tracking-wider text-[#6366F1] font-semibold">
-                    4. What Did I Learn?
-                  </h3>
-                  <p className="text-sm text-[#8E8D96] leading-relaxed">
-                    {project.whatDidILearn || project.technicalTradeoffs}
-                  </p>
-                </div>
-
-                {/* 5. What Was The Result? */}
-                <div className="space-y-2 pt-6">
-                  <h3 className="text-xs uppercase tracking-wider text-[#6366F1] font-semibold">
-                    5. What Was The Result?
-                  </h3>
-                  <p className="text-sm text-[#8E8D96] leading-relaxed">
-                    {project.whatWasTheResult}
-                  </p>
-                </div>
-
-              </div>
-
-              {/* Technologies Used */}
-              <div className="space-y-3 pt-2">
-                <h3 className="text-xs uppercase tracking-wider text-[#65656E] font-medium">
-                  Technologies &amp; Libraries
-                </h3>
-                <div className="flex flex-wrap gap-1.5">
-                  {project.tags.map((t) => (
-                    <span key={t} className="px-2.5 py-1 rounded-md bg-[#16161B] border border-[#22222A] text-xs text-[#8E8D96]">
-                      {t}
+                {/* Tags */}
+                <div className="flex flex-wrap gap-2 pt-2">
+                  {project.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="px-2.5 py-1 text-xs font-mono bg-[#121216] border border-[#22222C] text-[#9E9EA8] rounded-sm"
+                    >
+                      {tag}
                     </span>
                   ))}
                 </div>
               </div>
 
-            </div>
-          </div>
-
-          {/* Drawer Footer Actions */}
-          <div className="sticky bottom-0 px-6 sm:px-8 py-4 bg-[#0E0E11]/95 backdrop-blur border-t border-[#1E1E23] flex items-center justify-between gap-4">
-            <div className="text-xs text-[#8E8D96]">
-              Repository &amp; Implementation
-            </div>
-
-            <div className="flex items-center gap-3">
-              {project.githubUrl && (
-                <a
-                  href={project.githubUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#16161B] hover:bg-[#202026] border border-[#25252E] text-xs font-semibold text-[#F4F4F2] transition-colors"
-                >
-                  <GithubIcon className="w-3.5 h-3.5" />
-                  <span>View on GitHub</span>
-                </a>
+              {/* Large Hero Visual */}
+              {project.image && (
+                <div className="aspect-[16/9] w-full bg-[#08080A] border border-[#1C1C22] rounded-sm overflow-hidden relative">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover grayscale contrast-125"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#09090C] via-transparent to-transparent opacity-60" />
+                  <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-xs font-mono text-[#9E9EA8]">
+                    <span>[ARCHITECTURE VISUALIZATION]</span>
+                    <span className="text-emerald-400">100% DETERMINISTIC</span>
+                  </div>
+                </div>
               )}
-              <button
-                onClick={onClose}
-                className="px-4 py-2 rounded-lg bg-[#4338CA] hover:bg-[#4F46E5] text-white text-xs font-semibold transition-colors"
-              >
-                Close
-              </button>
+
+              {/* Verified Metrics / Results Bar */}
+              <div className="p-5 bg-[#0D0D11] border border-[#1F1F28] rounded-sm space-y-3">
+                <div className="text-[11px] font-mono text-[#818CF8] uppercase tracking-wider">
+                  THE RESULT // EMPIRICALLY VERIFIED METRICS
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 font-mono">
+                  {project.metrics.map((m) => (
+                    <div key={m.label} className="p-3 bg-[#08080A] border border-[#1C1C24] rounded-sm">
+                      <div className="text-base font-bold text-white">{m.value}</div>
+                      <div className="text-[10px] text-[#656570] uppercase mt-0.5">{m.label}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Structured Technical Narrative Sections */}
+              <div className="space-y-10 text-sm sm:text-base font-light leading-relaxed text-[#9E9EA8]">
+                
+                {/* 1. THE PROBLEM */}
+                <section className="space-y-3 border-l-2 border-[#E10600] pl-6">
+                  <div className="text-xs font-mono text-[#E10600] uppercase tracking-widest font-semibold">
+                    01 // THE PROBLEM
+                  </div>
+                  <h2 className="text-xl font-display font-bold uppercase text-[#F4F4F2]">
+                    What was being solved?
+                  </h2>
+                  <p className="text-[#D1D5DB] leading-relaxed">
+                    {project.whyDidIBuildIt || project.summary}
+                  </p>
+                </section>
+
+                {/* 2. THE IDEA / APPROACH */}
+                <section className="space-y-3 border-l-2 border-[#818CF8] pl-6">
+                  <div className="text-xs font-mono text-[#818CF8] uppercase tracking-widest font-semibold">
+                    02 // THE IDEA
+                  </div>
+                  <h2 className="text-xl font-display font-bold uppercase text-[#F4F4F2]">
+                    Architectural Strategy &amp; Formulation
+                  </h2>
+                  <p className="text-[#D1D5DB] leading-relaxed">
+                    {project.whatDidIBuild}
+                  </p>
+                </section>
+
+                {/* 3. THE SYSTEM & PIPELINE */}
+                <section className="space-y-3 border-l-2 border-[#38BDF8] pl-6">
+                  <div className="text-xs font-mono text-[#38BDF8] uppercase tracking-widest font-semibold">
+                    03 // THE SYSTEM {isAiProject ? '& MODEL PIPELINE' : '& DISTRIBUTED RUNTIME'}
+                  </div>
+                  <h2 className="text-xl font-display font-bold uppercase text-[#F4F4F2]">
+                    Execution Architecture
+                  </h2>
+                  <p className="text-[#D1D5DB] leading-relaxed">
+                    {project.howDoesItWork}
+                  </p>
+                </section>
+
+                {/* 4. WHAT I LEARNED */}
+                <section className="space-y-3 border-l-2 border-[#34D399] pl-6">
+                  <div className="text-xs font-mono text-[#34D399] uppercase tracking-widest font-semibold">
+                    04 // WHAT I LEARNED
+                  </div>
+                  <h2 className="text-xl font-display font-bold uppercase text-[#F4F4F2]">
+                    Key Technical Lessons &amp; Trade-offs
+                  </h2>
+                  <p className="text-[#D1D5DB] leading-relaxed">
+                    {project.whatDidILearn}
+                  </p>
+                </section>
+
+              </div>
+
+              {/* Related Work & Navigation */}
+              <div className="pt-8 border-t border-[#1C1C22] flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
+                <div className="space-y-1">
+                  <div className="text-[11px] font-mono text-[#656570] uppercase">NEXT CASE STUDY</div>
+                  <button
+                    onClick={() => {
+                      onClose();
+                      // Small tick to allow drawer transition then re-open next
+                      setTimeout(() => {
+                        const evt = new CustomEvent('open-project', { detail: nextProject });
+                        window.dispatchEvent(evt);
+                      }, 250);
+                    }}
+                    className="text-sm font-display font-semibold uppercase text-[#818CF8] hover:text-white flex items-center gap-1.5 cursor-pointer"
+                  >
+                    <span>{nextProject.title}</span>
+                    <ArrowRight size={14} />
+                  </button>
+                </div>
+
+                <div className="flex items-center gap-3">
+                  {project.githubUrl && (
+                    <a
+                      href={project.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-4 py-2.5 bg-[#121216] hover:bg-[#1A1A22] border border-[#272734] text-xs font-mono text-[#F4F4F2] rounded-sm flex items-center gap-2 transition-colors"
+                    >
+                      <GithubIcon size={15} />
+                      <span>GitHub Repo</span>
+                    </a>
+                  )}
+                  {project.demoUrl && (
+                    <a
+                      href={project.demoUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-4 py-2.5 bg-[#4338CA] hover:bg-[#4F46E5] text-xs font-mono text-white rounded-sm flex items-center gap-2 transition-colors shadow-md"
+                    >
+                      <ExternalLink size={14} />
+                      <span>Live Source</span>
+                    </a>
+                  )}
+                </div>
+              </div>
+
             </div>
           </div>
 
+          {/* Drawer Sticky Footer */}
+          <div className="p-4 px-6 sm:px-10 bg-[#070709] border-t border-[#1C1C22] flex items-center justify-between text-xs font-mono text-[#656570]">
+            <span>IIT JODHPUR // APPLIED AI &amp; DATA SCIENCE</span>
+            <button
+              onClick={onClose}
+              className="text-[#9E9EA8] hover:text-white cursor-pointer"
+            >
+              [CLOSE ESC]
+            </button>
+          </div>
         </motion.div>
       </div>
     </AnimatePresence>

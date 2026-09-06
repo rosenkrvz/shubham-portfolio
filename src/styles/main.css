@@ -62,6 +62,33 @@
   }
 }
 
+/* Editorial Typography & Layout Utilities */
+.editorial-num {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.05em;
+  color: rgba(255, 255, 255, 0.05);
+  user-select: none;
+  pointer-events: none;
+}
+
+html.light .editorial-num {
+  color: rgba(0, 0, 0, 0.05);
+}
+
+.editorial-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+}
+
+.editorial-divider {
+  border-color: var(--border-subtle);
+}
+
 /* Light mode overrides for utility containers */
 html.light .bg-\[\#08080A\] {
   background-color: var(--bg-page) !important;

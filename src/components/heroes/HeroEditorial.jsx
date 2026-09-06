@@ -26,20 +26,21 @@ export default function HeroEditorial({ onExploreClick }) {
             transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
           >
             <div className="text-xs font-mono tracking-widest text-[#818CF8] uppercase mb-4">
-              [PERSONAL ARCHIVE // 2024]
+              [SHUBHAM SHARMA // AI · DATA · SOFTWARE]
             </div>
 
             <h1 className="text-6xl sm:text-8xl lg:text-9xl font-extrabold tracking-tighter uppercase font-display leading-[0.88] text-[#F4F4F0] mb-6">
               SHUBHAM <br />
-              <span className="font-serif-editorial italic font-normal text-5xl sm:text-7xl lg:text-8xl lowercase text-[#C7D2FE] tracking-normal mr-4">
-                thinks through
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-[#E2E8F0] to-[#94A3B8]">
+                SHARMA
               </span>
-              <br />
-              SYSTEMS.
             </h1>
 
-            <p className="text-lg sm:text-2xl text-[#9E9EA8] font-light max-w-xl leading-relaxed mt-8 mb-10">
-              An applied perspective on neural computation, edge verification, and resilient distributed data pipelines.
+            <p className="text-xl sm:text-2xl text-[#F4F4F2] font-light max-w-xl leading-relaxed mt-6 mb-2">
+              I build systems, analyze data, and experiment with intelligent models.
+            </p>
+            <p className="text-sm text-[#9E9EA8] font-light max-w-lg leading-relaxed mb-8">
+              Applied AI &amp; Data Science at IIT Jodhpur. Turning theoretical methods into robust software and measurable data pipelines.
             </p>
 
             <div className="flex items-center gap-6">
