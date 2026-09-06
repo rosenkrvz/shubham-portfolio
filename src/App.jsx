@@ -1,84 +1,139 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 
-import Navigation from './components/Navigation.jsx';
+import ScrollToTop from './components/ScrollToTop.jsx';
+import FluidCanvas from './components/FluidCanvas.jsx';
+import Navbar from './components/Navbar.jsx';
 import Footer from './components/Footer.jsx';
-import CustomCursor from './components/CustomCursor.jsx';
+import Toast from './components/Toast.jsx';
+import ProjectDrawer from './components/ProjectDrawer.jsx';
+import CertificateModal from './components/CertificateModal.jsx';
 
-import PageWork from './pages/PageWork.jsx';
-import PageAbout from './pages/PageAbout.jsx';
-import PageLab from './pages/PageLab.jsx';
-import PageCertificates from './pages/PageCertificates.jsx';
-import PageContact from './pages/PageContact.jsx';
+import HomePage from './pages/HomePage.jsx';
+import AboutPage from './pages/AboutPage.jsx';
+import ProjectsPage from './pages/ProjectsPage.jsx';
+import CertificatesPage from './pages/CertificatesPage.jsx';
+import LabPage from './pages/LabPage.jsx';
+import ContactPage from './pages/ContactPage.jsx';
+import NotFoundPage from './pages/NotFoundPage.jsx';
+
+import { profile } from './data/profile.js';
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState('work');
+  const [activeProject, setActiveProject] = useState(null);
+  const [activeCert, setActiveCert] = useState(null);
+  const [toast, setToast] = useState(null);
 
-  // Synchronize active tab with URL hash
-  useEffect(() => {
-    const handleHashChange = () => {
-      const hash = window.location.hash.replace('#', '').toLowerCase();
-      const validTabs = ['work', 'about', 'lab', 'certificates', 'contact'];
-      if (validTabs.includes(hash)) {
-        setActiveTab(hash);
-      } else if (!hash) {
-        setActiveTab('work');
-      }
-    };
-
-    handleHashChange();
-    window.addEventListener('hashchange', handleHashChange);
-    return () => window.removeEventListener('hashchange', handleHashChange);
-  }, []);
-
-  const navigateTab = (tabKey) => {
-    setActiveTab(tabKey);
-    window.location.hash = `#${tabKey}`;
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+  const showToast = (toastData) => {
+    setToast(toastData);
   };
 
-  const renderActivePage = () => {
-    switch (activeTab) {
-      case 'about':
-        return <PageAbout />;
-      case 'lab':
-        return <PageLab />;
-      case 'certificates':
-        return <PageCertificates />;
-      case 'contact':
-        return <PageContact />;
-      case 'work':
-      default:
-        return <PageWork onNavigateTab={navigateTab} />;
-    }
+  const handleCopyEmail = (email) => {
+    navigator.clipboard.writeText(email || profile.email);
+    showToast({
+      type: 'success',
+      message: `Operator email copied to clipboard: ${email || profile.email}`
+    });
+  };
+
+  const handleDownloadCertificateSimulation = (cert) => {
+    showToast({
+      type: 'info',
+      message: `Generating signed certificate PDF for ${cert.title}...`
+    });
+    setTimeout(() => {
+      showToast({
+        type: 'success',
+        message: `Download complete: ${cert.credentialId}.pdf (Verified)`
+      });
+    }, 900);
   };
 
   return (
-    <div className="min-h-screen bg-[#0c0c0e] text-[#f2f2ee] selection:bg-[#c5282f] selection:text-white flex flex-col justify-between">
-      <CustomCursor />
+    <BrowserRouter>
+      <ScrollToTop />
+      
+      {/* Dynamic GPU-accelerated fluid background */}
+      <FluidCanvas />
 
-      <div>
-        <Navigation
-          activeTab={activeTab}
-          onSelectTab={navigateTab}
+      <div className="relative min-h-screen flex flex-col justify-between bg-[#0B0B0C] text-[#F0F0EE] selection:bg-[#3E2CF0] selection:text-white">
+        
+        {/* Navigation Bar */}
+        <Navbar />
+
+        {/* Multi-Page Route Outlet */}
+        <main className="flex-1 relative z-10">
+          <Routes>
+            <Route path="/" element={<Navigate to="/home" replace />} />
+            <Route
+              path="/home"
+              element={
+                <HomePage
+                  onOpenProject={(proj) => setActiveProject(proj)}
+                  onShowToast={showToast}
+                />
+              }
+            />
+            <Route
+              path="/about"
+              element={<AboutPage onShowToast={showToast} />}
+            />
+            <Route path="/info" element={<Navigate to="/about" replace />} />
+            <Route
+              path="/projects"
+              element={
+                <ProjectsPage
+                  onOpenProject={(proj) => setActiveProject(proj)}
+                />
+              }
+            />
+            <Route path="/systems" element={<Navigate to="/projects" replace />} />
+            <Route
+              path="/certifications"
+              element={
+                <CertificatesPage
+                  onInspectCert={(cert) => setActiveCert(cert)}
+                  onDownloadSimulation={handleDownloadCertificateSimulation}
+                />
+              }
+            />
+            <Route path="/credentials" element={<Navigate to="/certifications" replace />} />
+            <Route
+              path="/lab"
+              element={<LabPage onShowToast={showToast} />}
+            />
+            <Route
+              path="/contact"
+              element={<ContactPage onShowToast={showToast} />}
+            />
+            <Route path="*" element={<NotFoundPage />} />
+          </Routes>
+        </main>
+
+        {/* Editorial Colophon Footer */}
+        <Footer onCopyEmail={handleCopyEmail} />
+
+        {/* Interactive Case Study Drawer Modal */}
+        <ProjectDrawer
+          project={activeProject}
+          onClose={() => setActiveProject(null)}
         />
 
-        <main id="main-content">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeTab}
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -8 }}
-              transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
-            >
-              {renderActivePage()}
-            </motion.div>
-          </AnimatePresence>
-        </main>
-      </div>
+        {/* Verified Certificate Modal */}
+        <CertificateModal
+          cert={activeCert}
+          onClose={() => setActiveCert(null)}
+          onDownloadSimulation={handleDownloadCertificateSimulation}
+        />
 
-      <Footer />
-    </div>
+        {/* Global Toast Alerts */}
+        <Toast
+          toast={toast}
+          onClose={() => setToast(null)}
+        />
+
+      </div>
+    </BrowserRouter>
   );
 }

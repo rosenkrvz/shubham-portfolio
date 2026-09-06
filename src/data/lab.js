@@ -1,42 +1,32 @@
-export const LAB_STUDIES = [
+export const labExperiments = [
   {
-    id: 'lab-01',
-    number: '01',
-    title: 'Asymptotic Memory Scaling in Python',
-    category: 'Computer Science',
-    date: '2025',
-    summary: 'An empirical investigation into pointer dereferencing overhead and memory fragmentation in dynamic Python lists compared against contiguous memory buffers in NumPy.',
-    notes: 'Python list resizing follows an over-allocation pattern (0, 4, 8, 16, 24, 32...). Measuring heap residency with tracemalloc demonstrates that PyObject pointer wrapping accounts for up to 70% of total memory overhead on small primitive collections.',
-    repoUrl: 'https://github.com/rosenkrvz/IDLE-Projects-'
+    id: "dither-engine",
+    title: "1-Bit Spatial Dither & Halftone Engine",
+    status: "INTERACTIVE COMPUTE",
+    category: "Computer Vision & Graphics",
+    badge: "LIVE DEMO",
+    summary: "Simulate 1-bit monochrome spatial error diffusion and Bayer ordered matrix quantization in real time.",
+    details: "Explores how continuous-tone 8-bit luminance can be transformed into binary binary states (0 or 1) while preserving human perceptual edge gradients.",
+    parameters: ["Error Diffusion Weight", "Threshold Bias", "Matrix Granularity (2x2 to 8x8)"]
   },
   {
-    id: 'lab-02',
-    number: '02',
-    title: 'Loss Surface Optimization Trajectories',
-    category: 'Machine Learning',
-    date: '2026',
-    summary: 'A mathematical study evaluating learning rate scheduling and momentum damping when navigating ill-conditioned curvature and saddle points on non-convex loss surfaces.',
-    notes: 'Standard stochastic gradient descent oscillates severely along high-curvature ravines. Incorporating exponential moving averages of past gradients (momentum) dampens transverse oscillations and accelerates progress along the principal descent vector.',
-    repoUrl: 'https://github.com/rosenkrvz'
+    id: "neural-latency-bench",
+    title: "Edge Silicon Inference Latency Matrix",
+    status: "TELEMETRY SIMULATOR",
+    category: "Hardware Acceleration",
+    badge: "BENCHMARK",
+    summary: "Compare FP32 unquantized weights against INT8 and FP4 TensorRT compiled execution pipelines on synthetic neural inputs.",
+    details: "Demonstrates memory bandwidth saturation points, cache hit ratios, and latency distribution across 10,000 synthetic batch passes.",
+    parameters: ["Batch Size (1 to 64)", "Quantization Mode", "Thermal Throttling"]
   },
   {
-    id: 'lab-03',
-    number: '03',
-    title: 'Deterministic Token Stream Lexer',
-    category: 'Compilers & NLP',
-    date: '2026',
-    summary: 'A lightweight finite state machine tokenizer analyzing lexical entropy, keyword frequencies, and token distributions in code files.',
-    notes: 'Token parsing implemented via direct character stream scanning with zero third-party parser generator dependencies. Benchmarks demonstrate linear O(N) throughput with zero dynamic memory allocations beyond the output token buffer.',
-    repoUrl: 'https://github.com/rosenkrvz'
-  },
-  {
-    id: 'lab-04',
-    number: '04',
-    title: 'Topological Vector Field Study',
-    category: 'Visual Computing',
-    date: '2026',
-    summary: 'A quiet mathematical visualization rendering continuous trigonometric field vectors on a minimalist 2D canvas.',
-    notes: 'Parametric coordinates mapped through dx/dt = sin(1.8x + t) · cos(1.8y). Bypasses heavy WebGL pipelines in favor of a 60fps Canvas 2D render loop that responds gently to pointer proximity.',
-    interactive: true
+    id: "vector-similarity-radar",
+    title: "Cosine Vector Space Projection & Recall",
+    status: "ALGORITHMIC VISUALIZER",
+    category: "Information Retrieval",
+    badge: "MATH LAB",
+    summary: "Interactive 2D topological mapping of high-dimensional embedding vectors with real-time Euclidean and Cosine distance calculations.",
+    details: "Visualizes cluster cohesion, nearest-neighbor partitions, and boundary hyperplane separation for semantic search queries.",
+    parameters: ["Dimensionality Projection", "Neighbor Count (k=5)", "Distance Metric"]
   }
 ];
