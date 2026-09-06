@@ -32,17 +32,17 @@ export default function ProjectsPage({ onOpenProject }) {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 sm:space-y-16">
         
         {/* Header */}
-        <div className="space-y-4 border-b border-[#1E1E23] pb-10">
-          <div className="inline-flex items-center gap-2 text-xs text-[#8E8D96]">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#6366F1]"></span>
-            <span>Case Studies &amp; Systems</span>
+        <div className="space-y-4 border-b border-[#1C1C22] pb-10">
+          <div className="inline-flex items-center gap-2 text-xs text-[#818CF8] font-mono">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#818CF8]" />
+            <span>03 // Archive</span>
           </div>
 
-          <h1 className="text-3xl sm:text-5xl font-display font-semibold tracking-tight text-[#F4F4F2]">
-            Selected Projects
+          <h1 className="text-3xl sm:text-5xl font-display font-medium tracking-tight text-[#F4F4F0]">
+            Selected <span className="font-serif-editorial italic text-white font-normal">Projects.</span>
           </h1>
 
-          <p className="text-sm sm:text-base text-[#8E8D96] max-w-2xl leading-relaxed">
+          <p className="text-sm sm:text-base text-[#9E9EA8] max-w-2xl leading-relaxed">
             Case studies detailing machine learning models, computer vision pipelines, and distributed backends. Each project answers: what was built, why it matters, how it functions, and the measured outcome.
           </p>
         </div>
@@ -56,10 +56,10 @@ export default function ProjectsPage({ onOpenProject }) {
               <button
                 key={cat}
                 onClick={() => setSelectedCategory(cat)}
-                className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
+                className={`px-3 py-1.5 rounded-xl text-xs font-medium transition-colors ${
                   selectedCategory === cat
                     ? 'bg-[#4338CA] text-white shadow-sm'
-                    : 'bg-[#141417] text-[#8E8D96] hover:text-[#F4F4F2] border border-[#202026]'
+                    : 'bg-[#111114] text-[#9E9EA8] hover:text-[#F4F4F0] border border-[#1C1C22]'
                 }`}
               >
                 {cat}

@@ -2,16 +2,16 @@
 
 @layer base {
   :root {
-    --bg-page: #0C0C0E;
-    --bg-surface: #141417;
-    --bg-surface-elevated: #1B1B20;
-    --border-subtle: #202025;
-    --border-strong: #2D2D35;
+    --bg-page: #08080A;
+    --bg-surface: #111114;
+    --bg-surface-elevated: #16161B;
+    --border-subtle: #1C1C22;
+    --border-strong: #272730;
     --accent: #4338CA;
     --accent-light: #6366F1;
-    --text-primary: #F4F4F2;
-    --text-secondary: #9A9AA2;
-    --text-tertiary: #65656E;
+    --text-primary: #F4F4F0;
+    --text-secondary: #9E9EA8;
+    --text-tertiary: #656570;
   }
 
   body {
@@ -26,6 +26,11 @@
   h1, h2, h3, h4, .font-display {
     font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
     letter-spacing: -0.03em;
+  }
+
+  .font-serif-editorial {
+    font-family: 'Instrument Serif', Georgia, serif;
+    letter-spacing: normal;
   }
 
   code, pre, .font-mono {

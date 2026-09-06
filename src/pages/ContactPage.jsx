@@ -104,18 +104,18 @@ export default function ContactPage({ onShowToast }) {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 sm:space-y-16">
         
         {/* Header */}
-        <div className="space-y-4 border-b border-[#1E1E23] pb-10">
-          <div className="inline-flex items-center gap-2 text-xs text-[#8E8D96]">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#6366F1]"></span>
-            <span>Get in Touch</span>
+        <div className="space-y-4 border-b border-[#1C1C22] pb-10">
+          <div className="inline-flex items-center gap-2 text-xs text-[#818CF8] font-mono">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#818CF8]" />
+            <span>06 // Transmission</span>
           </div>
 
-          <h1 className="text-3xl sm:text-5xl font-display font-semibold tracking-tight text-[#F4F4F2]">
-            Contact &amp; Connect
+          <h1 className="text-3xl sm:text-5xl font-display font-medium tracking-tight text-[#F4F4F0]">
+            Initiate <span className="font-serif-editorial italic text-white font-normal">Contact.</span>
           </h1>
 
-          <p className="text-sm sm:text-base text-[#8E8D96] max-w-2xl leading-relaxed">
-            I am available for software engineering internships, machine learning roles, and academic research collaborations. Send a note directly or reach out via email.
+          <p className="text-sm sm:text-base text-[#9E9EA8] max-w-2xl leading-relaxed">
+            Available for software engineering internships, machine learning research roles, and technical collaborations. Send a note directly or reach out via email.
           </p>
         </div>
 

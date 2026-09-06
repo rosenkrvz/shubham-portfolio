@@ -17,6 +17,7 @@ import ContactPage from './pages/ContactPage.jsx';
 import PrivacyPage from './pages/PrivacyPage.jsx';
 import ThankYouPage from './pages/ThankYouPage.jsx';
 import NotFoundPage from './pages/NotFoundPage.jsx';
+import LabPage from './pages/LabPage.jsx';
 
 import { profile } from './data/profile.js';
 
@@ -78,6 +79,7 @@ export default function App() {
               element={<AboutPage onShowToast={showToast} />}
             />
             <Route path="/info" element={<Navigate to="/about" replace />} />
+            <Route path="/work" element={<Navigate to="/projects" replace />} />
             <Route
               path="/projects"
               element={
@@ -87,6 +89,11 @@ export default function App() {
               }
             />
             <Route path="/systems" element={<Navigate to="/projects" replace />} />
+            <Route
+              path="/experiments"
+              element={<LabPage onShowToast={showToast} />}
+            />
+            <Route path="/lab" element={<Navigate to="/experiments" replace />} />
             <Route
               path="/certifications"
               element={

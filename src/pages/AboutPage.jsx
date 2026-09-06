@@ -69,38 +69,38 @@ export default function AboutPage({ onShowToast }) {
         {/* 1. Academic Foundation */}
         <section className="space-y-6">
           <div className="space-y-1">
-            <span className="text-xs uppercase tracking-wider text-[#6366F1] font-medium">
-              Education
+            <span className="text-xs uppercase tracking-wider text-[#818CF8] font-mono font-medium">
+              01 // Education
             </span>
-            <h2 className="text-2xl sm:text-3xl font-display font-semibold text-[#F4F4F2] tracking-tight">
-              Academic Foundation
+            <h2 className="text-2xl sm:text-3xl font-display font-medium text-[#F4F4F0] tracking-tight">
+              Academic <span className="font-serif-editorial italic text-white font-normal">Foundation.</span>
             </h2>
           </div>
 
-          <div className="p-6 sm:p-8 rounded-2xl bg-[#121215] border border-[#1E1E24] space-y-6">
+          <div className="p-6 sm:p-8 rounded-2xl bg-[#111114] border border-[#1C1C22] space-y-6">
             <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-2">
               <div className="space-y-1">
-                <div className="flex items-center gap-2 text-xs text-[#6366F1]">
+                <div className="flex items-center gap-2 text-xs text-[#818CF8]">
                   <GraduationCap className="w-4 h-4" />
                   <span className="font-medium">{profile.academic.degree}</span>
                 </div>
-                <h3 className="text-lg font-semibold text-[#F4F4F2]">
+                <h3 className="text-lg font-medium text-[#F4F4F0]">
                   {profile.academic.institution}
                 </h3>
               </div>
-              <span className="text-xs text-[#8E8D96] font-mono px-2.5 py-1 rounded bg-[#18181D] border border-[#24242C] self-start">
+              <span className="text-xs text-[#9E9EA8] font-mono px-2.5 py-1 rounded bg-[#16161B] border border-[#222228] self-start">
                 {profile.academic.period}
               </span>
             </div>
 
-            <p className="text-xs sm:text-sm text-[#8E8D96] leading-relaxed pt-2 border-t border-[#1E1E24]">
-              <strong className="text-[#F4F4F2]">Curriculum Focus:</strong> Linear Algebra, Multivariate Optimization, Deep Neural Networks, Computer Vision, Algorithms &amp; Data Structures, Discrete Mathematics, and Distributed Backends.
+            <p className="text-xs sm:text-sm text-[#9E9EA8] leading-relaxed pt-2 border-t border-[#1C1C22]">
+              <strong className="text-[#F4F4F0]">Curriculum Focus:</strong> Linear Algebra, Multivariate Optimization, Deep Neural Networks, Computer Vision, Algorithms &amp; Data Structures, Discrete Mathematics, and Distributed Backends.
             </p>
 
-            <div className="p-4 rounded-xl bg-[#16161B] border border-[#22222A] flex items-start gap-3">
-              <CheckCircle2 className="w-4 h-4 text-[#10B981] mt-0.5 shrink-0" />
-              <div className="text-xs text-[#8E8D96] leading-relaxed">
-                <strong className="text-[#F4F4F2]">Academic Distinction:</strong> Awarded Dean's List / Academic Merit Honor at IIT Jodhpur (2023 — 2024) for strong academic standing across foundational mathematics and computing coursework.
+            <div className="p-4 rounded-xl bg-[#16161B] border border-[#222228] flex items-start gap-3">
+              <CheckCircle2 className="w-4 h-4 text-emerald-400 mt-0.5 shrink-0" />
+              <div className="text-xs text-[#9E9EA8] leading-relaxed">
+                <strong className="text-[#F4F4F0]">Academic Distinction:</strong> Awarded Dean's List / Academic Merit Honor at IIT Jodhpur (2023 — 2024) for strong academic standing across foundational mathematics and computing coursework.
               </div>
             </div>
           </div>
@@ -109,48 +109,48 @@ export default function AboutPage({ onShowToast }) {
         {/* 2. Current Learning & Technical Direction */}
         <section className="space-y-6">
           <div className="space-y-1">
-            <span className="text-xs uppercase tracking-wider text-[#6366F1] font-medium">
-              Exploration
+            <span className="text-xs uppercase tracking-wider text-[#818CF8] font-mono font-medium">
+              02 // Exploration
             </span>
-            <h2 className="text-2xl sm:text-3xl font-display font-semibold text-[#F4F4F2] tracking-tight">
-              Current Learning &amp; Technical Direction
+            <h2 className="text-2xl sm:text-3xl font-display font-medium text-[#F4F4F0] tracking-tight">
+              Current Learning &amp; <span className="font-serif-editorial italic text-white font-normal">Technical Direction.</span>
             </h2>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
             
-            <div className="p-5 rounded-xl bg-[#121215] border border-[#1E1E24] space-y-3">
-              <div className="w-8 h-8 rounded-lg bg-[#18181F] flex items-center justify-center text-[#6366F1]">
+            <div className="p-5 rounded-xl bg-[#111114] border border-[#1C1C22] space-y-3">
+              <div className="w-8 h-8 rounded-lg bg-[#16161B] flex items-center justify-center text-[#818CF8]">
                 <Cpu className="w-4 h-4" />
               </div>
-              <h3 className="text-sm font-semibold text-[#F4F4F2]">
+              <h3 className="text-sm font-medium text-[#F4F4F0]">
                 Model Optimization &amp; Edge Inference
               </h3>
-              <p className="text-xs text-[#8E8D96] leading-relaxed">
-                Exploring post-training quantization (INT8/FP4), ONNX Runtime execution graphs, and memory-conscious tensor memory layout to deploy models on edge hardware.
+              <p className="text-xs text-[#9E9EA8] leading-relaxed">
+                Exploring post-training quantization (INT8/FP4), ONNX Runtime execution graphs, and memory-conscious tensor layouts to deploy models on edge hardware.
               </p>
             </div>
 
-            <div className="p-5 rounded-xl bg-[#121215] border border-[#1E1E24] space-y-3">
-              <div className="w-8 h-8 rounded-lg bg-[#18181F] flex items-center justify-center text-[#6366F1]">
+            <div className="p-5 rounded-xl bg-[#111114] border border-[#1C1C22] space-y-3">
+              <div className="w-8 h-8 rounded-lg bg-[#16161B] flex items-center justify-center text-[#818CF8]">
                 <BookOpen className="w-4 h-4" />
               </div>
-              <h3 className="text-sm font-semibold text-[#F4F4F2]">
+              <h3 className="text-sm font-medium text-[#F4F4F0]">
                 Spatial Vision &amp; Dithering
               </h3>
-              <p className="text-xs text-[#8E8D96] leading-relaxed">
+              <p className="text-xs text-[#9E9EA8] leading-relaxed">
                 Investigating spatial error-diffusion kernels (Floyd-Steinberg, Bayer) to compress live telemetry streams while preserving facial contours and edge boundaries.
               </p>
             </div>
 
-            <div className="p-5 rounded-xl bg-[#121215] border border-[#1E1E24] space-y-3">
-              <div className="w-8 h-8 rounded-lg bg-[#18181F] flex items-center justify-center text-[#6366F1]">
+            <div className="p-5 rounded-xl bg-[#111114] border border-[#1C1C22] space-y-3">
+              <div className="w-8 h-8 rounded-lg bg-[#16161B] flex items-center justify-center text-[#818CF8]">
                 <Compass className="w-4 h-4" />
               </div>
-              <h3 className="text-sm font-semibold text-[#F4F4F2]">
+              <h3 className="text-sm font-medium text-[#F4F4F0]">
                 Concurrent Backend Services
               </h3>
-              <p className="text-xs text-[#8E8D96] leading-relaxed">
+              <p className="text-xs text-[#9E9EA8] leading-relaxed">
                 Designing event-driven streaming pipelines with Python AsyncIO, FastAPI, Redis streams, and PostgreSQL to serve low-latency inference predictions.
               </p>
             </div>
@@ -161,22 +161,22 @@ export default function AboutPage({ onShowToast }) {
         {/* 3. Technical Toolkit */}
         <section className="space-y-6">
           <div className="space-y-1">
-            <span className="text-xs uppercase tracking-wider text-[#6366F1] font-medium">
-              Toolkit
+            <span className="text-xs uppercase tracking-wider text-[#818CF8] font-mono font-medium">
+              03 // Toolkit
             </span>
-            <h2 className="text-2xl sm:text-3xl font-display font-semibold text-[#F4F4F2] tracking-tight">
-              Technical Competencies
+            <h2 className="text-2xl sm:text-3xl font-display font-medium text-[#F4F4F0] tracking-tight">
+              Technical <span className="font-serif-editorial italic text-white font-normal">Competencies.</span>
             </h2>
           </div>
 
           <div className="space-y-6">
             {skillCategories.map((group) => (
-              <div key={group.category} className="p-6 rounded-xl bg-[#121215] border border-[#1E1E24] space-y-4">
+              <div key={group.category} className="p-6 rounded-xl bg-[#111114] border border-[#1C1C22] space-y-4">
                 <div>
-                  <h3 className="text-sm font-semibold text-[#F4F4F2]">
+                  <h3 className="text-sm font-medium text-[#F4F4F0]">
                     {group.category}
                   </h3>
-                  <p className="text-xs text-[#8E8D96] mt-0.5">
+                  <p className="text-xs text-[#9E9EA8] mt-0.5">
                     {group.description}
                   </p>
                 </div>
@@ -201,53 +201,53 @@ export default function AboutPage({ onShowToast }) {
         {/* 4. Engineering Principles */}
         <section className="space-y-6">
           <div className="space-y-1">
-            <span className="text-xs uppercase tracking-wider text-[#6366F1] font-medium">
-              Philosophy
+            <span className="text-xs uppercase tracking-wider text-[#818CF8] font-mono font-medium">
+              04 // Philosophy
             </span>
-            <h2 className="text-2xl sm:text-3xl font-display font-semibold text-[#F4F4F2] tracking-tight">
-              Engineering Principles
+            <h2 className="text-2xl sm:text-3xl font-display font-medium text-[#F4F4F0] tracking-tight">
+              Engineering <span className="font-serif-editorial italic text-white font-normal">Principles.</span>
             </h2>
           </div>
 
           <div className="space-y-4">
-            <div className="p-5 rounded-xl bg-[#121215] border border-[#1E1E24] space-y-1.5">
-              <h3 className="text-sm font-semibold text-[#F4F4F2]">
+            <div className="p-6 rounded-2xl bg-[#111114] border border-[#1C1C22] space-y-2">
+              <h3 className="text-sm font-medium text-[#F4F4F0]">
                 1. First-Principles Understanding
               </h3>
-              <p className="text-xs text-[#8E8D96] leading-relaxed">
+              <p className="text-xs text-[#9E9EA8] leading-relaxed">
                 Before importing a library or tweaking hyperparameters, I write out the mathematical formulations on paper. Understanding gradients, loss surfaces, and time complexity makes debugging direct and effective.
               </p>
             </div>
 
-            <div className="p-5 rounded-xl bg-[#121215] border border-[#1E1E24] space-y-1.5">
-              <h3 className="text-sm font-semibold text-[#F4F4F2]">
+            <div className="p-6 rounded-2xl bg-[#111114] border border-[#1C1C22] space-y-2">
+              <h3 className="text-sm font-medium text-[#F4F4F0]">
                 2. Measure Before Optimizing
               </h3>
-              <p className="text-xs text-[#8E8D96] leading-relaxed">
+              <p className="text-xs text-[#9E9EA8] leading-relaxed">
                 Premature optimization creates tangled code. Every performance claim must be accompanied by profiler data — whether measuring socket throughput in Python or tensor memory allocations in PyTorch.
               </p>
             </div>
 
-            <div className="p-5 rounded-xl bg-[#121215] border border-[#1E1E24] space-y-1.5">
-              <h3 className="text-sm font-semibold text-[#F4F4F2]">
+            <div className="p-6 rounded-2xl bg-[#111114] border border-[#1C1C22] space-y-2">
+              <h3 className="text-sm font-medium text-[#F4F4F0]">
                 3. Simplicity Over Cleverness
               </h3>
-              <p className="text-xs text-[#8E8D96] leading-relaxed">
-                Maintainable software is readable, testable, and minimal. A clean tabular XGBoost model that can be explained to non-technical stakeholders is far superior to an uninterpretable neural network when the data does not require it.
+              <p className="text-xs text-[#9E9EA8] leading-relaxed">
+                Maintainable software is readable, testable, and minimal. A clean tabular model that can be explained to non-technical stakeholders is far superior to an uninterpretable neural network when the data does not require it.
               </p>
             </div>
           </div>
         </section>
 
         {/* Bottom CTA */}
-        <div className="pt-8 border-t border-[#1E1E23] flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="pt-8 border-t border-[#1C1C22] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div>
-            <div className="text-sm font-semibold text-[#F4F4F2]">Interested in collaborating or discussing a role?</div>
-            <div className="text-xs text-[#8E8D96] mt-0.5">I am available for summer 2025 and 2026 engineering opportunities.</div>
+            <div className="text-sm font-medium text-[#F4F4F0]">Interested in collaborating or discussing a role?</div>
+            <div className="text-xs text-[#656570] mt-0.5">Open for technical internships, engineering roles, and academic collaborations.</div>
           </div>
           <Link
             to="/contact"
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[#4338CA] hover:bg-[#4F46E5] text-white text-xs font-semibold tracking-wide transition-colors shadow-sm shrink-0"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#4338CA] hover:bg-[#4F46E5] text-white text-xs font-medium tracking-wide transition-colors shadow-sm shrink-0"
           >
             <span>Get in Touch</span>
             <ArrowRight className="w-3.5 h-3.5" />
