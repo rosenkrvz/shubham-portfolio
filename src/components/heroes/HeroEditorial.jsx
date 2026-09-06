@@ -36,11 +36,11 @@ export default function HeroEditorial({ onExploreClick }) {
               </span>
             </h1>
 
-            <p className="type-body-lg text-[#E8E8E8] font-light max-w-xl leading-relaxed mb-3">
-              Building systems, studying data, and exploring how computation can turn theoretical models into measurable reality.
+            <p className="type-body-lg text-[#E8E8E8] font-medium max-w-xl leading-relaxed mb-3">
+              I work with data, models and computation &mdash; from understanding the numbers to building the systems around them.
             </p>
             <p className="type-body text-[#B0B0B0] max-w-lg leading-relaxed mb-8">
-              Undergraduate in Applied AI &amp; Data Science at IIT Jodhpur. Working across statistical modeling, machine learning pipelines, and computational software.
+              Undergraduate in Applied AI &amp; Data Science at the Indian Institute of Technology Jodhpur (IIT Jodhpur).
             </p>
 
             <div className="flex items-center gap-6">

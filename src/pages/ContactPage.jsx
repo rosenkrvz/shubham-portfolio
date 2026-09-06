@@ -116,11 +116,11 @@ export default function ContactPage({ onShowToast }) {
             </div>
 
             <h1 className="type-hero font-medium font-display uppercase tracking-tight text-[#FAFAFA] leading-[0.95]">
-              Let's build <br />
+              LET'S BUILD <br />
               <span className="font-serif-editorial italic font-normal lowercase text-white mr-3">
                 something
               </span>
-              Resilient.
+              INTERESTING.
             </h1>
 
             <p className="type-body-lg text-[#E8E8E8] max-w-[65ch] font-normal leading-relaxed">

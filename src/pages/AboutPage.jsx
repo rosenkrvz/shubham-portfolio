@@ -86,11 +86,11 @@ export default function AboutPage({ onShowToast }) {
             </div>
           </div>
 
-          {/* 1. Academic Foundation */}
+          {/* 01. Academic Foundation */}
           <section className="space-y-6">
             <div className="space-y-1">
               <span className="type-label uppercase tracking-widest text-[#9A9A9A]">
-                01 // EDUCATION &amp; RESEARCH
+                01 // EDUCATION
               </span>
               <h2 className="type-h2 font-display font-medium uppercase text-[#FAFAFA] tracking-tight">
                 Academic <span className="font-serif-editorial italic text-white font-normal lowercase">foundation.</span>
@@ -128,14 +128,83 @@ export default function AboutPage({ onShowToast }) {
             </div>
           </section>
 
-          {/* 2. Exploration & Directions */}
+          {/* 02. What I Work With */}
           <section className="space-y-6">
             <div className="space-y-1">
               <span className="type-label uppercase tracking-widest text-[#9A9A9A]">
-                02 // RESEARCH DIRECTIONS
+                02 // WHAT I WORK WITH
               </span>
               <h2 className="type-h2 font-display font-medium uppercase text-[#FAFAFA] tracking-tight">
-                Research <span className="font-serif-editorial italic text-white font-normal lowercase">directions.</span>
+                Toolkit &amp; <span className="font-serif-editorial italic text-white font-normal lowercase">runtimes.</span>
+              </h2>
+            </div>
+
+            <div className="space-y-6">
+              {skillCategories.map((group) => (
+                <div key={group.category} className="p-6 bg-[#121215] border border-[rgba(255,255,255,0.08)] rounded-[4px] space-y-4">
+                  <div>
+                    <h3 className="text-base font-semibold uppercase text-[#FAFAFA]">
+                      {group.category}
+                    </h3>
+                    <p className="type-body-sm text-[#9A9A9A] mt-0.5">
+                      {group.description}
+                    </p>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+                    {group.skills.map((skill) => (
+                      <div key={skill.name} className="p-3.5 bg-[#09090B] border border-[rgba(255,255,255,0.06)] rounded-[3px] space-y-1">
+                        <div className="text-xs font-mono font-medium text-[#FAFAFA]">
+                          {skill.name}
+                        </div>
+                        <div className="type-body-sm text-[#B0B0B0] leading-relaxed">
+                          {skill.desc}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* 03. What I Am Interested In */}
+          <section className="space-y-6">
+            <div className="space-y-1">
+              <span className="type-label uppercase tracking-widest text-[#9A9A9A]">
+                03 // WHAT I AM INTERESTED IN
+              </span>
+              <h2 className="type-h2 font-display font-medium uppercase text-[#FAFAFA] tracking-tight">
+                Core <span className="font-serif-editorial italic text-white font-normal lowercase">curiosities.</span>
+              </h2>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {[
+                { title: 'Machine Learning', desc: 'Inductive bias, loss surface curvature, generalization bounds, and model compression.' },
+                { title: 'Data Analysis', desc: 'Statistical distributions, Shapley feature attribution, and empirical hypothesis testing.' },
+                { title: 'Mathematics', desc: 'Spectral matrix decomposition, continuous optimization, and high-dimensional geometry.' },
+                { title: 'Algorithms & Complexity', desc: 'Approximate nearest-neighbor graphs (HNSW), cache-conscious spatial filtering, and SIMD execution.' },
+                { title: 'AI Systems', desc: 'Zero-copy memory layouts, cryptographic tensor attestation, and deterministic inference on edge NPUs.' },
+                { title: 'Visualization & Computing', desc: 'Topological manifolds in WebGL/GLSL, Riemannian surfaces, and interactive scientific notebooks.' }
+              ].map((item) => (
+                <div key={item.title} className="p-5 bg-[#121215] border border-[rgba(255,255,255,0.08)] rounded-[4px] space-y-2">
+                  <div className="type-label text-[#E10600] font-mono">&bull; DISCIPLINE</div>
+                  <h3 className="text-base font-semibold uppercase text-[#FAFAFA]">{item.title}</h3>
+                  <p className="type-body-sm text-[#B0B0B0] leading-relaxed">{item.desc}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* 04. Currently Exploring */}
+          <section className="space-y-6">
+            <div className="space-y-1">
+              <span className="type-label uppercase tracking-widest text-[#9A9A9A]">
+                04 // CURRENTLY EXPLORING
+              </span>
+              <h2 className="type-h2 font-display font-medium uppercase text-[#FAFAFA] tracking-tight">
+                Active <span className="font-serif-editorial italic text-white font-normal lowercase">inquiries.</span>
               </h2>
             </div>
 
@@ -178,51 +247,74 @@ export default function AboutPage({ onShowToast }) {
             </div>
           </section>
 
-          {/* 3. Technical Competencies */}
+          {/* 05. Timeline */}
           <section className="space-y-6">
             <div className="space-y-1">
               <span className="type-label uppercase tracking-widest text-[#9A9A9A]">
-                03 // TOOLKIT
+                05 // TIMELINE
               </span>
               <h2 className="type-h2 font-display font-medium uppercase text-[#FAFAFA] tracking-tight">
-                Technical <span className="font-serif-editorial italic text-white font-normal lowercase">competencies.</span>
+                Academic &amp; Project <span className="font-serif-editorial italic text-white font-normal lowercase">milestones.</span>
               </h2>
             </div>
 
-            <div className="space-y-6">
-              {skillCategories.map((group) => (
-                <div key={group.category} className="p-6 bg-[#121215] border border-[rgba(255,255,255,0.08)] rounded-[4px] space-y-4">
-                  <div>
-                    <h3 className="text-base font-semibold uppercase text-[#FAFAFA]">
-                      {group.category}
-                    </h3>
-                    <p className="type-body-sm text-[#9A9A9A] mt-0.5">
-                      {group.description}
-                    </p>
+            <div className="relative border-l border-[#27272A]/70 pl-6 sm:pl-8 space-y-8 ml-2">
+              {[
+                {
+                  year: '2026',
+                  tag: 'ACTIVE RESEARCH',
+                  title: 'Hardware-Conscious Neural Quantization & Attestation',
+                  institution: 'IIT Jodhpur',
+                  desc: 'Developing deterministic weight integrity verification (Sentinel NPU) and investigating INT8/FP4 micro-scaling kernels on ARM NPU silicon.'
+                },
+                {
+                  year: '2025',
+                  tag: 'SYSTEMS ARCHITECTURE',
+                  title: 'Distributed Vector Mesh & Asynchronous Event Brokering',
+                  institution: 'IIT Jodhpur',
+                  desc: 'Engineered HNSW approximate nearest-neighbor search over gRPC and sub-12ms event broker with FastAPI and Redis Streams.'
+                },
+                {
+                  year: '2024',
+                  tag: 'ACADEMIC RECOGNITION',
+                  title: "Dean's List / Academic Merit Distinction",
+                  institution: 'IIT Jodhpur',
+                  desc: 'Honored for exceptional GPA across foundational linear algebra, multivariate calculus, discrete algorithms, and statistical modeling coursework.'
+                },
+                {
+                  year: '2023',
+                  tag: 'FOUNDATIONAL MATRICULATION',
+                  title: 'Admitted to B.S. in Applied AI & Data Science',
+                  institution: 'Indian Institute of Technology Jodhpur',
+                  desc: 'Commenced undergraduate training spanning continuous mathematics, probability theory, computer science fundamentals, and data structures.'
+                }
+              ].map((m) => (
+                <div key={m.year + m.title} className="relative space-y-2 group">
+                  <div className="absolute -left-[31px] sm:-left-[39px] top-1.5 w-3 h-3 rounded-full bg-[#18181B] border-2 border-[#E10600] group-hover:bg-[#E10600] transition-colors" />
+                  <div className="flex flex-wrap items-center gap-3 type-label">
+                    <span className="text-base font-mono font-bold text-[#FAFAFA]">{m.year}</span>
+                    <span className="px-2 py-0.5 rounded-[3px] bg-[#18181B] border border-[rgba(255,255,255,0.06)] text-[#9A9A9A] text-[10px] uppercase font-mono">
+                      {m.tag}
+                    </span>
+                    <span className="text-[#52525B]">&bull;</span>
+                    <span className="text-[#9A9A9A]">{m.institution}</span>
                   </div>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-                    {group.skills.map((skill) => (
-                      <div key={skill.name} className="p-3.5 bg-[#09090B] border border-[rgba(255,255,255,0.06)] rounded-[3px] space-y-1">
-                        <div className="text-xs font-mono font-medium text-[#FAFAFA]">
-                          {skill.name}
-                        </div>
-                        <div className="type-body-sm text-[#B0B0B0] leading-relaxed">
-                          {skill.desc}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
+                  <h3 className="text-base sm:text-lg font-semibold text-[#FAFAFA] group-hover:text-white transition-colors">
+                    {m.title}
+                  </h3>
+                  <p className="type-body-sm text-[#B0B0B0] leading-relaxed max-w-[65ch]">
+                    {m.desc}
+                  </p>
                 </div>
               ))}
             </div>
           </section>
 
-          {/* 4. Visual System & Design Tokens */}
+          {/* 06. Visual System & Design Tokens */}
           <section className="space-y-6">
             <div className="space-y-1">
               <span className="type-label uppercase tracking-widest text-[#9A9A9A]">
-                04 // DESIGN SYSTEM &bull; VISUAL IDENTITY
+                06 // DESIGN SYSTEM &bull; VISUAL IDENTITY
               </span>
               <h2 className="type-h2 font-display font-medium uppercase text-[#FAFAFA] tracking-tight">
                 Visual <span className="font-serif-editorial italic text-white font-normal lowercase">language.</span>
@@ -250,11 +342,11 @@ export default function AboutPage({ onShowToast }) {
             </div>
           </section>
 
-          {/* 5. Principles */}
+          {/* 07. Principles */}
           <section className="space-y-6">
             <div className="space-y-1">
               <span className="type-label uppercase tracking-widest text-[#9A9A9A]">
-                05 // THINKING &amp; METHODOLOGY
+                07 // THINKING &amp; METHODOLOGY
               </span>
               <h2 className="type-h2 font-display font-medium uppercase text-[#FAFAFA] tracking-tight">
                 Working <span className="font-serif-editorial italic text-white font-normal lowercase">principles.</span>

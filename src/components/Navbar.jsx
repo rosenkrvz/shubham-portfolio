@@ -9,7 +9,8 @@ const NAV_ITEMS = [
   { path: '/ai-data', label: 'AI / Data', num: '02' },
   { path: '/experiments', label: 'Lab', num: '03' },
   { path: '/about', label: 'About', num: '04' },
-  { path: '/contact', label: 'Contact', num: '05' }
+  { path: '/github', label: 'Code', num: '05' },
+  { path: '/contact', label: 'Contact', num: '06' }
 ];
 
 export default function Navbar() {
@@ -50,7 +51,8 @@ export default function Navbar() {
             const isActive = currentPath === item.path || 
               (item.path === '/projects' && (currentPath === '/work' || currentPath.startsWith('/projects/'))) ||
               (item.path === '/ai-data' && currentPath === '/intelligence') ||
-              (item.path === '/experiments' && currentPath === '/lab');
+              (item.path === '/experiments' && currentPath === '/lab') ||
+              (item.path === '/github' && currentPath === '/code');
 
             return (
               <NavLink

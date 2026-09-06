@@ -47,6 +47,9 @@ export default function Footer({ onCopyEmail }) {
                 <Link to="/about" className="hover:text-[#FAFAFA] transition-colors">About &amp; Dossier</Link>
               </li>
               <li>
+                <Link to="/github" className="hover:text-[#FAFAFA] transition-colors">Code &amp; Open Source</Link>
+              </li>
+              <li>
                 <Link to="/certifications" className="hover:text-[#FAFAFA] transition-colors">Certificates &amp; Honors</Link>
               </li>
             </ul>

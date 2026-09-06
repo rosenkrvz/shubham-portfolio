@@ -22,6 +22,7 @@ import ThankYouPage from './pages/ThankYouPage.jsx';
 import NotFoundPage from './pages/NotFoundPage.jsx';
 import LabPage from './pages/LabPage.jsx';
 import AiDataPage from './pages/AiDataPage.jsx';
+import GithubPage from './pages/GithubPage.jsx';
 import { ThemeProvider } from './context/ThemeContext.jsx';
 
 import { profile } from './data/profile.js';
@@ -128,6 +129,8 @@ export default function App() {
               }
             />
             <Route path="/credentials" element={<Navigate to="/certifications" replace />} />
+            <Route path="/github" element={<GithubPage />} />
+            <Route path="/code" element={<Navigate to="/github" replace />} />
             <Route
               path="/contact"
               element={<ContactPage onShowToast={showToast} />}

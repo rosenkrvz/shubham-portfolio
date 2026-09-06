@@ -200,12 +200,61 @@ export default function AiDataPage({ onShowToast }) {
             </div>
           </section>
 
-          {/* FOUNDATIONAL LITERATURE */}
+          {/* PILLAR 5: CURRENT QUESTIONS & HYPOTHESES */}
+          <section className="space-y-8 pt-16 border-t border-[#27272A]/50">
+            <div className="flex flex-col md:flex-row md:items-end justify-between border-b border-[#27272A]/50 pb-4 gap-2">
+              <div>
+                <span className="type-label text-[#9A9A9A] tracking-widest uppercase">
+                  [05 // CURRENT QUESTIONS]
+                </span>
+                <h2 className="type-h2 font-medium font-display uppercase tracking-tight text-[#FAFAFA] mt-1">
+                  Active <span className="font-serif-editorial italic font-normal lowercase text-[#C7D2FE]">hypotheses</span> &amp; Inquiries
+                </h2>
+              </div>
+              <span className="type-label text-[#9A9A9A]">
+                OPEN RESEARCH FRONTIERS
+              </span>
+            </div>
+
+            <div className="space-y-4">
+              <div className="p-6 bg-[#121215] border border-[rgba(255,255,255,0.08)] rounded-[4px] space-y-2">
+                <div className="type-label text-[#E10600] font-mono">QUESTION 01 // QUANTIZATION DYNAMICS</div>
+                <h3 className="text-base font-semibold text-[#FAFAFA]">
+                  Can Hessian Loss Curvature Predict Post-Training Quantization Degradation?
+                </h3>
+                <p className="type-body text-[#B0B0B0] leading-relaxed">
+                  When compressing model weights from FP32 to INT8 or FP4, uniform discretization introduces non-linear perturbations. I am investigating whether local spectral radius of the empirical Fisher Information Matrix can predict which attention or convolution layers are susceptible to catastrophic drift without requiring exhaustive validation grid-searches.
+                </p>
+              </div>
+
+              <div className="p-6 bg-[#121215] border border-[rgba(255,255,255,0.08)] rounded-[4px] space-y-2">
+                <div className="type-label text-[#E10600] font-mono">QUESTION 02 // EDGE SILICON LATENCY</div>
+                <h3 className="text-base font-semibold text-[#FAFAFA]">
+                  Microscaling Block Formats for Constrained NPU Memory Buses
+                </h3>
+                <p className="type-body text-[#B0B0B0] leading-relaxed">
+                  How can block-floating-point formats (such as MXFP6 or MXINT8) be mapped directly into ARM NPU unified memory without causing translation cache misses? The inquiry balances quantization precision against hardware memory alignment constraints.
+                </p>
+              </div>
+
+              <div className="p-6 bg-[#121215] border border-[rgba(255,255,255,0.08)] rounded-[4px] space-y-2">
+                <div className="type-label text-[#E10600] font-mono">QUESTION 03 // REPRESENTATIONAL GEOMETRY</div>
+                <h3 className="text-base font-semibold text-[#FAFAFA]">
+                  Why Do Axis-Aligned Decision Trees Retain Dominance on Tabular Manifolds?
+                </h3>
+                <p className="type-body text-[#B0B0B0] leading-relaxed">
+                  Despite advancements in Transformer architectures, gradient-boosted decision trees (LightGBM/XGBoost) maintain superior sample efficiency and inductive bias on non-smooth tabular manifolds. I am exploring whether rotational invariant projections can bridge this gap for deep networks.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          {/* PILLAR 6: FOUNDATIONAL LITERATURE */}
           <section className="space-y-6 pt-16 border-t border-[#27272A]/50">
             <div className="flex items-center justify-between">
               <div>
                 <span className="type-label text-[#9A9A9A] tracking-widest uppercase">
-                  [05 // LITERATURE]
+                  [06 // LITERATURE]
                 </span>
                 <h2 className="type-h3 font-medium font-display uppercase tracking-tight text-[#FAFAFA] mt-1">
                   Theoretical Influences

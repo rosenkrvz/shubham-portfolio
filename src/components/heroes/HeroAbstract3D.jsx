@@ -45,9 +45,9 @@ export default function HeroAbstract3D({ onExploreClick }) {
           {/* Eyebrow / Discipline Metadata */}
           <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 mb-6 rounded-[4px] border border-[rgba(255,255,255,0.1)] bg-[#121215]/85 backdrop-blur-md type-label text-[#B0B0B0]">
             <span className="w-2 h-2 rounded-full bg-[#E10600]" />
-            <span className="text-[#FAFAFA] font-medium">SHUBHAM SHARMA</span>
+            <span className="text-[#FAFAFA] font-medium">AI &amp; DATA SCIENCE</span>
             <span className="text-[#52525B]">//</span>
-            <span>AI &bull; DATA SCIENCE &bull; SYSTEMS</span>
+            <span>STUDENT &bull; BUILDER &bull; EXPERIMENTER</span>
           </div>
 
           {/* Monumental Headline */}
@@ -59,10 +59,10 @@ export default function HeroAbstract3D({ onExploreClick }) {
           {/* Clear, Grounded Copy with scrim for 3D art visibility */}
           <div className="max-w-[65ch] space-y-3 mb-8 text-scrim p-6 -ml-6 rounded-lg">
             <p className="type-body-lg text-[#E8E8E8] font-medium leading-relaxed tracking-tight">
-              Building systems, studying data, and exploring how computation can turn theoretical models into measurable reality.
+              I work with data, models and computation &mdash; from understanding the numbers to building the systems around them.
             </p>
             <p className="type-body text-[#B0B0B0] font-normal leading-relaxed">
-              Undergraduate in Applied AI &amp; Data Science at IIT Jodhpur. Working across statistical modeling, machine learning pipelines, and computational software.
+              Undergraduate in Applied AI &amp; Data Science at the Indian Institute of Technology Jodhpur (IIT Jodhpur).
             </p>
           </div>
 
