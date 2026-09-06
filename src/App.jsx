@@ -21,6 +21,7 @@ import PrivacyPage from './pages/PrivacyPage.jsx';
 import ThankYouPage from './pages/ThankYouPage.jsx';
 import NotFoundPage from './pages/NotFoundPage.jsx';
 import LabPage from './pages/LabPage.jsx';
+import AiDataPage from './pages/AiDataPage.jsx';
 
 import { profile } from './data/profile.js';
 
@@ -98,6 +99,12 @@ export default function App() {
               }
             />
             <Route path="/systems" element={<Navigate to="/projects" replace />} />
+            <Route
+              path="/ai-data"
+              element={<AiDataPage onShowToast={showToast} />}
+            />
+            <Route path="/intelligence" element={<Navigate to="/ai-data" replace />} />
+            <Route path="/data" element={<Navigate to="/ai-data" replace />} />
             <Route
               path="/experiments"
               element={<LabPage onShowToast={showToast} />}

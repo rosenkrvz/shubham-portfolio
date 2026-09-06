@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Cpu, ShieldCheck, ArrowRight, ExternalLink, Terminal, CheckCircle } from 'lucide-react';
+import PipelineFlowDiagram from '../ai/PipelineFlowDiagram.jsx';
 
 export default function ProjectSentinelCase({ project, onOpenModal }) {
   const [activeTab, setActiveTab] = useState('architecture');
@@ -181,7 +182,11 @@ export default function ProjectSentinelCase({ project, onOpenModal }) {
 
           </div>
         </div>
+      </div>
 
+      {/* Structured AI/Systems Pipeline Architecture */}
+      <div className="mt-8">
+        <PipelineFlowDiagram mode="ai" />
       </div>
     </article>
   );

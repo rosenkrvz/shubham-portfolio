@@ -1,46 +1,54 @@
 export const skillCategories = [
   {
-    category: "Machine Learning & Deep Learning",
-    description: "Neural network architectures, model training, and optimization",
+    category: "Artificial Intelligence & Machine Learning",
+    description: "Neural network architectures, tensor runtimes, optimization, and edge inference",
     skills: [
-      { name: "PyTorch", desc: "Model architecture, training loops, autograd & TorchScript" },
-      { name: "Computer Vision", desc: "OpenCV, spatial filtering, binarized neural models & dither kernels" },
-      { name: "Model Optimization", desc: "INT8 quantization, ONNX Runtime & TensorRT export" },
-      { name: "Scikit-Learn & XGBoost", desc: "Feature engineering, cross-validation, gradient boosted trees" },
-      { name: "NumPy & Pandas", desc: "Vectorized linear algebra, statistical data pipelines & analysis" }
+      { name: "PyTorch & TensorRT", desc: "Model architecture, autograd, INT8/FP4 quantization & zero-copy engine export" },
+      { name: "Computer Vision", desc: "Spatial error diffusion kernels, Bayer matrices, SIMD OpenCV & contour detection" },
+      { name: "Model Evaluation & Generalization", desc: "Confusion matrices, ROC-AUC, out-of-distribution drift & cost-sensitive loss" },
+      { name: "Scikit-Learn & Tree Ensembles", desc: "XGBoost, LightGBM, gradient boosting & SHAP feature attribution waterfalls" },
+      { name: "Inductive Biases & Architectures", desc: "Convolutions, attention mechanisms, loss surfaces & regularization manifolds" }
     ]
   },
   {
-    category: "Backend & Systems Development",
-    description: "Concurrent services, data storage, and low-latency APIs",
+    category: "Data Science, Statistics & Analysis",
+    description: "Statistical inference, dimensionality reduction, distributions, and empirical validation",
     skills: [
-      { name: "Python / AsyncIO", desc: "Concurrent networking, async event loops & streaming" },
-      { name: "FastAPI & REST APIs", desc: "Structured Pydantic validation, dependency injection & routing" },
-      { name: "PostgreSQL", desc: "Relational schema design, indexing strategies & SQL queries" },
-      { name: "Redis", desc: "In-memory caching, message queues & pub/sub messaging" },
-      { name: "C++ Fundamentals", desc: "Memory management, data structures & pointer arithmetic" }
+      { name: "Dimensionality Reduction", desc: "PCA eigenvalue decomposition, t-SNE neighborhood preservation & UMAP topology" },
+      { name: "Statistical Modeling & Distributions", desc: "Hypothesis testing, maximum likelihood estimation, Gaussian mixtures & Bayesian priors" },
+      { name: "Vectorized Scientific Computing", desc: "NumPy matrix operations, BLAS/LAPACK routines & high-throughput Pandas pipelines" },
+      { name: "Data Visualization & Exploration", desc: "Interactive scatter spaces, correlation heatmaps, loss contours & density estimation" },
+      { name: "Feature Engineering & Sanitization", desc: "Missing-value imputation, robust normalization, variance thresholding & encoding" }
     ]
   },
   {
-    category: "Frontend & Web Technologies",
-    description: "Responsive interfaces, thoughtful interaction, and clean typography",
+    category: "Mathematical & Analytical Foundations",
+    description: "Theoretical framework guiding algorithm formulation and system design",
     skills: [
-      { name: "React 19", desc: "Component architecture, modern hooks & state management" },
-      { name: "JavaScript & TypeScript", desc: "Modern ES6+ syntax, asynchronous programming & types" },
-      { name: "Framer Motion", desc: "Restrained page transitions, shared layouts & gesture physics" },
-      { name: "Tailwind CSS & Vanilla CSS", desc: "Design systems, fluid responsive typography & accessible layouts" },
-      { name: "HTML5 & Accessibility", desc: "Semantic markup, keyboard navigation & ARIA standards" }
+      { name: "Linear Algebra", desc: "Eigenvalues, singular value decomposition (SVD), vector spaces & orthogonal projections" },
+      { name: "Multivariate Calculus & Optimization", desc: "Gradient vectors, Jacobian/Hessian matrices, Lagrange multipliers & convex analysis" },
+      { name: "Probability & Information Theory", desc: "Entropy, Kullback-Leibler (KL) divergence, mutual information & Bayes' theorem" },
+      { name: "Algorithmic Complexity", desc: "Big-O runtime proofs, memory-bound vs compute-bound analysis & cache hierarchies" }
     ]
   },
   {
-    category: "Tools & Infrastructure",
-    description: "Deployment, containerization, and developer workflow",
+    category: "Software Systems & Low-Latency Infrastructure",
+    description: "High-concurrency async services, streaming architectures, and deterministic backends",
     skills: [
-      { name: "Docker", desc: "Containerized environments, multi-stage builds & compose" },
-      { name: "Linux / Bash", desc: "Shell scripting, process management & system administration" },
-      { name: "Git & GitHub", desc: "Branch workflows, code reviews & GitHub Actions CI/CD" },
-      { name: "AWS Fundamentals", desc: "EC2 instances, S3 object storage & IAM security" },
-      { name: "Vite & Build Tooling", desc: "Fast HMR, bundle optimization & production asset pipelines" }
+      { name: "Python / AsyncIO", desc: "Event loops, asynchronous task scheduling & non-blocking streaming protocols" },
+      { name: "FastAPI & REST / WebSockets", desc: "Type-checked Pydantic serialization, dependency injection & real-time sockets" },
+      { name: "PostgreSQL & Redis Streams", desc: "Schema design, relational indexing, atomic in-memory queues & deduplication" },
+      { name: "C++ Fundamentals", desc: "Memory mapping, pointer arithmetic, PyTorch C++ bindings & cache-conscious layouts" },
+      { name: "Containerization & Linux", desc: "Docker multi-stage builds, POSIX process management & CI/CD workflow automation" }
+    ]
+  },
+  {
+    category: "Experimental Computing & Visual Systems",
+    description: "Creative coding, real-time WebGL, shaders, and procedural simulations",
+    skills: [
+      { name: "Three.js & WebGL", desc: "Parametric geometry, GPU vertex shaders, particle systems & 3D raycasting" },
+      { name: "Procedural Canvas Graphics", desc: "Floyd-Steinberg dithering engines, flow field vector mathematics & 60 FPS animation" },
+      { name: "Modern React & Frontend Systems", desc: "Component modularity, Framer Motion choreography & responsive editorial UI" }
     ]
   }
 ];

@@ -1,31 +1,29 @@
 import React, { useState } from 'react';
 import { NavLink, Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, ArrowUpRight } from 'lucide-react';
+import { Menu, X, ArrowUpRight, FileText } from 'lucide-react';
 
 const NAV_ITEMS = [
-  { path: '/home', label: 'Home', num: '01' },
-  { path: '/about', label: 'About', num: '02' },
-  { path: '/projects', label: 'Work', num: '03' },
-  { path: '/certifications', label: 'Certifications', num: '04' },
-  { path: '/experiments', label: 'Experiments', num: '05' },
-  { path: '/contact', label: 'Contact', num: '06' }
+  { path: '/projects', label: 'Work', num: '01' },
+  { path: '/ai-data', label: 'AI / Data', num: '02' },
+  { path: '/experiments', label: 'Lab', num: '03' },
+  { path: '/about', label: 'About', num: '04' },
+  { path: '/contact', label: 'Contact', num: '05' }
 ];
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
 
-  // Treat root '/' as '/home'
-  const currentPath = location.pathname === '/' ? '/home' : location.pathname;
+  const currentPath = location.pathname;
 
   return (
     <header className="sticky top-0 z-40 w-full border-b border-[#1C1C22] bg-[#08080A]/85 backdrop-blur-md">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         
-        {/* Brand Identity / Name */}
+        {/* Brand Identity */}
         <Link 
-          to="/home" 
+          to="/" 
           className="flex items-center gap-3 group focus:outline-none focus-visible:ring-1 focus-visible:ring-[#6366F1]"
         >
           <div className="w-7 h-7 rounded-md bg-[#16161B] border border-[#26262E] flex items-center justify-center text-xs font-mono font-semibold text-[#F4F4F0] group-hover:border-[#6366F1] transition-colors">
@@ -35,8 +33,8 @@ export default function Navbar() {
             <span className="text-sm font-semibold tracking-tight text-[#F4F4F0] group-hover:text-white transition-colors">
               Shubham Sharma
             </span>
-            <span className="text-[11px] text-[#9E9EA8] tracking-normal">
-              IIT Jodhpur
+            <span className="text-[11px] text-[#9E9EA8] tracking-normal font-mono">
+              AI / Data / Systems
             </span>
           </div>
         </Link>
@@ -44,7 +42,11 @@ export default function Navbar() {
         {/* Desktop Navigation Links */}
         <nav className="hidden md:flex items-center gap-1" aria-label="Main Navigation">
           {NAV_ITEMS.map((item) => {
-            const isActive = currentPath === item.path || (item.path === '/projects' && currentPath === '/work');
+            const isActive = currentPath === item.path || 
+              (item.path === '/projects' && (currentPath === '/work' || currentPath.startsWith('/projects/'))) ||
+              (item.path === '/ai-data' && currentPath === '/intelligence') ||
+              (item.path === '/experiments' && currentPath === '/lab');
+
             return (
               <NavLink
                 key={item.path}
@@ -68,14 +70,24 @@ export default function Navbar() {
           })}
         </nav>
 
-        {/* Action Button: Get in touch */}
-        <div className="hidden md:flex items-center gap-3">
+        {/* Actions: Resume & Contact */}
+        <div className="hidden md:flex items-center gap-2.5">
+          <a
+            href="/resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-[#111114] hover:bg-[#181820] border border-[#26262E] text-xs font-mono text-[#9E9EA8] hover:text-[#F4F4F0] transition-colors"
+          >
+            <FileText className="w-3.5 h-3.5 text-[#818CF8]" />
+            <span>Resume</span>
+          </a>
+
           <Link
             to="/contact"
-            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-md bg-[#16161B] hover:bg-[#1F1F26] border border-[#26262E] hover:border-[#383845] text-xs font-medium text-[#F4F4F0] transition-colors"
+            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-md bg-[#4338CA] hover:bg-[#4F46E5] text-xs font-medium text-white transition-colors shadow-sm"
           >
-            <span>Get in Touch</span>
-            <ArrowUpRight className="w-3.5 h-3.5 text-[#9E9EA8]" />
+            <span>Contact</span>
+            <ArrowUpRight className="w-3.5 h-3.5" />
           </Link>
         </div>
 
@@ -107,7 +119,11 @@ export default function Navbar() {
                 Directory
               </span>
               {NAV_ITEMS.map((item) => {
-                const isActive = currentPath === item.path || (item.path === '/projects' && currentPath === '/work');
+                const isActive = currentPath === item.path || 
+                  (item.path === '/projects' && (currentPath === '/work' || currentPath.startsWith('/projects/'))) ||
+                  (item.path === '/ai-data' && currentPath === '/intelligence') ||
+                  (item.path === '/experiments' && currentPath === '/lab');
+
                 return (
                   <Link
                     key={item.path}
@@ -131,15 +147,27 @@ export default function Navbar() {
             </div>
 
             <div className="pt-8 border-t border-[#1C1C22] space-y-4">
-              <Link
-                to="/contact"
-                onClick={() => setMobileMenuOpen(false)}
-                className="w-full flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-[#4338CA] hover:bg-[#4F46E5] text-white text-xs font-medium tracking-wide transition-colors"
-              >
-                <span>Initiate Contact</span>
-                <ArrowUpRight className="w-3.5 h-3.5" />
-              </Link>
-              <div className="text-center text-xs text-[#656570]">
+              <div className="flex gap-3">
+                <a
+                  href="/resume.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-lg bg-[#16161C] border border-[#272730] text-white text-xs font-mono"
+                >
+                  <FileText className="w-3.5 h-3.5 text-[#818CF8]" />
+                  <span>Resume PDF</span>
+                </a>
+                <Link
+                  to="/contact"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-lg bg-[#4338CA] hover:bg-[#4F46E5] text-white text-xs font-medium tracking-wide transition-colors"
+                >
+                  <span>Initiate Contact</span>
+                  <ArrowUpRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
+
+              <div className="text-center text-xs text-[#656570] font-mono">
                 <span>marksrv047@gmail.com</span>
               </div>
             </div>

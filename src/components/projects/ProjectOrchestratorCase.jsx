@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowRight, ExternalLink, Activity, Radio, AlertTriangle, Shield } from 'lucide-react';
+import PipelineFlowDiagram from '../ai/PipelineFlowDiagram.jsx';
 
 export default function ProjectOrchestratorCase({ project, onOpenModal }) {
   const [events, setEvents] = useState([
@@ -163,7 +164,63 @@ export default function ProjectOrchestratorCase({ project, onOpenModal }) {
 
           </div>
         </div>
+      </div>
 
+      {/* Systems Architecture Pipeline */}
+      <div className="mt-8">
+        <PipelineFlowDiagram
+          mode="systems"
+          stages={[
+            {
+              id: 'input',
+              num: '01',
+              title: 'Sensor Ingestion',
+              tech: 'Telemetry Sockets',
+              shape: '10,000 evt/s',
+              detail: 'Distributed edge nodes stream JSON anomaly payloads over TLS-encrypted WebSocket connections.'
+            },
+            {
+              id: 'buffer',
+              num: '02',
+              title: 'Message Buffer',
+              tech: 'Redis Streams',
+              shape: 'XADD stream:in',
+              detail: 'In-memory persistent queue buffering event spikes and decoupling ingestion from processing workers.'
+            },
+            {
+              id: 'dedup',
+              num: '03',
+              title: 'Sliding Dedup',
+              tech: 'Hash Ring Window',
+              shape: '68% Noise Filtered',
+              detail: 'Sliding 60-second window calculates topological event hashes to collapse redundant anomaly storms.'
+            },
+            {
+              id: 'db',
+              num: '04',
+              title: 'State Storage',
+              tech: 'PostgreSQL + Indexes',
+              shape: 'ACID Transaction',
+              detail: 'Indexed audit logging with connection pooling and async SQLAlchemy transaction boundaries.'
+            },
+            {
+              id: 'dispatch',
+              num: '05',
+              title: 'Async Dispatch',
+              tech: 'FastAPI AsyncIO',
+              shape: 'P99 < 48ms',
+              detail: 'Prioritized event dispatch based on automated risk threshold scoring to active operator stations.'
+            },
+            {
+              id: 'output',
+              num: '06',
+              title: 'Audit Output',
+              tech: 'Signed Review Record',
+              shape: 'Audited Escalation',
+              detail: 'Immutable decision records stored for regulatory compliance and model retrospective retraining.'
+            }
+          ]}
+        />
       </div>
     </article>
   );
