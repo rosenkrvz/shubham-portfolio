@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
 
-export default function CustomCursor({ text, expanded }) {
+export default function CustomCursor() {
   const [pos, setPos] = useState({ x: -100, y: -100 });
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    // Only bind on non-touch devices
     if (window.matchMedia('(pointer: coarse)').matches) return;
 
     const onMove = (e) => {
@@ -29,11 +28,9 @@ export default function CustomCursor({ text, expanded }) {
 
   return (
     <div
-      className={`custom-cursor ${visible ? 'visible' : ''} ${expanded ? 'cursor-expand' : ''}`}
+      className={`minimal-cursor ${visible ? 'visible' : ''}`}
       style={{ left: `${pos.x}px`, top: `${pos.y}px` }}
       aria-hidden="true"
-    >
-      {text}
-    </div>
+    />
   );
 }

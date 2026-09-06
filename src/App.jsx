@@ -1,184 +1,82 @@
 import React, { useState, useEffect } from 'react';
-import CustomCursor from './components/CustomCursor.jsx';
+import { motion, AnimatePresence } from 'framer-motion';
+
 import Navigation from './components/Navigation.jsx';
-import CaseStudyDrawer from './components/CaseStudyDrawer.jsx';
-import ShortcutsModal from './components/ui/ShortcutsModal.jsx';
-
-import SceneArrival from './components/scenes/SceneArrival.jsx';
-import SceneIdentity from './components/scenes/SceneIdentity.jsx';
-import SceneWork from './components/scenes/SceneWork.jsx';
-import SceneExperiments from './components/scenes/SceneExperiments.jsx';
-import SceneSystems from './components/scenes/SceneSystems.jsx';
-import SceneArchive from './components/scenes/SceneArchive.jsx';
-import SceneContact from './components/scenes/SceneContact.jsx';
 import Footer from './components/Footer.jsx';
+import CustomCursor from './components/CustomCursor.jsx';
 
-import { PROJECTS } from './data/projects.js';
-import { sound } from './lib/sound.js';
+import PageWork from './pages/PageWork.jsx';
+import PageAbout from './pages/PageAbout.jsx';
+import PageLab from './pages/PageLab.jsx';
+import PageCertificates from './pages/PageCertificates.jsx';
+import PageContact from './pages/PageContact.jsx';
 
 export default function App() {
-  const [activeProjectId, setActiveProjectId] = useState(null);
-  const [activeSection, setActiveSection] = useState('arrival');
-  const [cursorText, setCursorText] = useState('');
-  const [cursorExpanded, setCursorExpanded] = useState(false);
-  const [isMuted, setIsMuted] = useState(true);
-  const [isShortcutsOpen, setIsShortcutsOpen] = useState(false);
+  const [activeTab, setActiveTab] = useState('work');
 
-  // Active scene observer
+  // Synchronize active tab with URL hash
   useEffect(() => {
-    const handleScroll = () => {
-      const scenes = ['arrival', 'identity', 'work', 'experiments', 'systems', 'archive', 'contact'];
-      const scrollPos = window.scrollY + 250;
-      for (const id of scenes) {
-        const el = document.getElementById(id);
-        if (el) {
-          const top = el.offsetTop;
-          const height = el.offsetHeight;
-          if (scrollPos >= top && scrollPos < top + height) {
-            setActiveSection(id);
-            break;
-          }
-        }
+    const handleHashChange = () => {
+      const hash = window.location.hash.replace('#', '').toLowerCase();
+      const validTabs = ['work', 'about', 'lab', 'certificates', 'contact'];
+      if (validTabs.includes(hash)) {
+        setActiveTab(hash);
+      } else if (!hash) {
+        setActiveTab('work');
       }
     };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+
+    handleHashChange();
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
   }, []);
 
-  // Global Keyboard Shortcuts
-  useEffect(() => {
-    const onKey = (e) => {
-      // Ignore if typing in form inputs
-      if (['INPUT', 'TEXTAREA'].includes(e.target.tagName)) return;
+  const navigateTab = (tabKey) => {
+    setActiveTab(tabKey);
+    window.location.hash = `#${tabKey}`;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
-      if (e.key === 'Escape') {
-        if (activeProjectId) closeCaseStudy();
-        if (isShortcutsOpen) setIsShortcutsOpen(false);
-      } else if (e.key === '?' || (e.shiftKey && e.key === '/')) {
-        e.preventDefault();
-        sound.playClick();
-        setIsShortcutsOpen((prev) => !prev);
-      } else if (e.key.toLowerCase() === 'm') {
-        toggleMute();
-      } else if (['1', '2', '3', '4', '5', '6', '7'].includes(e.key)) {
-        const sceneMap = {
-          '1': 'arrival',
-          '2': 'identity',
-          '3': 'work',
-          '4': 'experiments',
-          '5': 'systems',
-          '6': 'archive',
-          '7': 'contact'
-        };
-        const targetId = sceneMap[e.key];
-        const el = document.getElementById(targetId);
-        if (el) {
-          sound.playClick();
-          el.scrollIntoView({ behavior: 'smooth' });
-        }
-      }
-    };
-    window.addEventListener('keydown', onKey);
-    return () => window.removeEventListener('keydown', onKey);
-  }, [activeProjectId, isShortcutsOpen, isMuted]);
-
-  // Handle URL hash on initial load
-  useEffect(() => {
-    if (window.location.hash) {
-      const hashId = window.location.hash.replace('#', '');
-      const matched = PROJECTS.find((p) => p.id === hashId);
-      if (matched) {
-        setActiveProjectId(matched.id);
-        document.body.style.overflow = 'hidden';
-      }
-    }
-  }, []);
-
-  const openCaseStudy = (id) => {
-    sound.playClick();
-    setActiveProjectId(id);
-    document.body.style.overflow = 'hidden';
-    if (window.history.pushState) {
-      window.history.pushState({ project: id }, '', `#${id}`);
+  const renderActivePage = () => {
+    switch (activeTab) {
+      case 'about':
+        return <PageAbout />;
+      case 'lab':
+        return <PageLab />;
+      case 'certificates':
+        return <PageCertificates />;
+      case 'contact':
+        return <PageContact />;
+      case 'work':
+      default:
+        return <PageWork onNavigateTab={navigateTab} />;
     }
   };
-
-  const closeCaseStudy = () => {
-    sound.playClick();
-    setActiveProjectId(null);
-    document.body.style.overflow = '';
-    if (window.history.pushState) {
-      window.history.pushState({}, '', window.location.pathname);
-    }
-  };
-
-  const toggleMute = () => {
-    const nextMuted = !isMuted;
-    setIsMuted(nextMuted);
-    sound.setMuted(nextMuted);
-  };
-
-  const handleHoverCursor = (text) => {
-    setCursorText(text);
-    setCursorExpanded(!!text);
-  };
-
-  const activeProject = activeProjectId
-    ? PROJECTS.find((p) => p.id === activeProjectId)
-    : null;
 
   return (
-    <div className="min-h-screen bg-[#050508] text-[#f5f5f7] selection:bg-[#00f0ff] selection:text-[#050508]">
-      <CustomCursor text={cursorText} expanded={cursorExpanded} />
+    <div className="min-h-screen bg-[#0c0c0e] text-[#f2f2ee] selection:bg-[#c5282f] selection:text-white flex flex-col justify-between">
+      <CustomCursor />
 
-      <ShortcutsModal
-        isOpen={isShortcutsOpen}
-        onClose={() => setIsShortcutsOpen(false)}
-        onMuteToggle={toggleMute}
-        isMuted={isMuted}
-      />
-
-      <CaseStudyDrawer
-        activeProject={activeProject}
-        onClose={closeCaseStudy}
-        onHoverCursor={handleHoverCursor}
-      />
-
-      <Navigation
-        activeSection={activeSection}
-        onHoverCursor={handleHoverCursor}
-        isMuted={isMuted}
-        onToggleSound={toggleMute}
-        onOpenShortcuts={() => setIsShortcutsOpen(true)}
-      />
-
-      <main>
-        <SceneArrival onHoverCursor={handleHoverCursor} />
-        <div className="site-container"><hr className="editorial-rule" /></div>
-
-        <SceneIdentity onHoverCursor={handleHoverCursor} />
-        <div className="site-container"><hr className="editorial-rule" /></div>
-
-        <SceneWork
-          onOpenCaseStudy={openCaseStudy}
-          onHoverCursor={handleHoverCursor}
+      <div>
+        <Navigation
+          activeTab={activeTab}
+          onSelectTab={navigateTab}
         />
-        <div className="site-container"><hr className="editorial-rule" /></div>
 
-        <SceneExperiments onHoverCursor={handleHoverCursor} />
-        <div className="site-container"><hr className="editorial-rule" /></div>
-
-        <SceneSystems onHoverCursor={handleHoverCursor} />
-        <div className="site-container"><hr className="editorial-rule" /></div>
-
-        <SceneArchive
-          onOpenCaseStudy={openCaseStudy}
-          onHoverCursor={handleHoverCursor}
-        />
-        <div className="site-container"><hr className="editorial-rule" /></div>
-
-        <SceneContact onHoverCursor={handleHoverCursor} />
-      </main>
+        <main id="main-content">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeTab}
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+            >
+              {renderActivePage()}
+            </motion.div>
+          </AnimatePresence>
+        </main>
+      </div>
 
       <Footer />
     </div>
