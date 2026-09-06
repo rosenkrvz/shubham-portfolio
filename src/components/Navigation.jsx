@@ -19,26 +19,26 @@ export default function Navigation({ activeTab, onSelectTab }) {
   };
 
   return (
-    <header className="minimal-nav">
-      <div className="site-container nav-inner">
+    <header className="editorial-nav">
+      <div className="site-container nav-row">
         {/* Brand */}
         <button
           onClick={() => handleTabClick('work')}
-          className="nav-brand"
-          aria-label="Go to Work"
+          className="nav-brand-title"
+          aria-label="Navigate to Work"
         >
           <span>{PROFILE.name}</span>
-          <span className="brand-dot"></span>
+          <span className="nav-brand-dot"></span>
         </button>
 
         {/* Desktop Tabs */}
         <nav aria-label="Main Navigation">
-          <ul className="nav-tabs-desktop">
+          <ul className="nav-tabs-group">
             {tabs.map((tab) => (
               <li key={tab.key}>
                 <button
                   onClick={() => handleTabClick(tab.key)}
-                  className={`nav-tab-btn ${activeTab === tab.key ? 'active' : ''}`}
+                  className={`nav-tab-item ${activeTab === tab.key ? 'active' : ''}`}
                 >
                   {tab.label}
                 </button>
@@ -47,13 +47,13 @@ export default function Navigation({ activeTab, onSelectTab }) {
           </ul>
         </nav>
 
-        {/* External Links */}
-        <div className="nav-secondary-links">
+        {/* Secondary Links */}
+        <div className="nav-actions-right">
           <a
             href={PROFILE.contacts.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="nav-external-link"
+            className="nav-link-secondary"
           >
             GitHub <ArrowUpRight size={11} />
           </a>
@@ -61,31 +61,31 @@ export default function Navigation({ activeTab, onSelectTab }) {
             href={PROFILE.contacts.resumeUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="nav-external-link"
+            className="nav-link-secondary"
           >
             Resume <ArrowUpRight size={11} />
           </a>
         </div>
 
-        {/* Mobile Toggle */}
+        {/* Mobile Menu Toggle */}
         <button
-          className="mobile-nav-toggle"
+          className="mobile-menu-btn"
           onClick={() => setMobileOpen(!mobileOpen)}
-          aria-label="Toggle Menu"
+          aria-label="Toggle navigation menu"
         >
           {mobileOpen ? <X size={20} /> : <Menu size={20} />}
         </button>
       </div>
 
-      {/* Mobile Overlay */}
+      {/* Mobile Fullscreen Menu */}
       {mobileOpen && (
-        <div className="mobile-nav-overlay">
-          <div className="flex justify-between items-center border-b border-[var(--border-subtle)] pb-4">
+        <div className="mobile-nav-panel">
+          <div className="flex justify-between items-center border-b border-[var(--rule-border)] pb-4">
             <span className="font-medium text-white">{PROFILE.name}</span>
             <button
               onClick={() => setMobileOpen(false)}
-              className="text-zinc-400 hover:text-white"
-              aria-label="Close Menu"
+              className="text-zinc-400 hover:text-white p-1"
+              aria-label="Close menu"
             >
               <X size={22} />
             </button>
@@ -96,8 +96,8 @@ export default function Navigation({ activeTab, onSelectTab }) {
               <button
                 key={tab.key}
                 onClick={() => handleTabClick(tab.key)}
-                className={`text-left text-2xl font-light tracking-tight transition-colors ${
-                  activeTab === tab.key ? 'text-white font-normal' : 'text-zinc-400 hover:text-white'
+                className={`text-left text-3xl font-light tracking-tight transition-colors ${
+                  activeTab === tab.key ? 'text-white font-normal' : 'text-zinc-500 hover:text-white'
                 }`}
               >
                 {tab.label}
@@ -105,7 +105,7 @@ export default function Navigation({ activeTab, onSelectTab }) {
             ))}
           </div>
 
-          <div className="pt-6 border-t border-[var(--border-subtle)] flex justify-between text-xs font-mono text-zinc-500">
+          <div className="pt-6 border-t border-[var(--rule-border)] flex justify-between text-xs font-mono text-zinc-500">
             <a
               href={PROFILE.contacts.github}
               target="_blank"

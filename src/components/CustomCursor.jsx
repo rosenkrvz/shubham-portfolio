@@ -2,18 +2,18 @@ import React, { useEffect, useState } from 'react';
 
 export default function CustomCursor() {
   const [pos, setPos] = useState({ x: -100, y: -100 });
-  const [visible, setVisible] = useState(false);
+  const [active, setActive] = useState(false);
 
   useEffect(() => {
-    if (window.matchMedia('(pointer: coarse)').matches) return;
+    if (typeof window === 'undefined' || window.matchMedia('(pointer: coarse)').matches) return;
 
     const onMove = (e) => {
       setPos({ x: e.clientX, y: e.clientY });
-      if (!visible) setVisible(true);
+      if (!active) setActive(true);
     };
 
-    const onLeave = () => setVisible(false);
-    const onEnter = () => setVisible(true);
+    const onLeave = () => setActive(false);
+    const onEnter = () => setActive(true);
 
     window.addEventListener('mousemove', onMove);
     document.addEventListener('mouseleave', onLeave);
@@ -24,11 +24,11 @@ export default function CustomCursor() {
       document.removeEventListener('mouseleave', onLeave);
       document.removeEventListener('mouseenter', onEnter);
     };
-  }, [visible]);
+  }, [active]);
 
   return (
     <div
-      className={`minimal-cursor ${visible ? 'visible' : ''}`}
+      className={`subtle-cursor-dot ${active ? 'active' : ''}`}
       style={{ left: `${pos.x}px`, top: `${pos.y}px` }}
       aria-hidden="true"
     />
