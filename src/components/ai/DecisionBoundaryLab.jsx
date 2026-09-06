@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { Sliders, RefreshCw, PlusCircle, CheckCircle, AlertCircle, Info, Sparkles } from 'lucide-react';
+import CompactPillSwitch from '../ui/CompactPillSwitch.jsx';
 
 /**
  * DecisionBoundaryLab
@@ -381,28 +382,15 @@ export default function DecisionBoundaryLab({ className = "" }) {
 
             {/* Click Point Insertion Class Toggle */}
             <div className="pt-2 border-t border-[#1C1C24] flex items-center justify-between">
-              <span className="text-xs font-mono text-[#9E9EA8]">POINT CLICK INSERTION:</span>
-              <div className="flex gap-2">
-                <button
-                  onClick={() => setAddPointClass(0)}
-                  className={`px-2.5 py-1 text-[11px] font-mono rounded border transition-colors cursor-pointer ${
-                    addPointClass === 0
-                      ? 'bg-[#10B981]/20 border-[#10B981] text-[#A7F3D0]'
-                      : 'bg-[#16161B] border-[#272730] text-[#656570]'
-                  }`}
-                >
-                  Class 0
-                </button>
-                <button
-                  onClick={() => setAddPointClass(1)}
-                  className={`px-2.5 py-1 text-[11px] font-mono rounded border transition-colors cursor-pointer ${
-                    addPointClass === 1
-                      ? 'bg-[#818CF8]/20 border-[#818CF8] text-[#C7D2FE]'
-                      : 'bg-[#16161B] border-[#272730] text-[#656570]'
-                  }`}
-                >
-                  Class 1
-                </button>
+              <span className="text-xs font-mono text-[#9E9EA8]">INSERTION CLASS:</span>
+              <div className="flex items-center gap-2">
+                <span className={`text-[10px] font-mono ${addPointClass === 0 ? 'text-[#10B981] font-semibold' : 'text-[#656570]'}`}>Class 0</span>
+                <CompactPillSwitch
+                  checked={addPointClass === 1}
+                  onChange={(c) => setAddPointClass(c ? 1 : 0)}
+                  ariaLabel="Toggle between Class 0 and Class 1 point insertion"
+                />
+                <span className={`text-[10px] font-mono ${addPointClass === 1 ? 'text-[#818CF8] font-semibold' : 'text-[#656570]'}`}>Class 1</span>
               </div>
             </div>
           </div>

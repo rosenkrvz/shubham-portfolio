@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { Sliders, RefreshCw, Eye, Layers, Compass, Network, Activity } from 'lucide-react';
+import CompactPillSwitch from '../ui/CompactPillSwitch.jsx';
 
 /**
  * LatentSpaceExplorer
@@ -325,16 +326,11 @@ export default function LatentSpaceExplorer({ className = "" }) {
 
             <div className="flex items-center justify-between pt-2 border-t border-[#1C1C24] text-xs font-mono">
               <span className="text-[#9E9EA8]">VARIANCE ELLIPSOIDS:</span>
-              <button
-                onClick={() => setShowEllipses(!showEllipses)}
-                className={`px-3 py-1 rounded border text-[11px] transition-colors cursor-pointer ${
-                  showEllipses
-                    ? 'bg-[#818CF8]/20 border-[#818CF8] text-[#C7D2FE]'
-                    : 'bg-[#16161B] border-[#272730] text-[#656570]'
-                }`}
-              >
-                {showEllipses ? 'Visible' : 'Hidden'}
-              </button>
+              <CompactPillSwitch
+                checked={showEllipses}
+                onChange={setShowEllipses}
+                ariaLabel="Toggle variance ellipsoids"
+              />
             </div>
           </div>
 
